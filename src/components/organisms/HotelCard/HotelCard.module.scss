@@ -1,0 +1,64 @@
+.card {
+  max-width: 270px;
+}
+
+.swiper {
+  height: 160px;
+}
+
+%button {
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+}
+
+.body {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.number {
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.number__icon {
+  font-size: 14px;
+}
+
+.luxury {
+  margin-left: 8px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.price__prefix {
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.reviews {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.reviews__prefix {
+  font-weight: 400;
+}
