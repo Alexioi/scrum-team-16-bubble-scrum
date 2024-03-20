@@ -1,7 +1,8 @@
-import { Input } from "@/components";
+import {HelloToxin, Input } from '@/components';
 
 const Home = () => {
   return <>
+  return <HelloToxin />;
     <Input placeholder="Email" />
     <input type="email" />
     </>;

@@ -1,6 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 
-import { helloToxinActions, helloToxinReducer } from "./helloToxinSlice";
+import { helloToxinActions, helloToxinReducer } from './helloToxinSlice';
 
 const store = configureStore({
   reducer: {
