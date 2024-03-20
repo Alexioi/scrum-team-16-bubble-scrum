@@ -1,7 +1,10 @@
-import { HelloToxin } from "@/components";
+import { Input } from "@/components";
 
 const Home = () => {
-  return <HelloToxin />;
+  return <>
+    <Input placeholder="Email" />
+    <input type="email" />
+    </>;
 };
 
 export default Home;

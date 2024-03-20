@@ -1,0 +1,32 @@
+.input {
+  padding: 15px;
+
+  height: 44px;
+  max-width: 320px;
+  width: 100%;
+  box-sizing: border-box;
+
+  font-size: 14px;
+  color: rgba(31, 32, 65, 0.75);
+
+  background-color: #FFFFFF;
+  
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  border-radius: 4px;
+
+  transition: all 0.3s ease-in;
+
+  &::placeholder {
+    color: rgba(31, 32, 65, 0.25);
+  }
+
+  &:focus, &:hover {
+    outline: none;
+    
+    border-color: rgba(31, 32, 65, 0.75);
+  }
+
+  &:invalid {
+    border-color: red;
+  }
+}

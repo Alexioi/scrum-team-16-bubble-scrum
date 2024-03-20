@@ -3,7 +3,7 @@
 import { useSelector, useDispatch } from "react-redux";
 
 import { AppDispatch, RootState, actions } from "@/store";
-import style from "./style.module.scss";
+import "./style.module.scss";
 
 const HelloToxin = () => {
   const dispatch = useDispatch<AppDispatch>();
