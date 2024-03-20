@@ -6,7 +6,7 @@ import { HotelListSliceActions, HotelListSliceReducer } from "./HotelListSlice";
 const store = configureStore({
   reducer: {
     helloToxin: helloToxinReducer,
-    holelList: HotelListSliceReducer,
+    hotelList: HotelListSliceReducer,
   },
 });
 

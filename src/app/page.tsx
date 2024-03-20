@@ -1,7 +1,8 @@
 import { HelloToxin } from '@/components';
+import HotelList from '@/components/organisms/HotelList';
 
 const Home = () => {
-  return <HelloToxin />;
+  return <HotelList />;
 };
 
 export default Home;
