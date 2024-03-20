@@ -1,4 +1,4 @@
-import { HelloToxin, Button } from "@/components";
+import { HelloToxin, Button } from '@/components';
 
 const Home = () => {
   return (

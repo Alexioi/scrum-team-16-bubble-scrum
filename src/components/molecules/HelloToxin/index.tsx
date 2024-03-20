@@ -15,7 +15,9 @@ const HelloToxin = () => {
 
   return (
     <div>
-      <button onClick={onClickButton}>Hello</button>
+      <button type="button" onClick={onClickButton}>
+        Hello
+      </button>
       <span className={style.test}>{helloToxin.data}</span>
     </div>
   );
