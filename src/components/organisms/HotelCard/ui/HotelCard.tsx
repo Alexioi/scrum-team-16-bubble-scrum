@@ -1,17 +1,16 @@
-import React, { FC } from 'react';
-
 import { Rating } from '@/components/atoms/Rating';
 import { Swiper } from '@/components/atoms/Swiper';
 
-import style from './HotelCard.module.scss';
-import { declensionReview } from '../lib/declensionReview';
 import { Hotel } from '../type';
+import { declensionReview } from '../lib/declensionReview';
+
+import style from './style.module.scss';
 
 interface Props {
   hotel: Hotel;
 }
 
-const HotelCard: FC<Props> = ({ hotel }) => {
+const HotelCard = ({ hotel }: Props) => {
   return (
     <div className={style.card}>
       <Swiper images={hotel.images} className={style.swiper} />

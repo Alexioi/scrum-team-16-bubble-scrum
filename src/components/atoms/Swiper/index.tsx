@@ -1,16 +1,17 @@
 'use client';
 
-import { FC, useState } from 'react';
-import style from './Swiper.module.scss';
-import { LeftArrow } from '../icons';
+import { useState } from 'react';
 import Image from 'next/image';
+
+import { LeftArrow } from '../icons';
+import style from './style.module.scss';
 
 interface Props {
   images: string[];
   className?: string;
 }
 
-const Swiper: FC<Props> = ({ images, className = '' }) => {
+const Swiper = ({ images, className = '' }: Props) => {
   const [currentImage, setCurrentImage] = useState(0);
 
   const onNextImage = () =>
