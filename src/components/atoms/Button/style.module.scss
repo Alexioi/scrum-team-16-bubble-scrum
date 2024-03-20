@@ -9,6 +9,7 @@
   position: relative;
   text-decoration: none;
   padding: 0;
+  width: 100%;
 
   &:hover,
   &#{$root}_hovered {
@@ -18,7 +19,7 @@
   &_theme {
     &_default {
       padding: 14px 20px 12px;
-      background: gray;
+      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
       border-radius: 22px;
 
       #{$root}__text {
@@ -29,10 +30,10 @@
     &_outlined {
       padding: 14px 20px 12px;
       border-radius: 22px;
-      background: gray;
+      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
 
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         background: white;
         top: 0;
@@ -44,7 +45,7 @@
       }
 
       #{$root}__text {
-        color: red;
+        color: rgb(188, 156, 255);
       }
     }
 
@@ -59,7 +60,7 @@
     &_long {
       width: 100%;
       padding: 14px 11px 12px 29px;
-      background: black;
+      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
       border-radius: 22px;
 
       #{$root}__text {
@@ -75,7 +76,7 @@
   }
 
   &__text {
-    font-family: 12px;
+    font-family: sans-serif;
     font-weight: bold;
     font-size: 12px;
     line-height: 18px;

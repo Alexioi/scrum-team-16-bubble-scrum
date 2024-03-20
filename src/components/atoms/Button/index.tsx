@@ -1,27 +1,53 @@
-import Link from "next/link";
+'use client';
 
-import style from "./style.module.scss";
+import Link from 'next/link';
+import { clsx } from 'clsx';
+
+import ArrowSVG from '@/images/decorative/arrow.svg';
+
+import style from './style.module.scss';
 
 const Button = ({
-  link,
-  size,
-  text,
-  type,
+  onClick,
   theme,
+  text,
+  size,
+  link,
+  type = 'button',
 }: {
-  link?: string;
-  size?: "low";
+  onClick?: () => void;
   text: string;
-  type?: "submit" | "reset" | "button";
-  theme: "outline";
+  theme: 'outlined' | 'default' | 'link' | 'long';
+  link?: string;
+  size?: 'low';
+  type?: 'submit' | 'reset' | 'button';
 }) => {
+  const buttonClasses = clsx(style.button, {
+    [style.button_theme_default]: theme === 'default',
+    [style.button_theme_outlined]: theme === 'outlined',
+    [style.button_theme_link]: theme === 'link',
+    [style.button_theme_long]: theme === 'long',
+    [style.button_size_low]: size === 'low',
+  });
+
   if (link !== undefined) {
-    <Link href="/blog/hello-world">{text}</Link>;
+    return (
+      <Link href={link} className={buttonClasses}>
+        <span className={style.button__text}>{text}</span>
+      </Link>
+    );
   }
 
   return (
-    <button className={`${style.button}`} type={type}>
-      {text}
+    <button onClick={onClick} className={buttonClasses} type={type}>
+      <span className={style.button__text}>{text}</span>
+      {theme === 'long' && (
+        <span className={style.button__arrow}>
+          <svg className={style.button__icon}>
+            <ArrowSVG />
+          </svg>
+        </span>
+      )}
     </button>
   );
 };
