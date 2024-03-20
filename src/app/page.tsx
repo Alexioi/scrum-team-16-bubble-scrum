@@ -2,7 +2,7 @@ import {HelloToxin, Input } from '@/components';
 
 const Home = () => {
   return <>
-  return <HelloToxin />;
+    <HelloToxin />
     <Input placeholder="Email" />
     <input type="email" />
     </>;
