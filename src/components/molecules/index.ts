@@ -1,3 +1,3 @@
-import { HelloToxin } from "./HelloToxin";
+import { HelloToxin } from './HelloToxin';
 
 export { HelloToxin };

@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState: { data: string } = {
-  data: "",
+  data: '',
 };
 
 const helloToxinSlice = createSlice({
-  name: "helloToxin",
+  name: 'helloToxin',
   initialState,
   reducers: {
     change: (state, { payload }: { payload: string }) => {
