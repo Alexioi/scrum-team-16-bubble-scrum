@@ -3,8 +3,9 @@ import React, { FC } from 'react';
 import { Rating } from '@/components/atoms/Rating';
 import { Swiper } from '@/components/atoms/Swiper';
 
-import { IHotel } from '.';
 import st from './HotelCard.module.scss';
+import { declensionReview } from '../lib/declensionReview';
+import { IHotel } from '../type';
 
 interface HotelCardProps {
   hotel: IHotel;
@@ -31,7 +32,8 @@ const HotelCard: FC<HotelCardProps> = ({ hotel }) => {
         <div className={st.footer}>
           <Rating rating={hotel.rating} />
           <div className={st.reviews}>
-            145 <span className={st.reviews__prefix}>отзывов</span>
+            145{' '}
+            <span className={st.reviews__prefix}>{declensionReview(145)}</span>
           </div>
         </div>
       </div>

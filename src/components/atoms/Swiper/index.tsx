@@ -17,7 +17,9 @@ const Swiper: FC<SwiperProps> = ({ images, className = '' }) => {
     setCurrentImage(currentImage + 1 >= images.length ? 0 : currentImage + 1);
 
   const onPrevImage = () =>
-    setCurrentImage(currentImage - 1 < 0 ? 3 : currentImage - 1);
+    setCurrentImage(
+      currentImage - 1 < 0 ? images.length - 1 : currentImage - 1
+    );
 
   const onPaginationClick =
     (idx: number) => (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -57,4 +59,4 @@ const Swiper: FC<SwiperProps> = ({ images, className = '' }) => {
   );
 };
 
-export default Swiper;
+export { Swiper };

@@ -24,4 +24,4 @@ const Rating: FC<RatingProps> = ({ rating, className = '' }) => {
   );
 };
 
-export default Rating;
+export { Rating };
