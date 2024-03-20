@@ -3,37 +3,39 @@ import React, { FC } from 'react';
 import { Rating } from '@/components/atoms/Rating';
 import { Swiper } from '@/components/atoms/Swiper';
 
-import st from './HotelCard.module.scss';
+import style from './HotelCard.module.scss';
 import { declensionReview } from '../lib/declensionReview';
-import { IHotel } from '../type';
+import { Hotel } from '../type';
 
-interface HotelCardProps {
-  hotel: IHotel;
+interface Props {
+  hotel: Hotel;
 }
 
-const HotelCard: FC<HotelCardProps> = ({ hotel }) => {
+const HotelCard: FC<Props> = ({ hotel }) => {
   return (
-    <div className={st.card}>
-      <Swiper images={hotel.images} className={st.swiper} />
+    <div className={style.card}>
+      <Swiper images={hotel.images} className={style.swiper} />
 
-      <div className={st.body}>
-        <div className={st.header}>
-          <div className={st.number}>
-            <span className={st.number__icon}>№</span> {hotel.number}
-            {hotel.isLuxury && <span className={st.luxury}>ЛЮКС</span>}
+      <div className={style.body}>
+        <div className={style.header}>
+          <div className={style.number}>
+            <span className={style.number__icon}>№</span> {hotel.number}
+            {hotel.isLuxury && <span className={style.luxury}>ЛЮКС</span>}
           </div>
 
-          <div className={st.price}>
+          <div className={style.price}>
             {hotel.price.toLocaleString('ru')}₽{' '}
-            <span className={st.price__prefix}>в сутки</span>
+            <span className={style.price__prefix}>в сутки</span>
           </div>
         </div>
 
-        <div className={st.footer}>
+        <div className={style.footer}>
           <Rating rating={hotel.rating} />
-          <div className={st.reviews}>
+          <div className={style.reviews}>
             145{' '}
-            <span className={st.reviews__prefix}>{declensionReview(145)}</span>
+            <span className={style.reviews__prefix}>
+              {declensionReview(145)}
+            </span>
           </div>
         </div>
       </div>

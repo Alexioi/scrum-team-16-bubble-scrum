@@ -1,6 +1,6 @@
 import HotelCard from './ui/HotelCard';
-import { IHotel } from './type';
+import { Hotel } from './type';
 import { declensionReview } from './lib/declensionReview';
 
 export { HotelCard, declensionReview };
-export type { IHotel };
+export type { Hotel };

@@ -1,16 +1,16 @@
 'use client';
 
 import { FC, useState } from 'react';
-import st from './Swiper.module.scss';
+import style from './Swiper.module.scss';
 import { LeftArrow } from '../icons';
 import Image from 'next/image';
 
-interface SwiperProps {
+interface Props {
   images: string[];
   className?: string;
 }
 
-const Swiper: FC<SwiperProps> = ({ images, className = '' }) => {
+const Swiper: FC<Props> = ({ images, className = '' }) => {
   const [currentImage, setCurrentImage] = useState(0);
 
   const onNextImage = () =>
@@ -18,7 +18,7 @@ const Swiper: FC<SwiperProps> = ({ images, className = '' }) => {
 
   const onPrevImage = () =>
     setCurrentImage(
-      currentImage - 1 < 0 ? images.length - 1 : currentImage - 1
+      currentImage - 1 < 0 ? images.length - 1 : currentImage - 1,
     );
 
   const onPaginationClick =
@@ -28,29 +28,29 @@ const Swiper: FC<SwiperProps> = ({ images, className = '' }) => {
     };
 
   return (
-    <div className={`${st.swiper} ${className}`}>
+    <div className={`${style.swiper} ${className}`}>
       <Image
         src={images[currentImage]}
-        className={st.img}
+        className={style.img}
         fill
         alt="Фотография номера"
       />
 
-      <button className={st.prev} onClick={onPrevImage}>
+      <button className={style.prev} onClick={onPrevImage}>
         <LeftArrow />
       </button>
 
-      <button className={st.next} onClick={onNextImage}>
+      <button className={style.next} onClick={onNextImage}>
         <LeftArrow />
       </button>
 
-      <div className={st.pagination}>
+      <div className={style.pagination}>
         {images.map((_, idx) => (
           <button
             key={idx}
             onClick={onPaginationClick(idx)}
-            className={`${st.pagination__item} ${
-              idx === currentImage ? st.pagination__item_active : ''
+            className={`${style.pagination__item} ${
+              idx === currentImage ? style.pagination__item_active : ''
             }`}
           ></button>
         ))}
