@@ -1,0 +1,37 @@
+@import '@/variables.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+
+  font-family: sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+
+  color: $dark-shade-75;
+}
+
+h1, h2, h3 {
+  font-weight: bold;
+  line-height: normal;
+  
+  color: $dark-shade-100;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 19px;
+}
+
+h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+}
