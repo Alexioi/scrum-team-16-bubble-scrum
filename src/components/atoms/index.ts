@@ -1,4 +1,4 @@
 import { StoreProvider } from './StoreProvider';
-import Input from "./Input";
+import { Input } from './Input';
 
 export { StoreProvider, Input };

@@ -25,4 +25,4 @@ const Input: React.FC<Props> = ({ type = 'text', ...standardProps }) => {
   );
 };
 
-export default Input;
+export { Input };
