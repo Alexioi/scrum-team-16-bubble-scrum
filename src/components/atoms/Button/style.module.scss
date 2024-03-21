@@ -13,6 +13,7 @@
 
   &:hover,
   &#{$root}_hovered {
+    transition: all 0.3s ease-in;
     opacity: 0.5;
   }
 
