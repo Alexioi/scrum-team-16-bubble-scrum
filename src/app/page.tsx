@@ -1,5 +1,4 @@
-import { HelloToxin } from '@/components';
-import HotelList from '@/components/organisms/HotelList';
+import { HotelList } from '@/components/organisms';
 
 const Home = () => {
   return <HotelList />;

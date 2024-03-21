@@ -1,3 +1,5 @@
 import { StoreProvider } from "./StoreProvider";
+import { Rating } from "./Rating";
+import { Swiper } from "./Swiper";
 
-export { StoreProvider };
+export { Rating, Swiper, StoreProvider };

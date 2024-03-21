@@ -1,4 +1,5 @@
 'use client';
+
 import { useEffect } from 'react';
 
 import { getAllHotels } from '@/store/HotelListSlice';
@@ -25,4 +26,4 @@ const HotelList = () => {
   );
 };
 
-export default HotelList;
+export { HotelList };

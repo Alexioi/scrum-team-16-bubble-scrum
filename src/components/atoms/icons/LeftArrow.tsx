@@ -17,4 +17,4 @@ const LeftArrow = () => {
   );
 };
 
-export default LeftArrow;
+export { LeftArrow };

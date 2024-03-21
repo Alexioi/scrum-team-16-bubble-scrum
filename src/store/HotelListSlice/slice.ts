@@ -5,12 +5,12 @@ import { getAllHotels } from './actionCreators';
 interface HotelListSliceState {
   data: Hotel[];
   isLoading: boolean;
-  isError: boolean;
+  error: string;
 }
 
 const initialState: HotelListSliceState = {
   data: [],
-  isError: false,
+  error: '',
   isLoading: false,
 };
 
@@ -19,10 +19,9 @@ const HotelListSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    
-    builder.addCase(getAllHotels.pending, (state, action) => {
+    builder.addCase(getAllHotels.pending, (state) => {
       state.isLoading = true;
-      state.isError = false;
+      state.error = '';
     });
 
     builder.addCase(getAllHotels.fulfilled, (state, action) => {
@@ -31,7 +30,7 @@ const HotelListSlice = createSlice({
     });
 
     builder.addCase(getAllHotels.rejected, (state) => {
-      state.isError = false;
+      state.error = 'Ошибка';
     });
   },
 });

@@ -6,20 +6,21 @@ import Image from 'next/image';
 import { LeftArrow } from '../icons';
 import style from './style.module.scss';
 
-interface Props {
-  images: string[];
-  className?: string;
-}
+type Props = {
+  imageURLs: string[];
+};
 
-const Swiper = ({ images, className = '' }: Props) => {
+const Swiper = ({ imageURLs }: Props) => {
   const [currentImage, setCurrentImage] = useState(0);
 
   const onNextImage = () =>
-    setCurrentImage(currentImage + 1 >= images.length ? 0 : currentImage + 1);
+    setCurrentImage(
+      currentImage + 1 >= imageURLs.length ? 0 : currentImage + 1,
+    );
 
   const onPrevImage = () =>
     setCurrentImage(
-      currentImage - 1 < 0 ? images.length - 1 : currentImage - 1,
+      currentImage - 1 < 0 ? imageURLs.length - 1 : currentImage - 1,
     );
 
   const onPaginationClick =
@@ -29,9 +30,9 @@ const Swiper = ({ images, className = '' }: Props) => {
     };
 
   return (
-    <div className={`${style.swiper} ${className}`}>
+    <div className={style.swiper}>
       <Image
-        src={images[currentImage]}
+        src={imageURLs[currentImage]}
         className={style.img}
         fill
         alt="Фотография номера"
@@ -46,7 +47,7 @@ const Swiper = ({ images, className = '' }: Props) => {
       </button>
 
       <div className={style.pagination}>
-        {images.map((_, idx) => (
+        {imageURLs.map((_, idx) => (
           <button
             key={idx}
             onClick={onPaginationClick(idx)}

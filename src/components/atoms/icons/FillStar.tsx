@@ -28,4 +28,4 @@ const FillStar = () => {
   );
 };
 
-export default FillStar;
+export { FillStar };

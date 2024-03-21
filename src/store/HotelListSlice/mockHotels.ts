@@ -1,5 +1,6 @@
-import { Hotel } from "@/components/organisms/HotelCard";
+import { Hotel } from "@/components";
 import img from "@/assets/hotel/image.jpg";
+
 export const mockHotels: Hotel[] = [
     {
         id: 0,

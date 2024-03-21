@@ -28,4 +28,4 @@ const OutlineStar = () => {
   );
 };
 
-export default OutlineStar;
+export { OutlineStar };

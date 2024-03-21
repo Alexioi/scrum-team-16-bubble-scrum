@@ -1,19 +1,18 @@
-import { Rating } from '@/components/atoms/Rating';
-import { Swiper } from '@/components/atoms/Swiper';
+import { Rating, Swiper } from '@/components/atoms';
 
 import { Hotel } from '../type';
 import { declensionReview } from '../lib/declensionReview';
 
 import style from './style.module.scss';
 
-interface Props {
+type Props = {
   hotel: Hotel;
-}
+};
 
 const HotelCard = ({ hotel }: Props) => {
   return (
     <div className={style.card}>
-      <Swiper images={hotel.images} className={style.swiper} />
+      <Swiper imageURLs={hotel.images} />
 
       <div className={style.body}>
         <div className={style.header}>
@@ -23,7 +22,7 @@ const HotelCard = ({ hotel }: Props) => {
           </div>
 
           <div className={style.price}>
-            {hotel.price.toLocaleString('ru')}₽{' '}
+            {hotel.price.toLocaleString('ru')}₽
             <span className={style.price__prefix}>в сутки</span>
           </div>
         </div>
@@ -31,7 +30,7 @@ const HotelCard = ({ hotel }: Props) => {
         <div className={style.footer}>
           <Rating rating={hotel.rating} />
           <div className={style.reviews}>
-            145{' '}
+            145
             <span className={style.reviews__prefix}>
               {declensionReview(145)}
             </span>
@@ -42,4 +41,4 @@ const HotelCard = ({ hotel }: Props) => {
   );
 };
 
-export default HotelCard;
+export { HotelCard };

@@ -3,14 +3,13 @@ import { OutlineStar } from '../icons';
 
 import style from './style.module.scss';
 
-interface Props {
+type Props = {
   rating: number;
-  className?: string;
-}
+};
 
-const Rating = ({ rating, className = '' }: Props) => {
+const Rating = ({ rating }: Props) => {
   return (
-    <div className={`${style.rating} ${className}`}>
+    <div className={style.rating}>
       {[1, 2, 3, 4, 5].map((number) =>
         number <= rating ? (
           <FillStar key={number} />
