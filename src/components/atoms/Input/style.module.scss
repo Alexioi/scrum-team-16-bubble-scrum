@@ -23,13 +23,15 @@
     color: rgba(31, 32, 65, 0.25);
   }
 
-  // &::-webkit-calendar-picker-indicator {
-  //   display: none;
-  // }
+  &[type='date'] {
+    &::-webkit-calendar-picker-indicator {
+      display: none;
+    }
 
-  // &input[type='date']::-webkit-input-placeholder {
-  //   visibility: hidden !important;
-  // }
+    &::-webkit-input-placeholder {
+      visibility: hidden !important;
+    }
+  }
 
   &:focus,
   &:hover {
