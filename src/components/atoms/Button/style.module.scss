@@ -52,6 +52,7 @@
 
     &_link {
       background: none;
+      display: inline;
 
       #{$root}__text {
         color: #bc9cff;
