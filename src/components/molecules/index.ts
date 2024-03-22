@@ -1,3 +1,4 @@
 import { HelloToxin } from './HelloToxin';
+import { Header } from './Header';
 
-export { HelloToxin };
+export { Header, HelloToxin };
