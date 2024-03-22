@@ -15,7 +15,7 @@ const HotelList = () => {
 
   useEffect(() => {
     dispatch(getAllHotels());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={style.list}>
