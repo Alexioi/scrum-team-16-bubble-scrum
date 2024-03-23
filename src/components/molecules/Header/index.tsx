@@ -8,12 +8,11 @@ import MenuSVG from '@/images/decorative/menu.svg';
 import { Button, NavigationLink } from '../../atoms';
 import style from './style.module.scss';
 
-type NavItem =
-  | {
-      text: string;
-      list: { link: string; text: string }[];
-    }
-  | { text: string; link: string };
+type NavItem = {
+  text: string;
+  list?: { link: string; text: string }[];
+  link?: string;
+};
 
 type Props = {
   navItems: NavItem[];
@@ -22,12 +21,6 @@ type Props = {
 
 const Header = ({ navItems, username }: Props) => {
   const [isOpened, setIsOpened] = useState(false);
-
-  const isNavItemWithList = (
-    item: NavItem,
-  ): item is { text: string; list: { link: string; text: string }[] } => {
-    return (item as any).list !== undefined;
-  };
 
   const handleBurgerButtonClick = () => {
     setIsOpened(!isOpened);
@@ -52,17 +45,13 @@ const Header = ({ navItems, username }: Props) => {
           <nav className={style.navigation}>
             <ul className={style.list}>
               {navItems.map((el) => {
-                if (isNavItemWithList(el)) {
-                  return (
-                    <NavigationLink
-                      key={el.text}
-                      text={el.text}
-                      list={el.list}
-                    />
-                  );
-                }
                 return (
-                  <NavigationLink key={el.text} text={el.text} link={el.link} />
+                  <NavigationLink
+                    key={el.text}
+                    text={el.text}
+                    link={el.link}
+                    list={el.list}
+                  />
                 );
               })}
             </ul>
