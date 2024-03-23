@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FC } from 'react';
+import { useState, useEffect, FC, useRef } from 'react';
 import clsx from 'clsx';
 
 import { ReactCalendar } from '@/libs';
@@ -38,6 +38,7 @@ const Calendar: FC<Props> = ({ isSingle }) => {
   const [isOpened, setIsOpened] = useState(false);
   const [firstInputValue, setFirstInputValue] = useState('');
   const [secondInputValue, setSecondInputValue] = useState('');
+  const calendarRef = useRef(null);
 
   const handleInputButtonClick = () => {
     setIsOpened(!isOpened);
@@ -72,13 +73,33 @@ const Calendar: FC<Props> = ({ isSingle }) => {
     setIsOpened(!isOpened);
   };
 
+  const handleClickOutsideCalendar = ({ target }: Event) => {
+    if (!(target instanceof HTMLElement)) {
+      return;
+    }
+
+    if (target.contains(calendarRef.current)) {
+      setIsOpened(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutsideCalendar);
+    return () => {
+      document.removeEventListener('click', handleClickOutsideCalendar);
+    };
+  }, []);
+
   return (
-    <div>
+    <div className="calendar">
       <input type="text" defaultValue={firstInputValue} />
       {isSingle || <input defaultValue={secondInputValue} type="text" />}
       <button onClick={handleInputButtonClick}>open</button>
       <div
-        className={clsx(style.calendar, { [style.calendar_opened]: isOpened })}
+        ref={calendarRef}
+        className={clsx(style['calendar-menu'], {
+          [style['calendar-menu_opened']]: isOpened,
+        })}
       >
         <ReactCalendar value={calendarValue} onChange={setCalendarValue} />
         <div className={style['buttons-wrapper']}>
