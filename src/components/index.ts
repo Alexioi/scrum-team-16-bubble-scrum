@@ -1,4 +1,4 @@
-import { StoreProvider } from './atoms';
-import { HelloToxin, Footer } from './molecules';
+import { StoreProvider, Input } from './atoms';
+import { HelloToxin, Footer, ButtonInput } from './molecules';
 
-export { StoreProvider, HelloToxin, Footer };
+export { StoreProvider, HelloToxin, Input, ButtonInput, Footer };

@@ -6,7 +6,9 @@ import {
   FacebookIcon,
   InstagramIcon,
   TwitterIcon,
-} from '@/components/atoms/icons';
+  Input,
+} from '@/components/atoms';
+
 import Logo from '@/images/decorative/logo.svg';
 
 import style from './style.module.scss';
@@ -44,6 +46,9 @@ const Footer = () => {
             <div className={style.up__title}>Подписка</div>
             <div className={style.up__desc}>
               Получайте специальные предложения и новости сервиса
+            </div>
+            <div className={style.up__input}>
+              <Input placeholder="Email" type="email" readOnly={false} />
             </div>
           </div>
         </div>
