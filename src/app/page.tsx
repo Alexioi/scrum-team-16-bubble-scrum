@@ -1,14 +1,9 @@
 'use client';
 
-import { Calendar, Button } from '@/components';
+import { Calendar } from '@/components';
 
 const Home = () => {
-  return (
-    <>
-      <Calendar />
-      <Button text="test" theme="link" link="/change-me" />
-    </>
-  );
+  return <Calendar isSingle={false} />;
 };
 
 export default Home;

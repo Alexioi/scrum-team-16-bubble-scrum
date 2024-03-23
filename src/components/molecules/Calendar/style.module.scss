@@ -1,0 +1,21 @@
+.calendar {
+  display: none;
+  max-width: 320px;
+  position: absolute;
+  z-index: 100;
+  padding: 20px 20px 19px;
+  background: white;
+  border: 1px solid rgb(31, 32, 65, 0.25);
+  box-shadow: 0 10px 20px rgb(rgb(31, 32, 65), 5%);
+  border-radius: 4px;
+  margin-top: 5px;
+
+  &_opened {
+    display: block;
+  }
+}
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
