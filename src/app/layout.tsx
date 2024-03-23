@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 
-import { StoreProvider } from '../components';
+import { Footer, StoreProvider } from '../components';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -15,7 +15,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="ru">
       <body className={inter.className}>
-        <StoreProvider>{children}</StoreProvider>
+        <StoreProvider>
+          {children}
+          <Footer />
+        </StoreProvider>
       </body>
     </html>
   );

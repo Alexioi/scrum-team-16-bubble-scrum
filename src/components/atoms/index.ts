@@ -1,3 +1,4 @@
 import { StoreProvider } from './StoreProvider';
+import { FacebookIcon, InstagramIcon, TwitterIcon } from './icons';
 
-export { StoreProvider };
+export { StoreProvider, FacebookIcon, InstagramIcon, TwitterIcon };
