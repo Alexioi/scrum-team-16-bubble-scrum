@@ -1,3 +1,5 @@
+import { FC } from 'react';
+
 import { Rating, Swiper } from '@/components/atoms';
 
 import { Hotel } from '../type';
@@ -9,7 +11,7 @@ type Props = {
   hotel: Hotel;
 };
 
-const HotelCard = ({ hotel }: Props) => {
+const HotelCard: FC<Props> = ({ hotel }) => {
   return (
     <div className={style.card}>
       <Swiper imageURLs={hotel.images} />
@@ -22,7 +24,7 @@ const HotelCard = ({ hotel }: Props) => {
           </div>
 
           <div className={style.price}>
-            {hotel.price.toLocaleString('ru')}₽
+            {hotel.price.toLocaleString('ru')}₽{' '}
             <span className={style.price__prefix}>в сутки</span>
           </div>
         </div>
@@ -30,7 +32,7 @@ const HotelCard = ({ hotel }: Props) => {
         <div className={style.footer}>
           <Rating rating={hotel.rating} />
           <div className={style.reviews}>
-            145
+            145{' '}
             <span className={style.reviews__prefix}>
               {declensionReview(145)}
             </span>
