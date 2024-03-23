@@ -10,6 +10,7 @@
     "arrow-body-style": "off",
     "react/require-default-props": "off",
     "import/no-extraneous-dependencies": "off",
-    "react/button-has-type": "off"
+    "react/button-has-type": "off",
+    "object-curly-newline": "off"
   }
 }
