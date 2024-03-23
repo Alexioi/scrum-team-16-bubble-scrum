@@ -44,6 +44,8 @@ const Calendar: FC<Props> = ({ isSingle }) => {
   };
 
   const handleClearButtonClick = () => {
+    setFirstInputValue('');
+    setSecondInputValue('');
     setCalendarValue(null);
   };
 
