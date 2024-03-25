@@ -21,7 +21,7 @@ const Home = () => {
           readOnly
         />
         <SubscriptionInput />
-        <DropdownInput />
+        <DropdownInput type="date" />
       </div>
     </>
   );

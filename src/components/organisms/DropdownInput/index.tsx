@@ -8,7 +8,7 @@ import style from './style.module.scss';
 
 type Props = {
   type: 'text' | 'date';
-  placeholder: string;
+  placeholder?: string;
   onClick?(): void;
   expanded?: boolean;
   readOnly?: boolean;
