@@ -26,10 +26,10 @@ const Button: FC<Props> = ({ theme, text, size, type, onClick }) => {
 
   return (
     <button onClick={onClick} className={buttonClasses} type={type}>
-      <span className={style.button__text}>{text}</span>
+      <span className={style.text}>{text}</span>
       {theme === 'long' && (
-        <span className={style.button__arrow}>
-          <svg className={style.button__icon}>
+        <span className={style.arrow}>
+          <svg className={style.icon}>
             <ArrowSVG />
           </svg>
         </span>
