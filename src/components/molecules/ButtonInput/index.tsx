@@ -1,3 +1,5 @@
+'use client';
+
 import { Input } from '@/components/atoms';
 import React, { FC, ReactNode } from 'react';
 import style from './style.module.scss';

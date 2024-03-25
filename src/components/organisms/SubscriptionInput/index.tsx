@@ -1,3 +1,5 @@
+'use client';
+
 import { ButtonInput } from '@/components/molecules';
 import React, { FC } from 'react';
 import ArrowForward from '@/images/decorative/arrow.svg';
