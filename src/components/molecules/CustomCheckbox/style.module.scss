@@ -1,0 +1,119 @@
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.custom-checkbox * {
+  cursor: pointer;
+}
+
+.custom-checkbox__label {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.custom-checkbox__input {
+  @extend .visually-hidden;
+}
+
+.custom-checkbox__input {
+  &:focus {
+    + .custom-checkbox__checkmark-square-border {
+      outline: none;
+    }
+  }
+
+  &:focus-visible {
+    + .custom-checkbox__checkmark-square-border {
+      outline: 3px solid #6bd0bf;
+    }
+  }
+
+  &:not(:checked) {
+    + .custom-checkbox__checkmark-square-border {
+      flex-shrink: 0;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      border: 1px solid rgba(31, 32, 65, 0.25);
+    
+      .custom-checkbox__checkmark-inner-item {
+        @extend .visually-hidden;
+      }
+    }
+  }
+
+  &:checked {
+    + .custom-checkbox__checkmark-square-border {
+      flex-shrink: 0;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      border: 1px solid #BC9CFF;
+      position: relative;
+
+      .custom-checkbox__checkmark-outer-item {
+        display: inline-block;
+        width: 6px;
+        height: 8px;
+        position: absolute;
+        left: 6px;
+        top: 4px;
+        transform: rotate(45deg);
+        background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+      }
+
+      .custom-checkbox__checkmark-inner-item {
+        display: inline-block;
+        width: 6px;
+        height: 8px;
+        position: absolute;
+        left: 6px;
+        top: 1px;
+        transform: rotate(45deg);
+        background-color: #FFFFFF;
+      }
+    }
+  }
+}
+
+.custom-checkbox__input--disabled {
+  cursor: not-allowed;
+
+  + .custom-checkbox__checkmark-square-border {
+    border: 1px solid rgba(31, 32, 65, 0.25);
+
+    .custom-checkbox__checkmark-outer-item {
+      background: rgba(31, 32, 65, 0.25);
+    }
+  }
+
+  &:checked {
+    + .custom-checkbox__checkmark-square-border {
+      border: 1px solid rgba(31, 32, 65, 0.25);
+
+      .custom-checkbox__checkmark-outer-item {
+        background: rgba(31, 32, 65, 0.25);
+      }
+    }
+  }
+}
+
+.custom-checkbox__text {
+  color: rgba(31, 32, 65, 0.50);
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.4;
+  vertical-align: bottom;
+}

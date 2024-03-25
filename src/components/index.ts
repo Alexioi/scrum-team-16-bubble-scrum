@@ -1,4 +1,4 @@
 import { StoreProvider } from './atoms';
-import { HelloToxin } from './molecules';
+import { HelloToxin, CustomCheckbox } from './molecules';
 
-export { StoreProvider, HelloToxin };
+export { StoreProvider, HelloToxin, CustomCheckbox };
