@@ -63,7 +63,7 @@
   bottom: 15px;
 }
 
-.pagination__item {
+.item {
   @extend %button;
   height: 8px;
   width: 8px;
@@ -73,6 +73,6 @@
   padding: 0;
 }
 
-.pagination__item_active {
+.item_active {
   background-color: white;
 }

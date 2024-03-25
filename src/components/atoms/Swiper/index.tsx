@@ -51,8 +51,8 @@ const Swiper: FC<Props> = ({ imageURLs }) => {
           <button
             key={idx}
             onClick={onPaginationClick(idx)}
-            className={`${style.pagination__item} ${
-              idx === currentImage ? style.pagination__item_active : ''
+            className={`${style.item} ${
+              idx === currentImage ? style.item_active : ''
             }`}
           ></button>
         ))}

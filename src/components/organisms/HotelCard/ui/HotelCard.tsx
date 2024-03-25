@@ -29,6 +29,8 @@ const HotelCard: FC<Props> = ({ hotel }) => {
           </div>
         </div>
 
+        <div className={style.line}></div>
+
         <div className={style.footer}>
           <Rating rating={hotel.rating} />
           <div className={style.reviews}>
