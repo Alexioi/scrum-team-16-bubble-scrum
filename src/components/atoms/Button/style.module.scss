@@ -9,7 +9,6 @@
   position: relative;
   text-decoration: none;
   padding: 0;
-  width: 100%;
 
   &:hover,
   &#{$root}_hovered {
@@ -52,7 +51,6 @@
 
     &_link {
       background: none;
-      display: inline;
 
       #{$root}__text {
         color: #bc9cff;

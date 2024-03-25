@@ -6,10 +6,34 @@ const Home = () => {
   return (
     <>
       <HelloToxin />
-      <Button text="test" theme="outlined" type="button" />
-      <Button text="test" theme="default" link="/change-me" />
-      <Button text="test" theme="link" link="/change-me" />
-      <Button text="test" theme="long" type="button" />
+      <Button
+        text="test"
+        theme="outlined"
+        type="button"
+        size="default"
+        onClick={() => {}}
+      />
+      <Button
+        text="test"
+        theme="default"
+        type="button"
+        size="default"
+        onClick={() => {}}
+      />
+      <Button
+        text="test"
+        theme="link"
+        type="button"
+        size="default"
+        onClick={() => {}}
+      />
+      <Button
+        text="test"
+        theme="long"
+        type="button"
+        size="default"
+        onClick={() => {}}
+      />
     </>
   );
 };
