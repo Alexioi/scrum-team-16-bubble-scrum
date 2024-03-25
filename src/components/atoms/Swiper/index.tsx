@@ -1,9 +1,11 @@
 'use client';
 
+import clsx from 'clsx';
 import { FC, useState } from 'react';
 import Image from 'next/image';
 
 import LeftArrow from '@/images/decorative/expand-more.svg';
+
 import style from './style.module.scss';
 
 type Props = {
@@ -13,17 +15,17 @@ type Props = {
 const Swiper: FC<Props> = ({ imageURLs }) => {
   const [currentImage, setCurrentImage] = useState(0);
 
-  const onNextImage = () =>
+  const handleNextButtonClick = () =>
     setCurrentImage(
       currentImage + 1 >= imageURLs.length ? 0 : currentImage + 1,
     );
 
-  const onPrevImage = () =>
+  const handlePrevButtonClick = () =>
     setCurrentImage(
       currentImage - 1 < 0 ? imageURLs.length - 1 : currentImage - 1,
     );
 
-  const onPaginationClick =
+  const handlePaginationClick =
     (idx: number) => (e: React.MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();
       setCurrentImage(idx);
@@ -38,11 +40,11 @@ const Swiper: FC<Props> = ({ imageURLs }) => {
         alt="Фотография номера"
       />
 
-      <button className={style.prev} onClick={onPrevImage}>
+      <button className={style.prev} onClick={handlePrevButtonClick}>
         <LeftArrow />
       </button>
 
-      <button className={style.next} onClick={onNextImage}>
+      <button className={style.next} onClick={handleNextButtonClick}>
         <LeftArrow />
       </button>
 
@@ -50,10 +52,10 @@ const Swiper: FC<Props> = ({ imageURLs }) => {
         {imageURLs.map((_, idx) => (
           <button
             key={idx}
-            onClick={onPaginationClick(idx)}
-            className={`${style.item} ${
-              idx === currentImage ? style.item_active : ''
-            }`}
+            onClick={handlePaginationClick(idx)}
+            className={clsx(style.item, {
+              [style.item_active]: idx === currentImage,
+            })}
           ></button>
         ))}
       </div>
