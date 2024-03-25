@@ -24,6 +24,7 @@
   margin-right: 7px;
 
   &:hover {
+    transition: all 0.3s ease-in;
     color: rgb(rgb(31, 32, 65), 0.75);
   }
 }
@@ -58,6 +59,7 @@
   }
 
   &:hover {
+    transition: all 0.3s ease-in;
     color: rgb(rgb(31, 32, 65), 0.75);
   }
 }
