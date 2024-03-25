@@ -1,21 +1,19 @@
 'use client';
 
+import { FC } from 'react';
 import Link from 'next/link';
 import { clsx } from 'clsx';
 
 import style from './style.module.scss';
 
-const ButtonLink = ({
-  theme,
-  text,
-  size,
-  link,
-}: {
+type Props = {
   text: string;
   theme: 'outlined' | 'default' | 'link';
   link: string;
-  size: 'low';
-}) => {
+  size: 'low' | 'default';
+};
+
+const ButtonLink: FC<Props> = ({ theme, text, size, link }) => {
   const buttonClasses = clsx(style.button, {
     [style.button_theme_default]: theme === 'default',
     [style.button_theme_outlined]: theme === 'outlined',
@@ -25,7 +23,7 @@ const ButtonLink = ({
 
   return (
     <Link href={link} className={buttonClasses}>
-      <span className={style.button__text}>{text}</span>
+      <span className={style.text}>{text}</span>
     </Link>
   );
 };
