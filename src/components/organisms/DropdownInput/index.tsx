@@ -7,11 +7,20 @@ import { clsx } from 'clsx';
 import style from './style.module.scss';
 
 type Props = {
-  expanded?: boolean;
+  type: 'text' | 'date';
+  placeholder: string;
   onClick?(): void;
+  expanded?: boolean;
+  readOnly?: boolean;
 };
 
-const DropdownInput: FC<Props> = ({ onClick, expanded }) => {
+const DropdownInput: FC<Props> = ({
+  type,
+  placeholder,
+  onClick,
+  expanded,
+  readOnly,
+}) => {
   const [isExpanded, setIsExpanded] = useState(expanded);
 
   const handleClick = () => {
@@ -33,9 +42,10 @@ const DropdownInput: FC<Props> = ({ onClick, expanded }) => {
         </svg>
       }
       onClick={handleClick}
-      type="email"
-      placeholder="Email"
+      type={type}
+      placeholder={placeholder}
       submit
+      readOnly={readOnly}
     />
   );
 };
