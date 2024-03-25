@@ -28,6 +28,13 @@
     rgba(0, 0, 0, 0) 99.99%,
     rgba(255, 255, 255, 0) 100%
   );
+
+  svg {
+    path {
+      fill: white;
+    }
+    rotate: 90deg;
+  }
 }
 
 .prev {

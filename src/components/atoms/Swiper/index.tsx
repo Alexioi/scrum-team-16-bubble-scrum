@@ -3,7 +3,7 @@
 import { FC, useState } from 'react';
 import Image from 'next/image';
 
-import { LeftArrow } from '../icons';
+import LeftArrow from '@/images/decorative/expand-more.svg';
 import style from './style.module.scss';
 
 type Props = {

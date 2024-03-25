@@ -1,37 +1,47 @@
-import { FC } from 'react';
+import { FC, useId } from 'react';
 
 import FillStar from '@/images/decorative/star.svg';
 import OutlineStar from '@/images/decorative/outline-star.svg';
 
 import style from './style.module.scss';
+import { Gradient } from '../Gradient';
 
 type Props = {
   rating: number;
 };
 
 const Rating: FC<Props> = ({ rating }) => {
+  const id = useId();
   return (
     <div className={style.rating}>
       {[1, 2, 3, 4, 5].map((number) => {
         return number <= rating ? (
-          <svg width="21" height="19" key={number} fill={`url('#gradient')`}>
+          <svg
+            width="21"
+            height="19"
+            key={number}
+            fill={`url('#${id}${number}')`}
+          >
             <FillStar />
-            <defs>
-              <linearGradient id="gradient">
-                <stop stopColor="#BC9CFF" />
-                <stop offset="1" stopColor="#8BA4F9" />
-              </linearGradient>
-            </defs>
+            <Gradient
+              id={`${id}${number}`}
+              startColor="#BC9CFF"
+              endColor="#8BA4F9"
+            />
           </svg>
         ) : (
-          <svg width="21" height="19" key={number} fill="url('#gradient')">
+          <svg
+            width="21"
+            height="19"
+            key={number}
+            fill={`url('#${id}${number}')`}
+          >
             <OutlineStar />
-            <defs>
-              <linearGradient id="gradient">
-                <stop stopColor="#BC9CFF" />
-                <stop offset="1" stopColor="#8BA4F9" />
-              </linearGradient>
-            </defs>
+            <Gradient
+              id={`${id}${number}`}
+              startColor="#BC9CFF"
+              endColor="#8BA4F9"
+            />
           </svg>
         );
       })}
