@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, FC } from 'react';
 import styles from './style.module.scss';
 
 type TagVariants = 'h1' | 'h2' | 'h3' | 'p' | 'span';
@@ -10,7 +10,7 @@ type Props = {
   tag: TagVariants;
 };
 
-const Typography: React.FC<Props> = ({ children, tag }) => {
+const Typography: FC<Props> = ({ children, tag }) => {
   return {
     p: <p className={styles.p}>{children}</p>,
     h1: <h1 className={styles.h1}>{children}</h1>,
