@@ -1,5 +1,4 @@
-import { HelloToxin } from '@/components';
-import { Typography } from '@/components/atoms/Typography';
+import { HelloToxin, Typography } from '@/components';
 
 const Home = () => {
   return (
