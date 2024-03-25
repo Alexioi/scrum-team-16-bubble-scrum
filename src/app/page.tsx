@@ -1,6 +1,6 @@
 'use client';
 
-import { HelloToxin, Button } from '@/components';
+import { HelloToxin, Button, ButtonLink } from '@/components';
 
 const Home = () => {
   return (
@@ -33,6 +33,13 @@ const Home = () => {
         type="button"
         size="default"
         onClick={() => {}}
+      />
+      <ButtonLink text="test" theme="default" size="default" link="change-me" />
+      <ButtonLink
+        text="test"
+        theme="outlined"
+        size="default"
+        link="/change-me"
       />
     </>
   );

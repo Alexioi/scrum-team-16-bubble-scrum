@@ -1,4 +1,4 @@
 import { StoreProvider } from './StoreProvider';
-import { Button } from './Button';
+import { Button, ButtonLink } from './Button';
 
-export { StoreProvider, Button };
+export { StoreProvider, Button, ButtonLink };
