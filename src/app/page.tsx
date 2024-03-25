@@ -1,4 +1,9 @@
-import { HelloToxin, Input, SubscriptionInput } from '@/components';
+import {
+  DropdownInput,
+  HelloToxin,
+  Input,
+  SubscriptionInput,
+} from '@/components';
 
 const Home = () => {
   return (
@@ -16,6 +21,7 @@ const Home = () => {
           readOnly
         />
         <SubscriptionInput />
+        <DropdownInput />
       </div>
     </>
   );

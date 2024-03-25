@@ -1,5 +1,12 @@
 import { StoreProvider, Input } from './atoms';
 import { HelloToxin, ButtonInput } from './molecules';
-import { SubscriptionInput } from './organisms';
+import { SubscriptionInput, DropdownInput } from './organisms';
 
-export { StoreProvider, HelloToxin, Input, ButtonInput, SubscriptionInput };
+export {
+  StoreProvider,
+  HelloToxin,
+  Input,
+  ButtonInput,
+  SubscriptionInput,
+  DropdownInput,
+};

@@ -1,0 +1,7 @@
+.dropdownInputIcon {
+  transition: all 0.3s ease-in;
+  
+  &__flipped {
+    transform: scaleY(-1);
+  }
+}
