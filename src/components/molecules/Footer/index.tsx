@@ -19,7 +19,7 @@ const Footer = () => {
   };
 
   return (
-    <footer>
+    <footer className={style.footer}>
       <div className={style.up}>
         <div className={clsx(style.container, style.up__body)}>
           <div>
@@ -30,7 +30,7 @@ const Footer = () => {
             </div>
           </div>
           {footerLinks.map((column) => (
-            <div key={column.name}>
+            <div key={column.name} className={style.up__column}>
               <div className={style.up__title}>{column.name}</div>
               <ul className={style.up__list}>
                 {column.links.map((link) => (
@@ -43,7 +43,7 @@ const Footer = () => {
               </ul>
             </div>
           ))}
-          <div>
+          <div className={style.up__subscribe}>
             <div className={style.up__title}>Подписка</div>
             <div className={style.up__desc}>
               Получайте специальные предложения и новости сервиса
