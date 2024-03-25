@@ -1,4 +1,4 @@
-import { HelloToxin, Input } from '@/components';
+import { HelloToxin, Input, SubscriptionInput } from '@/components';
 
 const Home = () => {
   return (
@@ -15,6 +15,7 @@ const Home = () => {
           value="This is pretty readonly"
           readOnly
         />
+        <SubscriptionInput />
       </div>
     </>
   );

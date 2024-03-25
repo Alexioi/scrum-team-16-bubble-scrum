@@ -1,37 +1,55 @@
 import { Input } from '@/components/atoms';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import style from './style.module.scss';
 
-interface Props extends React.ComponentProps<typeof Input> {
-  iconUrl: string;
+interface Props {
+  icon: ReactNode;
   submit?: boolean;
   onClick?(): void;
+
+  type?: 'text' | 'email' | 'password' | 'date';
+  name?: string;
+  id?: string;
+  value?: string;
+  min?: number;
+  max?: number;
+  placeholder?: string;
+  readOnly?: boolean;
 }
 
 const ButtonInput: React.FC<Props> = ({
-  iconUrl,
+  icon,
   submit,
   onClick,
-  ...inputProps
+  type,
+  name,
+  id,
+  value,
+  min,
+  max,
+  placeholder,
+  readOnly,
 }) => {
+  const inputOnClick = readOnly ? onClick : undefined;
   return (
     <div className={style.buttonInput}>
       <Input
         type={type}
-        name={inputProps.name}
-        id={inputProps.id}
-        value={inputProps.value}
-        min={inputProps.min}
-        max={inputProps.max}
-        placeholder={inputProps.placeholder}
-        readOnly={inputProps.readOnly}
+        name={name}
+        id={id}
+        value={value}
+        min={min}
+        max={max}
+        placeholder={placeholder}
+        readOnly={readOnly}
+        onClick={inputOnClick}
       />
       <button
-        className="button-input__button"
+        className={style.buttonInput__button}
         type={submit ? 'submit' : 'button'}
         onClick={onClick}
       >
-        M
+        {icon}
       </button>
     </div>
   );
