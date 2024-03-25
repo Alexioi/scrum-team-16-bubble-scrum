@@ -20,6 +20,7 @@ const Input: React.FC<Props> = ({ type, ...standardProps }) => {
       placeholder={standardProps.placeholder}
       readOnly={standardProps.readOnly}
       onClick={standardProps.onClick}
+      inputMode={standardProps.inputMode}
     />
   );
 };
