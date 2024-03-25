@@ -22,6 +22,12 @@ const Home = () => {
         />
         <SubscriptionInput />
         <DropdownInput type="date" />
+        <Input
+          type="text"
+          placeholder="ДД.ММ.ГГ"
+          inputMode="numeric"
+          pattern="(0\d|1\d|2\d|30|31)\.(1[0-2]|0[1-9])\.(\d{2})"
+        />
       </div>
     </>
   );

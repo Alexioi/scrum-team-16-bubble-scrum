@@ -16,6 +16,16 @@ interface Props {
   min?: number;
   max?: number;
   placeholder?: string;
+  inputMode?:
+    | 'text'
+    | 'email'
+    | 'search'
+    | 'none'
+    | 'tel'
+    | 'url'
+    | 'numeric'
+    | 'decimal'
+    | undefined;
   readOnly?: boolean;
 }
 
@@ -30,6 +40,7 @@ const ButtonInput: FC<Props> = ({
   min,
   max,
   placeholder,
+  inputMode,
   readOnly,
 }) => {
   const inputOnClick = readOnly ? onClick : undefined;
@@ -45,6 +56,7 @@ const ButtonInput: FC<Props> = ({
         placeholder={placeholder}
         readOnly={readOnly}
         onClick={inputOnClick}
+        inputMode={inputMode}
       />
       <button
         className={style.buttonInput__button}

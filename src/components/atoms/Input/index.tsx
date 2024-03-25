@@ -21,6 +21,7 @@ const Input: React.FC<Props> = ({ type, ...standardProps }) => {
       readOnly={standardProps.readOnly}
       onClick={standardProps.onClick}
       inputMode={standardProps.inputMode}
+      pattern={standardProps.pattern}
     />
   );
 };
