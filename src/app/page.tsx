@@ -10,10 +10,6 @@ const Home = () => {
       <Typography tag="h3">Text</Typography>
       <Typography tag="p">Text</Typography>
       <Typography tag="span">Text</Typography>
-      <Typography>Text</Typography>
-      <Typography tag="h3" style={{ fontSize: '100px' }}>
-        Text
-      </Typography>
     </>
   );
 };
