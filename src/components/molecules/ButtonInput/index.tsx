@@ -1,5 +1,5 @@
 import { Input } from '@/components/atoms';
-import React, { ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react';
 import style from './style.module.scss';
 
 interface Props {
@@ -17,7 +17,7 @@ interface Props {
   readOnly?: boolean;
 }
 
-const ButtonInput: React.FC<Props> = ({
+const ButtonInput: FC<Props> = ({
   icon,
   submit,
   onClick,
