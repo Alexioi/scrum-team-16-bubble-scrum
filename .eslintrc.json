@@ -8,6 +8,10 @@
     "no-param-reassign": "off",
     "no-undef": "off",
     "arrow-body-style": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/button-has-type": "off",
+    "object-curly-newline": "off",
+    "linebreak-style": "off"
   }
 }

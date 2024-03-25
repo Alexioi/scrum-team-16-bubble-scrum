@@ -1,28 +1,29 @@
+'use client';
+
+import { FormEvent } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import clsx from 'clsx';
 
-import {
-  FacebookIcon,
-  InstagramIcon,
-  TwitterIcon,
-  Input,
-} from '@/components/atoms';
+import FacebookIcon from '@/images/decorative/facebook.svg';
+import TwitterIcon from '@/images/decorative/twitter.svg';
+import InstagramIcon from '@/images/decorative/instagram.svg';
 
-import Logo from '@/images/decorative/logo.svg';
+import { Input, Logo, Gradient } from '@/components/atoms';
 
 import style from './style.module.scss';
 import { footerLinks } from './footerLinks';
 
 const Footer = () => {
+  const onEmailSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.stopPropagation();
+  };
+
   return (
     <footer>
       <div className={style.up}>
         <div className={clsx(style.container, style.up__body)}>
           <div>
-            <Link href="/#">
-              <Image src={Logo} alt="Лого" />
-            </Link>
+            <Logo />
             <div className={style.up__desc}>
               Бронирование номеров в лучшем отеле 2019 года по версии ассоциации
               «Отельные взгляды»
@@ -47,9 +48,9 @@ const Footer = () => {
             <div className={style.up__desc}>
               Получайте специальные предложения и новости сервиса
             </div>
-            <div className={style.up__input}>
-              <Input placeholder="Email" type="email" readOnly={false} />
-            </div>
+            <form className={style.up__form} onSubmit={onEmailSubmit}>
+              <Input placeholder="Email" type="email" />
+            </form>
           </div>
         </div>
       </div>
@@ -61,17 +62,38 @@ const Footer = () => {
           <ul className={style.down__links}>
             <li>
               <Link href="/#" className={style.down__link}>
-                <TwitterIcon />
+                <svg className={style.down__icon} fill="url(#twitter)">
+                  <Gradient
+                    startColor="#BC9CFF"
+                    endColor="#8BA4F9"
+                    id="twitter"
+                  />
+                  <TwitterIcon />
+                </svg>
               </Link>
             </li>
             <li>
               <Link href="/#" className={style.down__link}>
-                <FacebookIcon />
+                <svg className={style.down__icon} fill="url(#facebook)">
+                  <Gradient
+                    startColor="#BC9CFF"
+                    endColor="#8BA4F9"
+                    id="facebook"
+                  />
+                  <FacebookIcon />
+                </svg>
               </Link>
             </li>
             <li>
               <Link href="/#" className={style.down__link}>
-                <InstagramIcon />
+                <svg className={style.down__icon} fill="url(#instagram)">
+                  <Gradient
+                    startColor="#BC9CFF"
+                    endColor="#8BA4F9"
+                    id="instagram"
+                  />
+                  <InstagramIcon />
+                </svg>
               </Link>
             </li>
           </ul>

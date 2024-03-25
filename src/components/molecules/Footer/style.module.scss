@@ -43,7 +43,7 @@
     margin-top: 20px;
   }
 
-  &__input {
+  &__form {
     margin-top: 20px;
   }
 
@@ -88,5 +88,10 @@
     &:hover {
       opacity: 0.5;
     }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
   }
 }

@@ -1,6 +1,6 @@
 import { StoreProvider } from './StoreProvider';
-import { FacebookIcon, InstagramIcon, TwitterIcon } from './icons';
-
+import { Gradient } from './Gradient';
 import { Input } from './Input';
+import { Logo } from './Logo';
 
-export { StoreProvider, FacebookIcon, InstagramIcon, TwitterIcon, Input };
+export { StoreProvider, Input, Logo, Gradient };

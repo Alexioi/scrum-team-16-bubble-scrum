@@ -1,7 +1,7 @@
-import { HelloToxin } from '@/components';
+'use client';
 
 const Home = () => {
-  return <HelloToxin />;
+  return <div />;
 };
 
 export default Home;
