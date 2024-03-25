@@ -67,7 +67,7 @@ const NavigationLink = ({
     );
   }
 
-  return 'Не указана ссылка';
+  return null;
 };
 
 export { NavigationLink };

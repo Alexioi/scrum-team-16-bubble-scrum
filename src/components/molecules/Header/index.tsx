@@ -32,7 +32,9 @@ const Header = () => {
             className={style['burger-button']}
             onClick={handleBurgerButtonClick}
           >
-            <MenuSVG />
+            <svg>
+              <MenuSVG />
+            </svg>
           </button>
           <nav className={style.navigation}>
             <ul className={style.list}>
@@ -58,7 +60,7 @@ const Header = () => {
                   size="low"
                 />
                 <ButtonLink
-                  text="Зарегистрировать"
+                  text="Зарегистрироваться"
                   theme="default"
                   link="/change-me"
                   size="low"
