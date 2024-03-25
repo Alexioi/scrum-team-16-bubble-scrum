@@ -5,7 +5,7 @@ import clsx from 'clsx';
 
 import MenuSVG from '@/images/decorative/menu.svg';
 
-import { Button, NavigationLink } from '../../atoms';
+import { ButtonLink, NavigationLink, Logo } from '../../atoms';
 import style from './style.module.scss';
 
 type NavItem = {
@@ -34,7 +34,9 @@ const Header = ({ navItems, username }: Props) => {
     >
       <div className={style.container}>
         <div className={style.wrapper}>
-          <div className={style.logo}>Toxin</div>
+          <div className={style.logo}>
+            <Logo />
+          </div>
           <button
             type="button"
             className={style['burger-button']}
@@ -59,13 +61,13 @@ const Header = ({ navItems, username }: Props) => {
           <div className={style.login}>
             {username === undefined ? (
               <>
-                <Button
+                <ButtonLink
                   text="Войти"
                   theme="outlined"
                   link="/change-me"
                   size="low"
                 />
-                <Button
+                <ButtonLink
                   text="Зарегистрировать"
                   theme="default"
                   link="/change-me"
