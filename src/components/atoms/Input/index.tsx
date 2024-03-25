@@ -4,10 +4,10 @@ import React, { InputHTMLAttributes } from 'react';
 import style from './style.module.scss';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
-  type?: 'text' | 'email' | 'password' | 'date';
+  type: 'text' | 'email' | 'password' | 'date';
 }
 
-const Input: React.FC<Props> = ({ type = 'text', ...standardProps }) => {
+const Input: React.FC<Props> = ({ type, ...standardProps }) => {
   return (
     <input
       className={style.input}

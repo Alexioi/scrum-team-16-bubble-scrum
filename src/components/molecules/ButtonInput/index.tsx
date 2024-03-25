@@ -9,7 +9,7 @@ interface Props {
   submit?: boolean;
   onClick?(): void;
 
-  type?: 'text' | 'email' | 'password' | 'date';
+  type: 'text' | 'email' | 'password' | 'date';
   name?: string;
   id?: string;
   value?: string;
