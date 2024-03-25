@@ -1,23 +1,23 @@
 import { ButtonInput } from '@/components/molecules';
-import React from 'react';
+import React, { FC } from 'react';
 import ArrowForward from '@/images/decorative/arrow.svg';
-import style from './style.module.scss';
 
-const SubscriptionInput = () => {
+type Props = {
+  onClick?(): void;
+};
+
+const SubscriptionInput: FC<Props> = ({ onClick }) => {
   return (
     <ButtonInput
       icon={
-        <svg className={style.subscriptionInput_icon} width={18} height={18}>
+        <svg width={18} height={18}>
           <ArrowForward />
-          <linearGradient id="linear">
-            <stop offset="0%" stopColor="var(--color-stop-1)" />
-            <stop offset="100%" stopColor="var(--color-stop-2)" />
-          </linearGradient>
         </svg>
       }
+      onClick={onClick}
       type="email"
       placeholder="Email"
-      readOnly
+      submit
     />
   );
 };
