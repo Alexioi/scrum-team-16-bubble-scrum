@@ -2,6 +2,7 @@
 
 import { FC, Dispatch, SetStateAction } from 'react';
 import Calendar from 'react-calendar';
+import ArrowSVG from '@/images/decorative/arrow.svg';
 
 import './style.scss';
 
@@ -28,6 +29,16 @@ const ReactCalendar: FC<Props> = ({ value, onChange }) => {
       selectRange
       minDate={new Date()}
       minDetail="month"
+      prevLabel={
+        <svg height={18}>
+          <ArrowSVG />
+        </svg>
+      }
+      nextLabel={
+        <svg height={18}>
+          <ArrowSVG />
+        </svg>
+      }
     />
   );
 };
