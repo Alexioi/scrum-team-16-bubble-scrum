@@ -4,20 +4,28 @@
   &__navigation {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 41px;
+    margin-bottom: 29px;
 
     &__prev2-button {
       display: none;
     }
 
     &__prev-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background: white;
       border: none;
       height: 24px;
-      width: 18px;
+      width: 24x;
       cursor: pointer;
       color: #bc9cff;
       transform: rotate(180deg);
+
+      & svg {
+        width: 17px;
+        height: 18px;
+      }
 
       &:disabled {
         opacity: 0.5;
@@ -36,12 +44,23 @@
     }
 
     &__next-button {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background: white;
       border: none;
-      height: 18px;
+      height: 24px;
       width: 24px;
       cursor: pointer;
       color: #bc9cff;
+
+      & svg {
+        position: absolute;
+        // top: 0;
+        width: 17px;
+        height: 18px;
+      }
     }
 
     &__next2-button {
@@ -87,6 +106,7 @@
 
     overflow: visible !important;
     flex-basis: calc(100% / 7) !important;
+    height: 40px;
     position: relative;
 
     &--now {
