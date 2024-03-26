@@ -1,5 +1,6 @@
 .desc {
   color: #1f2041bf;
+  font-size: 14px;
 }
 
 .container {
@@ -19,10 +20,26 @@
   border-top: 1px solid #1f204140;
 
   &__body {
+    display: grid;
+    grid-template-columns: 260px 1fr 260px;
+    grid-template-areas: 'logo navigation subscribe';
+    gap: 20px;
+  }
+
+  &__logo {
+    grid-area: logo;
+  }
+
+  &__nav {
     display: flex;
-    justify-content: space-between;
-    gap: 40px;
-    flex-wrap: wrap;
+    margin-top: 4px;
+    grid-area: navigation;
+    margin-left: 20px;
+  }
+
+  &__subscribe {
+    margin-top: 4px;
+    grid-area: subscribe;
   }
 
   &__list {
@@ -39,8 +56,8 @@
 
   &__desc {
     @extend .desc;
-    max-width: 230px;
     margin-top: 20px;
+    line-height: 24px;
   }
 
   &__form {
@@ -52,6 +69,8 @@
     color: #1f2041;
     font-size: 12px;
     text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 14.63px;
   }
 
   &__link {
@@ -59,10 +78,20 @@
     text-decoration: none;
     transition: 0.3s;
     width: 100%;
+    font-size: 14px;
     display: block;
+    line-height: 17.07px;
     &:hover {
       color: rgba(31, 32, 65, 1);
     }
+  }
+
+  &__about {
+    margin-left: 57px;
+  }
+
+  &__support {
+    margin-left: 92px;
   }
 }
 
@@ -97,17 +126,35 @@
   }
 }
 
+@media (max-width: 1160px) {
+  .up {
+    &__body {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      grid-template-areas:
+        'logo subscribe '
+        'navigation navigation';
+    }
+
+    &__nav {
+      justify-content: space-between;
+    }
+  }
+}
+
 @media (max-width: 568px) {
   .up {
     border-top: none;
     padding: 0;
     &__body {
+      display: flex;
       justify-content: center;
     }
 
-    &__column {
+    &__nav {
       display: none;
     }
+
     &__subscribe {
       display: none;
     }
