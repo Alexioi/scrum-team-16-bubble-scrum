@@ -1,5 +1,13 @@
 {
-  "extends": ["airbnb", "airbnb/hooks", "next/core-web-vitals"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "next/core-web-vitals"
+  ],
   "rules": {
     "react/function-component-definition": "off",
     "react/jsx-filename-extension": "off",
@@ -11,6 +19,8 @@
     "react/require-default-props": "off",
     "import/no-extraneous-dependencies": "off",
     "react/button-has-type": "off",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "react/jsx-wrap-multilines": "off",
+    "@typescript-eslint/indent": "off"
   }
 }

@@ -18,10 +18,6 @@ const Input: React.FC<Props> = ({ type, ...standardProps }) => {
     if (isDate(e.target.value, { format: 'DD.MM.YYYY' })) {
       setValue(e.target.value);
     }
-
-    console.log(e.target.value);
-    console.log(isDate(e.target.value));
-    console.log(value);
   };
 
   return (

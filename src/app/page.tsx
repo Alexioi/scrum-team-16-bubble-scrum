@@ -1,35 +1,28 @@
-import {
-  DropdownInput,
-  HelloToxin,
-  Input,
-  SubscriptionInput,
-} from '@/components';
+import { Dropdown } from '@/components';
+
+const data = [
+  {
+    name: 'test',
+    counter: 0,
+    variants: ['1', '2', '3'],
+  },
+  {
+    name: 'test2',
+    counter: 0,
+    variants: ['1', '2', '3'],
+  },
+  {
+    name: 'test3',
+    counter: 1,
+    variants: ['1', '2', '3'],
+  },
+];
 
 const Home = () => {
   return (
-    <>
-      <HelloToxin />
-      <div>
-        <Input type="date" min="2024-03-20" />
-        <Input type="email" placeholder="Email" />
-        <Input type="text" placeholder="Текст" value="This is pretty awesome" />
-        <Input type="password" placeholder="Пароль" />
-        <Input
-          type="text"
-          placeholder="Текст"
-          value="This is pretty readonly"
-          readOnly
-        />
-        <SubscriptionInput />
-        <DropdownInput type="date" />
-        <Input
-          type="text"
-          placeholder="ДД.ММ.ГГГГ"
-          inputMode="numeric"
-          // pattern="(0\d|1\d|2\d|30|31)\.(1[0-2]|0[1-9])\.(\d{4})"
-        />
-      </div>
-    </>
+    <div style={{ width: '300px' }}>
+      <Dropdown hasButtons items={data} groups={[[0], [1, 2]]} />
+    </div>
   );
 };
 
