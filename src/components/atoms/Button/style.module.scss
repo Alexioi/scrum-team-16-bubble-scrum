@@ -1,7 +1,7 @@
 .button {
   $root: &;
 
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   border: none;
@@ -9,7 +9,6 @@
   position: relative;
   text-decoration: none;
   padding: 0;
-  width: 100%;
 
   &:hover,
   &#{$root}_hovered {
@@ -23,7 +22,7 @@
       background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
       border-radius: 22px;
 
-      #{$root}__text {
+      .text {
         color: white;
       }
     }
@@ -45,16 +44,15 @@
         border-radius: inherit;
       }
 
-      #{$root}__text {
+      .text {
         color: rgb(188, 156, 255);
       }
     }
 
     &_link {
       background: none;
-      display: inline;
 
-      #{$root}__text {
+      .text {
         color: #bc9cff;
       }
     }
@@ -65,7 +63,7 @@
       background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
       border-radius: 22px;
 
-      #{$root}__text {
+      .text {
         width: 100%;
         color: white;
       }
@@ -76,26 +74,26 @@
     padding-top: 9px;
     padding-bottom: 9px;
   }
+}
 
-  &__text {
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 18px;
-    text-transform: uppercase;
-    white-space: nowrap;
-    z-index: 2;
-    position: relative;
-  }
+.text {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 18px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  z-index: 2;
+  position: relative;
+}
 
-  &__arrow {
-    display: flex;
-    margin-left: auto;
-  }
+.arrow {
+  display: flex;
+  margin-left: auto;
+}
 
-  &__icon {
-    width: 18px;
-    height: 18px;
-    fill: white;
-  }
+.icon {
+  width: 18px;
+  height: 18px;
+  fill: white;
 }
