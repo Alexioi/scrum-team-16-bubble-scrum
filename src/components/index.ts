@@ -1,4 +1,4 @@
-import { StoreProvider, Input } from './atoms';
+import { StoreProvider, Input, Button, ButtonLink } from './atoms';
 import { HelloToxin, ButtonInput } from './molecules';
 import { SubscriptionInput, DropdownInput } from './organisms';
 
@@ -9,4 +9,6 @@ export {
   ButtonInput,
   SubscriptionInput,
   DropdownInput,
+  Button,
+  ButtonLink,
 };
