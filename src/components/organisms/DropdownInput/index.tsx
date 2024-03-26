@@ -34,8 +34,8 @@ const DropdownInput: FC<Props> = ({
         <svg
           width={12}
           height={8}
-          className={clsx(style.dropdownInputIcon, {
-            [style.dropdownInputIcon__flipped]: isExpanded,
+          className={clsx({
+            [style.flipped]: isExpanded,
           })}
         >
           <ExpandMore />

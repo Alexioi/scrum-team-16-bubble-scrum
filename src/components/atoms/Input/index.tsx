@@ -1,6 +1,7 @@
 'use client';
 
-import React, { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes, useState } from 'react';
+import { isDate } from 'validator';
 import style from './style.module.scss';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
@@ -8,13 +9,28 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input: React.FC<Props> = ({ type, ...standardProps }) => {
+  const [value, setValue] = useState(standardProps.value);
+  const typeValue = type === 'date' ? 'text' : type;
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    if (isDate(e.target.value, { format: 'DD.MM.YYYY' })) {
+      setValue(e.target.value);
+    }
+
+    console.log(e.target.value);
+    console.log(isDate(e.target.value));
+    console.log(value);
+  };
+
   return (
     <input
       className={style.input}
-      type={type}
+      type={typeValue}
       name={standardProps.name}
       id={standardProps.id}
-      value={standardProps.value}
+      value={value}
       min={standardProps.min}
       max={standardProps.max}
       placeholder={standardProps.placeholder}
@@ -22,6 +38,8 @@ const Input: React.FC<Props> = ({ type, ...standardProps }) => {
       onClick={standardProps.onClick}
       inputMode={standardProps.inputMode}
       pattern={standardProps.pattern}
+      onChange={handleChange}
+      defaultValue={standardProps.defaultValue}
     />
   );
 };
