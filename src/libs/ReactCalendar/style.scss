@@ -16,6 +16,10 @@
       height: 24px;
       width: 24px;
       cursor: pointer;
+
+      &:disabled {
+        cursor: auto;
+      }
     }
 
     &__label {
@@ -128,6 +132,7 @@
       border-radius: 50%;
       position: relative;
 
+      &#{$tile}--hover::before,
       &::before {
         display: block;
         content: '';
@@ -143,6 +148,25 @@
         );
         border-radius: 0 22px 22px 0;
       }
+
+      &#{$tile}--hoverEnd::before {
+        border-radius: 0 22px 22px 0;
+      }
+
+      &#{$tile}--hoverStart::before {
+        border-radius: 22px 0 0 22px;
+      }
+    }
+
+    &--hover::before {
+      display: block;
+      content: '';
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: rgb(188, 156, 255, 0.25);
     }
   }
 }

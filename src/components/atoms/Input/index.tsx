@@ -22,6 +22,7 @@ const Input: React.FC<Props> = ({ type, ...standardProps }) => {
       onClick={standardProps.onClick}
       inputMode={standardProps.inputMode}
       pattern={standardProps.pattern}
+      defaultValue={standardProps.defaultValue}
     />
   );
 };
