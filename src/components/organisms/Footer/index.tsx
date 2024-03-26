@@ -3,7 +3,8 @@
 import { FormEvent } from 'react';
 import clsx from 'clsx';
 
-import { Input, Logo } from '@/components/atoms';
+import { Logo } from '@/components/atoms';
+import { SubscriptionInput } from '../SubscriptionInput';
 
 import style from './style.module.scss';
 import { FooterSocial } from './FooterSocial';
@@ -11,7 +12,7 @@ import { FooterNavigation } from './FooterNavigation';
 
 const Footer = () => {
   const onEmailSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.stopPropagation();
+    e.preventDefault();
   };
 
   return (
@@ -34,7 +35,7 @@ const Footer = () => {
               Получайте специальные предложения и новости сервиса
             </div>
             <form className={style.up__form} onSubmit={onEmailSubmit}>
-              <Input placeholder="Email" type="email" />
+              <SubscriptionInput />
             </form>
           </div>
         </div>

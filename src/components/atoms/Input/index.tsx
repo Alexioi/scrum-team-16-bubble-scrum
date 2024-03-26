@@ -19,6 +19,7 @@ const Input: React.FC<Props> = ({ type = 'text', ...standardProps }) => {
       max={standardProps.max}
       placeholder={standardProps.placeholder}
       readOnly={standardProps.readOnly}
+      onClick={standardProps.onClick}
     />
   );
 };
