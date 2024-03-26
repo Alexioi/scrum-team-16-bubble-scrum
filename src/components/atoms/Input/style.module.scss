@@ -1,0 +1,50 @@
+.input {
+  padding: 12px 15px;
+
+  height: 44px;
+  max-width: 320px;
+  width: 100%;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+
+  font-size: 14px;
+  color: rgba(31, 32, 65, 0.75);
+
+  background-color: #ffffff;
+
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  border-radius: 4px;
+
+  transition: all 0.3s ease-in;
+
+  &::placeholder {
+    color: rgba(31, 32, 65, 0.25);
+  }
+
+  &[type='date'] {
+    &::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+
+    &::-webkit-input-placeholder {
+      visibility: hidden !important;
+    }
+  }
+
+  &:focus,
+  &:hover {
+    outline: none;
+
+    border-color: rgba(31, 32, 65, 0.75);
+  }
+
+  &:read-only {
+    cursor: pointer;
+  }
+
+  &:invalid {
+    border-color: red;
+  }
+}
