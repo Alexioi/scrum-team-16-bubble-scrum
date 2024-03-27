@@ -1,14 +1,21 @@
-import { CustomCheckbox, HelloToxin } from '@/components';
+import { Checkbox, HelloToxin } from '@/components';
 
 const Home = () => {
   return (
     <>
       <HelloToxin />
-      <CustomCheckbox
-        id="custom-checkbox"
-        name="custom-checkbox"
-        text="test custom checkbox"
-        isDisabled={false}
+      <Checkbox
+        id="test-checkbox-1"
+        name="test-checkbox-1"
+        text="Широкий коридор"
+        description="Ширина коридоров в номере не менее 91 см."
+        disabled={false}
+      />
+      <Checkbox
+        id="test-checkbox-2"
+        name="test-checkbox-2"
+        text="Широкий коридор"
+        disabled={false}
       />
     </>
   );

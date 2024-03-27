@@ -1,5 +1,5 @@
 import { StoreProvider, Typography, Button, Logo, ButtonLink } from './atoms';
-import { HelloToxin } from './molecules';
+import { HelloToxin, Checkbox } from './molecules';
 import { Header } from './organisms';
 
 export {
@@ -10,4 +10,5 @@ export {
   Header,
   Logo,
   ButtonLink,
+  Checkbox,
 };

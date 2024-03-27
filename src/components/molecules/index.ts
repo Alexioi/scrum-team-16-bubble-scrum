@@ -1,4 +1,4 @@
 import { HelloToxin } from './HelloToxin';
-import { CustomCheckbox } from './CustomCheckbox';
+import { Checkbox } from './Checkbox';
 
-export { HelloToxin, CustomCheckbox };
+export { HelloToxin, Checkbox };
