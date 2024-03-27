@@ -43,7 +43,7 @@ const DropdownInput: FC<Props> = ({
           width={12}
           height={8}
           className={clsx(style.icon, {
-            [style.icon__flipped]: isExpanded,
+            [style.icon_flipped]: isExpanded,
           })}
         >
           <ExpandMore />

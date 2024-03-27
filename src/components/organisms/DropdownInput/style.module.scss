@@ -3,7 +3,7 @@
 .icon {
   fill: $dark-shade-50;
 
-  &__flipped {
+  &_flipped {
     transform: scaleY(-1);
   }
 }

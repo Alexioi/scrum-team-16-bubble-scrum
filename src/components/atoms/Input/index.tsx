@@ -1,6 +1,6 @@
 'use client';
 
-import React, { InputHTMLAttributes } from 'react';
+import React, { FC, InputHTMLAttributes } from 'react';
 import ReactInputDateMask from 'react-input-date-mask';
 import clsx from 'clsx';
 
@@ -11,7 +11,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   squareBottom?: boolean;
 }
 
-const Input: React.FC<Props> = ({ type, squareBottom, ...standardProps }) => {
+const Input: FC<Props> = ({ type, squareBottom, ...standardProps }) => {
   const typeValue = type === 'date' ? 'text' : type;
 
   if (type === 'date' && !standardProps.readOnly) {
@@ -19,7 +19,7 @@ const Input: React.FC<Props> = ({ type, squareBottom, ...standardProps }) => {
       <ReactInputDateMask
         mask="dd.mm.yyyy"
         className={clsx(style.input, {
-          [style.input__squareBottom]: squareBottom,
+          [style.input_squareBottom]: squareBottom,
         })}
         id={standardProps.id}
         defaultValue={standardProps.defaultValue}
