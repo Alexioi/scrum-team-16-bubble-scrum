@@ -11,7 +11,9 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input: React.FC<Props> = ({ type, expanded, ...standardProps }) => {
-  if (type === 'date') {
+  const typeValue = type === 'date' ? 'text' : type;
+
+  if (type === 'date' && !standardProps.readOnly) {
     return (
       <ReactInputDateMask
         mask="dd.mm.yyyy"
@@ -28,7 +30,7 @@ const Input: React.FC<Props> = ({ type, expanded, ...standardProps }) => {
   return (
     <input
       className={clsx(style.input, { [style.input__expanded]: expanded })}
-      type={type}
+      type={typeValue}
       name={standardProps.name}
       id={standardProps.id}
       value={standardProps.value}
