@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 
 import { StoreProvider, Header } from '@/components';
 
-import './globals.css';
+import './globals.scss';
 
 const montserrat = Montserrat({ subsets: ['latin', 'cyrillic'] });
 

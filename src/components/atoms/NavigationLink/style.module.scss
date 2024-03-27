@@ -1,3 +1,5 @@
+@import '@/style/variables';
+
 .navigation-item {
   list-style: none;
 }
@@ -13,19 +15,19 @@
   position: relative;
   padding: 0;
   padding-right: 5px;
-  color: rgb(rgb(31, 32, 65), 0.5);
+  color: $dark-shade-50;
 }
 
 .button-content {
   font-family: sans-serif;
   font-size: 14px;
   line-height: 17px;
-  color: rgb(rgb(31, 32, 65), 0.5);
+  color: $dark-shade-50;
   margin-right: 7px;
 
   &:hover {
-    transition: all 0.3s ease-in;
-    color: rgb(rgb(31, 32, 65), 0.75);
+    transition: $transition-default;
+    color: $dark-shade-75;
   }
 }
 
@@ -37,7 +39,7 @@
   list-style: none;
   padding: 10px;
   background-color: white;
-  border: 1px solid rgb(rgb(31, 32, 65), 0.5);
+  border: 1px solid $dark-shade-50;
   border-radius: 4px;
 
   &_opened {
@@ -48,19 +50,19 @@
 .navigation-link {
   text-decoration: none;
   align-items: center;
-  color: rgb(rgb(31, 32, 65), 0.5);
+  color: $dark-shade-50;
   font-size: 14px;
   line-height: 17px;
   white-space: nowrap;
 
   &_active {
     font-weight: bold;
-    color: rgb(rgb(31, 32, 65), 0.75);
+    color: $dark-shade-50;
   }
 
   &:hover {
-    transition: all 0.3s ease-in;
-    color: rgb(rgb(31, 32, 65), 0.75);
+    transition: $transition-default;
+    color: $dark-shade-75;
   }
 }
 
