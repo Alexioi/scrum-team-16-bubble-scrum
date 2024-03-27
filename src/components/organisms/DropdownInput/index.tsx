@@ -8,6 +8,8 @@ import style from './style.module.scss';
 
 type Props = {
   type: 'text' | 'date';
+  value?: string;
+  defaultValue?: string | number | readonly string[] | undefined;
   placeholder?: string;
   onClick?(): void;
   expanded?: boolean;
@@ -16,6 +18,8 @@ type Props = {
 
 const DropdownInput: FC<Props> = ({
   type,
+  value,
+  defaultValue,
   placeholder,
   onClick,
   expanded,
@@ -41,8 +45,10 @@ const DropdownInput: FC<Props> = ({
           <ExpandMore />
         </svg>
       }
-      onClick={handleClick}
       type={type}
+      value={value}
+      defaultValue={defaultValue}
+      onClick={handleClick}
       placeholder={placeholder}
       submit
       readOnly={readOnly}
