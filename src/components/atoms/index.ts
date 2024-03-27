@@ -1,6 +1,8 @@
 import { StoreProvider } from './StoreProvider';
 import { Button, ButtonLink } from './Button';
-import { Typography } from './Typography';
+import { NavigationLink, List } from './NavigationLink';
 import { Logo } from './Logo';
+import { Typography } from './Typography';
 
-export { StoreProvider, Button, ButtonLink, Typography, Logo };
+export type { List };
+export { StoreProvider, Button, NavigationLink, Logo, ButtonLink, Typography };

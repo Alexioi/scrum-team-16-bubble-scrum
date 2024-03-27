@@ -1,13 +1,9 @@
 'use client';
 
-import { Logo } from '@/components';
+import { HelloToxin } from '@/components';
 
 const Home = () => {
-  return (
-    <div>
-      <Logo />
-    </div>
-  );
+  return <HelloToxin />;
 };
 
 export default Home;

@@ -19,6 +19,7 @@
     "react/require-default-props": "off",
     "import/no-extraneous-dependencies": "off",
     "react/button-has-type": "off",
+    "jsx-a11y/control-has-associated-label": "off",
     "object-curly-newline": "off"
   }
 }
