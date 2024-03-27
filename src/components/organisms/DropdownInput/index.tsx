@@ -46,7 +46,7 @@ const DropdownInput: FC<Props> = ({
       placeholder={placeholder}
       submit
       readOnly={readOnly}
-      expanded={expanded}
+      expanded={isExpanded}
     />
   );
 };
