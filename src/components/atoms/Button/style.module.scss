@@ -1,0 +1,101 @@
+@import '@/style/variables';
+
+.button {
+  $root: &;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  padding: 0;
+
+  &:hover,
+  &#{$root}_hovered {
+    transition: $transition-default;
+    opacity: 0.5;
+  }
+
+  &_theme {
+    &_default {
+      padding: 14px 20px 12px;
+      background: linear-gradient(180deg, $purple 0%, #8ba4f9 100%);
+      border-radius: 22px;
+
+      .text {
+        color: white;
+      }
+    }
+
+    &_outlined {
+      padding: 14px 20px 12px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, $purple 0%, #8ba4f9 100%);
+
+      &::before {
+        content: '';
+        position: absolute;
+        background: white;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 2px;
+        border-radius: inherit;
+      }
+
+      .text {
+        color: $purple;
+      }
+    }
+
+    &_link {
+      background: none;
+
+      .text {
+        color: $purple;
+      }
+    }
+
+    &_long {
+      width: 100%;
+      padding: 14px 11px 12px 29px;
+      background: linear-gradient(180deg, $purple 0%, #8ba4f9 100%);
+      border-radius: 22px;
+
+      .text {
+        width: 100%;
+        color: white;
+      }
+    }
+  }
+
+  &_size_low {
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+}
+
+.text {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 18px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  z-index: 2;
+  position: relative;
+}
+
+.arrow {
+  display: flex;
+  margin-left: auto;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  fill: white;
+}

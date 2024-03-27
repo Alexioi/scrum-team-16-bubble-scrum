@@ -1,0 +1,15 @@
+.logo {
+  display: flex;
+}
+
+.icon {
+  height: 48px;
+  width: 48px;
+
+  &_type {
+    &_full {
+      height: 40px;
+      width: 106px;
+    }
+  }
+}
