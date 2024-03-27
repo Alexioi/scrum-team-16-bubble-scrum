@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { Hotel } from '@/components';
+
 import { getAllHotels } from './actionCreators';
 
 interface HotelListSliceState {

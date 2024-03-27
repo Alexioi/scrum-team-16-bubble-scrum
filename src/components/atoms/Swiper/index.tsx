@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import { FC, useState } from 'react';
+import { FC, useState, MouseEvent } from 'react';
 import Image from 'next/image';
 
 import LeftArrow from '@/images/decorative/expand-more.svg';
@@ -26,7 +26,7 @@ const Swiper: FC<Props> = ({ imageURLs }) => {
     );
 
   const handlePaginationClick =
-    (idx: number) => (e: React.MouseEvent<HTMLButtonElement>) => {
+    (idx: number) => (e: MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();
       setCurrentImage(idx);
     };
@@ -49,14 +49,14 @@ const Swiper: FC<Props> = ({ imageURLs }) => {
       </button>
 
       <div className={style.pagination}>
-        {imageURLs.map((_, idx) => (
+        {imageURLs.map((url, i) => (
           <button
-            key={idx}
-            onClick={handlePaginationClick(idx)}
+            key={url}
+            onClick={handlePaginationClick(i)}
             className={clsx(style.item, {
-              [style.item_active]: idx === currentImage,
+              [style.item_active]: i === currentImage,
             })}
-          ></button>
+          />
         ))}
       </div>
     </div>

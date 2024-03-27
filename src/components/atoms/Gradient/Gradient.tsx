@@ -19,8 +19,8 @@ const Gradient: FC<Props> = ({ id, startColor, endColor }) => {
         y2="24"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0%" stop-color={startColor} />
-        <stop offset="100%" stop-color={endColor} />
+        <stop offset="0%" stopColor={startColor} />
+        <stop offset="100%" stopColor={endColor} />
       </linearGradient>
     </svg>
   );

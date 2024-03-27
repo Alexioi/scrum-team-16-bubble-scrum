@@ -1,7 +1,9 @@
+@import '@/style/variables';
+
 .button {
   $root: &;
 
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   border: none;
@@ -12,14 +14,14 @@
 
   &:hover,
   &#{$root}_hovered {
-    transition: all 0.3s ease-in;
+    transition: $transition-default;
     opacity: 0.5;
   }
 
   &_theme {
     &_default {
       padding: 14px 20px 12px;
-      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+      background: linear-gradient(180deg, $purple 0%, #8ba4f9 100%);
       border-radius: 22px;
 
       .text {
@@ -30,7 +32,7 @@
     &_outlined {
       padding: 14px 20px 12px;
       border-radius: 22px;
-      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+      background: linear-gradient(180deg, $purple 0%, #8ba4f9 100%);
 
       &::before {
         content: '';
@@ -45,7 +47,7 @@
       }
 
       .text {
-        color: rgb(188, 156, 255);
+        color: $purple;
       }
     }
 
@@ -53,14 +55,14 @@
       background: none;
 
       .text {
-        color: #bc9cff;
+        color: $purple;
       }
     }
 
     &_long {
       width: 100%;
       padding: 14px 11px 12px 29px;
-      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+      background: linear-gradient(180deg, $purple 0%, #8ba4f9 100%);
       border-radius: 22px;
 
       .text {

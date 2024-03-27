@@ -1,5 +1,6 @@
 import { HotelList } from './HotelList';
 import { Hotel } from './HotelCard';
+import { Header } from './Header';
 
-export { HotelList };
+export { HotelList, Header };
 export type { Hotel };

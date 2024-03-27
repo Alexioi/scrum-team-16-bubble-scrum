@@ -1,5 +1,4 @@
-import { HotelCard } from './ui/HotelCard';
-import { Hotel } from './type';
+import { HotelCard, Hotel } from './ui/HotelCard';
 import { declensionReview } from './lib/declensionReview';
 
 export { HotelCard, declensionReview };

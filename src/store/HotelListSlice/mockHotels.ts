@@ -9,9 +9,9 @@ export const mockHotels: Hotel[] = [
     id: 0,
     images: [img1.src, img2.src, img3.src, img4.src],
     isLuxury: true,
-    number: '567',
-    price: 9100,
-    rating: 3,
+    number: '888',
+    price: 9990,
+    rating: 5,
   },
   {
     id: 2,

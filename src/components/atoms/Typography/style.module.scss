@@ -1,0 +1,44 @@
+@import '@/style/variables.scss';
+
+.p {
+  margin: 0;
+  padding: 0;
+
+  font-size: 14px;
+  line-height: 24px;
+
+  color: $dark-shade-75;
+}
+.h1 {
+  margin: 0;
+  padding: 0;
+
+  font-size: 24px;
+  font-weight: bold;
+  line-height: normal;
+
+  color: $dark-shade-100;
+}
+
+.h2 {
+  margin: 0;
+  padding: 0;
+
+  font-size: 19px;
+  font-weight: bold;
+  line-height: normal;
+
+  color: $dark-shade-100;
+}
+
+.h3 {
+  margin: 0;
+  padding: 0;
+
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+  line-height: normal;
+
+  color: $dark-shade-100;
+}

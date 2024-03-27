@@ -6,7 +6,6 @@ import { getAllHotels } from '@/store/HotelListSlice';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 
 import { HotelCard } from '../HotelCard';
-
 import style from './style.module.scss';
 
 const HotelList = () => {

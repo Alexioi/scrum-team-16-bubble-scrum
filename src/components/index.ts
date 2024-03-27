@@ -1,7 +1,6 @@
 import { StoreProvider } from './atoms';
 import { HelloToxin } from './molecules';
+import { HotelList, Hotel, Header } from './organisms';
 
-import { HotelList, Hotel } from './organisms';
-
-export { HotelList, StoreProvider, HelloToxin };
+export { HotelList, StoreProvider, HelloToxin, Header };
 export type { Hotel };

@@ -1,7 +1,7 @@
 import { FC, useId } from 'react';
 
-import FillStar from '@/images/decorative/star.svg';
-import OutlineStar from '@/images/decorative/outline-star.svg';
+import FillStarSVG from '@/images/decorative/star.svg';
+import OutlineStarSVG from '@/images/decorative/outline-star.svg';
 
 import style from './style.module.scss';
 import { Gradient } from '../Gradient';
@@ -22,7 +22,7 @@ const Rating: FC<Props> = ({ rating }) => {
             key={number}
             fill={`url('#${id}${number}')`}
           >
-            <FillStar />
+            <FillStarSVG />
             <Gradient
               id={`${id}${number}`}
               startColor="#BC9CFF"
@@ -36,7 +36,7 @@ const Rating: FC<Props> = ({ rating }) => {
             key={number}
             fill={`url('#${id}${number}')`}
           >
-            <OutlineStar />
+            <OutlineStarSVG />
             <Gradient
               id={`${id}${number}`}
               startColor="#BC9CFF"
