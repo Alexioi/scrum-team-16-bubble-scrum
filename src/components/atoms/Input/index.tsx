@@ -3,21 +3,24 @@
 import React, { InputHTMLAttributes } from 'react';
 import ReactInputDateMask from 'react-input-date-mask';
 import clsx from 'clsx';
+
 import style from './style.module.scss';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   type: 'text' | 'email' | 'password' | 'date';
-  expanded?: boolean;
+  squareBottom?: boolean;
 }
 
-const Input: React.FC<Props> = ({ type, expanded, ...standardProps }) => {
+const Input: React.FC<Props> = ({ type, squareBottom, ...standardProps }) => {
   const typeValue = type === 'date' ? 'text' : type;
 
   if (type === 'date' && !standardProps.readOnly) {
     return (
       <ReactInputDateMask
         mask="dd.mm.yyyy"
-        className={clsx(style.input, { [style.input__expanded]: expanded })}
+        className={clsx(style.input, {
+          [style.input__squareBottom]: squareBottom,
+        })}
         id={standardProps.id}
         defaultValue={standardProps.defaultValue}
         value={standardProps.value}

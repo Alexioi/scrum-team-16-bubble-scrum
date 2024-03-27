@@ -1,22 +1,22 @@
 'use client';
 
-import { Input } from '@/components/atoms';
 import React, { FC, ReactNode } from 'react';
+
+import { Input } from '@/components/atoms';
+
 import style from './style.module.scss';
 
 interface Props {
+  type: 'text' | 'email' | 'password' | 'date';
   icon: ReactNode;
   submit?: boolean;
-  onClick?(): void;
-
-  type: 'text' | 'email' | 'password' | 'date';
   name?: string;
   id?: string;
   value?: string;
   min?: number;
   max?: number;
   placeholder?: string;
-  defaultValue?: string | number | readonly string[] | undefined;
+  defaultValue?: string | number | readonly string[];
   inputMode?:
     | 'text'
     | 'email'
@@ -25,10 +25,10 @@ interface Props {
     | 'tel'
     | 'url'
     | 'numeric'
-    | 'decimal'
-    | undefined;
+    | 'decimal';
   readOnly?: boolean;
-  expanded?: boolean;
+  squareBottom?: boolean;
+  onClick?(): void;
 }
 
 const ButtonInput: FC<Props> = ({
@@ -45,7 +45,7 @@ const ButtonInput: FC<Props> = ({
   inputMode,
   defaultValue,
   readOnly,
-  expanded,
+  squareBottom,
 }) => {
   const inputOnClick = readOnly ? onClick : undefined;
   return (
@@ -62,7 +62,7 @@ const ButtonInput: FC<Props> = ({
         onClick={inputOnClick}
         inputMode={inputMode}
         defaultValue={defaultValue}
-        expanded={expanded}
+        squareBottom={squareBottom}
       />
       <button
         className={style.buttonInput__button}

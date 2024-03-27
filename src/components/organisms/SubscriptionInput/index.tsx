@@ -1,7 +1,8 @@
 'use client';
 
-import { ButtonInput } from '@/components/molecules';
 import React, { FC } from 'react';
+
+import { ButtonInput } from '@/components/molecules';
 import ArrowForward from '@/images/decorative/arrow.svg';
 import { Gradient } from '@/components/atoms/Gradient';
 
