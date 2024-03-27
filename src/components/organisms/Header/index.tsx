@@ -7,7 +7,7 @@ import MenuSVG from '@/images/decorative/menu.svg';
 
 import { ButtonLink, NavigationLink, Logo } from '../../atoms';
 import style from './style.module.scss';
-import data from './data.json';
+import { data } from './data';
 
 const Header = () => {
   const [isOpened, setIsOpened] = useState(false);

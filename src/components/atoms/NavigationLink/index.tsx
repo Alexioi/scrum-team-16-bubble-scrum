@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, FC } from 'react';
 import clsx from 'clsx';
 
 import ExpandMoreSVG from '@/images/decorative/expand-more.svg';
@@ -10,15 +10,13 @@ import style from './style.module.scss';
 
 type List = { text: string; link: string }[];
 
-const NavigationLink = ({
-  text,
-  link,
-  list,
-}: {
+type Props = {
   text: string;
   link?: string;
   list?: List;
-}) => {
+};
+
+const NavigationLink: FC<Props> = ({ text, link, list }) => {
   const [isOpened, setIsOpened] = useState(false);
 
   const handleNavigationButtonClick = () => {
@@ -70,4 +68,5 @@ const NavigationLink = ({
   return null;
 };
 
+export type { List };
 export { NavigationLink };
