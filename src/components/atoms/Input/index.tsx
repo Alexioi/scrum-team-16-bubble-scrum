@@ -1,31 +1,37 @@
 'use client';
 
-import React, { InputHTMLAttributes, useState } from 'react';
-import { isDate, isDateGreaterOrEqual } from './helpers';
+import React, { InputHTMLAttributes } from 'react';
+import ReactInputDateMask from 'react-input-date-mask';
+import clsx from 'clsx';
 import style from './style.module.scss';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   type: 'text' | 'email' | 'password' | 'date';
+  expanded?: boolean;
 }
 
-const Input: React.FC<Props> = ({ type, ...standardProps }) => {
-  const [value, setValue] = useState(standardProps.value);
-  const typeValue = type === 'date' ? 'text' : type;
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    console.log(isDate(e.target.value));
-    console.log(isDateGreaterOrEqual(e.target.value, '27.03.2024'));
-    setValue(e.target.value);
-  };
+const Input: React.FC<Props> = ({ type, expanded, ...standardProps }) => {
+  if (type === 'date') {
+    return (
+      <ReactInputDateMask
+        mask="dd.mm.yyyy"
+        className={clsx(style.input, { [style.input__expanded]: expanded })}
+        id={standardProps.id}
+        defaultValue={standardProps.defaultValue}
+        value={standardProps.value}
+        onClick={standardProps.onClick}
+        onChange={standardProps.onChange}
+      />
+    );
+  }
 
   return (
     <input
-      className={style.input}
-      type={typeValue}
+      className={clsx(style.input, { [style.input__expanded]: expanded })}
+      type={type}
       name={standardProps.name}
       id={standardProps.id}
-      value={value}
+      value={standardProps.value}
       min={standardProps.min}
       max={standardProps.max}
       placeholder={standardProps.placeholder}
@@ -33,7 +39,7 @@ const Input: React.FC<Props> = ({ type, ...standardProps }) => {
       onClick={standardProps.onClick}
       inputMode={standardProps.inputMode}
       pattern={standardProps.pattern}
-      onChange={handleChange}
+      onChange={standardProps.onChange}
       defaultValue={standardProps.defaultValue}
     />
   );
