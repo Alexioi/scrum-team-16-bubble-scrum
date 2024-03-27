@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC } from 'react';
+import React, { FC, useId } from 'react';
 
 import { ButtonInput } from '@/components/molecules';
 import ArrowForward from '@/images/decorative/arrow.svg';
@@ -11,17 +11,15 @@ type Props = {
 };
 
 const SubscriptionInput: FC<Props> = ({ onClick }) => {
+  const id = useId();
+
   return (
     <ButtonInput
       icon={
         <>
-          <Gradient
-            id="subscription-gradient"
-            startColor="#BC9CFF"
-            endColor="#8BA4F9"
-          />
+          <Gradient id={id} startColor="#BC9CFF" endColor="#8BA4F9" />
           <svg width={18} height={18}>
-            <g fill="url(#subscription-gradient)">
+            <g fill={`url(${id})`}>
               <ArrowForward />
             </g>
           </svg>
