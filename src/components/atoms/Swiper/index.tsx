@@ -15,22 +15,24 @@ type Props = {
 const Swiper: FC<Props> = ({ imageURLs }) => {
   const [currentImage, setCurrentImage] = useState(0);
 
-  const handleNextButtonClick = () =>
+  const handleNextButtonClick = () => {
     setCurrentImage(
       currentImage + 1 >= imageURLs.length ? 0 : currentImage + 1,
     );
+  };
 
-  const handlePrevButtonClick = () =>
+  const handlePrevButtonClick = () => {
     setCurrentImage(
       currentImage - 1 < 0 ? imageURLs.length - 1 : currentImage - 1,
     );
+  };
 
-  const handlePaginationClick =
-    (idx: number) => (e: MouseEvent<HTMLButtonElement>) => {
+  const handlePaginationClick = (idx: number) => {
+    return (e: MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();
       setCurrentImage(idx);
     };
-
+  };
   return (
     <div className={style.swiper}>
       <Image
