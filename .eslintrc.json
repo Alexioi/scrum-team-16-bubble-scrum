@@ -1,0 +1,20 @@
+{
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "next/core-web-vitals"
+  ],
+  "rules": {
+    "react/function-component-definition": "off",
+    "react/jsx-filename-extension": "off",
+    "import/prefer-default-export": "off",
+    "import/extensions": "off",
+    "no-param-reassign": "off",
+    "no-undef": "off",
+    "arrow-body-style": "off"
+  }
+}

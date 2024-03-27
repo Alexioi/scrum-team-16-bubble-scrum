@@ -41,7 +41,7 @@
 
 # Про доп. требования
 
-Не забывайте при разработке проекта следовать [стандартам MetaLamp](https://github.com/fullstack-development/front-end-best-practices). 
+Не забывайте при разработке проекта следовать [стандартам MetaLamp](https://github.com/fullstack-development/front-end-best-practices).
 
 # Про firebase
 
