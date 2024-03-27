@@ -1,11 +1,11 @@
-import { Inter } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import type { Metadata } from 'next';
 
 import { StoreProvider, Header } from '@/components';
 
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const montserrat = Montserrat({ subsets: ['latin', 'cyrillic'] });
 
 const metadata: Metadata = {
   title: 'Toxin Hotel',
@@ -15,11 +15,9 @@ const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="ru">
-      <body className={inter.className}>
-        <StoreProvider>
-          <Header />
-          {children}
-        </StoreProvider>
+      <body className={montserrat.className}>
+        <Header />
+        <StoreProvider>{children}</StoreProvider>
       </body>
     </html>
   );
