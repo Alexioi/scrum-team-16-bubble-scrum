@@ -28,14 +28,14 @@ const HotelCard: FC<Props> = ({
       <div className={style.body}>
         <div className={style.header}>
           <div className={style.number}>
-            <span className={style.number__icon}>№ </span>
+            <span className={style.number_icon}>№ </span>
             {number}
             {isLuxury && <span className={style.luxury}>ЛЮКС</span>}
           </div>
 
           <div className={style.price}>
             {price.toLocaleString('ru')}₽
-            <span className={style.price__prefix}> в сутки</span>
+            <span className={style.price_prefix}> в сутки</span>
           </div>
         </div>
 
@@ -45,7 +45,7 @@ const HotelCard: FC<Props> = ({
           <Rating rating={rating} />
           <div className={style.reviews}>
             145
-            <span className={style.reviews__prefix}>
+            <span className={style.reviews_prefix}>
               {declensionReview(145)}
             </span>
           </div>
