@@ -2,13 +2,14 @@
 
 import { FormEvent } from 'react';
 import clsx from 'clsx';
+import Link from 'next/link';
 
 import { Logo } from '@/components/atoms';
-import { SubscriptionInput } from '../SubscriptionInput';
 
+import { SubscriptionInput } from '../SubscriptionInput';
 import style from './style.module.scss';
 import { FooterSocial } from './FooterSocial';
-import { FooterNavigation } from './FooterNavigation';
+import { footerLinks } from './footerLinks';
 
 const Footer = () => {
   const onEmailSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -27,7 +28,22 @@ const Footer = () => {
             </div>
           </div>
 
-          <FooterNavigation />
+          <nav className={style.up__nav}>
+            {footerLinks.map(({ title, links, className }) => (
+              <div key={title} className={className}>
+                <div className={style.up__title}>{title}</div>
+                <ul className={style.up__list}>
+                  {links.map(({ name, href }) => (
+                    <li className={style.up__item} key={name}>
+                      <Link className={style.up__link} href={href}>
+                        {name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
 
           <div className={style.up__subscribe}>
             <div className={style.up__title}>Подписка</div>
