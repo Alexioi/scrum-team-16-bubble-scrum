@@ -9,7 +9,7 @@ import {
   Input,
 } from './atoms';
 
-import { Header, Footer } from './organisms';
+import { Header, Footer, SubscriptionInput, DropdownInput } from './organisms';
 
 export {
   StoreProvider,
@@ -22,4 +22,6 @@ export {
   ButtonLink,
   Input,
   ButtonInput,
+  SubscriptionInput,
+  DropdownInput,
 };

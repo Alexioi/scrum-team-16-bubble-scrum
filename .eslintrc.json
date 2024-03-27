@@ -21,6 +21,7 @@
     "react/button-has-type": "off",
     "jsx-a11y/control-has-associated-label": "off",
     "object-curly-newline": "off",
-    "linebreak-style": "off"
+    "react/jsx-wrap-multilines": "off",
+    "@typescript-eslint/indent": "off"
   }
 }
