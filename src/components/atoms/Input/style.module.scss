@@ -1,26 +1,27 @@
+@import '@/style/variables.scss';
+
 .input {
   padding: 12px 15px;
 
   height: 44px;
   max-width: 320px;
   width: 100%;
-  box-sizing: border-box;
 
   display: flex;
   align-items: center;
 
   font-size: 14px;
-  color: rgba(31, 32, 65, 0.75);
+  color: $dark-shade-75;
 
-  background-color: #ffffff;
+  background-color: $white;
 
-  border: 1px solid rgba(31, 32, 65, 0.25);
+  border: 1px solid $dark-shade-25;
   border-radius: 4px;
 
-  transition: all 0.3s ease-in;
+  transition: $transition-default;
 
   &::placeholder {
-    color: rgba(31, 32, 65, 0.25);
+    color: $dark-shade-25;
   }
 
   &[type='date'] {
@@ -37,7 +38,7 @@
   &:hover {
     outline: none;
 
-    border-color: rgba(31, 32, 65, 0.75);
+    border-color: $dark-shade-75;
   }
 
   &:read-only {
@@ -45,7 +46,7 @@
   }
 
   &:invalid {
-    border-color: red;
+    border-color: $red;
   }
 
   &__expanded {
