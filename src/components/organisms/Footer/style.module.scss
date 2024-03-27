@@ -56,12 +56,12 @@
 
   &__desc {
     @extend .desc;
-    margin-top: 20px;
+    margin-top: 18px;
     line-height: 24px;
   }
 
   &__form {
-    margin-top: 20px;
+    margin-top: 22px;
   }
 
   &__title {
@@ -96,7 +96,7 @@
 }
 
 .down {
-  padding: 26px 0px;
+  padding: 24px 0px;
   border-top: 1px solid #1f204140;
 
   &__body {
@@ -106,12 +106,13 @@
     align-items: center;
     flex-wrap: wrap;
   }
+}
 
-  &__links {
-    @extend %list;
-    display: flex;
-    gap: 20px;
-  }
+.social {
+  @extend %list;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 
   &__link {
     transition: 0.3s;

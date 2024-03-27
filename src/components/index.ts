@@ -1,5 +1,25 @@
-import { StoreProvider, Input, Logo } from './atoms';
 import { HelloToxin, ButtonInput } from './molecules';
-import { Footer } from './organisms';
 
-export { StoreProvider, HelloToxin, Input, ButtonInput, Footer, Logo };
+import {
+  StoreProvider,
+  Typography,
+  Button,
+  Logo,
+  ButtonLink,
+  Input,
+} from './atoms';
+
+import { Header, Footer } from './organisms';
+
+export {
+  StoreProvider,
+  HelloToxin,
+  Typography,
+  Button,
+  Header,
+  Footer,
+  Logo,
+  ButtonLink,
+  Input,
+  ButtonInput,
+};
