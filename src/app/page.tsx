@@ -10,7 +10,6 @@ const Home = () => {
     <>
       <HelloToxin />
       <div>
-        <Input type="date" min="2024-03-20" />
         <Input type="email" placeholder="Email" />
         <Input type="text" placeholder="Текст" value="This is pretty awesome" />
         <Input type="password" placeholder="Пароль" />
@@ -22,7 +21,12 @@ const Home = () => {
         />
         <SubscriptionInput />
         <DropdownInput type="date" />
-        <Input type="date" id="dateInput" expanded />
+        <DropdownInput
+          type="date"
+          value="31.03.2024"
+          placeholder="ДД.ММ.ГГГГ"
+          readOnly
+        />
       </div>
     </>
   );
