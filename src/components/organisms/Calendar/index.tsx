@@ -44,16 +44,17 @@ const Calendar: FC<Props> = ({ isSingle }) => {
       return;
     }
 
+    setIsOpened(!isOpened);
+
     if (isSingle) {
       setFirstInputValue(
         `${getStringDate(firstDate)}-${getStringDate(secondDate)}`,
       );
-    } else {
-      setFirstInputValue(getFullStringDate(firstDate));
-      setSecondInputValue(getFullStringDate(secondDate));
+      return;
     }
 
-    setIsOpened(!isOpened);
+    setFirstInputValue(getFullStringDate(firstDate));
+    setSecondInputValue(getFullStringDate(secondDate));
   };
 
   const handleClickOutsideCalendar = ({ target }: Event) => {
