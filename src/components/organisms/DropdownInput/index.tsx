@@ -4,7 +4,7 @@ import React, { FC, useState } from 'react';
 import { clsx } from 'clsx';
 
 import { ButtonInput } from '@/components/molecules';
-import ExpandMore from '@/images/decorative/expand-more.svg';
+import ExpandMoreSVG from '@/images/decorative/expand-more.svg';
 
 import style from './style.module.scss';
 
@@ -46,7 +46,7 @@ const DropdownInput: FC<Props> = ({
             [style.icon_flipped]: isExpanded,
           })}
         >
-          <ExpandMore />
+          <ExpandMoreSVG />
         </svg>
       }
       type={type}
