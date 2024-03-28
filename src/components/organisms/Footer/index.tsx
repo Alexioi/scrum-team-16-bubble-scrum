@@ -13,30 +13,30 @@ import { linksData, socialData } from './data';
 const Footer = () => {
   const gradientId = useId();
 
-  const onEmailSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleEmailSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
 
   return (
     <footer className={style.footer}>
       <div className={style.up}>
-        <div className={clsx(style.container, style.up__body)}>
-          <div className={style.up__logo}>
+        <div className={clsx(style.container, style.body)}>
+          <div className={style.logo}>
             <Logo />
-            <div className={style.up__desc}>
+            <div className={style.desc}>
               Бронирование номеров в лучшем отеле 2019 года по версии ассоциации
               «Отельные взгляды»
             </div>
           </div>
 
-          <nav className={style.up__nav}>
+          <nav className={style.nav}>
             {linksData.map(({ title, links }) => (
               <div key={title}>
-                <div className={style.up__title}>{title}</div>
-                <ul className={style.up__list}>
+                <div className={style.title}>{title}</div>
+                <ul className={style.list}>
                   {links.map(({ name, href }) => (
-                    <li className={style.up__item} key={name}>
-                      <Link className={style.up__link} href={href}>
+                    <li className={style.item} key={name}>
+                      <Link className={style.link} href={href}>
                         {name}
                       </Link>
                     </li>
@@ -46,30 +46,27 @@ const Footer = () => {
             ))}
           </nav>
 
-          <div className={style.up__subscribe}>
-            <div className={style.up__title}>Подписка</div>
-            <div className={style.up__desc}>
+          <div className={style.subscribe}>
+            <div className={style.title}>Подписка</div>
+            <div className={style.desc}>
               Получайте специальные предложения и новости сервиса
             </div>
-            <form className={style.up__form} onSubmit={onEmailSubmit}>
+            <form className={style.form} onSubmit={handleEmailSubmit}>
               <SubscriptionInput />
             </form>
           </div>
         </div>
       </div>
       <div className={style.down}>
-        <div className={clsx(style.container, style.down__body)}>
+        <div className={clsx(style.container, style.body)}>
           <div className={style.desc}>
             Copyright © 2018 Toxin отель. Все права защищены.
           </div>
-          <ul className={style.down__social}>
+          <ul className={style.social}>
             {socialData.map(({ href, icon }) => (
               <li key={href}>
-                <Link href={href} className={style.down__link}>
-                  <svg
-                    className={style.down__icon}
-                    fill={`url(#${gradientId})`}
-                  >
+                <Link href={href} className={style.link}>
+                  <svg className={style.icon} fill={`url(#${gradientId})`}>
                     {icon}
                   </svg>
                 </Link>
