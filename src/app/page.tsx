@@ -3,7 +3,7 @@
 import { Calendar } from '@/components';
 
 const Home = () => {
-  return <Calendar isSingle={false} />;
+  return <Calendar />;
 };
 
 export default Home;

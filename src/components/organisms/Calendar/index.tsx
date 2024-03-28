@@ -5,18 +5,18 @@ import clsx from 'clsx';
 
 import { ReactCalendar } from '@/libs';
 
-import { ButtonInput } from '../../molecules/ButtonInput';
 import { Button } from '../../atoms';
+import { DropdownInput } from '../DropdownInput';
 import { getFullStringDate, getStringDate } from './helpers';
 import style from './style.module.scss';
 
 type CalendarValue = Date | null | [Date | null, Date | null];
 
 type Props = {
-  isSingle: boolean;
+  isSingle?: boolean;
 };
 
-const Calendar: FC<Props> = ({ isSingle }) => {
+const Calendar: FC<Props> = ({ isSingle = false }) => {
   const [calendarValue, setCalendarValue] = useState<CalendarValue>(null);
   const [isOpened, setIsOpened] = useState(false);
   const [firstInputValue, setFirstInputValue] = useState('');
@@ -48,7 +48,7 @@ const Calendar: FC<Props> = ({ isSingle }) => {
 
     if (isSingle) {
       setFirstInputValue(
-        `${getStringDate(firstDate)}-${getStringDate(secondDate)}`,
+        `${getStringDate(firstDate)} - ${getStringDate(secondDate)}`,
       );
       return;
     }
@@ -77,18 +77,22 @@ const Calendar: FC<Props> = ({ isSingle }) => {
   return (
     <div className="calendar">
       <div className={style.inputs}>
-        <ButtonInput
+        <DropdownInput
           type="text"
           defaultValue={firstInputValue}
-          icon={<div>1</div>}
+          active={isOpened}
           onClick={handleInputButtonClick}
+          placeholder={isSingle ? 'ДД.ММ.ГГГГ' : 'ДД.ММ.ГГГГ - ДД.ММ.ГГГГ'}
+          readOnly
         />
         {isSingle || (
-          <ButtonInput
+          <DropdownInput
             type="text"
             defaultValue={secondInputValue}
-            icon={<div>1</div>}
+            active={isOpened}
             onClick={handleInputButtonClick}
+            placeholder="ДД.ММ.ГГГГ"
+            readOnly
           />
         )}
       </div>
