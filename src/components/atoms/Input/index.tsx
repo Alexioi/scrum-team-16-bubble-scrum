@@ -1,17 +1,39 @@
 'use client';
 
-import React, { InputHTMLAttributes } from 'react';
+import React, { FC, InputHTMLAttributes } from 'react';
+import ReactInputDateMask from 'react-input-date-mask';
+import clsx from 'clsx';
+
 import style from './style.module.scss';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   type: 'text' | 'email' | 'password' | 'date';
+  squareBottom?: boolean;
 }
 
-const Input: React.FC<Props> = ({ type, ...standardProps }) => {
+const Input: FC<Props> = ({ type, squareBottom, ...standardProps }) => {
+  const typeValue = type === 'date' ? 'text' : type;
+
+  if (type === 'date' && !standardProps.readOnly) {
+    return (
+      <ReactInputDateMask
+        mask="dd.mm.yyyy"
+        className={clsx(style.input, {
+          [style.input_squareBottom]: squareBottom,
+        })}
+        id={standardProps.id}
+        defaultValue={standardProps.defaultValue}
+        value={standardProps.value}
+        onClick={standardProps.onClick}
+        onChange={standardProps.onChange}
+      />
+    );
+  }
+
   return (
     <input
-      className={style.input}
-      type={type}
+      // className={clsx(style.input, { [style.input__expanded]: expanded })}
+      type={typeValue}
       name={standardProps.name}
       id={standardProps.id}
       value={standardProps.value}
@@ -22,6 +44,7 @@ const Input: React.FC<Props> = ({ type, ...standardProps }) => {
       onClick={standardProps.onClick}
       inputMode={standardProps.inputMode}
       pattern={standardProps.pattern}
+      onChange={standardProps.onChange}
       defaultValue={standardProps.defaultValue}
     />
   );

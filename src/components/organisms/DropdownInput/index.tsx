@@ -1,24 +1,32 @@
 'use client';
 
-import { ButtonInput } from '@/components/molecules';
 import React, { FC, useState } from 'react';
-import ExpandMore from '@/images/decorative/expand-more.svg';
 import { clsx } from 'clsx';
+
+import { ButtonInput } from '@/components/molecules';
+import ExpandMore from '@/images/decorative/expand-more.svg';
+
 import style from './style.module.scss';
 
 type Props = {
   type: 'text' | 'date';
+  value?: string;
+  defaultValue?: string | number | readonly string[];
   placeholder?: string;
-  onClick?(): void;
   expanded?: boolean;
+  squareBottom?: boolean;
   readOnly?: boolean;
+  onClick?(): void;
 };
 
 const DropdownInput: FC<Props> = ({
   type,
+  value,
+  defaultValue,
   placeholder,
   onClick,
   expanded,
+  squareBottom,
   readOnly,
 }) => {
   const [isExpanded, setIsExpanded] = useState(expanded);
@@ -34,18 +42,21 @@ const DropdownInput: FC<Props> = ({
         <svg
           width={12}
           height={8}
-          className={clsx(style.dropdownInputIcon, {
-            [style.dropdownInputIcon__flipped]: isExpanded,
+          className={clsx(style.icon, {
+            [style.icon_flipped]: isExpanded,
           })}
         >
           <ExpandMore />
         </svg>
       }
-      onClick={handleClick}
       type={type}
+      value={value}
+      defaultValue={defaultValue}
+      onClick={handleClick}
       placeholder={placeholder}
       submit
       readOnly={readOnly}
+      squareBottom={squareBottom}
     />
   );
 };

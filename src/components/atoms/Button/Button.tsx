@@ -9,13 +9,19 @@ import style from './style.module.scss';
 
 type Props = {
   text: string;
-  theme: 'outlined' | 'default' | 'link' | 'long';
-  type: 'submit' | 'reset' | 'button';
-  size: 'low' | 'default';
+  theme?: 'outlined' | 'default' | 'link' | 'long';
+  type?: 'submit' | 'reset' | 'button';
+  size?: 'low' | 'default';
   onClick(): void;
 };
 
-const Button: FC<Props> = ({ theme, text, size, type, onClick }) => {
+const Button: FC<Props> = ({
+  text,
+  theme = 'default',
+  size = 'default',
+  type = 'button',
+  onClick,
+}) => {
   const buttonClasses = clsx(style.button, {
     [style.button_theme_default]: theme === 'default',
     [style.button_theme_outlined]: theme === 'outlined',
