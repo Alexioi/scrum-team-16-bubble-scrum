@@ -19,6 +19,13 @@ type Props = {
 const Dropdown: FC<Props> = ({ hasButtons, items, groups }) => {
   const [isOpened, setIsOpened] = useState(false);
   const [values, setValues] = useState(items);
+  const [result, setResult] = useState(
+    items
+      .map((el) => {
+        return el.counter;
+      })
+      .join(', '),
+  );
 
   console.log(groups);
 
@@ -46,10 +53,30 @@ const Dropdown: FC<Props> = ({ hasButtons, items, groups }) => {
     setIsOpened(!isOpened);
   };
 
+  const handleClearButtonClick = () => {
+    setValues(
+      values.map((el) => {
+        return { ...el, counter: 0 };
+      }),
+    );
+    setResult('');
+  };
+
+  const handleApplyButtonClick = () => {
+    setIsOpened(false);
+    setResult(
+      values
+        .map((el) => {
+          return el.counter;
+        })
+        .join(', '),
+    );
+  };
+
   return (
     <div className={dropdownClasses}>
       <div>
-        <input type="text" />
+        <input type="text" defaultValue={result} placeholder="test" />
         <button onClick={handleOpeningMenuClick}>+</button>
       </div>
       <div className={style.menu}>
@@ -73,7 +100,7 @@ const Dropdown: FC<Props> = ({ hasButtons, items, groups }) => {
                 size="default"
                 theme="link"
                 type="button"
-                onClick={() => {}}
+                onClick={handleClearButtonClick}
               />
             </div>
             <div className={style['apply-button']}>
@@ -82,7 +109,7 @@ const Dropdown: FC<Props> = ({ hasButtons, items, groups }) => {
                 size="default"
                 theme="link"
                 type="button"
-                onClick={() => {}}
+                onClick={handleApplyButtonClick}
               />
             </div>
           </div>
