@@ -1,9 +1,10 @@
-import style from './style.module.scss';
+import FacebookIcon from '@/images/decorative/facebook.svg';
+import TwitterIcon from '@/images/decorative/twitter.svg';
+import InstagramIcon from '@/images/decorative/instagram.svg';
 
-const footerLinks = [
+const linksData = [
   {
     title: 'навигация',
-    className: '',
     links: [
       {
         name: 'О нас',
@@ -16,7 +17,6 @@ const footerLinks = [
   },
   {
     title: 'о нас',
-    className: style.up__about,
     links: [
       { name: 'О сервисе', href: '/change-me' },
       { name: 'Наша команда', href: '/change-me' },
@@ -26,7 +26,6 @@ const footerLinks = [
   },
   {
     title: 'служба поддержки',
-    className: style.up__support,
     links: [
       { name: 'Соглашения', href: '/change-me' },
       { name: 'Сообщества', href: '/change-me' },
@@ -35,4 +34,19 @@ const footerLinks = [
   },
 ];
 
-export { footerLinks };
+const socialData = [
+  {
+    icon: <TwitterIcon />,
+    href: 'https://twitter.com/',
+  },
+  {
+    icon: <FacebookIcon />,
+    href: 'https://www.facebook.com/',
+  },
+  {
+    icon: <InstagramIcon />,
+    href: 'https://www.instagram.com/',
+  },
+];
+
+export { socialData, linksData };

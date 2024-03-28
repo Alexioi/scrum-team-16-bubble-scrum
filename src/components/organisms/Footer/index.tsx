@@ -1,17 +1,18 @@
 'use client';
 
-import { FormEvent } from 'react';
+import { FormEvent, useId } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 
-import { Logo } from '@/components/atoms';
+import { Gradient, Logo } from '@/components/atoms';
 
 import { SubscriptionInput } from '../SubscriptionInput';
 import style from './style.module.scss';
-import { FooterSocial } from './FooterSocial';
-import { footerLinks } from './footerLinks';
+import { linksData, socialData } from './data';
 
 const Footer = () => {
+  const gradientId = useId();
+
   const onEmailSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
@@ -29,8 +30,8 @@ const Footer = () => {
           </div>
 
           <nav className={style.up__nav}>
-            {footerLinks.map(({ title, links, className }) => (
-              <div key={title} className={className}>
+            {linksData.map(({ title, links }) => (
+              <div key={title}>
                 <div className={style.up__title}>{title}</div>
                 <ul className={style.up__list}>
                   {links.map(({ name, href }) => (
@@ -61,7 +62,21 @@ const Footer = () => {
           <div className={style.desc}>
             Copyright © 2018 Toxin отель. Все права защищены.
           </div>
-          <FooterSocial />
+          <ul className={style.down__social}>
+            {socialData.map(({ href, icon }) => (
+              <li key={href}>
+                <Link href={href} className={style.down__link}>
+                  <svg
+                    className={style.down__icon}
+                    fill={`url(#${gradientId})`}
+                  >
+                    {icon}
+                  </svg>
+                </Link>
+              </li>
+            ))}
+            <Gradient startColor="#BC9CFF" endColor="#8BA4F9" id={gradientId} />
+          </ul>
         </div>
       </div>
     </footer>
