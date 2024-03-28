@@ -3,7 +3,7 @@
 import React, { FC, useId } from 'react';
 
 import { ButtonInput } from '@/components/molecules';
-import ArrowForward from '@/images/decorative/arrow.svg';
+import ArrowForwardSVG from '@/images/decorative/arrow.svg';
 import { Gradient } from '@/components/atoms/Gradient';
 
 type Props = {
@@ -19,8 +19,8 @@ const SubscriptionInput: FC<Props> = ({ onClick }) => {
         <>
           <Gradient id={id} startColor="#BC9CFF" endColor="#8BA4F9" />
           <svg width={18} height={18}>
-            <g fill={`url(${id})`}>
-              <ArrowForward />
+            <g fill={`url(#${id})`}>
+              <ArrowForwardSVG />
             </g>
           </svg>
         </>

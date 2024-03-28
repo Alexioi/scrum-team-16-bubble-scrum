@@ -4,7 +4,7 @@ import React, { FC, useState } from 'react';
 import { clsx } from 'clsx';
 
 import { ButtonInput } from '@/components/molecules';
-import ExpandMore from '@/images/decorative/expand-more.svg';
+import ExpandMoreSVG from '@/images/decorative/expand-more.svg';
 
 import style from './style.module.scss';
 
@@ -16,6 +16,7 @@ type Props = {
   expanded?: boolean;
   squareBottom?: boolean;
   readOnly?: boolean;
+  active?: boolean;
   onClick?(): void;
 };
 
@@ -28,6 +29,7 @@ const DropdownInput: FC<Props> = ({
   expanded,
   squareBottom,
   readOnly,
+  active,
 }) => {
   const [isExpanded, setIsExpanded] = useState(expanded);
 
@@ -46,7 +48,7 @@ const DropdownInput: FC<Props> = ({
             [style.icon_flipped]: isExpanded,
           })}
         >
-          <ExpandMore />
+          <ExpandMoreSVG />
         </svg>
       }
       type={type}
@@ -57,6 +59,7 @@ const DropdownInput: FC<Props> = ({
       submit
       readOnly={readOnly}
       squareBottom={squareBottom}
+      active={active}
     />
   );
 };

@@ -34,7 +34,8 @@
   }
 
   &:focus,
-  &:hover {
+  &:hover,
+  &_active {
     outline: none;
 
     border-color: $dark-shade-75;
@@ -48,7 +49,7 @@
     border-color: $red;
   }
 
-  &_squareBottom {
+  &_square-bottom {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }

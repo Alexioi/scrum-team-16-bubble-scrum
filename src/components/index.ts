@@ -12,8 +12,10 @@ import {
   SubscriptionInput,
   DropdownInput,
   Calendar,
+  Hotel,
 } from './organisms';
 
+export type { Hotel };
 export {
   StoreProvider,
   HelloToxin,
