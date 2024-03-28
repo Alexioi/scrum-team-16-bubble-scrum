@@ -16,7 +16,6 @@ type Props = {
   expanded?: boolean;
   squareBottom?: boolean;
   readOnly?: boolean;
-  active?: boolean;
   onClick?(): void;
 };
 
@@ -29,7 +28,6 @@ const DropdownInput: FC<Props> = ({
   expanded,
   squareBottom,
   readOnly,
-  active,
 }) => {
   return (
     <ButtonInput
@@ -52,7 +50,7 @@ const DropdownInput: FC<Props> = ({
       submit
       readOnly={readOnly}
       squareBottom={squareBottom}
-      active={active}
+      active={expanded}
     />
   );
 };

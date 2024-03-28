@@ -21,7 +21,7 @@ const Home = () => {
         />
         <SubscriptionInput />
         <DropdownInput type="date" />
-        <DropdownInput type="date" active />
+        <DropdownInput type="date" expanded />
         <DropdownInput
           type="date"
           value="31.03.2024"
