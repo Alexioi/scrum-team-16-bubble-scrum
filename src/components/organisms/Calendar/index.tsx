@@ -80,7 +80,7 @@ const Calendar: FC<Props> = ({ isSingle = false }) => {
         <DropdownInput
           type="text"
           defaultValue={firstInputValue}
-          active={isOpened}
+          expanded={isOpened}
           onClick={handleInputButtonClick}
           placeholder={isSingle ? 'ДД.ММ.ГГГГ' : 'ДД.ММ.ГГГГ - ДД.ММ.ГГГГ'}
           readOnly
@@ -89,7 +89,7 @@ const Calendar: FC<Props> = ({ isSingle = false }) => {
           <DropdownInput
             type="text"
             defaultValue={secondInputValue}
-            active={isOpened}
+            expanded={isOpened}
             onClick={handleInputButtonClick}
             placeholder="ДД.ММ.ГГГГ"
             readOnly

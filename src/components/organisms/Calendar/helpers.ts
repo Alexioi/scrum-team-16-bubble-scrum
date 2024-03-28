@@ -3,9 +3,10 @@ const getFullStringDate = (date: Date) => {
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
 
+  const dayString = String(day).length === 1 ? `0${day}` : day;
   const mouthString = String(month).length === 1 ? `0${month}` : month;
 
-  return `${day}.${mouthString}.${year}`;
+  return `${dayString}.${mouthString}.${year}`;
 };
 
 const getStringDate = (date: Date) => {
