@@ -1,9 +1,17 @@
 'use client';
 
-import { HelloToxin } from '@/components';
+import { MultiRangeSlider } from '@/components';
 
 const Home = () => {
-  return <HelloToxin />;
+  return (
+    <MultiRangeSlider
+      min={0}
+      max={100}
+      onChange={({ min, max }: { min: number; max: number }) =>
+        console.log(`min = ${min}, max = ${max}`)
+      }
+    />
+  );
 };
 
 export default Home;
