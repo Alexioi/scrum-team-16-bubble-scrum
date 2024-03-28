@@ -1,8 +1,20 @@
 import { StoreProvider } from './StoreProvider';
-import { Button, ButtonLink } from './Button';
-import { NavigationLink, List } from './NavigationLink';
+import { Rating } from './Rating';
+import { Swiper } from './Swiper';
+import { Gradient } from './Gradient';
 import { Logo } from './Logo';
+import { NavigationLink } from './NavigationLink';
 import { Typography } from './Typography';
+import { Button, ButtonLink } from './Button';
 
-export type { List };
-export { StoreProvider, Button, NavigationLink, Logo, ButtonLink, Typography };
+export {
+  Rating,
+  Swiper,
+  StoreProvider,
+  Gradient,
+  Logo,
+  NavigationLink,
+  Typography,
+  Button,
+  ButtonLink,
+};
