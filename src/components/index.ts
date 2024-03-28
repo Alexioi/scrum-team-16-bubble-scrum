@@ -1,13 +1,6 @@
-import { StoreProvider, Typography, Button, Logo, ButtonLink } from './atoms';
+import { StoreProvider } from './atoms';
 import { HelloToxin } from './molecules';
-import { Header } from './organisms';
+import { HotelList, Hotel, Header } from './organisms';
 
-export {
-  StoreProvider,
-  HelloToxin,
-  Typography,
-  Button,
-  Header,
-  Logo,
-  ButtonLink,
-};
+export { HotelList, StoreProvider, HelloToxin, Header };
+export type { Hotel };
