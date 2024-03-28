@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import { clsx } from 'clsx';
 
 import { ButtonInput } from '@/components/molecules';
@@ -31,17 +31,6 @@ const DropdownInput: FC<Props> = ({
   readOnly,
   active,
 }) => {
-  const [isExpanded, setIsExpanded] = useState(expanded);
-
-  const handleClick = () => {
-    setIsExpanded(!isExpanded);
-    onClick?.();
-  };
-
-  useEffect(() => {
-    setIsExpanded(expanded);
-  }, [expanded]);
-
   return (
     <ButtonInput
       icon={
@@ -49,7 +38,7 @@ const DropdownInput: FC<Props> = ({
           width={12}
           height={8}
           className={clsx(style.icon, {
-            [style.icon_flipped]: isExpanded,
+            [style.icon_flipped]: expanded,
           })}
         >
           <ExpandMoreSVG />
@@ -58,7 +47,7 @@ const DropdownInput: FC<Props> = ({
       type={type}
       value={value}
       defaultValue={defaultValue}
-      onClick={handleClick}
+      onClick={onClick}
       placeholder={placeholder}
       submit
       readOnly={readOnly}
