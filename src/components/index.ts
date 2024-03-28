@@ -1,15 +1,14 @@
-import { StoreProvider, Input, Button, ButtonLink } from './atoms';
-import { HelloToxin, ButtonInput, Dropdown } from './molecules';
-import { SubscriptionInput, DropdownInput } from './organisms';
+import { StoreProvider, Typography, Button, Logo, ButtonLink } from './atoms';
+import { HelloToxin, Dropdown } from './molecules';
+import { Header } from './organisms';
 
 export {
   StoreProvider,
   HelloToxin,
-  Dropdown,
-  Input,
-  ButtonInput,
-  SubscriptionInput,
-  DropdownInput,
+  Typography,
   Button,
+  Header,
+  Logo,
   ButtonLink,
+  Dropdown,
 };

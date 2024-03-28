@@ -8,12 +8,17 @@ import style from './style.module.scss';
 
 type Props = {
   text: string;
-  theme: 'outlined' | 'default' | 'link';
   link: string;
-  size: 'low' | 'default';
+  theme?: 'outlined' | 'default' | 'link';
+  size?: 'low' | 'default';
 };
 
-const ButtonLink: FC<Props> = ({ theme, text, size, link }) => {
+const ButtonLink: FC<Props> = ({
+  text,
+  link,
+  theme = 'default',
+  size = 'default',
+}) => {
   const buttonClasses = clsx(style.button, {
     [style.button_theme_default]: theme === 'default',
     [style.button_theme_outlined]: theme === 'outlined',

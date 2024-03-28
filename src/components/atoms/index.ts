@@ -1,6 +1,17 @@
 import { StoreProvider } from './StoreProvider';
-import { Input } from './Input';
 import { Button, ButtonLink } from './Button';
+import { NavigationLink, List } from './NavigationLink';
+import { Logo } from './Logo';
+import { Typography } from './Typography';
 import { Counter } from './Counter';
 
-export { StoreProvider, Input, Button, ButtonLink, Counter };
+export type { List };
+export {
+  StoreProvider,
+  Button,
+  NavigationLink,
+  Logo,
+  ButtonLink,
+  Typography,
+  Counter,
+};
