@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { clsx } from 'clsx';
 
 import { ButtonInput } from '@/components/molecules';
@@ -37,6 +37,10 @@ const DropdownInput: FC<Props> = ({
     setIsExpanded(!isExpanded);
     onClick?.();
   };
+
+  useEffect(() => {
+    setIsExpanded(expanded);
+  }, [expanded]);
 
   return (
     <ButtonInput
