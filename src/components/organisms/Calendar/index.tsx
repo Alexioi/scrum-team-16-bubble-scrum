@@ -5,8 +5,8 @@ import clsx from 'clsx';
 
 import { ReactCalendar } from '@/libs';
 
+import { ButtonInput } from '../../molecules/ButtonInput';
 import { Button } from '../../atoms';
-import { ButtonInput } from '../ButtonInput';
 import { getFullStringDate, getStringDate } from './helpers';
 import style from './style.module.scss';
 
