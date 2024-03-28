@@ -1,10 +1,14 @@
 'use client';
 
 import React, { FC, InputHTMLAttributes } from 'react';
-import ReactInputDateMask from 'react-input-date-mask';
+import dynamic from 'next/dynamic';
 import clsx from 'clsx';
 
 import style from './style.module.scss';
+
+const ReactInputDateMask = dynamic(() => import('react-input-date-mask'), {
+  ssr: false,
+});
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   type: 'text' | 'email' | 'password' | 'date';
@@ -19,11 +23,11 @@ const Input: FC<Props> = ({ type, squareBottom, ...standardProps }) => {
       <ReactInputDateMask
         mask="dd.mm.yyyy"
         className={clsx(style.input, {
-          [style.input_squareBottom]: squareBottom,
+          [style['input_square-bottom']]: squareBottom,
         })}
         id={standardProps.id}
         defaultValue={standardProps.defaultValue}
-        value={standardProps.value}
+        inputValue={standardProps.value}
         onClick={standardProps.onClick}
         onChange={standardProps.onChange}
       />
@@ -32,7 +36,9 @@ const Input: FC<Props> = ({ type, squareBottom, ...standardProps }) => {
 
   return (
     <input
-      className={clsx(style.input)}
+      className={clsx(style.input, {
+        [style['input_square-bottom']]: squareBottom,
+      })}
       type={typeValue}
       name={standardProps.name}
       id={standardProps.id}

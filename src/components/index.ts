@@ -33,5 +33,4 @@ export {
   DropdownInput,
   HotelList,
 };
-
 export type { Hotel };
