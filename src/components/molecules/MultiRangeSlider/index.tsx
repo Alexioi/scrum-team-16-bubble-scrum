@@ -26,8 +26,8 @@ type Props = {
 const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
   const [minValue, setMinValue] = useState(min);
   const [maxValue, setMaxValue] = useState(max);
-  const minValRef = useRef<HTMLInputElement>(null);
-  const maxValRef = useRef<HTMLInputElement>(null);
+  const minValueRef = useRef<HTMLInputElement>(null);
+  const maxValueRef = useRef<HTMLInputElement>(null);
   const range = useRef<HTMLDivElement>(null);
 
   const getPercent = useCallback(
@@ -37,11 +37,11 @@ const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
 
   // Set width of the range to decrease from the left side
   useEffect(() => {
-    if (!maxValRef.current) {
+    if (!maxValueRef.current) {
       return;
     }
     const minPercent = getPercent(minValue);
-    const maxPercent = getPercent(Number(maxValRef.current.value));
+    const maxPercent = getPercent(Number(maxValueRef.current.value));
 
     if (range.current) {
       range.current.style.left = `${minPercent}%`;
@@ -51,10 +51,10 @@ const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
 
   // Set width of the range to decrease from the right side
   useEffect(() => {
-    if (!minValRef.current) {
+    if (!minValueRef.current) {
       return;
     }
-    const minPercent = getPercent(Number(minValRef.current.value));
+    const minPercent = getPercent(Number(minValueRef.current.value));
     const maxPercent = getPercent(maxValue);
 
     if (range.current) {
@@ -74,7 +74,7 @@ const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
         min={min}
         max={max}
         value={minValue}
-        ref={minValRef}
+        ref={minValueRef}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const value = Math.min(Number(event.target.value), maxValue - 1);
           setMinValue(value);
@@ -89,7 +89,7 @@ const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
         min={min}
         max={max}
         value={maxValue}
-        ref={maxValRef}
+        ref={maxValueRef}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           const value = Math.max(Number(event.target.value), minValue + 1);
           setMaxValue(value);
