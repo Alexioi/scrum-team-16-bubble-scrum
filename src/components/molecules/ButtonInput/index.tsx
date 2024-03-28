@@ -1,22 +1,22 @@
 'use client';
 
-import { Input } from '@/components/atoms';
 import React, { FC, ReactNode } from 'react';
+
+import { Input } from '@/components/atoms';
+
 import style from './style.module.scss';
 
 interface Props {
+  type: 'text' | 'email' | 'password' | 'date';
   icon: ReactNode;
   submit?: boolean;
-  onClick?(): void;
-
-  type: 'text' | 'email' | 'password' | 'date';
   name?: string;
   id?: string;
   value?: string;
   min?: number;
   max?: number;
   placeholder?: string;
-  defaultValue?: string | number | readonly string[] | undefined;
+  defaultValue?: string | number | readonly string[];
   inputMode?:
     | 'text'
     | 'email'
@@ -25,9 +25,11 @@ interface Props {
     | 'tel'
     | 'url'
     | 'numeric'
-    | 'decimal'
-    | undefined;
+    | 'decimal';
   readOnly?: boolean;
+  squareBottom?: boolean;
+  active?: boolean;
+  onClick?(): void;
 }
 
 const ButtonInput: FC<Props> = ({
@@ -44,10 +46,12 @@ const ButtonInput: FC<Props> = ({
   inputMode,
   defaultValue,
   readOnly,
+  squareBottom,
+  active,
 }) => {
   const inputOnClick = readOnly ? onClick : undefined;
   return (
-    <div className={style.buttonInput}>
+    <div className={style['button-input']}>
       <Input
         type={type}
         name={name}
@@ -60,9 +64,11 @@ const ButtonInput: FC<Props> = ({
         onClick={inputOnClick}
         inputMode={inputMode}
         defaultValue={defaultValue}
+        squareBottom={squareBottom}
+        active={active}
       />
       <button
-        className={style.buttonInput__button}
+        className={style['button-input_button']}
         type={submit ? 'submit' : 'button'}
         onClick={onClick}
       >
