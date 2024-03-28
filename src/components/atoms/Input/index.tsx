@@ -23,7 +23,7 @@ const Input: FC<Props> = ({ type, squareBottom, ...standardProps }) => {
         })}
         id={standardProps.id}
         defaultValue={standardProps.defaultValue}
-        value={standardProps.value}
+        inputValue={standardProps.value}
         onClick={standardProps.onClick}
         onChange={standardProps.onChange}
       />
