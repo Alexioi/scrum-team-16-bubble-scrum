@@ -1,9 +1,7 @@
-'use client';
-
-import { HelloToxin } from '@/components';
+import { HotelList } from '@/components/organisms';
 
 const Home = () => {
-  return <HelloToxin />;
+  return <HotelList />;
 };
 
 export default Home;

@@ -1,5 +1,3 @@
-import { HelloToxin, ButtonInput } from './molecules';
-
 import {
   StoreProvider,
   Typography,
@@ -9,7 +7,16 @@ import {
   Input,
 } from './atoms';
 
-import { Header, Footer, SubscriptionInput, DropdownInput } from './organisms';
+import { HelloToxin, ButtonInput } from './molecules';
+
+import {
+  HotelList,
+  Hotel,
+  Header,
+  Footer,
+  SubscriptionInput,
+  DropdownInput,
+} from './organisms';
 
 export {
   StoreProvider,
@@ -24,4 +31,7 @@ export {
   ButtonInput,
   SubscriptionInput,
   DropdownInput,
+  HotelList,
 };
+
+export type { Hotel };
