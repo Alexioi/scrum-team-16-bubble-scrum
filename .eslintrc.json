@@ -23,6 +23,8 @@
     "import/no-cycle": "off",
     "linebreak-style": "off",
     "react/jsx-wrap-multilines": "off",
-    "@typescript-eslint/indent": "off"
+    "@typescript-eslint/indent": "off",
+    "object-curly-newline": "off",
+    "react/jsx-one-expression-per-line": "off"
   }
 }
