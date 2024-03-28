@@ -32,7 +32,9 @@ const Input: FC<Props> = ({ type, squareBottom, ...standardProps }) => {
 
   return (
     <input
-      className={clsx(style.input, { [style.input__expanded]: expanded })}
+      className={clsx(style.input, {
+        [style.input_squareBottom]: squareBottom,
+      })}
       type={typeValue}
       name={standardProps.name}
       id={standardProps.id}
