@@ -19,7 +19,7 @@ const SubscriptionInput: FC<Props> = ({ onClick }) => {
         <>
           <Gradient id={id} startColor="#BC9CFF" endColor="#8BA4F9" />
           <svg width={18} height={18}>
-            <g fill={`url(${id})`}>
+            <g fill={`url(#${id})`}>
               <ArrowForward />
             </g>
           </svg>
