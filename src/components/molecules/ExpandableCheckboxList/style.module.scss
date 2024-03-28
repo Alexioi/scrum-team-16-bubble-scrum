@@ -1,0 +1,52 @@
+@import '@/style/variables.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  max-width: fit-content;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  max-width: fit-content;
+  height: 44px;
+
+  border-style: none;
+  background-color: transparent;
+  
+  cursor: pointer;
+}
+
+.title {
+  color: #1F2041;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.icon {
+  width: 12px;
+  height: 8px;
+
+  transition: transform 0.2s ease;
+
+  &_rotated {
+    transform: rotate(180deg);
+    transition: transform 0.2s ease;
+  }
+
+  color: $dark-shade-50;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
