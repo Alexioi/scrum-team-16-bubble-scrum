@@ -16,14 +16,10 @@ const SubscriptionInput: FC<Props> = ({ onClick }) => {
   return (
     <ButtonInput
       icon={
-        <>
+        <svg width={18} height={18} fill={`url(#${id})`}>
           <Gradient id={id} startColor="#BC9CFF" endColor="#8BA4F9" />
-          <svg width={18} height={18}>
-            <g fill={`url(${id})`}>
-              <ArrowForward />
-            </g>
-          </svg>
-        </>
+          <ArrowForward />
+        </svg>
       }
       onClick={onClick}
       type="email"
