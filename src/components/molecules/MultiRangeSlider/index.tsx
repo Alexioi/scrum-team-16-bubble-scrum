@@ -12,24 +12,24 @@ import clsx from 'clsx';
 
 import style from './style.module.scss';
 
-interface MultiRangeSliderProps {
+type OnChangeProps = {
   min: number;
   max: number;
-  onChange: Function;
-}
+};
 
-const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
-  min,
-  max,
-  onChange,
-}) => {
-  const [minVal, setMinVal] = useState(min);
-  const [maxVal, setMaxVal] = useState(max);
+type Props = {
+  min: number;
+  max: number;
+  onChange(limits: OnChangeProps): void;
+};
+
+const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
+  const [minValue, setMinValue] = useState(min);
+  const [maxValue, setMaxValue] = useState(max);
   const minValRef = useRef<HTMLInputElement>(null);
   const maxValRef = useRef<HTMLInputElement>(null);
   const range = useRef<HTMLDivElement>(null);
 
-  // Convert to percentage
   const getPercent = useCallback(
     (value: number) => Math.round(((value - min) / (max - min)) * 100),
     [min, max],
@@ -37,33 +37,35 @@ const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
 
   // Set width of the range to decrease from the left side
   useEffect(() => {
-    if (maxValRef.current) {
-      const minPercent = getPercent(minVal);
-      const maxPercent = getPercent(+maxValRef.current.value);
-
-      if (range.current) {
-        range.current.style.left = `${minPercent}%`;
-        range.current.style.width = `${maxPercent - minPercent}%`;
-      }
+    if (!maxValRef.current) {
+      return;
     }
-  }, [minVal, getPercent]);
+    const minPercent = getPercent(minValue);
+    const maxPercent = getPercent(Number(maxValRef.current.value));
+
+    if (range.current) {
+      range.current.style.left = `${minPercent}%`;
+      range.current.style.width = `${maxPercent - minPercent}%`;
+    }
+  }, [minValue, getPercent]);
 
   // Set width of the range to decrease from the right side
   useEffect(() => {
-    if (minValRef.current) {
-      const minPercent = getPercent(+minValRef.current.value);
-      const maxPercent = getPercent(maxVal);
-
-      if (range.current) {
-        range.current.style.width = `${maxPercent - minPercent}%`;
-      }
+    if (!minValRef.current) {
+      return;
     }
-  }, [maxVal, getPercent]);
+    const minPercent = getPercent(Number(minValRef.current.value));
+    const maxPercent = getPercent(maxValue);
+
+    if (range.current) {
+      range.current.style.width = `${maxPercent - minPercent}%`;
+    }
+  }, [maxValue, getPercent]);
 
   // Get min and max values when their state changes
   useEffect(() => {
-    onChange({ min: minVal, max: maxVal });
-  }, [minVal, maxVal, onChange]);
+    onChange({ min: minValue, max: maxValue });
+  }, [minValue, maxValue, onChange]);
 
   return (
     <div className={style.container}>
@@ -71,36 +73,33 @@ const MultiRangeSlider: FC<MultiRangeSliderProps> = ({
         type="range"
         min={min}
         max={max}
-        value={minVal}
+        value={minValue}
         ref={minValRef}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
-          const value = Math.min(+event.target.value, maxVal - 1);
-          setMinVal(value);
+          const value = Math.min(Number(event.target.value), maxValue - 1);
+          setMinValue(value);
           event.target.value = value.toString();
         }}
-        className={clsx([style.thumb, style['thumb--zindex-3']], {
-          [style['thumb--zindex-5']]: minVal > max - 100,
+        className={clsx([style.thumb, style['thumb_z-index-3']], {
+          [style['thumb_z-index-5']]: minValue > max - 100,
         })}
       />
       <input
         type="range"
         min={min}
         max={max}
-        value={maxVal}
+        value={maxValue}
         ref={maxValRef}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
-          const value = Math.max(+event.target.value, minVal + 1);
-          setMaxVal(value);
+          const value = Math.max(Number(event.target.value), minValue + 1);
+          setMaxValue(value);
           event.target.value = value.toString();
         }}
-        className={clsx([style.thumb, style['thumb--zindex-4']])}
+        className={clsx([style.thumb, style['thumb_z-index-4']])}
       />
-
       <div className={style.slider}>
         <div className={style.slider__track} />
         <div ref={range} className={style.slider__range} />
-        <div className={style['slider__left-value']}>{minVal}</div>
-        <div className={style['slider__right-value']}>{maxVal}</div>
       </div>
     </div>
   );

@@ -1,58 +1,30 @@
 @import '@/style/variables.scss';
 
 .container {
-  width: 100%;
-}
-
-.slider {
   position: relative;
   width: 100%;
 }
 
-.slider__track,
-.slider__range,
-.slider__left-value,
-.slider__right-value {
-  position: absolute;
-}
-
-.slider__track,
-.slider__range {
-  border-radius: 3px;
-  height: 6px;
-}
-
-.slider__track {
-  background-color: $white;
-  border: 1px solid $dark-shade-25;
+.slider {
   width: 100%;
-  z-index: 1;
-}
 
-.slider__range {
-  background: $gradient-green-100;
-  z-index: 2;
-}
+  &__track {
+    position: absolute;
+    border-radius: 3px;
+    height: 6px;
+    background-color: $white;
+    border: 1px solid $dark-shade-25;
+    width: 100%;
+    z-index: 1;
+  }
 
-.slider__left-value,
-.slider__right-value {
-  color: #dee2e6;
-  font-size: 12px;
-  margin-top: 20px;
-}
-
-.slider__left-value {
-  left: 6px;
-}
-
-.slider__right-value {
-  right: -4px;
-}
-
-.thumb,
-.thumb::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
+  &__range {
+    position: absolute;
+    border-radius: 3px;
+    height: 6px;
+    background: $gradient-green-100;
+    z-index: 2;
+  }
 }
 
 .thumb {
@@ -61,42 +33,48 @@
   height: 0;
   width: 100%;
   outline: none;
-}
 
-.thumb--zindex-3 {
-  z-index: 3;
-}
+  -webkit-tap-highlight-color: transparent;
 
-.thumb--zindex-4 {
-  z-index: 4;
-}
+  &_z-index-3 {
+    z-index: 3;
+  }
 
-.thumb--zindex-5 {
-  z-index: 5;
-}
+  &_z-index-4 {
+    z-index: 4;
+  }
 
-.thumb::-webkit-slider-thumb {
-  background: $gradient-green-100;
-  border: none;
-  border-radius: 50%;
-  box-shadow: 0 0 0 2px $white;
-  cursor: pointer;
-  height: 18px;
-  width: 18px;
-  margin-top: 4px;
-  pointer-events: all;
-  position: relative;
-}
+  &_z-index-5 {
+    z-index: 5;
+  }
 
-.thumb::-moz-range-thumb {
-  background: $gradient-green-100;
-  border: none;
-  border-radius: 50%;
-  box-shadow: 0 0 0 2px $white;
-  cursor: pointer;
-  height: 18px;
-  width: 18px;
-  margin-top: 4px;
-  pointer-events: all;
-  position: relative;
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  }
+
+  &::-webkit-slider-thumb {
+    background: $gradient-green-100;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px $white;
+    cursor: pointer;
+    height: 18px;
+    width: 18px;
+    margin-top: 4px;
+    pointer-events: all;
+    position: relative;
+  }
+
+  &::-moz-range-thumb {
+    background: $gradient-green-100;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px $white;
+    cursor: pointer;
+    height: 18px;
+    width: 18px;
+    margin-top: 4px;
+    pointer-events: all;
+    position: relative;
+  }
 }
