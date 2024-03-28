@@ -7,9 +7,7 @@ const Home = () => {
     <MultiRangeSlider
       min={0}
       max={100}
-      onChange={({ min, max }: { min: number; max: number }) =>
-        console.log(`min = ${min}, max = ${max}`)
-      }
+      onChange={({ min, max }: { min: number; max: number }) => min + max}
     />
   );
 };
