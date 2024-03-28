@@ -28,6 +28,7 @@ interface Props {
     | 'decimal';
   readOnly?: boolean;
   squareBottom?: boolean;
+  active?: boolean;
   onClick?(): void;
 }
 
@@ -46,6 +47,7 @@ const ButtonInput: FC<Props> = ({
   defaultValue,
   readOnly,
   squareBottom,
+  active,
 }) => {
   const inputOnClick = readOnly ? onClick : undefined;
   return (
@@ -63,6 +65,7 @@ const ButtonInput: FC<Props> = ({
         inputMode={inputMode}
         defaultValue={defaultValue}
         squareBottom={squareBottom}
+        active={active}
       />
       <button
         className={style['button-input_button']}

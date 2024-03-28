@@ -13,9 +13,10 @@ const ReactInputDateMask = dynamic(() => import('react-input-date-mask'), {
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   type: 'text' | 'email' | 'password' | 'date';
   squareBottom?: boolean;
+  active?: boolean;
 }
 
-const Input: FC<Props> = ({ type, squareBottom, ...standardProps }) => {
+const Input: FC<Props> = ({ type, squareBottom, active, ...standardProps }) => {
   const typeValue = type === 'date' ? 'text' : type;
 
   if (type === 'date' && !standardProps.readOnly) {
@@ -24,6 +25,7 @@ const Input: FC<Props> = ({ type, squareBottom, ...standardProps }) => {
         mask="dd.mm.yyyy"
         className={clsx(style.input, {
           [style['input_square-bottom']]: squareBottom,
+          [style.input_active]: active,
         })}
         id={standardProps.id}
         defaultValue={standardProps.defaultValue}
@@ -38,6 +40,7 @@ const Input: FC<Props> = ({ type, squareBottom, ...standardProps }) => {
     <input
       className={clsx(style.input, {
         [style['input_square-bottom']]: squareBottom,
+        [style.input_active]: active,
       })}
       type={typeValue}
       name={standardProps.name}

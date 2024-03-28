@@ -12,7 +12,7 @@ const Home = () => {
       <div>
         <Input type="email" placeholder="Email" />
         <Input type="text" placeholder="Текст" value="This is pretty awesome" />
-        <Input type="password" placeholder="Пароль" />
+        <Input type="password" placeholder="Пароль" active />
         <Input
           type="text"
           placeholder="Текст"
@@ -21,6 +21,7 @@ const Home = () => {
         />
         <SubscriptionInput />
         <DropdownInput type="date" />
+        <DropdownInput type="date" active />
         <DropdownInput
           type="date"
           value="31.03.2024"
