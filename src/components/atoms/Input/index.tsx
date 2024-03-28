@@ -1,10 +1,14 @@
 'use client';
 
 import React, { FC, InputHTMLAttributes } from 'react';
-import ReactInputDateMask from 'react-input-date-mask';
+import dynamic from 'next/dynamic';
 import clsx from 'clsx';
 
 import style from './style.module.scss';
+
+const ReactInputDateMask = dynamic(() => import('react-input-date-mask'), {
+  ssr: false,
+});
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   type: 'text' | 'email' | 'password' | 'date';
