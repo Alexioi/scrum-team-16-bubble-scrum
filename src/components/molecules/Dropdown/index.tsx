@@ -3,7 +3,9 @@
 import { useState, FC } from 'react';
 import clsx from 'clsx';
 
+import { DropdownInput } from '../../organisms';
 import { Counter, Button } from '../../atoms';
+import { calculateValue } from './helpers';
 import style from './style.module.scss';
 
 type Props = {
@@ -11,23 +13,31 @@ type Props = {
   items: {
     name: string;
     counter: number;
-    variants: string[];
   }[];
   groups: number[][];
+  placeholder: string;
+  variants: string[][];
 };
 
-const Dropdown: FC<Props> = ({ hasButtons, items, groups }) => {
+const Dropdown: FC<Props> = ({
+  hasButtons,
+  items,
+  groups,
+  placeholder,
+  variants,
+}) => {
   const [isOpened, setIsOpened] = useState(false);
   const [values, setValues] = useState(items);
   const [result, setResult] = useState(
-    items
-      .map((el) => {
+    calculateValue(
+      groups,
+      values.map((el) => {
         return el.counter;
-      })
-      .join(', '),
+      }),
+      variants,
+      placeholder,
+    ),
   );
-
-  console.log(groups);
 
   const dropdownClasses = clsx(style.dropdown, {
     [style.dropdown_opened]: isOpened,
@@ -35,16 +45,26 @@ const Dropdown: FC<Props> = ({ hasButtons, items, groups }) => {
 
   const makeChangeValue = (i: number) => {
     return (number: -1 | 1) => {
-      setValues(
-        values.map((el, index) => {
-          if (index === i) {
-            const counter = el.counter + number;
+      const newValues = values.map((el, index) => {
+        if (index === i) {
+          const counter = el.counter + number;
 
-            return { ...el, counter };
-          }
+          return { ...el, counter };
+        }
 
-          return el;
-        }),
+        return el;
+      });
+
+      setValues(newValues);
+      setResult(
+        calculateValue(
+          groups,
+          newValues.map((el) => {
+            return el.counter;
+          }),
+          variants,
+          placeholder,
+        ),
       );
     };
   };
@@ -59,26 +79,33 @@ const Dropdown: FC<Props> = ({ hasButtons, items, groups }) => {
         return { ...el, counter: 0 };
       }),
     );
-    setResult('');
+    setResult(placeholder);
   };
 
   const handleApplyButtonClick = () => {
     setIsOpened(false);
     setResult(
-      values
-        .map((el) => {
+      calculateValue(
+        groups,
+        values.map((el) => {
           return el.counter;
-        })
-        .join(', '),
+        }),
+        variants,
+        placeholder,
+      ),
     );
   };
 
   return (
     <div className={dropdownClasses}>
-      <div>
-        <input type="text" defaultValue={result} placeholder="test" />
-        <button onClick={handleOpeningMenuClick}>+</button>
-      </div>
+      <DropdownInput
+        type="text"
+        onClick={handleOpeningMenuClick}
+        defaultValue={result}
+        readOnly
+        expanded={isOpened}
+        squareBottom={isOpened}
+      />
       <div className={style.menu}>
         <ul className={style.list}>
           {values.map((el, i) => {
@@ -95,13 +122,17 @@ const Dropdown: FC<Props> = ({ hasButtons, items, groups }) => {
         {hasButtons && (
           <div className={style.buttons}>
             <div className={style['clear-button']}>
-              <Button
-                text="очистить"
-                size="default"
-                theme="link"
-                type="button"
-                onClick={handleClearButtonClick}
-              />
+              {values.reduce((acc, el) => {
+                return acc + el.counter;
+              }, 0) > 0 && (
+                <Button
+                  text="очистить"
+                  size="default"
+                  theme="link"
+                  type="button"
+                  onClick={handleClearButtonClick}
+                />
+              )}
             </div>
             <div className={style['apply-button']}>
               <Button
