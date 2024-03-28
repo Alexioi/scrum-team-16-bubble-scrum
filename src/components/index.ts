@@ -7,7 +7,7 @@ import {
   Input,
 } from './atoms';
 import { HelloToxin, ButtonInput } from './molecules';
-import { Header, SubscriptionInput, DropdownInput } from './organisms';
+import { Header, SubscriptionInput, DropdownInput, Hotel } from './organisms';
 
 export {
   StoreProvider,
@@ -22,3 +22,4 @@ export {
   SubscriptionInput,
   DropdownInput,
 };
+export type { Hotel };

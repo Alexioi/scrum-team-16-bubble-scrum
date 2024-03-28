@@ -3,7 +3,7 @@ import { Rating } from './Rating';
 import { Swiper } from './Swiper';
 import { Gradient } from './Gradient';
 import { Logo } from './Logo';
-import { NavigationLink } from './NavigationLink';
+import { NavigationLink, List } from './NavigationLink';
 import { Typography } from './Typography';
 import { Button, ButtonLink } from './Button';
 import { Input } from './Input';
@@ -20,3 +20,4 @@ export {
   ButtonLink,
   Input,
 };
+export type { List };
