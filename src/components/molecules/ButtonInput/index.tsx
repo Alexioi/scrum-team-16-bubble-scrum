@@ -49,7 +49,7 @@ const ButtonInput: FC<Props> = ({
 }) => {
   const inputOnClick = readOnly ? onClick : undefined;
   return (
-    <div className={style.buttonInput}>
+    <div className={style['button-input']}>
       <Input
         type={type}
         name={name}
@@ -65,7 +65,7 @@ const ButtonInput: FC<Props> = ({
         squareBottom={squareBottom}
       />
       <button
-        className={style.buttonInput__button}
+        className={style['button-input_button']}
         type={submit ? 'submit' : 'button'}
         onClick={onClick}
       >

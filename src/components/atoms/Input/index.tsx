@@ -19,7 +19,7 @@ const Input: FC<Props> = ({ type, squareBottom, ...standardProps }) => {
       <ReactInputDateMask
         mask="dd.mm.yyyy"
         className={clsx(style.input, {
-          [style.input_squareBottom]: squareBottom,
+          [style['input_square-bottom']]: squareBottom,
         })}
         id={standardProps.id}
         defaultValue={standardProps.defaultValue}
@@ -33,7 +33,7 @@ const Input: FC<Props> = ({ type, squareBottom, ...standardProps }) => {
   return (
     <input
       className={clsx(style.input, {
-        [style.input_squareBottom]: squareBottom,
+        [style['input_square-bottom']]: squareBottom,
       })}
       type={typeValue}
       name={standardProps.name}

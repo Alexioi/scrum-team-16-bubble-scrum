@@ -26,6 +26,7 @@ const Home = () => {
           value="31.03.2024"
           placeholder="ДД.ММ.ГГГГ"
           readOnly
+          squareBottom
         />
       </div>
     </>
