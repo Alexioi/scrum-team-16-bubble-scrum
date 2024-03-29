@@ -7,6 +7,7 @@ import { NavigationLink, List } from './NavigationLink';
 import { Typography } from './Typography';
 import { Button, ButtonLink } from './Button';
 import { Input } from './Input';
+import { ExpandMoreIcon } from './ExpandMoreIcon';
 
 export {
   Rating,
@@ -19,5 +20,6 @@ export {
   Button,
   ButtonLink,
   Input,
+  ExpandMoreIcon,
 };
 export type { List };

@@ -1,12 +1,9 @@
 'use client';
 
 import React, { FC } from 'react';
-import { clsx } from 'clsx';
 
 import { ButtonInput } from '@/components/molecules';
-import ExpandMoreSVG from '@/images/decorative/expand-more.svg';
-
-import style from './style.module.scss';
+import { ExpandMoreIcon } from '@/components/atoms';
 
 type Props = {
   type: 'text' | 'date';
@@ -31,17 +28,7 @@ const DropdownInput: FC<Props> = ({
 }) => {
   return (
     <ButtonInput
-      icon={
-        <svg
-          width={12}
-          height={8}
-          className={clsx(style.icon, {
-            [style.icon_flipped]: expanded,
-          })}
-        >
-          <ExpandMoreSVG />
-        </svg>
-      }
+      icon={<ExpandMoreIcon flipped={expanded} />}
       type={type}
       value={value}
       defaultValue={defaultValue}
