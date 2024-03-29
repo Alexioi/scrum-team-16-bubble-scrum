@@ -6,6 +6,7 @@ import { Logo } from './Logo';
 import { NavigationLink } from './NavigationLink';
 import { Typography } from './Typography';
 import { Button, ButtonLink } from './Button';
+import { AutoSlider } from './AutoSlider';
 
 export {
   Rating,
@@ -17,4 +18,5 @@ export {
   Typography,
   Button,
   ButtonLink,
+  AutoSlider,
 };
