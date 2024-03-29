@@ -34,7 +34,6 @@ const DropdownInput: FC<Props> = ({
       defaultValue={defaultValue}
       onClick={onClick}
       placeholder={placeholder}
-      submit
       readOnly={readOnly}
       squareBottom={squareBottom}
       active={expanded}
