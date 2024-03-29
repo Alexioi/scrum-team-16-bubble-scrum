@@ -7,7 +7,6 @@ import { ExpandMoreIcon } from '@/components/atoms';
 
 type Props = {
   type: 'text' | 'date';
-  value?: string;
   defaultValue?: string | number | readonly string[];
   placeholder?: string;
   expanded?: boolean;
@@ -18,7 +17,6 @@ type Props = {
 
 const DropdownInput: FC<Props> = ({
   type,
-  value,
   defaultValue,
   placeholder,
   onClick,
@@ -30,7 +28,6 @@ const DropdownInput: FC<Props> = ({
     <ButtonInput
       icon={<ExpandMoreIcon flipped={expanded} />}
       type={type}
-      value={value}
       defaultValue={defaultValue}
       onClick={onClick}
       placeholder={placeholder}

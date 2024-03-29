@@ -12,7 +12,6 @@ interface Props {
   submit?: boolean;
   name?: string;
   id?: string;
-  value?: string;
   min?: number;
   max?: number;
   placeholder?: string;
@@ -39,7 +38,6 @@ const ButtonInput: FC<Props> = ({
   type,
   name,
   id,
-  value,
   min,
   max,
   placeholder,
@@ -56,7 +54,6 @@ const ButtonInput: FC<Props> = ({
         type={type}
         name={name}
         id={id}
-        value={value}
         min={min}
         max={max}
         placeholder={placeholder}
