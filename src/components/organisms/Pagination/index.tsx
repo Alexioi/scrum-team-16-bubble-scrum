@@ -1,9 +1,11 @@
 'use client';
 
-import { nanoid } from 'nanoid';
 import { FC, useState } from 'react';
-import ArrowBackwardWhite from '@/images/decorative/arrow-backward-white.svg';
-import ArrowForwardWhite from '@/images/decorative/arrow-forward-white.svg';
+import { nanoid } from 'nanoid';
+
+import ArrowBackwardWhiteSVG from '@/images/decorative/arrow-backward-white.svg';
+import ArrowForwardWhiteSVG from '@/images/decorative/arrow-forward-white.svg';
+
 import style from './style.module.scss';
 
 type Props = {
@@ -11,7 +13,7 @@ type Props = {
   totalPagesCount: number;
 };
 
-const Pagination: FC<Props> = ({ pagesCount, totalPagesCount }: Props) => {
+const Pagination: FC<Props> = ({ pagesCount, totalPagesCount }) => {
   const paginationLabelPagesCount =
     totalPagesCount <= 100 ? totalPagesCount : '100+';
 
@@ -28,7 +30,7 @@ const Pagination: FC<Props> = ({ pagesCount, totalPagesCount }: Props) => {
               type="button"
             >
               <svg className={style.arrow}>
-                <ArrowBackwardWhite />
+                <ArrowBackwardWhiteSVG />
               </svg>
             </button>
           </li>
@@ -133,7 +135,7 @@ const Pagination: FC<Props> = ({ pagesCount, totalPagesCount }: Props) => {
               type="button"
             >
               <svg className={style.arrow}>
-                <ArrowForwardWhite />
+                <ArrowForwardWhiteSVG />
               </svg>
             </button>
           </li>
