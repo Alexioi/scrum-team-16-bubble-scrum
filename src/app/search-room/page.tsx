@@ -1,7 +1,11 @@
-import { Filter } from '@/components';
+import { Filter, Container } from '@/components';
 
 const SearchRoom = () => {
-  return <Filter />;
+  return (
+    <Container>
+      <Filter />
+    </Container>
+  );
 };
 
 export default SearchRoom;

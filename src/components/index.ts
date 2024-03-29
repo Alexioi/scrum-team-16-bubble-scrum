@@ -5,6 +5,7 @@ import {
   Logo,
   ButtonLink,
   Input,
+  Container,
 } from './atoms';
 import {
   HelloToxin,
@@ -42,4 +43,5 @@ export {
   Checkbox,
   ExpandableCheckboxList,
   Dropdown,
+  Container,
 };

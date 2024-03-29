@@ -9,6 +9,7 @@ import { Button, ButtonLink } from './Button';
 import { Input } from './Input';
 import { ExpandMoreIcon } from './ExpandMoreIcon';
 import { Counter } from './Counter';
+import { Container } from './ Container';
 
 export {
   Rating,
@@ -23,5 +24,6 @@ export {
   Input,
   ExpandMoreIcon,
   Counter,
+  Container,
 };
 export type { List };
