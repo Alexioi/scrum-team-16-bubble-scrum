@@ -1,8 +1,11 @@
 'use client';
 
 import { FC, useState } from 'react';
+
+import { Checkbox } from '@/components/molecules';
+
 import ExpandMore from '@/images/decorative/expand-more.svg';
-import { Checkbox } from '../Checkbox';
+
 import style from './style.module.scss';
 
 type CheckboxItem = {
@@ -17,10 +20,7 @@ type Props = {
   checkboxItems: CheckboxItem[];
 };
 
-const ExpandableCheckboxList: FC<Props> = ({
-  listTitle,
-  checkboxItems,
-}: Props) => {
+const ExpandableCheckboxList: FC<Props> = ({ listTitle, checkboxItems }) => {
   const [listOpened, setListOpened] = useState(false);
 
   return (
