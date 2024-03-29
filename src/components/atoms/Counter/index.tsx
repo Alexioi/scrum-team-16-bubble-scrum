@@ -26,6 +26,7 @@ const Counter: FC<Props> = ({ name, value, changeValue }) => {
         disabled={value === 0}
         className={style['counter-button']}
         onClick={handleDecrementButtonClick}
+        type="button"
       >
         -
       </button>
@@ -33,6 +34,7 @@ const Counter: FC<Props> = ({ name, value, changeValue }) => {
       <button
         className={style['counter-button']}
         onClick={handleIncrementButtonClick}
+        type="button"
       >
         +
       </button>
