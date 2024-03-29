@@ -1,10 +1,5 @@
 @import '@/style/variables.scss';
 
-.hero {
-  position: relative;
-  height: 830px;
-}
-
 .slider {
   position: absolute;
   width: 100%;
@@ -33,25 +28,6 @@
   &:nth-child(3) {
     animation-delay: 28s;
   }
-}
-
-.desc {
-  position: absolute;
-  bottom: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  max-width: 1188px;
-  width: 100%;
-  padding: 0 14px;
-}
-
-.text {
-  max-width: 297px;
-  line-height: 24px;
-  color: $dark-shade-75;
-  text-align: right;
-  margin-left: auto;
 }
 
 @keyframes nextSlideAnimation {
