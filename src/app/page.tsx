@@ -11,20 +11,19 @@ const Home = () => {
       <HelloToxin />
       <div>
         <Input type="email" placeholder="Email" />
-        <Input type="text" placeholder="Текст" value="This is pretty awesome" />
-        <Input type="password" placeholder="Пароль" active />
         <Input
           type="text"
           placeholder="Текст"
-          value="This is pretty readonly"
-          readOnly
+          defaultValue="This is pretty awesome"
         />
+        <Input type="password" placeholder="Пароль" active />
+        <Input type="text" defaultValue="This is pretty readonly" readOnly />
         <SubscriptionInput />
-        <DropdownInput type="date" />
-        <DropdownInput type="date" expanded />
+        <DropdownInput type="text" />
+        <DropdownInput type="text" expanded />
         <DropdownInput
-          type="date"
-          value="31.03.2024"
+          type="text"
+          defaultValue="31.03.2024"
           placeholder="ДД.ММ.ГГГГ"
           readOnly
           squareBottom
