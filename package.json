@@ -20,7 +20,6 @@
     "react": "^18",
     "react-calendar": "^4.8.0",
     "react-dom": "^18",
-    "react-input-date-mask": "github:winerar/react-input-date-mask",
     "react-redux": "^9.1.0"
   },
   "devDependencies": {
