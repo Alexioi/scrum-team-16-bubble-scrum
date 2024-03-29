@@ -6,7 +6,13 @@ import clsx from 'clsx';
 import { Button, Typography } from '../../atoms';
 import { ExpandableCheckboxList, Dropdown } from '../../molecules';
 import { Calendar } from '..';
-import { checkboxItems, guestData, guestVariants } from './data';
+import {
+  checkboxItems,
+  guestData,
+  guestVariants,
+  roomData,
+  roomVariants,
+} from './data';
 import style from './style.module.scss';
 
 const Filter = () => {
@@ -25,7 +31,7 @@ const Filter = () => {
           <Typography tag="h3">гости</Typography>
           <Dropdown
             hasButtons
-            placeholder="сколько гостей"
+            placeholder="Сколько гостей"
             variants={guestVariants}
             items={guestData}
             groups={[[0, 1], [2]]}
@@ -37,11 +43,24 @@ const Filter = () => {
             Стоимость за сутки пребывания в номере
           </p>
         </div>
-        <div className={style['rules-title']}>heading</div>
+        <div className={style['rules-title']}>
+          <Typography tag="h3">правила дома</Typography>
+        </div>
         <div className={style.rules}>checkbox-list</div>
-        <div className={style['availability-title']}>heading</div>
+        <div className={style['availability-title']}>
+          <Typography tag="h3">доступность</Typography>
+        </div>
         <div className={style.availability}>checkbox-list</div>
-        <div className={style['rooms-dropdown']}>dropdown</div>
+        <div className={style['rooms-dropdown']}>
+          <Typography tag="h3">удобства номера</Typography>
+          <Dropdown
+            hasButtons={false}
+            placeholder="Сколько комнат"
+            variants={roomVariants}
+            items={roomData}
+            groups={[[0], [1], [2]]}
+          />
+        </div>
         <div className={style['dropdown-list']}>
           <ExpandableCheckboxList
             listTitle="дополнительные удобства"

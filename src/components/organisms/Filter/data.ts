@@ -59,22 +59,23 @@ const guestVariants = [
 
 const roomData = [
   {
-    name: 'взрослые',
+    name: 'спальни',
     counter: 0,
   },
   {
-    name: 'дети',
+    name: 'кровати',
     counter: 0,
   },
   {
-    name: 'младенцы',
+    name: 'ванные комнаты',
     counter: 0,
   },
 ];
 
 const roomVariants = [
-  ['гость', 'гостя', 'гостей'],
-  ['младенец', 'младенца', 'младенцев'],
+  ['спальня', 'спальни', 'спален'],
+  ['кровать', 'кровати', 'кроватей'],
+  ['ванная комната', 'ванные комнаты', 'ванных комнат'],
 ];
 
 export { checkboxItems, roomData, roomVariants, guestData, guestVariants };
