@@ -11,6 +11,7 @@ import {
   ButtonInput,
   Checkbox,
   ExpandableCheckboxList,
+  Dropdown,
 } from './molecules';
 import {
   HotelList,
@@ -40,4 +41,5 @@ export {
   Filter,
   Checkbox,
   ExpandableCheckboxList,
+  Dropdown,
 };

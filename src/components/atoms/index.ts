@@ -8,6 +8,7 @@ import { Typography } from './Typography';
 import { Button, ButtonLink } from './Button';
 import { Input } from './Input';
 import { ExpandMoreIcon } from './ExpandMoreIcon';
+import { Counter } from './Counter';
 
 export {
   Rating,
@@ -21,5 +22,6 @@ export {
   ButtonLink,
   Input,
   ExpandMoreIcon,
+  Counter,
 };
 export type { List };
