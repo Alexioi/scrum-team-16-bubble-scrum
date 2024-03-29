@@ -1,3 +1,5 @@
+'use client';
+
 import { Filter, Container, Typography, HotelList } from '@/components';
 
 import style from './style.module.scss';
