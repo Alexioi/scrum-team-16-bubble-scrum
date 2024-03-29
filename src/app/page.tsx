@@ -1,7 +1,7 @@
-import { HotelList } from '@/components/organisms';
+import { Pagination } from '@/components';
 
 const Home = () => {
-  return <HotelList />;
+  return <Pagination pagesCount={15} totalPagesCount={99} />;
 };
 
 export default Home;

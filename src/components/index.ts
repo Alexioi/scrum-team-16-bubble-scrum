@@ -13,6 +13,7 @@ import {
   Checkbox,
   ExpandableCheckboxList,
   Dropdown,
+  Pagination,
 } from './molecules';
 import {
   HotelList,
@@ -46,4 +47,5 @@ export {
   Container,
   HotelList,
   Footer,
+  Pagination,
 };

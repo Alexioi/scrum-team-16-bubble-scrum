@@ -25,6 +25,7 @@
     "@typescript-eslint/indent": "off",
     "react/jsx-one-expression-per-line": "off",
     "import/no-cycle": "off",
-    "linebreak-style": "off"
+    "linebreak-style": "off",
+    "operator-linebreak": "off"
   }
 }
