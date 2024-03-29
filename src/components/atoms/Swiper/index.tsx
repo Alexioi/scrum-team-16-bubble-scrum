@@ -43,11 +43,15 @@ const Swiper: FC<Props> = ({ imageURLs }) => {
       />
 
       <button className={style.prev} onClick={handlePrevButtonClick}>
-        <LeftArrow />
+        <svg width={12} height={8}>
+          <LeftArrow />
+        </svg>
       </button>
 
       <button className={style.next} onClick={handleNextButtonClick}>
-        <LeftArrow />
+        <svg width={12} height={8}>
+          <LeftArrow />
+        </svg>
       </button>
 
       <div className={style.pagination}>

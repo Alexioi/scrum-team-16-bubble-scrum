@@ -13,6 +13,8 @@ import {
   Checkbox,
   ExpandableCheckboxList,
   Dropdown,
+  Pagination,
+  MultiRangeSlider,
 } from './molecules';
 import {
   HotelList,
@@ -48,4 +50,6 @@ export {
   HotelList,
   Footer,
   Hero,
+  Pagination,
+  MultiRangeSlider,
 };

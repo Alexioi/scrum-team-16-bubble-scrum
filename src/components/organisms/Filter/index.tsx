@@ -4,7 +4,11 @@ import { useState } from 'react';
 import clsx from 'clsx';
 
 import { Button, Typography } from '../../atoms';
-import { ExpandableCheckboxList, Dropdown } from '../../molecules';
+import {
+  ExpandableCheckboxList,
+  Dropdown,
+  MultiRangeSlider,
+} from '../../molecules';
 import { Calendar } from '..';
 import {
   checkboxItems,
@@ -38,7 +42,7 @@ const Filter = () => {
           />
         </div>
         <div className={style['range-slider']}>
-          rangeSlider
+          <MultiRangeSlider min={0} max={15000} onChange={() => {}} />
           <p className={style['range-text']}>
             Стоимость за сутки пребывания в номере
           </p>
