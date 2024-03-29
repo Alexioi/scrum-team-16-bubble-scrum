@@ -2,9 +2,9 @@
 
 import React, { FC, useId } from 'react';
 
+import { Gradient } from '@/components/atoms/Gradient';
 import { ButtonInput } from '@/components/molecules';
 import ArrowForwardSVG from '@/images/decorative/arrow.svg';
-import { Gradient } from '@/components/atoms/Gradient';
 
 type Props = {
   onClick?(): void;
