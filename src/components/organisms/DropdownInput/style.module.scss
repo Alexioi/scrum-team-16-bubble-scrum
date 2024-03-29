@@ -1,0 +1,9 @@
+@import '@/style/variables.scss';
+
+.icon {
+  fill: $dark-shade-50;
+
+  &_flipped {
+    transform: scaleY(-1);
+  }
+}

@@ -1,3 +1,4 @@
 import { HelloToxin } from './HelloToxin';
+import { ButtonInput } from './ButtonInput';
 
-export { HelloToxin };
+export { HelloToxin, ButtonInput };

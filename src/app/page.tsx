@@ -1,7 +1,9 @@
-import { HotelList } from '@/components/organisms';
+'use client';
+
+import { Calendar } from '@/components';
 
 const Home = () => {
-  return <HotelList />;
+  return <Calendar />;
 };
 
 export default Home;

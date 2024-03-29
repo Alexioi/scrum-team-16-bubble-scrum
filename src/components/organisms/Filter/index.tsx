@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import clsx from 'clsx';
 
-import { Button } from '../../atoms';
-
+import { Button, Typography } from '../../atoms';
+import { Calendar } from '..';
 import style from './style.module.scss';
 
 const Filter = () => {
@@ -17,8 +17,12 @@ const Filter = () => {
   return (
     <div className={clsx(style.filter, { [style.filter_opened]: isOpened })}>
       <form className={style.form}>
-        calendar
-        <div className={style['guests-dropdown']}>dropdown</div>
+        <Typography tag="h3">даты пребывания в отеле</Typography>
+        <Calendar isSingle />
+        <div className={style['guests-dropdown']}>
+          <Typography tag="h3">гости</Typography>
+          dropdown
+        </div>
         <div className={style['range-slider']}>
           rangeSlider
           <p className={style['range-text']}>
