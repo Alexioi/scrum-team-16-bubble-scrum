@@ -6,7 +6,12 @@ import {
   ButtonLink,
   Input,
 } from './atoms';
-import { HelloToxin, ButtonInput } from './molecules';
+import {
+  HelloToxin,
+  ButtonInput,
+  Checkbox,
+  ExpandableCheckboxList,
+} from './molecules';
 import {
   HotelList,
   Hotel,
@@ -33,4 +38,6 @@ export {
   Calendar,
   HotelList,
   Filter,
+  Checkbox,
+  ExpandableCheckboxList,
 };
