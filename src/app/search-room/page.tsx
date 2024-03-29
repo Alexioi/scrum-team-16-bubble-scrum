@@ -1,4 +1,4 @@
-import { Filter, Container, Typography } from '@/components';
+import { Filter, Container, Typography, HotelList } from '@/components';
 
 import style from './style.module.scss';
 
@@ -14,7 +14,9 @@ const SearchRoom = () => {
             <Typography tag="h2">
               Номера, которые мы для вас подобрали
             </Typography>
-            <div className={style['room-list-wrapper']}>room-list</div>
+            <div className={style['room-list-wrapper']}>
+              <HotelList />
+            </div>
             <div className={style.pagination}>pagination</div>
           </div>
         </div>
