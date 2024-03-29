@@ -18,10 +18,11 @@ import {
   HotelList,
   Hotel,
   Header,
-  SubscriptionInput,
-  DropdownInput,
   Calendar,
   Filter,
+  Footer,
+  SubscriptionInput,
+  DropdownInput,
 } from './organisms';
 
 export type { Hotel };
@@ -38,10 +39,11 @@ export {
   SubscriptionInput,
   DropdownInput,
   Calendar,
-  HotelList,
   Filter,
   Checkbox,
   ExpandableCheckboxList,
   Dropdown,
   Container,
+  HotelList,
+  Footer,
 };

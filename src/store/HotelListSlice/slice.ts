@@ -37,5 +37,7 @@ const HotelListSlice = createSlice({
   },
 });
 
-export const HotelListSliceActions = HotelListSlice.actions;
-export const HotelListSliceReducer = HotelListSlice.reducer;
+const HotelListSliceActions = HotelListSlice.actions;
+const HotelListSliceReducer = HotelListSlice.reducer;
+
+export { HotelListSliceActions, HotelListSliceReducer };
