@@ -35,6 +35,8 @@
   outline: none;
 
   -webkit-tap-highlight-color: transparent;
+  
+  appearance: none;
 
   &_z-index-3 {
     z-index: 3;
@@ -49,10 +51,7 @@
   }
 
   &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-  }
-
-  &::-webkit-slider-thumb {
+    appearance: none;
     background: $gradient-green-100;
     border: none;
     border-radius: 50%;
