@@ -6,6 +6,7 @@ import { Hotel } from './HotelCard';
 import { Header } from './Header';
 import { Calendar } from './Calendar';
 import { Filter } from './Filter';
+import { Hero } from './Hero';
 
 export {
   HotelList,
@@ -15,5 +16,6 @@ export {
   Calendar,
   Filter,
   Footer,
+  Hero,
 };
 export type { Hotel };

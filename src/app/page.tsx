@@ -1,7 +1,7 @@
-import { HotelList } from '@/components/organisms';
+import { Hero } from '@/components';
 
 const Home = () => {
-  return <HotelList />;
+  return <Hero />;
 };
 
 export default Home;

@@ -23,6 +23,7 @@ import {
   Footer,
   SubscriptionInput,
   DropdownInput,
+  Hero,
 } from './organisms';
 
 export type { Hotel };
@@ -46,4 +47,5 @@ export {
   Container,
   HotelList,
   Footer,
+  Hero,
 };
