@@ -7,6 +7,7 @@ import { Swiper } from './Swiper';
 import { Logo } from './Logo';
 import { Typography } from './Typography';
 import { Input } from './Input';
+import { ExpandMoreIcon } from './ExpandMoreIcon';
 
 export {
   StoreProvider,
@@ -19,5 +20,6 @@ export {
   Typography,
   Input,
   Gradient,
+  ExpandMoreIcon,
 };
 export type { List };

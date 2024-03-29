@@ -1,7 +1,8 @@
+import { ReactNode } from 'react';
+
 import FacebookSVG from '@/images/decorative/facebook.svg';
 import TwitterSVG from '@/images/decorative/twitter.svg';
 import InstagramSVG from '@/images/decorative/instagram.svg';
-import { ReactNode } from 'react';
 
 type LinksData = {
   title: string;

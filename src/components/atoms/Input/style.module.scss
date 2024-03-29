@@ -34,7 +34,8 @@
   }
 
   &:focus,
-  &:hover {
+  &:hover,
+  &_active {
     outline: none;
 
     border-color: $dark-shade-75;
