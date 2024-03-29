@@ -4,8 +4,7 @@ import Link from 'next/link';
 import { useState, FC } from 'react';
 import clsx from 'clsx';
 
-import ExpandMoreSVG from '@/images/decorative/expand-more.svg';
-
+import { ExpandMoreIcon } from '../ExpandMoreIcon';
 import style from './style.module.scss';
 
 type List = { text: string; link: string }[];
@@ -33,7 +32,7 @@ const NavigationLink: FC<Props> = ({ text, link, list }) => {
             onClick={handleNavigationButtonClick}
           >
             <span className={style['button-content']}>{text}</span>
-            <ExpandMoreSVG />
+            <ExpandMoreIcon flipped={isOpened} />
           </button>
           <ul
             className={clsx(style['sub-navigation-list'], {
