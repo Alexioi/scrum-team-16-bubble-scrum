@@ -1,8 +1,19 @@
-import FacebookIcon from '@/images/decorative/facebook.svg';
-import TwitterIcon from '@/images/decorative/twitter.svg';
-import InstagramIcon from '@/images/decorative/instagram.svg';
+import FacebookSVG from '@/images/decorative/facebook.svg';
+import TwitterSVG from '@/images/decorative/twitter.svg';
+import InstagramSVG from '@/images/decorative/instagram.svg';
+import { ReactNode } from 'react';
 
-const linksData = [
+type LinksData = {
+  title: string;
+  links: { name: string; href: string }[];
+};
+
+type SocialData = {
+  icon: ReactNode;
+  href: string;
+};
+
+const linksData: LinksData[] = [
   {
     title: 'навигация',
     links: [
@@ -34,17 +45,17 @@ const linksData = [
   },
 ];
 
-const socialData = [
+const socialData: SocialData[] = [
   {
-    icon: <TwitterIcon />,
+    icon: <TwitterSVG />,
     href: 'https://twitter.com/',
   },
   {
-    icon: <FacebookIcon />,
+    icon: <FacebookSVG />,
     href: 'https://www.facebook.com/',
   },
   {
-    icon: <InstagramIcon />,
+    icon: <InstagramSVG />,
     href: 'https://www.instagram.com/',
   },
 ];
