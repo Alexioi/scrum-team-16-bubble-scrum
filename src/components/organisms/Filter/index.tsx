@@ -4,9 +4,9 @@ import { useState } from 'react';
 import clsx from 'clsx';
 
 import { Button, Typography } from '../../atoms';
-import { ExpandableCheckboxList } from '../../molecules';
+import { ExpandableCheckboxList, Dropdown } from '../../molecules';
 import { Calendar } from '..';
-import { checkboxItems } from './data';
+import { checkboxItems, guestData, guestVariants } from './data';
 import style from './style.module.scss';
 
 const Filter = () => {
@@ -23,7 +23,13 @@ const Filter = () => {
         <Calendar isSingle />
         <div className={style['guests-dropdown']}>
           <Typography tag="h3">гости</Typography>
-          dropdown
+          <Dropdown
+            hasButtons
+            placeholder="сколько гостей"
+            variants={guestVariants}
+            items={guestData}
+            groups={[[0, 1], [2]]}
+          />
         </div>
         <div className={style['range-slider']}>
           rangeSlider

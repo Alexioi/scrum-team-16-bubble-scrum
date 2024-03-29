@@ -37,4 +37,44 @@ const checkboxItems = [
   },
 ];
 
-export { checkboxItems };
+const guestData = [
+  {
+    name: 'взрослые',
+    counter: 0,
+  },
+  {
+    name: 'дети',
+    counter: 0,
+  },
+  {
+    name: 'младенцы',
+    counter: 0,
+  },
+];
+
+const guestVariants = [
+  ['гость', 'гостя', 'гостей'],
+  ['младенец', 'младенца', 'младенцев'],
+];
+
+const roomData = [
+  {
+    name: 'взрослые',
+    counter: 0,
+  },
+  {
+    name: 'дети',
+    counter: 0,
+  },
+  {
+    name: 'младенцы',
+    counter: 0,
+  },
+];
+
+const roomVariants = [
+  ['гость', 'гостя', 'гостей'],
+  ['младенец', 'младенца', 'младенцев'],
+];
+
+export { checkboxItems, roomData, roomVariants, guestData, guestVariants };
