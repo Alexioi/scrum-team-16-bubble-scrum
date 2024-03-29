@@ -28,6 +28,7 @@ const ExpandableCheckboxList: FC<Props> = ({
       <button
         onClick={() => setListOpened((prevState) => !prevState)}
         className={style.button}
+        type="button"
       >
         <span className={style.title}>{listTitle}</span>
         <svg className={`${style.icon} ${listOpened && style.icon_rotated}`}>
