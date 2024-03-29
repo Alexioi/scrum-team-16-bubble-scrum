@@ -1,7 +1,12 @@
-import { Pagination } from '@/components';
+import { Hero, Pagination } from '@/components';
 
 const Home = () => {
-  return <Pagination pagesCount={15} totalPagesCount={99} />;
-};
+  return (
+    <>
+      <Hero />
+      <Pagination pagesCount={15} totalPagesCount={99} />
+    </>
+  );
+}
 
 export default Home;
