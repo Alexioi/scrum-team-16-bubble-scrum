@@ -19,12 +19,6 @@ const AutoSlider: FC<Props> = ({ imagesURLs }) => {
           alt="Номер отеля"
         />
       ))}
-
-      <div className={style.desc}>
-        <div className={style.text}>
-          Лучшие номера для вашей работы, отдыха и просто вдохновения
-        </div>
-      </div>
     </div>
   );
 };
