@@ -6,13 +6,12 @@ import { Input } from '@/components/atoms';
 
 import style from './style.module.scss';
 
-interface Props {
+type Props = {
   type: 'text' | 'email' | 'password' | 'date';
   icon: ReactNode;
   submit?: boolean;
   name?: string;
   id?: string;
-  value?: string;
   min?: number;
   max?: number;
   placeholder?: string;
@@ -30,7 +29,7 @@ interface Props {
   squareBottom?: boolean;
   active?: boolean;
   onClick?(): void;
-}
+};
 
 const ButtonInput: FC<Props> = ({
   icon,
@@ -39,7 +38,6 @@ const ButtonInput: FC<Props> = ({
   type,
   name,
   id,
-  value,
   min,
   max,
   placeholder,
@@ -56,7 +54,6 @@ const ButtonInput: FC<Props> = ({
         type={type}
         name={name}
         id={id}
-        value={value}
         min={min}
         max={max}
         placeholder={placeholder}

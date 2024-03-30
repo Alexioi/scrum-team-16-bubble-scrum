@@ -6,13 +6,15 @@ import {
   ButtonLink,
   Input,
 } from './atoms';
-import { HelloToxin, ButtonInput } from './molecules';
+import { HelloToxin, ButtonInput, Hero } from './molecules';
 import {
+  HotelList,
+  Hotel,
   Header,
+  Footer,
   SubscriptionInput,
   DropdownInput,
   Calendar,
-  Hotel,
 } from './organisms';
 
 export type { Hotel };
@@ -22,6 +24,7 @@ export {
   Typography,
   Button,
   Header,
+  Footer,
   Logo,
   ButtonLink,
   Input,
@@ -29,4 +32,6 @@ export {
   SubscriptionInput,
   DropdownInput,
   Calendar,
+  HotelList,
+  Hero,
 };
