@@ -96,7 +96,6 @@ const Calendar: FC<Props> = ({ isSingle = false }) => {
           />
         )}
       </div>
-
       <div
         ref={calendarRef}
         className={clsx(style['calendar-menu'], {

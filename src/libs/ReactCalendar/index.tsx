@@ -2,6 +2,7 @@
 
 import { FC, Dispatch, SetStateAction } from 'react';
 import Calendar from 'react-calendar';
+
 import ArrowSVG from '@/images/decorative/arrow.svg';
 
 import './style.scss';
