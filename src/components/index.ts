@@ -6,8 +6,15 @@ import {
   ButtonLink,
   Input,
 } from './atoms';
-import { HelloToxin, ButtonInput, Dropdown } from './molecules';
-import { Header, SubscriptionInput, DropdownInput, Hotel } from './organisms';
+import { HelloToxin, ButtonInput, Hero, Dropdown } from './molecules';
+import {
+  HotelList,
+  Hotel,
+  Header,
+  Footer,
+  SubscriptionInput,
+  DropdownInput,
+} from './organisms';
 
 export {
   StoreProvider,
@@ -15,12 +22,15 @@ export {
   Typography,
   Button,
   Header,
+  Footer,
   Logo,
   ButtonLink,
   Input,
   ButtonInput,
   SubscriptionInput,
   DropdownInput,
+  HotelList,
+  Hero,
   Dropdown,
 };
 export type { Hotel };
