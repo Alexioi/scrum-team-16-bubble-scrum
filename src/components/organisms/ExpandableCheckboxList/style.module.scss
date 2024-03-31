@@ -23,15 +23,9 @@
   cursor: pointer;
 }
 
-.title {
-  color: #1F2041;
-  font-family: 'Montserrat', Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
 .icon {
+  fill: $dark-shade-50;
+
   width: 12px;
   height: 8px;
 
@@ -41,8 +35,6 @@
     transform: rotate(180deg);
     transition: transform 0.2s ease;
   }
-
-  color: $dark-shade-50;
 }
 
 .list {
