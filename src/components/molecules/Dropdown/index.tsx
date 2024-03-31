@@ -4,7 +4,7 @@ import { useState, FC } from 'react';
 import clsx from 'clsx';
 
 import { DropdownInput } from '../../organisms';
-import { Counter, Button } from '../../atoms';
+import { Counter, Button, ClickAwayListener } from '../../atoms';
 import { calculateValue } from './helpers';
 import style from './style.module.scss';
 
@@ -102,56 +102,62 @@ const Dropdown: FC<Props> = ({
   };
 
   return (
-    <div className={dropdownClasses}>
-      <DropdownInput
-        type="text"
-        onClick={handleOpeningMenuClick}
-        defaultValue={result}
-        readOnly
-        expanded={isOpened}
-        squareBottom={isOpened}
-      />
-      <div className={style.menu}>
-        <ul className={style.list}>
-          {values.map((el, i) => {
-            return (
-              <Counter
-                key={el.name}
-                name={el.name}
-                value={el.counter}
-                changeValue={makeChangeValue(i)}
-              />
-            );
-          })}
-        </ul>
-        {hasButtons && (
-          <div className={style.buttons}>
-            <div className={style['clear-button']}>
-              {values.reduce((acc, el) => {
-                return acc + el.counter;
-              }, 0) > 0 && (
+    <ClickAwayListener
+      close={() => {
+        setIsOpened(false);
+      }}
+    >
+      <div className={dropdownClasses}>
+        <DropdownInput
+          type="text"
+          onClick={handleOpeningMenuClick}
+          defaultValue={result}
+          readOnly
+          expanded={isOpened}
+          squareBottom={isOpened}
+        />
+        <div className={style.menu}>
+          <ul className={style.list}>
+            {values.map((el, i) => {
+              return (
+                <Counter
+                  key={el.name}
+                  name={el.name}
+                  value={el.counter}
+                  changeValue={makeChangeValue(i)}
+                />
+              );
+            })}
+          </ul>
+          {hasButtons && (
+            <div className={style.buttons}>
+              <div className={style['clear-button']}>
+                {values.reduce((acc, el) => {
+                  return acc + el.counter;
+                }, 0) > 0 && (
+                  <Button
+                    text="очистить"
+                    size="default"
+                    theme="link"
+                    type="button"
+                    onClick={handleClearButtonClick}
+                  />
+                )}
+              </div>
+              <div className={style['apply-button']}>
                 <Button
-                  text="очистить"
+                  text="применить"
                   size="default"
                   theme="link"
                   type="button"
-                  onClick={handleClearButtonClick}
+                  onClick={handleApplyButtonClick}
                 />
-              )}
+              </div>
             </div>
-            <div className={style['apply-button']}>
-              <Button
-                text="применить"
-                size="default"
-                theme="link"
-                type="button"
-                onClick={handleApplyButtonClick}
-              />
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
+    </ClickAwayListener>
   );
 };
 

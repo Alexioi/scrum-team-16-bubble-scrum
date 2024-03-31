@@ -8,7 +8,7 @@ type Props = {
 };
 
 const ClickAwayListener: FC<Props> = ({ children, close }) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutsideCalendar = ({ target }: Event) => {
@@ -16,7 +16,11 @@ const ClickAwayListener: FC<Props> = ({ children, close }) => {
         return;
       }
 
-      if (target.contains(ref.current)) {
+      if (!(ref.current instanceof HTMLDivElement)) {
+        return;
+      }
+
+      if (!ref.current.contains(target)) {
         close();
       }
     };
