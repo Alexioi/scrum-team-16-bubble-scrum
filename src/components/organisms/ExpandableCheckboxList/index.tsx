@@ -9,7 +9,7 @@ import ExpandMore from '@/images/decorative/expand-more.svg';
 
 import style from './style.module.scss';
 
-type CheckboxItem = {
+type Item = {
   id: string;
   name: string;
   text: string;
@@ -19,14 +19,14 @@ type CheckboxItem = {
 
 type Props = {
   listTitle: string;
-  checkboxItems: CheckboxItem[];
+  items: Item[];
 };
 
-const ExpandableCheckboxList: FC<Props> = ({ listTitle, checkboxItems }) => {
+const ExpandableCheckboxList: FC<Props> = ({ listTitle, items }) => {
   const [listOpened, setListOpened] = useState(false);
 
   const checkboxElementsInitialState = new Map(
-    checkboxItems.map((item) => [item.name, item.checked]),
+    items.map((item) => [item.name, item.checked]),
   );
 
   const [checkedStatusMap, updateCheckedStatusMap] = useState(
@@ -50,7 +50,7 @@ const ExpandableCheckboxList: FC<Props> = ({ listTitle, checkboxItems }) => {
       </button>
       {listOpened && (
         <div className={style.list}>
-          {checkboxItems.map((item) => (
+          {items.map((item) => (
             <Checkbox
               key={item.id}
               id={item.id}

@@ -12,9 +12,9 @@ type Props = {
   checked: boolean;
   disabled: boolean;
   description?: string;
-  onChange?: (
+  onChange?(
     callback: (state: Map<string, boolean>) => Map<string, boolean>,
-  ) => void;
+  ): void;
 };
 
 const Checkbox: FC<Props> = ({

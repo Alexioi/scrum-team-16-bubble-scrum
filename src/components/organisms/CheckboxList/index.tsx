@@ -6,7 +6,7 @@ import { Checkbox, Typography } from '@/components';
 
 import style from './style.module.scss';
 
-type CheckboxItem = {
+type Item = {
   id: string;
   name: string;
   text: string;
@@ -17,12 +17,12 @@ type CheckboxItem = {
 
 type Props = {
   listTitle: string;
-  checkboxItems: CheckboxItem[];
+  items: Item[];
 };
 
-const CheckboxList: FC<Props> = ({ listTitle, checkboxItems }) => {
+const CheckboxList: FC<Props> = ({ listTitle, items }) => {
   const checkboxElementsInitialState = new Map(
-    checkboxItems.map((item) => [item.name, item.checked]),
+    items.map((item) => [item.name, item.checked]),
   );
 
   const [checkedStatusMap, updateCheckedStatusMap] = useState(
@@ -35,7 +35,7 @@ const CheckboxList: FC<Props> = ({ listTitle, checkboxItems }) => {
         <Typography tag="h3">{listTitle}</Typography>
       </div>
       <div className={style.list}>
-        {checkboxItems.map((item) => (
+        {items.map((item) => (
           <Checkbox
             key={item.id}
             id={item.id}
