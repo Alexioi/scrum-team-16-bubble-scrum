@@ -16,6 +16,7 @@ import {
   Footer,
   SubscriptionInput,
   DropdownInput,
+  Pagination,
 } from './organisms';
 
 export {
@@ -33,5 +34,6 @@ export {
   DropdownInput,
   HotelList,
   Hero,
+  Pagination,
 };
 export type { Hotel };
