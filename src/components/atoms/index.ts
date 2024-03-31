@@ -11,6 +11,7 @@ import { Input } from './Input';
 import { ExpandMoreIcon } from './ExpandMoreIcon';
 import { Counter } from './Counter';
 import { Container } from './ Container';
+import { ClickAwayListener } from './ClickAwayListener';
 
 export {
   StoreProvider,
@@ -27,5 +28,6 @@ export {
   ExpandMoreIcon,
   Counter,
   Container,
+  ClickAwayListener,
 };
 export type { List };
