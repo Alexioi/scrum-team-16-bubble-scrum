@@ -12,6 +12,7 @@ type CheckboxItem = {
   text: string;
   checked: boolean;
   disabled: boolean;
+  description?: string;
 };
 
 type Props = {
@@ -41,8 +42,9 @@ const CheckboxList: FC<Props> = ({ listTitle, checkboxItems }) => {
             name={item.name}
             text={item.text}
             checked={checkedStatusMap.get(item.name)!}
-            onChange={updateCheckedStatusMap}
             disabled={item.disabled}
+            description={item.description}
+            onChange={updateCheckedStatusMap}
           />
         ))}
       </div>

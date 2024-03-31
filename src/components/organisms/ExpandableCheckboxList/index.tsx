@@ -5,7 +5,6 @@ import clsx from 'clsx';
 
 import { Typography } from '@/components';
 import { Checkbox } from '@/components/molecules';
-
 import ExpandMore from '@/images/decorative/expand-more.svg';
 
 import style from './style.module.scss';

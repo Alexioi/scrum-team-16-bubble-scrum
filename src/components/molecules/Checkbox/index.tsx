@@ -9,22 +9,22 @@ type Props = {
   id: string;
   name: string;
   text: string;
-  description?: string;
   checked: boolean;
+  disabled: boolean;
+  description?: string;
   onChange?: (
     callback: (state: Map<string, boolean>) => Map<string, boolean>,
   ) => void;
-  disabled: boolean;
 };
 
 const Checkbox: FC<Props> = ({
   id,
   name,
   text,
-  description,
   checked,
-  onChange,
   disabled,
+  description,
+  onChange,
 }) => {
   const [checkedValue, setCheckedValue] = useState(checked);
 
