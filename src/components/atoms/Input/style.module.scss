@@ -1,0 +1,56 @@
+@import '@/style/variables.scss';
+
+.input {
+  padding: 12px 15px;
+
+  height: 44px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  font-size: 14px;
+  color: $dark-shade-75;
+
+  background-color: $white;
+
+  border: 1px solid $dark-shade-25;
+  border-radius: 4px;
+
+  transition: $transition-default;
+
+  &::placeholder {
+    color: $dark-shade-25;
+  }
+
+  &[type='date'] {
+    &::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+
+    &::-webkit-input-placeholder {
+      visibility: hidden !important;
+    }
+  }
+
+  &:focus,
+  &:hover,
+  &_active {
+    outline: none;
+
+    border-color: $dark-shade-75;
+  }
+
+  &:read-only {
+    cursor: pointer;
+  }
+
+  &:invalid {
+    border-color: $red;
+  }
+
+  &_square-bottom {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}

@@ -1,4 +1,17 @@
+import { SubscriptionInput } from './SubscriptionInput';
+import { DropdownInput } from './DropdownInput';
+import { Footer } from './Footer';
+import { HotelList } from './HotelList';
+import { Hotel } from './HotelCard';
 import { Header } from './Header';
 import { ExpandableCheckboxList } from './ExpandableCheckboxList';
 
-export { Header, ExpandableCheckboxList };
+export {
+  SubscriptionInput,
+  DropdownInput,
+  Footer,
+  Header,
+  HotelList,
+  ExpandableCheckboxList,
+};
+export type { Hotel };
