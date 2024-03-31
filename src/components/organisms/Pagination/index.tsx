@@ -2,6 +2,7 @@
 
 import { FC, useState } from 'react';
 import { nanoid } from 'nanoid';
+import clsx from 'clsx';
 
 import ArrowBackwardWhiteSVG from '@/images/decorative/arrow-backward-white.svg';
 import ArrowForwardWhiteSVG from '@/images/decorative/arrow-forward-white.svg';
@@ -23,7 +24,7 @@ const Pagination: FC<Props> = ({ pagesCount, totalPagesCount }) => {
     <div className={style.wrapper}>
       <ul className={style.list}>
         {activePage > 1 && (
-          <li className={`${style.page} ${style.page_prev}`}>
+          <li className={clsx(style.page, style.page_prev)}>
             <button
               onClick={() => setActivePage((prevState) => prevState - 1)}
               className={style['page-button']}
@@ -43,7 +44,9 @@ const Pagination: FC<Props> = ({ pagesCount, totalPagesCount }) => {
               .map((_page, index) => (
                 <li
                   key={nanoid()}
-                  className={`${style.page} ${activePage === index + 1 ? style.page_current : ''}`}
+                  className={clsx(style.page, {
+                    [style.page_current]: activePage === index + 1,
+                  })}
                 >
                   <button
                     onClick={() => setActivePage(index + 1)}
@@ -78,9 +81,27 @@ const Pagination: FC<Props> = ({ pagesCount, totalPagesCount }) => {
               </button>
             </li>
             <li className={style.boundary}>...</li>
-            <li className={`${style.page} ${style.page_current}`}>
+            <li className={style.page}>
+              <button
+                onClick={() => setActivePage(activePage - 1)}
+                className={style['page-button']}
+                type="button"
+              >
+                {activePage - 1}
+              </button>
+            </li>
+            <li className={clsx(style.page, style.page_current)}>
               <button className={style['page-button']} type="button">
                 {activePage}
+              </button>
+            </li>
+            <li className={style.page}>
+              <button
+                onClick={() => setActivePage(activePage + 1)}
+                className={style['page-button']}
+                type="button"
+              >
+                {activePage + 1}
               </button>
             </li>
             <li className={style.boundary}>...</li>
@@ -114,7 +135,9 @@ const Pagination: FC<Props> = ({ pagesCount, totalPagesCount }) => {
               .map((page) => (
                 <li
                   key={nanoid()}
-                  className={`${style.page} ${activePage === page ? style.page_current : ''}`}
+                  className={clsx(style.page, {
+                    [style.page_current]: activePage === page,
+                  })}
                 >
                   <button
                     onClick={() => setActivePage(page)}
@@ -128,7 +151,7 @@ const Pagination: FC<Props> = ({ pagesCount, totalPagesCount }) => {
           </>
         )}
         {activePage < pagesCount && (
-          <li className={`${style.page} ${style.page_next}`}>
+          <li className={clsx(style.page, style.page_next)}>
             <button
               onClick={() => setActivePage((prevState) => prevState + 1)}
               className={style['page-button']}
