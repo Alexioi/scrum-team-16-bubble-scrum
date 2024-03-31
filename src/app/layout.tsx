@@ -1,8 +1,7 @@
 import { Montserrat } from 'next/font/google';
 import type { Metadata } from 'next';
 
-import { StoreProvider, Header } from '@/components';
-
+import { Footer, Header, StoreProvider } from '@/components';
 import './globals.scss';
 
 const montserrat = Montserrat({ subsets: ['latin', 'cyrillic'] });
@@ -18,6 +17,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <body className={montserrat.className}>
         <Header />
         <StoreProvider>{children}</StoreProvider>
+        <Footer />
       </body>
     </html>
   );
