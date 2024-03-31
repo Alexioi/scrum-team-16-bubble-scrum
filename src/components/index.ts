@@ -17,6 +17,7 @@ import {
   SubscriptionInput,
   DropdownInput,
   ExpandableCheckboxList,
+  CheckboxList,
 } from './organisms';
 
 export {
@@ -36,5 +37,6 @@ export {
   Hero,
   Checkbox,
   ExpandableCheckboxList,
+  CheckboxList,
 };
 export type { Hotel };

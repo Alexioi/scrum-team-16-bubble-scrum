@@ -5,6 +5,7 @@ import { HotelList } from './HotelList';
 import { Hotel } from './HotelCard';
 import { Header } from './Header';
 import { ExpandableCheckboxList } from './ExpandableCheckboxList';
+import { CheckboxList } from './CheckboxList';
 
 export {
   SubscriptionInput,
@@ -13,5 +14,6 @@ export {
   Header,
   HotelList,
   ExpandableCheckboxList,
+  CheckboxList,
 };
 export type { Hotel };

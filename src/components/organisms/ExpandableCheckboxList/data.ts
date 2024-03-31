@@ -1,5 +1,5 @@
-const listTitle = 'expandable checkbox list';
-const checkboxItems = [
+const expandableCheckboxListTitle = 'expandable checkbox list';
+const expandableCheckboxListItems = [
   {
     id: '1',
     name: 'breakfast',
@@ -40,8 +40,8 @@ const checkboxItems = [
     name: 'shampoo',
     text: 'Шампунь',
     checked: true,
-    disabled: true,
+    disabled: false,
   },
 ];
 
-export { listTitle, checkboxItems };
+export { expandableCheckboxListTitle, expandableCheckboxListItems };
