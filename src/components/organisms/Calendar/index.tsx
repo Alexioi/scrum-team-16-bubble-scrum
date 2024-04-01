@@ -57,17 +57,17 @@ const Calendar: FC<Props> = ({ isSingle = false }) => {
     setSecondInputValue(getFullStringDate(secondDate));
   };
 
-  const handleClickOutsideCalendar = ({ target }: Event) => {
-    if (!(target instanceof HTMLElement)) {
-      return;
-    }
-
-    if (target.contains(calendarRef.current)) {
-      setIsOpened(false);
-    }
-  };
-
   useEffect(() => {
+    const handleClickOutsideCalendar = ({ target }: Event) => {
+      if (!(target instanceof HTMLElement)) {
+        return;
+      }
+
+      if (target.contains(calendarRef.current)) {
+        setIsOpened(false);
+      }
+    };
+
     document.addEventListener('click', handleClickOutsideCalendar);
     return () => {
       document.removeEventListener('click', handleClickOutsideCalendar);
