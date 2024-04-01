@@ -1,0 +1,215 @@
+.react-calendar {
+  max-width: 320px;
+
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 29px;
+
+    &__prev2-button {
+      display: none;
+    }
+
+    &__prev-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      border: none;
+      height: 24px;
+      width: 24x;
+      cursor: pointer;
+      color: #bc9cff;
+      transform: rotate(180deg);
+
+      & svg {
+        width: 17px;
+        height: 18px;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: auto;
+      }
+    }
+
+    &__label {
+      background: white;
+      border: none;
+      color: rgb(31, 32, 65);
+      font-weight: bold;
+      font-size: 19px;
+      line-height: 23px;
+      flex-grow: 0 !important;
+    }
+
+    &__next-button {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      border: none;
+      height: 24px;
+      width: 24px;
+      cursor: pointer;
+      color: #bc9cff;
+
+      & svg {
+        position: absolute;
+        width: 17px;
+        height: 18px;
+      }
+    }
+
+    &__next2-button {
+      display: none;
+    }
+  }
+
+  &__month-view__weekdays {
+    &__weekday {
+      display: flex;
+      justify-content: center;
+
+      & abbr {
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 40px;
+        color: rgb(188, 156, 255);
+      }
+    }
+  }
+
+  &__month-view__days {
+    &__day {
+      background: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 40px;
+      color: rgb(31, 32, 65, 0.5);
+      position: relative;
+
+      &:disabled {
+        color: rgb(31, 32, 65, 0.25);
+        cursor: auto;
+      }
+    }
+  }
+
+  &__tile {
+    $tile: &;
+
+    overflow: visible !important;
+    flex-basis: calc(100% / 7) !important;
+    height: 40px;
+    position: relative;
+
+    &--now {
+      color: white;
+      font-weight: bold;
+      background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+      border-radius: 50%;
+    }
+
+    &--range {
+      background: rgb(188, 156, 255, 0.25);
+    }
+
+    &--rangeStart {
+      font-weight: bold;
+      color: white;
+      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+      border-radius: 50%;
+      position: relative;
+
+      &::before {
+        display: block;
+        content: '';
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border-radius: 50% 0 0 50%;
+        background: linear-gradient(
+          180deg,
+          rgb(188, 156, 255, 25%) 0%,
+          rgb(139, 164, 249, 25%) 100%
+        );
+        z-index: 100;
+      }
+
+      &#{$tile}--rangeBothEnds::before {
+        display: none;
+      }
+    }
+
+    &--rangeEnd {
+      font-weight: bold;
+      color: white;
+      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+      border-radius: 50%;
+      position: relative;
+
+      &#{$tile}--hover::before,
+      &::before {
+        display: block;
+        content: '';
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: linear-gradient(
+          180deg,
+          rgb(188, 156, 255, 25%) 0%,
+          rgb(139, 164, 249, 25%) 100%
+        );
+        border-radius: 0 22px 22px 0;
+      }
+
+      &#{$tile}--hoverEnd::before {
+        border-radius: 0 22px 22px 0;
+      }
+
+      &#{$tile}--hoverStart::before {
+        border-radius: 22px 0 0 22px;
+      }
+    }
+
+    &--hover {
+      &::before {
+        display: block;
+        content: '';
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: rgb(188, 156, 255, 0.25);
+      }
+
+      &:disabled {
+        &::before {
+          display: none;
+        }
+      }
+    }
+
+    &--hoverStart {
+      &#{$tile}--hover::before {
+        border-radius: 22px 0 0 22px;
+      }
+    }
+
+    &--hoverEnd {
+      &#{$tile}--hover::before {
+        border-radius: 0 22px 22px 0;
+      }
+    }
+  }
+}
