@@ -1,12 +1,11 @@
 'use client';
 
 import { FC, useState } from 'react';
-import clsx from 'clsx';
 
 import { Typography } from '@/components';
 import { Checkbox } from '@/components/molecules';
-import ExpandMore from '@/images/decorative/expand-more.svg';
 
+import { ExpandMoreIcon } from '@/components/atoms/ExpandMoreIcon';
 import style from './style.module.scss';
 
 type Item = {
@@ -40,13 +39,7 @@ const ExpandableCheckboxList: FC<Props> = ({ listTitle, items }) => {
         className={style.button}
       >
         <Typography tag="h3">{listTitle}</Typography>
-        <svg
-          className={clsx(style.icon, {
-            [style.icon_rotated]: listOpened,
-          })}
-        >
-          <ExpandMore />
-        </svg>
+        <ExpandMoreIcon flipped={listOpened} />
       </button>
       {listOpened && (
         <div className={style.list}>
