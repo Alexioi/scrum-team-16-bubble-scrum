@@ -17,7 +17,7 @@
   border: 1px solid $dark-shade-25;
   border-radius: 4px;
 
-  transition: $transition-default;
+  transition: color 0.3s ease-in;
 
   &::placeholder {
     color: $dark-shade-25;
