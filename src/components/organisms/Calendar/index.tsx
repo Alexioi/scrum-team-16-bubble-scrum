@@ -107,15 +107,11 @@ const Calendar: FC<Props> = ({ isSingle = false }) => {
           <Button
             text="очистить"
             theme="link"
-            type="button"
-            size="default"
             onClick={handleClearButtonClick}
           />
           <Button
             text="применить"
             theme="link"
-            type="button"
-            size="default"
             onClick={handleApplyButtonClick}
           />
         </div>
