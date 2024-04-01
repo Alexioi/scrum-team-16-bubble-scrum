@@ -85,7 +85,7 @@ const Calendar: FC<Props> = ({ isSingle = false }) => {
           placeholder={isSingle ? 'ДД.ММ.ГГГГ' : 'ДД.ММ.ГГГГ - ДД.ММ.ГГГГ'}
           readOnly
         />
-        {isSingle || (
+        {!isSingle && (
           <DropdownInput
             type="text"
             defaultValue={secondInputValue}
