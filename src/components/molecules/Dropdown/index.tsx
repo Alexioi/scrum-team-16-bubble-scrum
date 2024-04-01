@@ -5,11 +5,10 @@ import clsx from 'clsx';
 
 import { DropdownInput } from '../../organisms';
 import { Counter, Button } from '../../atoms';
-import { calculateValue } from './helpers';
+import { calculateValue, isEmptyCounters } from './helpers';
 import style from './style.module.scss';
 
 type Props = {
-  hasButtons: boolean;
   items: {
     name: string;
     counter: number;
@@ -17,14 +16,15 @@ type Props = {
   groups: number[][];
   placeholder: string;
   variants: string[][];
+  hasButtons?: boolean;
 };
 
 const Dropdown: FC<Props> = ({
-  hasButtons,
   items,
   groups,
   placeholder,
   variants,
+  hasButtons = false,
 }) => {
   const [isOpened, setIsOpened] = useState(false);
   const [values, setValues] = useState(items);
@@ -122,14 +122,10 @@ const Dropdown: FC<Props> = ({
         {hasButtons && (
           <div className={style.buttons}>
             <div className={style['clear-button']}>
-              {values.reduce((acc, el) => {
-                return acc + el.counter;
-              }, 0) > 0 && (
+              {isEmptyCounters(values) && (
                 <Button
                   text="очистить"
-                  size="default"
                   theme="link"
-                  type="button"
                   onClick={handleClearButtonClick}
                 />
               )}
@@ -137,9 +133,7 @@ const Dropdown: FC<Props> = ({
             <div className={style['apply-button']}>
               <Button
                 text="применить"
-                size="default"
                 theme="link"
-                type="button"
                 onClick={handleApplyButtonClick}
               />
             </div>

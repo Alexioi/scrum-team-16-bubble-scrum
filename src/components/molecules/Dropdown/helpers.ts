@@ -56,4 +56,17 @@ const calculateValue = (
   return value;
 };
 
-export { calculateValue };
+const isEmptyCounters = (
+  values: {
+    name: string;
+    counter: number;
+  }[],
+) => {
+  return (
+    values.reduce((acc, el) => {
+      return acc + el.counter;
+    }, 0) > 0
+  );
+};
+
+export { calculateValue, isEmptyCounters };
