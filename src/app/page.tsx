@@ -1,7 +1,9 @@
-import { Hero } from '@/components';
+'use client';
+
+import { Calendar } from '@/components';
 
 const Home = () => {
-  return <Hero />;
+  return <Calendar />;
 };
 
 export default Home;
