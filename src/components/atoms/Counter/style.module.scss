@@ -1,0 +1,41 @@
+.item {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.item-name {
+  margin-right: auto;
+  font-weight: bold;
+  line-height: 12px;
+  font-size: 12px;
+  text-transform: uppercase;
+  word-break: break-word;
+}
+
+.counter-button {
+  flex-shrink: 0;
+  border: 1px solid rgb(31, 32, 65, 0.25);
+  background: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 18px;
+  color: rgb(31, 32, 65, 0.5);
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.38;
+    cursor: default;
+  }
+}
+
+.counter {
+  flex: 0 0 30px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12x;
+  line-height: 12px;
+  word-break: break-word;
+}
