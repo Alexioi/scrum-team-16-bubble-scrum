@@ -56,6 +56,11 @@ const Dropdown: FC<Props> = ({
       });
 
       setValues(newValues);
+
+      if (hasButtons) {
+        return;
+      }
+
       setResult(
         calculateValue(
           groups,
