@@ -1,5 +1,3 @@
-import { HelloToxin } from './HelloToxin';
-import { Hero } from './Hero';
-import { ButtonInput } from './ButtonInput';
-
-export { HelloToxin, ButtonInput, Hero };
+export * from './ButtonInput';
+export * from './HelloToxin';
+export * from './Hero';
