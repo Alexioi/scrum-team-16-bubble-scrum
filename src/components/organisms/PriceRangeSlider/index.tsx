@@ -12,9 +12,18 @@ type Props = {
   max: number;
   from: number;
   to: number;
+  title: string;
+  description: string;
 };
 
-const PriceRangeSlider: FC<Props> = ({ min, max, from, to }) => {
+const PriceRangeSlider: FC<Props> = ({
+  min,
+  max,
+  from,
+  to,
+  title,
+  description,
+}) => {
   const [fromValue, setFromValue] = useState(from);
   const [toValue, setToValue] = useState(to);
 
@@ -34,15 +43,13 @@ const PriceRangeSlider: FC<Props> = ({ min, max, from, to }) => {
   return (
     <div>
       <div className={style.header}>
-        <Typography tag="h3">Диапазон цены</Typography>
+        <Typography tag="h3">{title}</Typography>
         <span className={style.info}>
           {`${fromValue.toLocaleString()}₽ - ${toValue.toLocaleString()}₽`}
         </span>
       </div>
       <MultiRangeSlider min={min} max={max} onChange={handleChange} />
-      <p className={style.description}>
-        Стоимость за сутки пребывания в номере
-      </p>
+      <p className={style.description}>{description}</p>
     </div>
   );
 };
