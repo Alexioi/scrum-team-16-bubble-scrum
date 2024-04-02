@@ -13,8 +13,8 @@ import clsx from 'clsx';
 import style from './style.module.scss';
 
 type OnChangeProps = {
-  min: number;
-  max: number;
+  minValue: number;
+  maxValue: number;
 };
 
 type Props = {
@@ -60,7 +60,7 @@ const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
 
   // Get min and max values when their state changes
   useEffect(() => {
-    onChange({ min: minValue, max: maxValue });
+    onChange({ minValue, maxValue });
   }, [minValue, maxValue, onChange]);
 
   const onChangeMin = (event: ChangeEvent<HTMLInputElement>): void => {

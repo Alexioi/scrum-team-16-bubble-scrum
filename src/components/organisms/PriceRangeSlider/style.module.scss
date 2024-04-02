@@ -1,0 +1,15 @@
+@import '@/style/variables.scss';
+
+.header {
+  margin-bottom: 20px;
+
+  display: flex;
+  justify-content: space-between;
+
+  .info {
+    font-size: 12px;
+    line-height: 12px;
+
+    color: $dark-shade-50;
+  }
+}

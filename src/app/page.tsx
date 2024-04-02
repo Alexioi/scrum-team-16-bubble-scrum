@@ -1,14 +1,12 @@
 'use client';
 
-import { MultiRangeSlider } from '@/components';
+import { PriceRangeSlider } from '@/components';
 
 const Home = () => {
   return (
-    <MultiRangeSlider
-      min={0}
-      max={100}
-      onChange={({ min, max }: { min: number; max: number }) => min + max}
-    />
+    <div style={{ width: '320px' }}>
+      <PriceRangeSlider min={5000} max={10000} from={5000} to={10000} />
+    </div>
   );
 };
 

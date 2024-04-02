@@ -1,6 +1,6 @@
 import { StoreProvider, Typography, Button, Logo, ButtonLink } from './atoms';
 import { HelloToxin, MultiRangeSlider } from './molecules';
-import { Header } from './organisms';
+import { Header, PriceRangeSlider } from './organisms';
 
 export {
   StoreProvider,
@@ -11,4 +11,5 @@ export {
   Logo,
   ButtonLink,
   MultiRangeSlider,
+  PriceRangeSlider,
 };
