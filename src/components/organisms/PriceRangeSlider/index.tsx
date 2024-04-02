@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 
 import { Typography } from '@/components/atoms';
 import { MultiRangeSlider } from '@/components/molecules';
@@ -15,7 +15,8 @@ type Props = {
 };
 
 const PriceRangeSlider: FC<Props> = ({ min, max, from, to }) => {
-  // const [fromValue, setFromValue] = useState(from);
+  const [fromValue, setFromValue] = useState(from);
+  const [toValue, setToValue] = useState(to);
 
   const handleChange = ({
     minValue,
@@ -26,22 +27,22 @@ const PriceRangeSlider: FC<Props> = ({ min, max, from, to }) => {
   }) => {
     from = minValue;
     to = maxValue;
-    console.log(from);
+    setFromValue(minValue);
+    setToValue(maxValue);
   };
-
-  // useEffect(() => {
-  //   setFromValue(from);
-  // }, [from]);
 
   return (
     <div>
       <div className={style.header}>
         <Typography tag="h3">Диапазон цены</Typography>
-        <span
-          className={style.info}
-        >{`${from.toLocaleString()}₽ - ${to.toLocaleString()}₽`}</span>
+        <span className={style.info}>
+          {`${fromValue.toLocaleString()}₽ - ${toValue.toLocaleString()}₽`}
+        </span>
       </div>
       <MultiRangeSlider min={min} max={max} onChange={handleChange} />
+      <p className={style.description}>
+        Стоимость за сутки пребывания в номере
+      </p>
     </div>
   );
 };

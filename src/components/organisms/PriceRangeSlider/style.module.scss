@@ -1,10 +1,11 @@
 @import '@/style/variables.scss';
 
 .header {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   .info {
     font-size: 12px;
@@ -12,4 +13,14 @@
 
     color: $dark-shade-50;
   }
+}
+
+.description {
+  margin-top: 14px;
+
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0;
+  
+  color: $dark-shade-50;
 }
