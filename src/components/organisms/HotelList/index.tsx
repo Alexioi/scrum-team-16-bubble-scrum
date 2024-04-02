@@ -2,7 +2,13 @@
 
 import { useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import {
+  getFirestore,
+  getDocs,
+  collection,
+  query,
+  where,
+} from 'firebase/firestore/lite';
 
 import { getAllHotels } from '@/store/HotelListSlice';
 import { useAppDispatch, useAppSelector } from '@/hooks';
@@ -27,10 +33,12 @@ const HotelList = () => {
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    const citiesRef = collection(db, 'test');
+    const q = query(citiesRef, where('rrr', '==', 'www'));
 
     async function getCities() {
-      const citiesCol = collection(db, 'test');
-      const citySnapshot = await getDocs(citiesCol);
+      // const citiesCol = collection(db, 'test');
+      const citySnapshot = await getDocs(q);
       const cityList = citySnapshot.docs.map((doc) => doc.data());
       console.log(cityList);
       return cityList;
