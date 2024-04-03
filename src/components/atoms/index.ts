@@ -8,7 +8,9 @@ import { Logo } from './Logo';
 import { Typography } from './Typography';
 import { AutoSlider } from './AutoSlider';
 import { Input } from './Input';
+import { Counter } from './Counter';
 import { ExpandMoreIcon } from './ExpandMoreIcon';
+import { Dropdown } from '../molecules';
 import { ArrowButton } from './ArrowButton';
 import { PaginationButton } from './PaginationButton';
 
@@ -23,8 +25,10 @@ export {
   AutoSlider,
   Typography,
   Input,
+  Counter,
   Gradient,
   ExpandMoreIcon,
+  Dropdown,
   ArrowButton,
   PaginationButton,
 };
