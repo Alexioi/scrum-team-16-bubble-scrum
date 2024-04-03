@@ -10,6 +10,7 @@ import { AutoSlider } from './AutoSlider';
 import { Input } from './Input';
 import { ExpandMoreIcon } from './ExpandMoreIcon';
 import { ArrowButton } from './ArrowButton';
+import { PaginationButton } from './PaginationButton';
 
 export {
   StoreProvider,
@@ -25,5 +26,6 @@ export {
   Gradient,
   ExpandMoreIcon,
   ArrowButton,
+  PaginationButton,
 };
 export type { List };
