@@ -4,21 +4,17 @@ import { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import {
   getFirestore,
-  getDocs,
   collection,
-  // addDoc,
-} from 'firebase/firestore/lite';
+  query,
+  where,
+  getDocs,
+} from 'firebase/firestore';
 
-// import { getAllHotels } from '@/store/HotelListSlice';
-// import { useAppDispatch, useAppSelector } from '@/hooks';
-
-import { Hotel, HotelCard } from '../HotelCard';
+import { HotelCard } from '../HotelCard';
 import style from './style.module.scss';
 
 const HotelList = () => {
-  const [data, setData] = useState<Hotel[]>([]);
-  // const { data } = useAppSelector((state) => state.hotelList);
-  // const dispatch = useAppDispatch();
+  const [data, setData] = useState<any[]>([]);
 
   useEffect(() => {
     const firebaseConfig = {
@@ -33,29 +29,22 @@ const HotelList = () => {
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-    // const citiesRef = collection(db, 'test');
-    // const q = query(citiesRef, where('rrr', '==', 'www'));
+
+    const q = query(collection(db, 'room-cards'), where('price', '>', 1));
 
     async function getCities() {
-      const citiesCol = collection(db, 'room-cards');
-
-      // await addDoc(citiesCol, {
-      //   averageRating: 4.4,
-      //   imageUrls: ['iurl1'],
-      //   lux: true,
-      //   price: 1000,
-      //   reviews: 100,
-      //   roomNumber: 1,
-      // });
-
-      const citySnapshot = await getDocs(citiesCol);
-      const cityList = citySnapshot.docs.map((doc) => doc.data());
-      console.log(cityList);
-
-      // @ts-ignore
-      setData(cityList);
-      // console.log(cityList);
-      // return cityList;
+      const querySnapshot = await getDocs(q);
+      // console.log(
+      //   querySnapshot.docs.map((el) => {
+      //     console.log(el.id);
+      //     return { id: el.id, ...el.data() };
+      //   }),
+      // );
+      setData(
+        querySnapshot.docs.map((el) => {
+          return { id: el.id, ...el.data() };
+        }),
+      );
     }
 
     getCities();
@@ -65,12 +54,12 @@ const HotelList = () => {
     <div className={style.list}>
       {data.map((item) => (
         <HotelCard
+          key={item.id}
           roomNumber={item.roomNumber}
           lux={item.lux}
           price={item.price}
           averageRating={item.averageRating}
           imageUrls={item.imageUrls}
-          key={item.roomNumber}
         />
       ))}
     </div>
