@@ -43,11 +43,6 @@
   @extend .pagination-font-styles;
 }
 
-.arrow {
-  width: 18px;
-  height: 18px;
-}
-
 .page-button {
   display: flex;
   justify-content: center;
@@ -87,32 +82,13 @@
 
 .page {
   &:not(.page_current) {
-    &:not(.page_next) {
-      &:not(.page_prev) {
-        border: 1px solid transparent;
-        transition: all 0.2s ease;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
 
-        &:hover {
-          border: 1px solid $dark-shade-50;
-          transition: all 0.2s ease;
-        }
-      }
+    &:hover {
+      border: 1px solid $dark-shade-50;
+      transition: all 0.2s ease;
     }
-  }
-}
-
-.page_next,
-.page_prev {
-  background: $gradient-green-100;
-}
-
-.page_next,
-.page_prev {
-  transition: opacity 0.2s ease;
-
-  &:hover {
-    opacity: 0.5;
-    transition: opacity 0.2s ease;
   }
 }
 

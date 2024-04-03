@@ -9,6 +9,7 @@ import { Typography } from './Typography';
 import { AutoSlider } from './AutoSlider';
 import { Input } from './Input';
 import { ExpandMoreIcon } from './ExpandMoreIcon';
+import { ArrowButton } from './ArrowButton';
 
 export {
   StoreProvider,
@@ -23,5 +24,6 @@ export {
   Input,
   Gradient,
   ExpandMoreIcon,
+  ArrowButton,
 };
 export type { List };
