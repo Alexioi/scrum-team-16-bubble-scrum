@@ -18,7 +18,7 @@ const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="ru">
-      <body className={`${montserrat.variable}`}>
+      <body className={montserrat.variable}>
         <Header />
         <StoreProvider>{children}</StoreProvider>
         <Footer />
