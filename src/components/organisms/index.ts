@@ -4,16 +4,14 @@ import { Footer } from './Footer';
 import { HotelList } from './HotelList';
 import { Hotel } from './HotelCard';
 import { Header } from './Header';
-import { ExpandableCheckboxList } from './ExpandableCheckboxList';
-import { CheckboxList } from './CheckboxList';
+import { Calendar } from './Calendar';
 
 export {
+  HotelList,
+  Header,
   SubscriptionInput,
   DropdownInput,
+  Calendar,
   Footer,
-  Header,
-  HotelList,
-  ExpandableCheckboxList,
-  CheckboxList,
 };
 export type { Hotel };

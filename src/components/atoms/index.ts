@@ -8,7 +8,9 @@ import { Logo } from './Logo';
 import { Typography } from './Typography';
 import { AutoSlider } from './AutoSlider';
 import { Input } from './Input';
+import { Counter } from './Counter';
 import { ExpandMoreIcon } from './ExpandMoreIcon';
+import { Dropdown } from '../molecules';
 
 export {
   StoreProvider,
@@ -21,7 +23,9 @@ export {
   AutoSlider,
   Typography,
   Input,
+  Counter,
   Gradient,
   ExpandMoreIcon,
+  Dropdown,
 };
 export type { List };

@@ -6,9 +6,7 @@ import {
   ButtonLink,
   Input,
 } from './atoms';
-
-import { HelloToxin, ButtonInput, Hero, Checkbox } from './molecules';
-
+import { HelloToxin, ButtonInput, Hero, Dropdown } from './molecules';
 import {
   HotelList,
   Hotel,
@@ -16,10 +14,10 @@ import {
   Footer,
   SubscriptionInput,
   DropdownInput,
-  ExpandableCheckboxList,
-  CheckboxList,
+  Calendar,
 } from './organisms';
 
+export type { Hotel };
 export {
   StoreProvider,
   HelloToxin,
@@ -33,10 +31,8 @@ export {
   ButtonInput,
   SubscriptionInput,
   DropdownInput,
+  Calendar,
   HotelList,
   Hero,
-  Checkbox,
-  ExpandableCheckboxList,
-  CheckboxList,
+  Dropdown,
 };
-export type { Hotel };
