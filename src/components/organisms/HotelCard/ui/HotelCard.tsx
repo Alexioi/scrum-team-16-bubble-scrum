@@ -5,32 +5,31 @@ import { Rating, Swiper } from '@/components/atoms';
 import { declensionReview } from '../lib/declensionReview';
 import style from './style.module.scss';
 
-type Hotel = {
-  id: number;
-  number: string;
-  price: number;
-  rating: number;
-  isLuxury: boolean;
-  images: string[];
-};
-
 type Props = {
-  hotel: Hotel;
+  roomNumber: string;
+  price: number;
+  averageRating: number;
+  lux: boolean;
+  imageUrls: string[];
 };
 
 const HotelCard: FC<Props> = ({
-  hotel: { images, isLuxury, number, price, rating },
+  imageUrls,
+  lux,
+  roomNumber,
+  price,
+  averageRating,
 }) => {
   return (
     <div className={style.card}>
-      <Swiper imageURLs={images} />
+      <Swiper imageURLs={imageUrls} />
 
       <div className={style.body}>
         <div className={style.header}>
           <div className={style.number}>
             <span className={style.number_icon}>№ </span>
-            {number}
-            {isLuxury && <span className={style.luxury}>ЛЮКС</span>}
+            {roomNumber}
+            {lux && <span className={style.luxury}>ЛЮКС</span>}
           </div>
 
           <div className={style.price}>
@@ -42,7 +41,7 @@ const HotelCard: FC<Props> = ({
         <div className={style.line} />
 
         <div className={style.footer}>
-          <Rating rating={rating} />
+          <Rating rating={averageRating} />
           <div className={style.reviews}>
             145
             <span className={style.reviews_prefix}>
@@ -56,4 +55,4 @@ const HotelCard: FC<Props> = ({
 };
 
 export { HotelCard };
-export type { Hotel };
+export type { Props as Hotel };

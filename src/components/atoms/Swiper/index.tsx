@@ -33,10 +33,11 @@ const Swiper: FC<Props> = ({ imageURLs }) => {
       setCurrentImage(idx);
     };
   };
+
   return (
     <div className={style.swiper}>
       <Image
-        src={imageURLs[currentImage]}
+        src={`/room-cards/${imageURLs[currentImage]}.jpg`}
         className={style.img}
         fill
         alt="Фотография номера"
