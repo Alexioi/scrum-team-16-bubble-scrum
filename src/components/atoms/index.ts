@@ -1,5 +1,6 @@
 export * from './AutoSlider';
 export * from './Button';
+export * from './Counter';
 export * from './ExpandMoreIcon';
 export * from './Gradient';
 export * from './Input';
