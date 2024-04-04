@@ -4,7 +4,11 @@ import type { Metadata } from 'next';
 import { Footer, Header, StoreProvider } from '@/components';
 import './globals.scss';
 
-const montserrat = Montserrat({ subsets: ['latin', 'cyrillic'] });
+const montserrat = Montserrat({
+  subsets: ['latin', 'cyrillic'],
+  variable: '--font-montserrat',
+  display: 'swap',
+});
 
 const metadata: Metadata = {
   title: 'Toxin Hotel',
@@ -14,7 +18,7 @@ const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="ru">
-      <body className={montserrat.className}>
+      <body className={montserrat.variable}>
         <Header />
         <StoreProvider>{children}</StoreProvider>
         <Footer />

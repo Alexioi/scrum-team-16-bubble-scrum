@@ -1,5 +1,7 @@
+@import '@/style/variables.scss';
+
 .desc {
-  color: #1f2041bf;
+  color: $dark-shade-75;
   font-size: 14px;
 }
 
@@ -17,7 +19,6 @@
 
 .up {
   padding: 100px 0px;
-  border-top: 1px solid #1f204140;
 
   .body {
     display: grid;
@@ -33,13 +34,13 @@
   }
 
   .link {
-    color: rgba(31, 32, 65, 0.5);
+    color: $dark-shade-50;
     text-decoration: none;
     transition: 0.3s;
     font-size: 14px;
     line-height: 17px;
     &:hover {
-      color: rgba(31, 32, 65, 1);
+      color: $dark-shade-100;
     }
   }
 }
@@ -84,7 +85,7 @@
 
 .title {
   font-weight: bold;
-  color: #1f2041;
+  color: $dark-shade-100;
   font-size: 12px;
   text-transform: uppercase;
   white-space: nowrap;
@@ -93,7 +94,7 @@
 
 .down {
   padding: 24px 0px;
-  border-top: 1px solid #1f204140;
+  border-top: 1px solid $dark-shade-25;
 
   .body {
     display: flex;
