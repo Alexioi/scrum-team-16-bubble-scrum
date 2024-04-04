@@ -1,6 +1,3 @@
-import { HelloToxin } from './HelloToxin';
-import { Hero } from './Hero';
-import { ButtonInput } from './ButtonInput';
-import { Dropdown } from './Dropdown';
-
-export { HelloToxin, ButtonInput, Hero, Dropdown };
+export * from './ButtonInput';
+export * from './HelloToxin';
+export * from './Hero';
