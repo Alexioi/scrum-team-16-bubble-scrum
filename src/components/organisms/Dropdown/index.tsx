@@ -3,7 +3,7 @@
 import { useState, FC } from 'react';
 import clsx from 'clsx';
 
-import { DropdownInput } from '../../organisms';
+import { DropdownInput } from '../DropdownInput';
 import { Counter, Button } from '../../atoms';
 import { calculateValue, isEmptyCounters } from './helpers';
 import style from './style.module.scss';
