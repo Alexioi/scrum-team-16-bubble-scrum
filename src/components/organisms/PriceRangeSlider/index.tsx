@@ -14,6 +14,7 @@ type Props = {
   to: number;
   title: string;
   description: string;
+  onChange(minValue: number, maxValue: number): void;
 };
 
 const PriceRangeSlider: FC<Props> = ({
@@ -23,21 +24,15 @@ const PriceRangeSlider: FC<Props> = ({
   to,
   title,
   description,
+  onChange,
 }) => {
   const [fromValue, setFromValue] = useState(from);
   const [toValue, setToValue] = useState(to);
 
-  const handleChange = ({
-    minValue,
-    maxValue,
-  }: {
-    minValue: number;
-    maxValue: number;
-  }) => {
-    from = minValue;
-    to = maxValue;
+  const handleChange = (minValue: number, maxValue: number) => {
     setFromValue(minValue);
     setToValue(maxValue);
+    onChange(minValue, maxValue);
   };
 
   return (

@@ -5,15 +5,10 @@ import clsx from 'clsx';
 
 import style from './style.module.scss';
 
-type OnChangeProps = {
-  minValue: number;
-  maxValue: number;
-};
-
 type Props = {
   min: number;
   max: number;
-  onChange(limits: OnChangeProps): void;
+  onChange(minValue: number, maxValue: number): void;
 };
 
 const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
@@ -34,14 +29,14 @@ const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
     event.target.value = value.toString();
 
     if (maxValueRef.current && range.current) {
-      const minPercent = getPercent(minValue);
+      const minPercent = getPercent(value);
       const maxPercent = getPercent(Number(maxValueRef.current.value));
 
       range.current.style.left = `${minPercent}%`;
       range.current.style.width = `${maxPercent - minPercent}%`;
     }
 
-    onChange({ minValue, maxValue });
+    onChange(minValue, maxValue);
   };
 
   const onChangeMax = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -51,12 +46,12 @@ const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
 
     if (minValueRef.current && range.current) {
       const minPercent = getPercent(Number(minValueRef.current.value));
-      const maxPercent = getPercent(maxValue);
+      const maxPercent = getPercent(value);
 
       range.current.style.width = `${maxPercent - minPercent}%`;
     }
 
-    onChange({ minValue, maxValue });
+    onChange(minValue, maxValue);
   };
 
   return (
