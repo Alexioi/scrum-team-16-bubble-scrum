@@ -8,15 +8,15 @@ import { ArrowButton, PaginationButton } from '@/components/atoms';
 import style from './style.module.scss';
 
 type Props = {
-  pagesCount: number;
-  totalPagesCount: number;
+  itemsCount: number;
+  maxItemsCountPerPage: number;
 };
 
-const Pagination: FC<Props> = ({ pagesCount, totalPagesCount }) => {
-  const paginationLabelPagesCount =
-    totalPagesCount <= 100 ? totalPagesCount : '100+';
-
+const Pagination: FC<Props> = ({ itemsCount, maxItemsCountPerPage }) => {
   const [activePage, setActivePage] = useState(1);
+
+  const pagesCount = Math.ceil(itemsCount / maxItemsCountPerPage);
+  const paginationLabelText = `${(activePage - 1) * maxItemsCountPerPage + 1} – ${activePage === pagesCount ? itemsCount : activePage * maxItemsCountPerPage} из ${itemsCount <= 100 ? itemsCount : '100+'} вариантов аренды`;
 
   if (pagesCount > 0 && pagesCount <= 7) {
     return (
@@ -39,6 +39,9 @@ const Pagination: FC<Props> = ({ pagesCount, totalPagesCount }) => {
             <ArrowButton direction="right" onClick={setActivePage} />
           )}
         </ul>
+        <div className={style.label}>
+          <span className={style.text}>{paginationLabelText}</span>
+        </div>
       </div>
     );
   }
@@ -188,9 +191,7 @@ const Pagination: FC<Props> = ({ pagesCount, totalPagesCount }) => {
           )}
         </ul>
         <div className={style.label}>
-          <span className={style.text}>
-            {`1 – ${pagesCount} из ${paginationLabelPagesCount} вариантов аренды`}
-          </span>
+          <span className={style.text}>{paginationLabelText}</span>
         </div>
       </div>
     );
