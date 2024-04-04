@@ -56,20 +56,20 @@ const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
     range.current.style.width = `${maxPercent - minPercent}%`;
   }, [maxValue, getPercent]);
 
-  useEffect(() => {
-    onChange({ minValue, maxValue });
-  }, [minValue, maxValue, onChange]);
-
   const onChangeMin = (event: ChangeEvent<HTMLInputElement>): void => {
     const value = Math.min(Number(event.target.value), maxValue - 1);
     setMinValue(value);
     event.target.value = value.toString();
+
+    onChange({ minValue, maxValue });
   };
 
   const onChangeMax = (event: ChangeEvent<HTMLInputElement>): void => {
     const value = Math.max(Number(event.target.value), minValue + 1);
     setMaxValue(value);
     event.target.value = value.toString();
+
+    onChange({ minValue, maxValue });
   };
 
   return (
