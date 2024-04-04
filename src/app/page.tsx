@@ -1,6 +1,6 @@
 'use client';
 
-import { Dropdown } from '@/components';
+import { Dropdown, Pagination } from '@/components';
 
 const data = [
   {
@@ -32,6 +32,7 @@ const Home = () => {
         placeholder="Сколько гостей"
         variants={variants}
       />
+      <Pagination itemsCount={13} maxItemsCountPerPage={12} />
     </div>
   );
 };

@@ -18,7 +18,7 @@ const Pagination: FC<Props> = ({ itemsCount, maxItemsCountPerPage }) => {
   const pagesCount = Math.ceil(itemsCount / maxItemsCountPerPage);
   const paginationLabelText = `${(activePage - 1) * maxItemsCountPerPage + 1} – ${activePage === pagesCount ? itemsCount : activePage * maxItemsCountPerPage} из ${itemsCount <= 100 ? itemsCount : '100+'} вариантов аренды`;
 
-  if (pagesCount > 0 && pagesCount <= 7) {
+  if (pagesCount > 1 && pagesCount <= 7) {
     return (
       <div className={style.wrapper}>
         <ul className={style.list}>
