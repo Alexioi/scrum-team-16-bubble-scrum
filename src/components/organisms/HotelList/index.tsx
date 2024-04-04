@@ -6,8 +6,10 @@ import {
   getFirestore,
   collection,
   query,
-  where,
+  orderBy,
   getDocs,
+  startAt,
+  limit,
 } from 'firebase/firestore';
 
 import { HotelCard } from '../HotelCard';
@@ -29,17 +31,18 @@ const HotelList = () => {
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    const page = 1;
 
-    const q = query(collection(db, 'room-cards'), where('price', '>', 1));
+    const q = query(
+      collection(db, 'room-cards'),
+      orderBy('roomNumber'),
+      startAt((page - 1) * 12 + 1),
+      limit(12),
+    );
 
     async function getCities() {
       const querySnapshot = await getDocs(q);
-      // console.log(
-      //   querySnapshot.docs.map((el) => {
-      //     console.log(el.id);
-      //     return { id: el.id, ...el.data() };
-      //   }),
-      // );
+
       setData(
         querySnapshot.docs.map((el) => {
           return { id: el.id, ...el.data() };

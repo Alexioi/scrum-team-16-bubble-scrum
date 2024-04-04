@@ -40,6 +40,8 @@ const Swiper: FC<Props> = ({ imageURLs }) => {
         src={`/room-cards/${imageURLs[currentImage]}.jpg`}
         className={style.img}
         fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        priority
         alt="Фотография номера"
       />
 
