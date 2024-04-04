@@ -39,4 +39,10 @@
 .arrow {
   width: 18px;
   height: 18px;
+
+  color: $white;
+
+  &_rotated {
+    transform: rotate(180deg);
+  }
 }

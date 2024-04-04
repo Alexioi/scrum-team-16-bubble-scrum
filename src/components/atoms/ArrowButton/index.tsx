@@ -1,8 +1,7 @@
 import { FC } from 'react';
 import clsx from 'clsx';
 
-import ArrowBackwardWhiteSVG from '@/images/decorative/arrow-backward-white.svg';
-import ArrowForwardWhiteSVG from '@/images/decorative/arrow-forward-white.svg';
+import ArrowSVG from '@/images/decorative/arrow.svg';
 import { Direction } from '@/enums/direction.enum';
 
 import style from './style.module.scss';
@@ -18,11 +17,6 @@ const ArrowButton: FC<Props> = ({ direction, onClick }) => {
     [Direction.Right]: (prevState: number) => prevState + 1,
   };
 
-  const directionIconMap = {
-    [Direction.Left]: <ArrowBackwardWhiteSVG />,
-    [Direction.Right]: <ArrowForwardWhiteSVG />,
-  };
-
   return (
     <li className={clsx(style.wrapper)}>
       <button
@@ -32,7 +26,13 @@ const ArrowButton: FC<Props> = ({ direction, onClick }) => {
         className={style.button}
         type="button"
       >
-        <svg className={style.arrow}>{directionIconMap[direction]}</svg>
+        <svg
+          className={clsx(style.arrow, {
+            [style.arrow_rotated]: direction === Direction.Left,
+          })}
+        >
+          <ArrowSVG />
+        </svg>
       </button>
     </li>
   );
