@@ -21,8 +21,12 @@ type Props = {
 };
 
 const CheckboxList: FC<Props> = ({ listTitle, items }) => {
-  const checkboxElementsInitialState = new Map(
-    items.map((item) => [item.name, item.checked]),
+  const checkboxElementsInitialState = items.reduce(
+    (state: { [key: string]: boolean }, item) => ({
+      ...state,
+      [item.name]: item.checked,
+    }),
+    {},
   );
 
   const [checkedStatusMap, updateCheckedStatusMap] = useState(
@@ -41,7 +45,7 @@ const CheckboxList: FC<Props> = ({ listTitle, items }) => {
             id={item.id}
             name={item.name}
             text={item.text}
-            checked={checkedStatusMap.get(item.name)!}
+            checked={checkedStatusMap[item.name]}
             disabled={item.disabled}
             description={item.description}
             onChange={updateCheckedStatusMap}

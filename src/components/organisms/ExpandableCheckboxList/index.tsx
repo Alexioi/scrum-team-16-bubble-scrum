@@ -24,8 +24,12 @@ type Props = {
 const ExpandableCheckboxList: FC<Props> = ({ listTitle, items }) => {
   const [listOpened, setListOpened] = useState(false);
 
-  const checkboxElementsInitialState = new Map(
-    items.map((item) => [item.name, item.checked]),
+  const checkboxElementsInitialState = items.reduce(
+    (state: { [key: string]: boolean }, item) => ({
+      ...state,
+      [item.name]: item.checked,
+    }),
+    {},
   );
 
   const [checkedStatusMap, updateCheckedStatusMap] = useState(
@@ -49,7 +53,7 @@ const ExpandableCheckboxList: FC<Props> = ({ listTitle, items }) => {
               id={item.id}
               name={item.name}
               text={item.text}
-              checked={checkedStatusMap.get(item.name)!}
+              checked={checkedStatusMap[item.name]}
               onChange={updateCheckedStatusMap}
               disabled={item.disabled}
             />

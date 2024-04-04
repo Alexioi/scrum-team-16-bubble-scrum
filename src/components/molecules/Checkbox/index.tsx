@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import clsx from 'clsx';
 
 import style from './style.module.scss';
@@ -13,7 +13,7 @@ type Props = {
   disabled: boolean;
   description?: string;
   onChange?(
-    callback: (state: Map<string, boolean>) => Map<string, boolean>,
+    callback: (state: { [key: string]: boolean }) => { [key: string]: boolean },
   ): void;
 };
 
@@ -26,13 +26,13 @@ const Checkbox: FC<Props> = ({
   description,
   onChange,
 }) => {
-  const [checkedValue, setCheckedValue] = useState(checked);
-
   const handleCheckboxInputChange = () => {
     if (onChange) {
-      onChange((prevState) => prevState.set(name, !checked));
+      onChange((prevState) => ({
+        ...prevState,
+        [name]: !checked,
+      }));
     }
-    setCheckedValue((prevState) => !prevState);
   };
 
   return (
@@ -45,7 +45,7 @@ const Checkbox: FC<Props> = ({
           id={id}
           name={name}
           type="checkbox"
-          checked={checkedValue}
+          checked={checked}
           onChange={handleCheckboxInputChange}
           disabled={disabled}
         />
