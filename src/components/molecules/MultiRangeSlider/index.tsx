@@ -14,9 +14,10 @@ type Props = {
 const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
   const [minValue, setMinValue] = useState(min);
   const [maxValue, setMaxValue] = useState(max);
+  const [width, setWidth] = useState(100);
+  const [left, setLeft] = useState(0);
   const minValueRef = useRef<HTMLInputElement>(null);
   const maxValueRef = useRef<HTMLInputElement>(null);
-  const range = useRef<HTMLDivElement>(null);
 
   const getPercent = useCallback(
     (value: number) => Math.round(((value - min) / (max - min)) * 100),
@@ -28,12 +29,12 @@ const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
     setMinValue(value);
     event.target.value = value.toString();
 
-    if (maxValueRef.current && range.current) {
+    if (maxValueRef.current) {
       const minPercent = getPercent(value);
       const maxPercent = getPercent(Number(maxValueRef.current.value));
 
-      range.current.style.left = `${minPercent}%`;
-      range.current.style.width = `${maxPercent - minPercent}%`;
+      setLeft(minPercent);
+      setWidth(maxPercent - minPercent);
     }
 
     onChange(minValue, maxValue);
@@ -44,11 +45,11 @@ const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
     setMaxValue(value);
     event.target.value = value.toString();
 
-    if (minValueRef.current && range.current) {
+    if (minValueRef.current) {
       const minPercent = getPercent(Number(minValueRef.current.value));
       const maxPercent = getPercent(value);
 
-      range.current.style.width = `${maxPercent - minPercent}%`;
+      setWidth(maxPercent - minPercent);
     }
 
     onChange(minValue, maxValue);
@@ -78,7 +79,10 @@ const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
       />
       <div className={style.slider}>
         <div className={style.slider__track} />
-        <div ref={range} className={style.slider__range} />
+        <div
+          className={style.slider__range}
+          style={{ width: `${width}%`, left: `${left}%` }}
+        />
       </div>
     </div>
   );
