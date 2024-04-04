@@ -4,7 +4,6 @@ import { FC, useState } from 'react';
 import { nanoid } from 'nanoid';
 
 import { ArrowButton, PaginationButton } from '@/components/atoms';
-import { Direction } from '@/enums/direction.enum';
 
 import style from './style.module.scss';
 
@@ -24,7 +23,7 @@ const Pagination: FC<Props> = ({ pagesCount, totalPagesCount }) => {
       <div className={style.wrapper}>
         <ul className={style.list}>
           {activePage > 1 && (
-            <ArrowButton direction={Direction.Left} onClick={setActivePage} />
+            <ArrowButton direction="left" onClick={setActivePage} />
           )}
           {Array(pagesCount)
             .fill(null)
@@ -37,7 +36,7 @@ const Pagination: FC<Props> = ({ pagesCount, totalPagesCount }) => {
               />
             ))}
           {activePage < pagesCount && (
-            <ArrowButton direction={Direction.Right} onClick={setActivePage} />
+            <ArrowButton direction="right" onClick={setActivePage} />
           )}
         </ul>
       </div>
@@ -49,7 +48,7 @@ const Pagination: FC<Props> = ({ pagesCount, totalPagesCount }) => {
       <div className={style.wrapper}>
         <ul className={style.list}>
           {activePage > 1 && (
-            <ArrowButton direction={Direction.Left} onClick={setActivePage} />
+            <ArrowButton direction="left" onClick={setActivePage} />
           )}
           {activePage < 3 && (
             <>
@@ -185,7 +184,7 @@ const Pagination: FC<Props> = ({ pagesCount, totalPagesCount }) => {
             </>
           )}
           {activePage < pagesCount && (
-            <ArrowButton direction={Direction.Right} onClick={setActivePage} />
+            <ArrowButton direction="right" onClick={setActivePage} />
           )}
         </ul>
         <div className={style.label}>

@@ -6,3 +6,4 @@ export * from './Header';
 export * from './HotelCard';
 export * from './HotelList';
 export * from './SubscriptionInput';
+export * from './Pagination';

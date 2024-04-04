@@ -2,9 +2,10 @@ import { FC } from 'react';
 import clsx from 'clsx';
 
 import ArrowSVG from '@/images/decorative/arrow.svg';
-import { Direction } from '@/enums/direction.enum';
 
 import style from './style.module.scss';
+
+type Direction = 'left' | 'right';
 
 type Props = {
   direction: Direction;
@@ -13,8 +14,8 @@ type Props = {
 
 const ArrowButton: FC<Props> = ({ direction, onClick }) => {
   const directionPaginationMap = {
-    [Direction.Left]: (prevState: number) => prevState - 1,
-    [Direction.Right]: (prevState: number) => prevState + 1,
+    left: (prevState: number) => prevState - 1,
+    right: (prevState: number) => prevState + 1,
   };
 
   return (
@@ -28,7 +29,7 @@ const ArrowButton: FC<Props> = ({ direction, onClick }) => {
       >
         <svg
           className={clsx(style.arrow, {
-            [style.arrow_rotated]: direction === Direction.Left,
+            [style.arrow_rotated]: direction === 'left',
           })}
         >
           <ArrowSVG />
