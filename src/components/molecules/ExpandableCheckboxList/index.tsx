@@ -1,51 +1,61 @@
 'use client';
 
 import { FC, useState } from 'react';
-import ExpandMore from '@/images/decorative/expand-more.svg';
-import { Checkbox } from '../Checkbox';
+
+import { Typography } from '@/components';
+import { Checkbox } from '@/components/molecules';
+
+import { ExpandMoreIcon } from '@/components/atoms/ExpandMoreIcon';
 import style from './style.module.scss';
 
-type CheckboxItem = {
+type Item = {
   id: string;
   name: string;
   text: string;
-  disabled: boolean;
   checked: boolean;
+  disabled: boolean;
 };
 
 type Props = {
   listTitle: string;
-  checkboxItems: CheckboxItem[];
+  items: Item[];
 };
 
-const ExpandableCheckboxList: FC<Props> = ({
-  listTitle,
-  checkboxItems,
-}: Props) => {
+const ExpandableCheckboxList: FC<Props> = ({ listTitle, items }) => {
   const [listOpened, setListOpened] = useState(false);
+
+  const checkboxElementsInitialState = items.reduce(
+    (state: { [key: string]: boolean }, item) => ({
+      ...state,
+      [item.name]: item.checked,
+    }),
+    {},
+  );
+
+  const [checkedStatusMap, updateCheckedStatusMap] = useState(
+    checkboxElementsInitialState,
+  );
 
   return (
     <div className={style.wrapper}>
       <button
         onClick={() => setListOpened((prevState) => !prevState)}
         className={style.button}
-        type="button"
       >
-        <span className={style.title}>{listTitle}</span>
-        <svg className={`${style.icon} ${listOpened && style.icon_rotated}`}>
-          <ExpandMore />
-        </svg>
+        <Typography tag="h3">{listTitle}</Typography>
+        <ExpandMoreIcon flipped={listOpened} />
       </button>
       {listOpened && (
         <div className={style.list}>
-          {checkboxItems.map((item) => (
+          {items.map((item) => (
             <Checkbox
               key={item.id}
               id={item.id}
               name={item.name}
               text={item.text}
+              checked={checkedStatusMap[item.name]}
+              onChange={updateCheckedStatusMap}
               disabled={item.disabled}
-              checked={item.checked}
             />
           ))}
         </div>
