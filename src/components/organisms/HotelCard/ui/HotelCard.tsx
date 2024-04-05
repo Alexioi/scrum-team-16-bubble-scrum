@@ -6,30 +6,42 @@ import { declensionReview } from '../lib/declensionReview';
 import style from './style.module.scss';
 
 type Props = {
-  roomNumber: string;
+  roomNumber: number;
   price: number;
   averageRating: number;
-  lux: boolean;
+  isLux: boolean;
   imageUrls: string[];
+  reviews: number;
 };
+
+// const hotelsScheme = z.array(
+//   z.object({
+//     id: z.string(),
+//     roomNumber: z.number(),
+//     price: z.number(),
+//     averageRating: z.number(),
+//     isLux: z.boolean(),
+//     imageUrls: z.array(z.number()),
+//   }),
+// );
 
 const HotelCard: FC<Props> = ({
   imageUrls,
-  lux,
+  isLux,
   roomNumber,
   price,
   averageRating,
+  reviews,
 }) => {
   return (
     <div className={style.card}>
       <Swiper imageURLs={imageUrls} />
-
       <div className={style.body}>
         <div className={style.header}>
           <div className={style.number}>
             <span className={style.number_icon}>№ </span>
             {roomNumber}
-            {lux && <span className={style.luxury}>ЛЮКС</span>}
+            {isLux && <span className={style.luxury}>ЛЮКС</span>}
           </div>
 
           <div className={style.price}>
@@ -43,7 +55,7 @@ const HotelCard: FC<Props> = ({
         <div className={style.footer}>
           <Rating rating={averageRating} />
           <div className={style.reviews}>
-            145
+            {reviews}
             <span className={style.reviews_prefix}>
               {declensionReview(145)}
             </span>
