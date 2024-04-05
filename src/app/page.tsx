@@ -1,6 +1,6 @@
 'use client';
 
-import { PriceRangeSlider } from '@/components';
+import { Pagination, PriceRangeSlider } from '@/components';
 
 const Home = () => {
   return (
@@ -16,6 +16,7 @@ const Home = () => {
           console.log(`min: ${min}, max: ${max}`)
         }
       />
+      <Pagination itemsCount={13} maxItemsCountPerPage={12} />
     </div>
   );
 };
