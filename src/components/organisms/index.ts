@@ -5,5 +5,8 @@ export * from './Footer';
 export * from './Header';
 export * from './HotelCard';
 export * from './HotelList';
+export * from './PriceRangeSlider';
 export * from './SubscriptionInput';
+export * from './CheckboxList';
+export * from './ExpandableCheckboxList';
 export * from './Pagination';

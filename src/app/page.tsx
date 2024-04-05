@@ -1,36 +1,20 @@
 'use client';
 
-import { Dropdown, Pagination } from '@/components';
-
-const data = [
-  {
-    name: 'взрослые',
-    counter: 0,
-  },
-  {
-    name: 'дети',
-    counter: 0,
-  },
-  {
-    name: 'младенцы',
-    counter: 0,
-  },
-];
-
-const variants = [
-  ['гость', 'гостя', 'гостей'],
-  ['младенец', 'младенца', 'младенцев'],
-];
+import { Pagination, PriceRangeSlider } from '@/components';
 
 const Home = () => {
   return (
-    <div style={{ width: '300px' }}>
-      <Dropdown
-        hasButtons
-        items={data}
-        groups={[[0, 1], [2]]}
-        placeholder="Сколько гостей"
-        variants={variants}
+    <div style={{ width: '266px' }}>
+      <PriceRangeSlider
+        min={5000}
+        max={10000}
+        from={5000}
+        to={10000}
+        title="Диапазон цены"
+        description="Стоимость за сутки пребывания в номере"
+        onChange={(min: number, max: number) =>
+          console.log(`min: ${min}, max: ${max}`)
+        }
       />
       <Pagination itemsCount={13} maxItemsCountPerPage={12} />
     </div>
