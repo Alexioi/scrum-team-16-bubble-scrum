@@ -28,6 +28,7 @@ const HotelList = () => {
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);
+          return;
         }
         setError('неизвестная ошибка');
       } finally {
