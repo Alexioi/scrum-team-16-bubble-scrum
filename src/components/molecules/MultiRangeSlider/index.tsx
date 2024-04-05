@@ -37,7 +37,7 @@ const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
       setWidth(maxPercent - minPercent);
     }
 
-    onChange(minValue, maxValue);
+    onChange(value, maxValue);
   };
 
   const onChangeMax = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -52,7 +52,7 @@ const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
       setWidth(maxPercent - minPercent);
     }
 
-    onChange(minValue, maxValue);
+    onChange(minValue, value);
   };
 
   return (
