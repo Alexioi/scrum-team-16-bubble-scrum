@@ -1,55 +1,52 @@
 'use client';
 
-// import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { getRoomCards } from '@/api';
-import { useFetch } from '@/hooks';
+import { RootState } from '@/store';
+import { useAppSelector } from '@/hooks';
 
 import { HotelCard } from '../HotelCard';
 import style from './style.module.scss';
 
 const HotelList = () => {
-  // const [data, setData] = useState<any[]>([]);
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [error, setError] = useState('');
-  // @ts-ignore
-  const { isLoading, error, response } = useFetch<any[]>([], async () => {
-    const result = await getRoomCards();
-    return result;
-  });
+  const [data, setData] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const currentPage = useAppSelector(
+    (state: RootState) => state.pagination.currentPage,
+  );
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       setError('');
-  //       setIsLoading(true);
-  //       const x = await getRoomCards();
-  //       setData(x);
-  //       setIsLoading(false);
-  //     } catch (err) {
-  //       if (err instanceof Error) {
-  //         setError(err.message);
-  //       }
-  //       setError('неизвестная ошибка');
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setError('');
+        setIsLoading(true);
+        const roomCards = await getRoomCards(currentPage);
+        setData(roomCards);
+        setIsLoading(false);
+      } catch (err) {
+        if (err instanceof Error) {
+          setError(err.message);
+        }
+        setError('неизвестная ошибка');
+      }
+    };
 
-  //   fetchData();
-  // }, []);
+    fetchData();
+  }, [currentPage]);
 
   if (error !== '') {
-    return { error };
+    return <span>{error}</span>;
   }
 
   if (isLoading) {
     return 'Загрузка...';
   }
 
-  console.log(response);
-
   return (
     <div className={style.list}>
-      {response.map((item) => (
+      {data.map((item) => (
         <HotelCard
           key={item.id}
           roomNumber={item.roomNumber}

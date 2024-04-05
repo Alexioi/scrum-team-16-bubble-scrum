@@ -1,3 +1,7 @@
+'use client';
+
+import { actions } from '@/store';
+import { useAppDispatch } from '@/hooks';
 import {
   Filter,
   Container,
@@ -9,6 +13,8 @@ import {
 import style from './style.module.scss';
 
 const SearchRoom = () => {
+  const dispatch = useAppDispatch();
+
   return (
     <div className={style['search-room']}>
       <Container>
@@ -24,6 +30,18 @@ const SearchRoom = () => {
               <HotelList />
             </div>
             <div className={style.pagination}>
+              {[1, 2, 3, 4, 5].map((item) => {
+                return (
+                  <button
+                    key={item}
+                    onClick={() => {
+                      dispatch(actions.pagination.change(item));
+                    }}
+                  >
+                    {item}
+                  </button>
+                );
+              })}
               <Pagination pagesCount={12} totalPagesCount={180} />
             </div>
           </div>

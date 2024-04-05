@@ -1,18 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { helloToxinActions, helloToxinReducer } from './helloToxinSlice';
-import { HotelListSliceActions, HotelListSliceReducer } from './HotelListSlice';
+import { paginationActions, paginationReducer } from './paginationSlice';
 
 const store = configureStore({
   reducer: {
     helloToxin: helloToxinReducer,
-    hotelList: HotelListSliceReducer,
+    pagination: paginationReducer,
   },
 });
 
 const actions = {
   helloToxin: helloToxinActions,
-  hotelList: HotelListSliceActions,
+  pagination: paginationActions,
 };
 
 type RootState = ReturnType<typeof store.getState>;

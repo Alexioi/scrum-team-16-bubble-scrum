@@ -9,14 +9,14 @@ import {
 
 import { db } from '../../config';
 
-const getRoomCards = async () => {
-  const page = 1;
+const ITEMS_ON_PAGE = 12;
 
+const getRoomCards = async (currentPage: number) => {
   const q = query(
     collection(db, 'room-cards'),
     orderBy('roomNumber'),
-    startAt((page - 1) * 12 + 1),
-    limit(12),
+    startAt((currentPage - 1) * ITEMS_ON_PAGE + 1),
+    limit(ITEMS_ON_PAGE),
   );
 
   const querySnapshot = await getDocs(q);
