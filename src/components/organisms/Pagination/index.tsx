@@ -1,7 +1,6 @@
 'use client';
 
 import { FC, useState } from 'react';
-import { nanoid } from 'nanoid';
 
 import { ArrowButton, PaginationButton } from '@/components/atoms';
 
@@ -27,10 +26,11 @@ const Pagination: FC<Props> = ({ itemsCount, maxItemsCountPerPage }) => {
           )}
           {Array(pagesCount)
             .fill(null)
-            .map((_page, index) => (
+            .map((_item, index) => index + 1)
+            .map((page) => (
               <PaginationButton
-                key={nanoid()}
-                pageNumber={index + 1}
+                key={page}
+                pageNumber={page}
                 activePage={activePage}
                 onClick={setActivePage}
               />
@@ -57,11 +57,12 @@ const Pagination: FC<Props> = ({ itemsCount, maxItemsCountPerPage }) => {
             <>
               {Array(pagesCount)
                 .fill(null)
+                .map((_item, index) => index + 1)
                 .slice(0, 3)
-                .map((_page, index) => (
+                .map((page) => (
                   <PaginationButton
-                    key={nanoid()}
-                    pageNumber={index + 1}
+                    key={page}
+                    pageNumber={page}
                     activePage={activePage}
                     onClick={setActivePage}
                   />
@@ -78,18 +79,18 @@ const Pagination: FC<Props> = ({ itemsCount, maxItemsCountPerPage }) => {
             <>
               {Array(pagesCount)
                 .fill(null)
+                .map((_item, index) => index + 1)
                 .slice(0, activePage + 1)
-                .map((_page, index) => (
+                .map((page) => (
                   <PaginationButton
-                    key={nanoid()}
-                    pageNumber={index + 1}
+                    key={page}
+                    pageNumber={page}
                     activePage={activePage}
                     onClick={setActivePage}
                   />
                 ))}
               <li className={style.boundary}>...</li>
               <PaginationButton
-                key={nanoid()}
                 pageNumber={pagesCount}
                 activePage={activePage}
                 onClick={setActivePage}
@@ -146,7 +147,7 @@ const Pagination: FC<Props> = ({ itemsCount, maxItemsCountPerPage }) => {
                 .slice(activePage - 1)
                 .map((page) => (
                   <PaginationButton
-                    key={nanoid()}
+                    key={page}
                     pageNumber={page}
                     activePage={activePage}
                     onClick={setActivePage}
@@ -178,7 +179,7 @@ const Pagination: FC<Props> = ({ itemsCount, maxItemsCountPerPage }) => {
                 .slice(activePage - 1)
                 .map((page) => (
                   <PaginationButton
-                    key={nanoid()}
+                    key={page}
                     pageNumber={page}
                     activePage={activePage}
                     onClick={setActivePage}
