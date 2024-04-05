@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { FC, useState, MouseEvent } from 'react';
 import Image from 'next/image';
 
-import LeftArrow from '@/images/decorative/expand-more.svg';
+import LeftArrowSVG from '@/images/decorative/expand-more.svg';
 
 import style from './style.module.scss';
 
@@ -43,11 +43,15 @@ const Swiper: FC<Props> = ({ imageURLs }) => {
       />
 
       <button className={style.prev} onClick={handlePrevButtonClick}>
-        <LeftArrow />
+        <svg width={12} height={8}>
+          <LeftArrowSVG />
+        </svg>
       </button>
 
       <button className={style.next} onClick={handleNextButtonClick}>
-        <LeftArrow />
+        <svg width={12} height={8}>
+          <LeftArrowSVG />
+        </svg>
       </button>
 
       <div className={style.pagination}>

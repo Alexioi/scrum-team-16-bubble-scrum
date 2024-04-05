@@ -10,6 +10,7 @@ type CheckboxItem = {
   name: string;
   text: string;
   disabled: boolean;
+  checked: boolean;
 };
 
 type Props = {
@@ -44,6 +45,7 @@ const ExpandableCheckboxList: FC<Props> = ({
               name={item.name}
               text={item.text}
               disabled={item.disabled}
+              checked={item.checked}
             />
           ))}
         </div>

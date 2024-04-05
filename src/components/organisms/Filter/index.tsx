@@ -4,8 +4,7 @@ import { useState } from 'react';
 import clsx from 'clsx';
 
 import { Button, Typography } from '../../atoms';
-import { ExpandableCheckboxList, Dropdown } from '../../molecules';
-import { Calendar } from '..';
+import { Calendar, Dropdown, ExpandableCheckboxList } from '..';
 import {
   checkboxItems,
   guestData,
@@ -64,7 +63,7 @@ const Filter = () => {
         <div className={style['dropdown-list']}>
           <ExpandableCheckboxList
             listTitle="дополнительные удобства"
-            checkboxItems={checkboxItems}
+            items={checkboxItems}
           />
         </div>
       </form>

@@ -5,11 +5,11 @@ import clsx from 'clsx';
 
 import style from './style.module.scss';
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
+type Props = InputHTMLAttributes<HTMLInputElement> & {
   type: 'text' | 'email' | 'password' | 'date';
   squareBottom?: boolean;
   active?: boolean;
-}
+};
 
 const Input: FC<Props> = ({ type, squareBottom, active, ...standardProps }) => {
   return (

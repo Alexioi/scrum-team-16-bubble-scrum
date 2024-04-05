@@ -57,17 +57,17 @@ const Calendar: FC<Props> = ({ isSingle = false }) => {
     setSecondInputValue(getFullStringDate(secondDate));
   };
 
-  const handleClickOutsideCalendar = ({ target }: Event) => {
-    if (!(target instanceof HTMLElement)) {
-      return;
-    }
-
-    if (target.contains(calendarRef.current)) {
-      setIsOpened(false);
-    }
-  };
-
   useEffect(() => {
+    const handleClickOutsideCalendar = ({ target }: Event) => {
+      if (!(target instanceof HTMLElement)) {
+        return;
+      }
+
+      if (target.contains(calendarRef.current)) {
+        setIsOpened(false);
+      }
+    };
+
     document.addEventListener('click', handleClickOutsideCalendar);
     return () => {
       document.removeEventListener('click', handleClickOutsideCalendar);
@@ -85,7 +85,7 @@ const Calendar: FC<Props> = ({ isSingle = false }) => {
           placeholder={isSingle ? 'ДД.ММ.ГГГГ' : 'ДД.ММ.ГГГГ - ДД.ММ.ГГГГ'}
           readOnly
         />
-        {isSingle || (
+        {!isSingle && (
           <DropdownInput
             type="text"
             defaultValue={secondInputValue}
@@ -96,7 +96,6 @@ const Calendar: FC<Props> = ({ isSingle = false }) => {
           />
         )}
       </div>
-
       <div
         ref={calendarRef}
         className={clsx(style['calendar-menu'], {
@@ -108,15 +107,11 @@ const Calendar: FC<Props> = ({ isSingle = false }) => {
           <Button
             text="очистить"
             theme="link"
-            type="button"
-            size="default"
             onClick={handleClearButtonClick}
           />
           <Button
             text="применить"
             theme="link"
-            type="button"
-            size="default"
             onClick={handleApplyButtonClick}
           />
         </div>

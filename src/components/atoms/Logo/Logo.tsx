@@ -1,4 +1,5 @@
 import { useId } from 'react';
+import Link from 'next/link';
 
 import LogoTextSVG from '@/images/decorative/logo-text.svg';
 import LogoCircleSVG from '@/images/decorative/logo-circle.svg';
@@ -12,7 +13,7 @@ const Logo = () => {
   const id = useId();
 
   return (
-    <a href="/" className={style.logo} aria-label="go to home page">
+    <Link href="/" className={style.logo} aria-label="go to home page">
       <Gradient id={`first${id}`} startColor="#BC9CFF" endColor="#8BA4F9" />
       <Gradient id={`second${id}`} startColor="#6FCF97" endColor="#66D2EA" />
       <svg className={(style.icon, style.icon_type_full)}>
@@ -27,7 +28,7 @@ const Logo = () => {
         </g>
         <LogoTextSVG />
       </svg>
-    </a>
+    </Link>
   );
 };
 
