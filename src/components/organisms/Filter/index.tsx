@@ -3,22 +3,34 @@
 import { useState } from 'react';
 import clsx from 'clsx';
 
-import { Button, Typography } from '../../atoms';
-import { Calendar, Dropdown, ExpandableCheckboxList } from '..';
+import { RootState, actions } from '@/store';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+
 import {
-  checkboxItems,
-  guestData,
-  guestVariants,
-  roomData,
-  roomVariants,
-} from './data';
+  Calendar,
+  Dropdown,
+  ExpandableCheckboxList,
+  Button,
+  Typography,
+} from '../..';
+import { guestData, guestVariants, roomData, roomVariants } from './data';
 import style from './style.module.scss';
 
 const Filter = () => {
   const [isOpened, setIsOpened] = useState(false);
+  const dispatch = useAppDispatch();
+  const expandableListData = useAppSelector(
+    (state: RootState) => state.filter.expandableListData,
+  );
 
   const handleButtonClick = () => {
     setIsOpened(!isOpened);
+  };
+
+  const makeExpandableCheckboxListChangeValues = () => {
+    return (name: string) => {
+      dispatch(actions.filter.changeExpandableListData(name));
+    };
   };
 
   return (
@@ -62,13 +74,19 @@ const Filter = () => {
         </div>
         <div className={style['dropdown-list']}>
           <ExpandableCheckboxList
+            changeValue={makeExpandableCheckboxListChangeValues}
             listTitle="дополнительные удобства"
-            items={checkboxItems}
+            items={expandableListData}
           />
         </div>
       </form>
       <div className={style['toggle-button']}>
-        <Button theme="outlined" text="Фильтр" onClick={handleButtonClick} />
+        <Button
+          theme="outlined"
+          text="Фильтр"
+          onClick={handleButtonClick}
+          type="button"
+        />
       </div>
     </div>
   );

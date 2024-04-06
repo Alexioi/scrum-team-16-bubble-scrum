@@ -12,9 +12,7 @@ type Props = {
   checked: boolean;
   disabled: boolean;
   description?: string;
-  onChange?(
-    callback: (state: { [key: string]: boolean }) => { [key: string]: boolean },
-  ): void;
+  onChange(name: string): void;
 };
 
 const Checkbox: FC<Props> = ({
@@ -26,15 +24,6 @@ const Checkbox: FC<Props> = ({
   description,
   onChange,
 }) => {
-  const handleCheckboxInputChange = () => {
-    if (onChange) {
-      onChange((prevState) => ({
-        ...prevState,
-        [name]: !checked,
-      }));
-    }
-  };
-
   return (
     <div className={style.wrapper}>
       <label className={style.label} htmlFor={id}>
@@ -46,7 +35,9 @@ const Checkbox: FC<Props> = ({
           name={name}
           type="checkbox"
           checked={checked}
-          onChange={handleCheckboxInputChange}
+          onChange={() => {
+            onChange(name);
+          }}
           disabled={disabled}
         />
         <span className={style['checkmark-square-border']}>
