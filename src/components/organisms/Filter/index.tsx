@@ -11,6 +11,7 @@ import {
   ExpandableCheckboxList,
   Button,
   Typography,
+  CheckboxList,
 } from '@/components';
 
 import { guestVariants, roomVariants } from './data';
@@ -26,6 +27,12 @@ const Filter = () => {
     (state: RootState) => state.filter.guestsData,
   );
   const roomData = useAppSelector((state: RootState) => state.filter.roomData);
+  const rulesList = useAppSelector(
+    (state: RootState) => state.filter.rulesList,
+  );
+  const availabilityList = useAppSelector(
+    (state: RootState) => state.filter.availabilityList,
+  );
 
   const handleButtonClick = () => {
     setIsOpened(!isOpened);
@@ -57,6 +64,14 @@ const Filter = () => {
     dispatch(actions.filter.changeRoomData(value));
   };
 
+  const handleRulesListChange = (name: string) => {
+    dispatch(actions.filter.changeRulesList(name));
+  };
+
+  const handleAvailabilityListChange = (name: string) => {
+    dispatch(actions.filter.changeAvailabilityList(name));
+  };
+
   return (
     <div className={clsx(style.filter, { [style.filter_opened]: isOpened })}>
       <form className={style.form}>
@@ -79,14 +94,18 @@ const Filter = () => {
             Стоимость за сутки пребывания в номере
           </p>
         </div>
-        <div className={style['rules-title']}>
-          <Typography tag="h3">правила дома</Typography>
+        <div className={style.rules}>
+          <CheckboxList
+            items={rulesList}
+            listTitle="правила дома"
+            onChange={handleRulesListChange}
+          />
         </div>
-        <div className={style.rules}>checkbox-list</div>
-        <div className={style['availability-title']}>
-          <Typography tag="h3">доступность</Typography>
-        </div>
-        <div className={style.availability}>checkbox-list</div>
+        <CheckboxList
+          items={availabilityList}
+          listTitle="доступность"
+          onChange={handleAvailabilityListChange}
+        />
         <div className={style['rooms-dropdown']}>
           <Typography tag="h3">удобства номера</Typography>
           <Dropdown

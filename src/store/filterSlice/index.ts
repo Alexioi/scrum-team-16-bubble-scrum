@@ -42,6 +42,38 @@ const filterSlice = createSlice({
     ) => {
       state.roomData.items = payload;
     },
+    changeRulesList: (
+      state,
+      {
+        payload,
+      }: {
+        payload: string;
+      },
+    ) => {
+      state.rulesList = state.rulesList.map((item) => {
+        if (payload === item.name) {
+          return { ...item, checked: !item.checked };
+        }
+
+        return item;
+      });
+    },
+    changeAvailabilityList: (
+      state,
+      {
+        payload,
+      }: {
+        payload: string;
+      },
+    ) => {
+      state.availabilityList = state.availabilityList.map((item) => {
+        if (payload === item.name) {
+          return { ...item, checked: !item.checked };
+        }
+
+        return item;
+      });
+    },
   },
 });
 

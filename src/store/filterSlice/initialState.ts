@@ -3,14 +3,19 @@ type DropdownValue = {
   counter: number;
 };
 
+type CheckboxItem = {
+  id: string;
+  name: string;
+  text: string;
+  checked: boolean;
+  disabled: boolean;
+  description?: string;
+};
+
 type InitialState = {
-  expandableListData: {
-    id: string;
-    name: string;
-    text: string;
-    checked: boolean;
-    disabled: boolean;
-  }[];
+  expandableListData: CheckboxItem[];
+  rulesList: CheckboxItem[];
+  availabilityList: CheckboxItem[];
   dates: string[] | null[];
   guestsData: {
     items: DropdownValue[];
@@ -63,6 +68,47 @@ const initialState: InitialState = {
       id: '6',
       name: 'shampoo',
       text: 'Шампунь',
+      checked: false,
+      disabled: false,
+    },
+  ],
+  rulesList: [
+    {
+      id: '7',
+      name: 'smoking-allowed',
+      text: 'Можно курить',
+      checked: false,
+      disabled: false,
+    },
+    {
+      id: '8',
+      name: 'pets-allowed',
+      text: 'Можно с питомцами',
+      checked: false,
+      disabled: false,
+    },
+    {
+      id: '9',
+      name: 'party-allowed',
+      text: 'Можно пригласить гостей (до 10 человек)',
+      checked: false,
+      disabled: false,
+    },
+  ],
+  availabilityList: [
+    {
+      id: '10',
+      name: 'name1',
+      text: 'Широкий коридор',
+      description: 'Ширина коридоров в номере не менее 91 см.',
+      checked: false,
+      disabled: false,
+    },
+    {
+      id: '11',
+      name: 'name2',
+      text: 'Помощник для инвалидов',
+      description: 'На 1 этаже вас встретит специалист и проводит до номера.',
       checked: false,
       disabled: false,
     },
