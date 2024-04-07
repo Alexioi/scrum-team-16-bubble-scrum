@@ -5,14 +5,14 @@ import clsx from 'clsx';
 
 import { RootState, actions } from '@/store';
 import { useAppDispatch, useAppSelector } from '@/hooks';
-
 import {
   Calendar,
   Dropdown,
   ExpandableCheckboxList,
   Button,
   Typography,
-} from '../..';
+} from '@/components';
+
 import { guestData, guestVariants, roomData, roomVariants } from './data';
 import style from './style.module.scss';
 
@@ -27,17 +27,19 @@ const Filter = () => {
     setIsOpened(!isOpened);
   };
 
-  const makeExpandableCheckboxListChangeValues = () => {
-    return (name: string) => {
-      dispatch(actions.filter.changeExpandableListData(name));
-    };
+  const handleCalendarChange = (value: string[] | null[]) => {
+    dispatch(actions.filter.changeDates(value));
+  };
+
+  const handleExpandableCheckboxListChange = (name: string) => {
+    dispatch(actions.filter.changeExpandableListData(name));
   };
 
   return (
     <div className={clsx(style.filter, { [style.filter_opened]: isOpened })}>
       <form className={style.form}>
         <Typography tag="h3">даты пребывания в отеле</Typography>
-        <Calendar isSingle />
+        <Calendar isSingle onChange={handleCalendarChange} />
         <div className={style['guests-dropdown']}>
           <Typography tag="h3">гости</Typography>
           <Dropdown
@@ -74,7 +76,7 @@ const Filter = () => {
         </div>
         <div className={style['dropdown-list']}>
           <ExpandableCheckboxList
-            changeValue={makeExpandableCheckboxListChangeValues}
+            onChange={handleExpandableCheckboxListChange}
             listTitle="дополнительные удобства"
             items={expandableListData}
           />

@@ -17,14 +17,10 @@ type Item = {
 type Props = {
   listTitle: string;
   items: Item[];
-  changeValue: any;
+  onChange(name: string): void;
 };
 
-const ExpandableCheckboxList: FC<Props> = ({
-  listTitle,
-  items,
-  changeValue,
-}) => {
+const ExpandableCheckboxList: FC<Props> = ({ listTitle, items, onChange }) => {
   const [listOpened, setListOpened] = useState(false);
 
   return (
@@ -46,7 +42,7 @@ const ExpandableCheckboxList: FC<Props> = ({
               name={item.name}
               text={item.text}
               checked={item.checked}
-              onChange={changeValue(item.name)}
+              onChange={onChange}
               disabled={item.disabled}
             />
           ))}

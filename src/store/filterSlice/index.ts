@@ -8,6 +8,7 @@ type InitialState = {
     checked: boolean;
     disabled: boolean;
   }[];
+  dates: string[] | null[];
 };
 
 const initialState: InitialState = {
@@ -55,6 +56,7 @@ const initialState: InitialState = {
       disabled: false,
     },
   ],
+  dates: [null, null],
 };
 
 const filterSlice = createSlice({
@@ -69,6 +71,13 @@ const filterSlice = createSlice({
 
         return item;
       });
+    },
+    changeDates: (state, { payload }: { payload: string[] | null[] }) => {
+      if (!(payload.length === 2)) {
+        return;
+      }
+
+      state.dates = payload;
     },
   },
 });
