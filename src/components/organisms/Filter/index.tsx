@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import clsx from 'clsx';
 
-import { RootState, actions } from '@/store';
+import { actions, RootState } from '@/store';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import {
   Calendar,
@@ -13,7 +13,7 @@ import {
   Typography,
 } from '@/components';
 
-import { guestData, guestVariants, roomData, roomVariants } from './data';
+import { guestVariants, roomVariants } from './data';
 import style from './style.module.scss';
 
 const Filter = () => {
@@ -22,6 +22,10 @@ const Filter = () => {
   const expandableListData = useAppSelector(
     (state: RootState) => state.filter.expandableListData,
   );
+  const guestData = useAppSelector(
+    (state: RootState) => state.filter.guestsData,
+  );
+  const roomData = useAppSelector((state: RootState) => state.filter.roomData);
 
   const handleButtonClick = () => {
     setIsOpened(!isOpened);
@@ -35,6 +39,24 @@ const Filter = () => {
     dispatch(actions.filter.changeExpandableListData(name));
   };
 
+  const handleGuestDropdownChange = (
+    value: {
+      name: string;
+      counter: number;
+    }[],
+  ) => {
+    dispatch(actions.filter.changeGuestData(value));
+  };
+
+  const handleRoomDropdownChange = (
+    value: {
+      name: string;
+      counter: number;
+    }[],
+  ) => {
+    dispatch(actions.filter.changeRoomData(value));
+  };
+
   return (
     <div className={clsx(style.filter, { [style.filter_opened]: isOpened })}>
       <form className={style.form}>
@@ -46,8 +68,9 @@ const Filter = () => {
             hasButtons
             placeholder="Сколько гостей"
             variants={guestVariants}
-            items={guestData}
-            groups={[[0, 1], [2]]}
+            items={guestData.items}
+            groups={guestData.groups}
+            onChange={handleGuestDropdownChange}
           />
         </div>
         <div className={style['range-slider']}>
@@ -70,8 +93,9 @@ const Filter = () => {
             hasButtons={false}
             placeholder="Сколько комнат"
             variants={roomVariants}
-            items={roomData}
-            groups={[[0], [1], [2]]}
+            items={roomData.items}
+            groups={roomData.groups}
+            onChange={handleRoomDropdownChange}
           />
         </div>
         <div className={style['dropdown-list']}>
