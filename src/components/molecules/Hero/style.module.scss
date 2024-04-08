@@ -1,0 +1,16 @@
+.hero {
+    position: relative;
+    height: 830px;
+}
+
+@media (max-width: 992px) {
+    .hero {
+        height: 740px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 540px;
+    }
+}

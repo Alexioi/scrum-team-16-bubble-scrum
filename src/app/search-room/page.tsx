@@ -24,7 +24,7 @@ const SearchRoom = () => {
               <HotelList />
             </div>
             <div className={style.pagination}>
-              <Pagination pagesCount={12} totalPagesCount={180} />
+              <Pagination maxItemsCountPerPage={12} itemsCount={189} />
             </div>
           </div>
         </div>

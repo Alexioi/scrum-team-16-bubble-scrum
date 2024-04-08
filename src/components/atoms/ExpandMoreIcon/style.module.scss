@@ -3,7 +3,10 @@
 .icon {
   fill: $dark-shade-50;
 
+  transition: transform 0.2s ease;
+
   &_flipped {
-    transform: scaleY(-1);
+    transform: rotate(180deg);
+    transition: transform 0.2s ease;
   }
 }
