@@ -43,7 +43,13 @@ const PriceRangeSlider: FC<Props> = ({
           {`${fromValue.toLocaleString()}₽ - ${toValue.toLocaleString()}₽`}
         </span>
       </div>
-      <MultiRangeSlider min={min} max={max} onChange={handleChange} />
+      <MultiRangeSlider
+        min={min}
+        max={max}
+        from={from}
+        to={to}
+        onChange={handleChange}
+      />
       <p className={style.description}>{description}</p>
     </div>
   );
