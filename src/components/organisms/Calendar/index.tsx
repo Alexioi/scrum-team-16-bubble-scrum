@@ -89,7 +89,7 @@ const Calendar: FC<Props> = ({ isSingle = false, onChange }) => {
           defaultValue={firstInputValue}
           expanded={isOpened}
           onClick={handleInputButtonClick}
-          placeholder={isSingle ? 'ДД.ММ.ГГГГ' : 'ДД.ММ.ГГГГ - ДД.ММ.ГГГГ'}
+          placeholder={isSingle ? 'ДД.ММ.ГГГГ - ДД.ММ.ГГГГ' : 'ДД.ММ.ГГГГ'}
           readOnly
         />
         {!isSingle && (

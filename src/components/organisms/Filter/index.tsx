@@ -79,10 +79,14 @@ const Filter = () => {
   return (
     <div className={clsx(style.filter, { [style.filter_opened]: isOpened })}>
       <form className={style.form}>
-        <Typography tag="h3">даты пребывания в отеле</Typography>
+        <div className={style['calendar-header']}>
+          <Typography tag="h3">даты пребывания в отеле</Typography>
+        </div>
         <Calendar isSingle onChange={handleCalendarChange} />
         <div className={style['guests-dropdown']}>
-          <Typography tag="h3">гости</Typography>
+          <div className={style['guests-header']}>
+            <Typography tag="h3">гости</Typography>
+          </div>
           <Dropdown
             hasButtons
             placeholder="Сколько гостей"
@@ -112,13 +116,17 @@ const Filter = () => {
             onChange={handleRulesListChange}
           />
         </div>
-        <CheckboxList
-          items={availabilityList}
-          listTitle="доступность"
-          onChange={handleAvailabilityListChange}
-        />
-        <div className={style['rooms-dropdown']}>
+        <div className={style.availability}>
+          <CheckboxList
+            items={availabilityList}
+            listTitle="доступность"
+            onChange={handleAvailabilityListChange}
+          />
+        </div>
+        <div className={style['rooms-dropdown-title']}>
           <Typography tag="h3">удобства номера</Typography>
+        </div>
+        <div className={style['rooms-dropdown']}>
           <Dropdown
             hasButtons={false}
             placeholder="Сколько комнат"
@@ -128,6 +136,7 @@ const Filter = () => {
             onChange={handleRoomDropdownChange}
           />
         </div>
+
         <div className={style['dropdown-list']}>
           <ExpandableCheckboxList
             onChange={handleExpandableCheckboxListChange}
