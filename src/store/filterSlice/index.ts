@@ -74,6 +74,16 @@ const filterSlice = createSlice({
         return item;
       });
     },
+    changeRangePrices: (
+      state,
+      {
+        payload,
+      }: {
+        payload: number[];
+      },
+    ) => {
+      state.rangePrices = payload;
+    },
   },
 });
 

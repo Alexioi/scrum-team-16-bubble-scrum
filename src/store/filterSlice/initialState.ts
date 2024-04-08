@@ -24,6 +24,7 @@ type InitialState = {
     items: DropdownValue[];
     groups: number[][];
   };
+  rangePrices: number[];
 };
 
 const initialState: InitialState = {
@@ -136,6 +137,7 @@ const initialState: InitialState = {
     ],
     groups: [[0], [1], [2]],
   },
+  rangePrices: [2000, 8000],
 };
 
 export type { DropdownValue };

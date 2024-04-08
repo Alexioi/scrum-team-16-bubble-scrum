@@ -14,7 +14,7 @@ type Props = {
   to: number;
   title: string;
   description: string;
-  onChange(minValue: number, maxValue: number): void;
+  onChange([minValue, maxValue]: number[]): void;
 };
 
 const PriceRangeSlider: FC<Props> = ({
@@ -32,7 +32,7 @@ const PriceRangeSlider: FC<Props> = ({
   const handleChange = (minValue: number, maxValue: number) => {
     setFromValue(minValue);
     setToValue(maxValue);
-    onChange(minValue, maxValue);
+    onChange([minValue, maxValue]);
   };
 
   return (

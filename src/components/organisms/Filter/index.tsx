@@ -12,6 +12,7 @@ import {
   Button,
   Typography,
   CheckboxList,
+  PriceRangeSlider,
 } from '@/components';
 
 import { guestVariants, roomVariants } from './data';
@@ -32,6 +33,9 @@ const Filter = () => {
   );
   const availabilityList = useAppSelector(
     (state: RootState) => state.filter.availabilityList,
+  );
+  const rangePrices = useAppSelector(
+    (state: RootState) => state.filter.rangePrices,
   );
 
   const handleButtonClick = () => {
@@ -89,10 +93,17 @@ const Filter = () => {
           />
         </div>
         <div className={style['range-slider']}>
-          rangeSlider
-          <p className={style['range-text']}>
-            Стоимость за сутки пребывания в номере
-          </p>
+          <PriceRangeSlider
+            min={0}
+            max={10000}
+            from={rangePrices[0]}
+            to={rangePrices[1]}
+            title="диапазон цены"
+            description="Стоимость за сутки пребывания в номере"
+            onChange={(prices) => {
+              dispatch(actions.filter.changeRangePrices(prices));
+            }}
+          />
         </div>
         <div className={style.rules}>
           <CheckboxList
