@@ -1,19 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { DropdownValue, initialState } from './initialState';
+import { changeChecked } from './helpers';
 
 const filterSlice = createSlice({
   name: 'filter',
   initialState,
   reducers: {
     changeExpandableListData: (state, { payload }: { payload: string }) => {
-      state.expandableListData = state.expandableListData.map((item) => {
-        if (payload === item.name) {
-          return { ...item, checked: !item.checked };
-        }
-
-        return item;
-      });
+      state.expandableListData = changeChecked(
+        state.expandableListData,
+        payload,
+      );
     },
     changeDates: (state, { payload }: { payload: string[] | null[] }) => {
       if (!(payload.length === 2)) {
@@ -50,13 +48,7 @@ const filterSlice = createSlice({
         payload: string;
       },
     ) => {
-      state.rulesList = state.rulesList.map((item) => {
-        if (payload === item.name) {
-          return { ...item, checked: !item.checked };
-        }
-
-        return item;
-      });
+      state.rulesList = changeChecked(state.rulesList, payload);
     },
     changeAvailabilityList: (
       state,
@@ -66,13 +58,7 @@ const filterSlice = createSlice({
         payload: string;
       },
     ) => {
-      state.availabilityList = state.availabilityList.map((item) => {
-        if (payload === item.name) {
-          return { ...item, checked: !item.checked };
-        }
-
-        return item;
-      });
+      state.availabilityList = changeChecked(state.availabilityList, payload);
     },
     changeRangePrices: (
       state,
