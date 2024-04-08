@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import clsx from 'clsx';
 
-import { actions, RootState } from '@/store';
+import { actions } from '@/store';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import {
   Calendar,
@@ -22,21 +22,15 @@ const Filter = () => {
   const [isOpened, setIsOpened] = useState(false);
   const dispatch = useAppDispatch();
   const expandableListData = useAppSelector(
-    (state: RootState) => state.filter.expandableListData,
+    (state) => state.filter.expandableListData,
   );
-  const guestData = useAppSelector(
-    (state: RootState) => state.filter.guestsData,
-  );
-  const roomData = useAppSelector((state: RootState) => state.filter.roomData);
-  const rulesList = useAppSelector(
-    (state: RootState) => state.filter.rulesList,
-  );
+  const guestData = useAppSelector((state) => state.filter.guestsData);
+  const roomData = useAppSelector((state) => state.filter.roomData);
+  const rulesList = useAppSelector((state) => state.filter.rulesList);
   const availabilityList = useAppSelector(
-    (state: RootState) => state.filter.availabilityList,
+    (state) => state.filter.availabilityList,
   );
-  const rangePrices = useAppSelector(
-    (state: RootState) => state.filter.rangePrices,
-  );
+  const rangePrices = useAppSelector((state) => state.filter.rangePrices);
 
   const handleButtonClick = () => {
     setIsOpened(!isOpened);
