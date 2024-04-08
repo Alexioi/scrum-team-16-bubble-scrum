@@ -6,7 +6,6 @@ import clsx from 'clsx';
 import style from './style.module.scss';
 
 type Props = {
-  id: string;
   name: string;
   text: string;
   checked: boolean;
@@ -16,7 +15,6 @@ type Props = {
 };
 
 const Checkbox: FC<Props> = ({
-  id,
   name,
   text,
   checked,
@@ -26,12 +24,11 @@ const Checkbox: FC<Props> = ({
 }) => {
   return (
     <div className={style.wrapper}>
-      <label className={style.label} htmlFor={id}>
+      <label className={style.label}>
         <input
           className={clsx(style.input, {
             [style.input_disabled]: disabled,
           })}
-          id={id}
           name={name}
           type="checkbox"
           checked={checked}

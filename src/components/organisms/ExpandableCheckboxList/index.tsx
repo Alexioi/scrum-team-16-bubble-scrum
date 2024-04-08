@@ -7,7 +7,6 @@ import { Typography, Checkbox, ExpandMoreIcon } from '@/components';
 import style from './style.module.scss';
 
 type Item = {
-  id: string;
   name: string;
   text: string;
   checked: boolean;
@@ -37,8 +36,7 @@ const ExpandableCheckboxList: FC<Props> = ({ listTitle, items, onChange }) => {
         <div className={style.list}>
           {items.map((item) => (
             <Checkbox
-              key={item.id}
-              id={item.id}
+              key={item.name}
               name={item.name}
               text={item.text}
               checked={item.checked}

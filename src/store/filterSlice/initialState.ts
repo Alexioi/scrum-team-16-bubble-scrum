@@ -4,7 +4,6 @@ type DropdownValue = {
 };
 
 type CheckboxItem = {
-  id: string;
   name: string;
   text: string;
   checked: boolean;
@@ -30,42 +29,36 @@ type InitialState = {
 const initialState: InitialState = {
   expandableListData: [
     {
-      id: '1',
       name: 'breakfast',
       text: 'Завтрак',
       checked: false,
       disabled: false,
     },
     {
-      id: '2',
       name: 'desk',
       text: 'Письменный стол',
       checked: false,
       disabled: false,
     },
     {
-      id: '3',
       name: 'feeding-chair',
       text: 'Стул для кормления',
       checked: false,
       disabled: false,
     },
     {
-      id: '4',
       name: 'crib',
       text: 'Кроватка',
       checked: false,
       disabled: false,
     },
     {
-      id: '5',
       name: 'tv',
       text: 'Телевизор',
       checked: false,
       disabled: false,
     },
     {
-      id: '6',
       name: 'shampoo',
       text: 'Шампунь',
       checked: false,
@@ -74,21 +67,18 @@ const initialState: InitialState = {
   ],
   rulesList: [
     {
-      id: '7',
       name: 'smoking-allowed',
       text: 'Можно курить',
       checked: false,
       disabled: false,
     },
     {
-      id: '8',
       name: 'pets-allowed',
       text: 'Можно с питомцами',
       checked: false,
       disabled: false,
     },
     {
-      id: '9',
       name: 'party-allowed',
       text: 'Можно пригласить гостей (до 10 человек)',
       checked: false,
@@ -97,7 +87,6 @@ const initialState: InitialState = {
   ],
   availabilityList: [
     {
-      id: '10',
       name: 'name1',
       text: 'Широкий коридор',
       description: 'Ширина коридоров в номере не менее 91 см.',
@@ -105,7 +94,6 @@ const initialState: InitialState = {
       disabled: false,
     },
     {
-      id: '11',
       name: 'name2',
       text: 'Помощник для инвалидов',
       description: 'На 1 этаже вас встретит специалист и проводит до номера.',
