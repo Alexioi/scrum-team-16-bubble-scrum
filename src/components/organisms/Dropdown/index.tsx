@@ -122,7 +122,7 @@ const Dropdown: FC<Props> = ({
 
   return (
     <ClickAwayListener
-      close={() => {
+      onClose={() => {
         setIsOpened(false);
       }}
     >
