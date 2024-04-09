@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { COUNT_CARD_PER_PAGE } from '@/constants';
+import { ITEMS_PER_PAGE } from '@/constants';
 
 import { HotelCardSkeleton } from '../HotelCard';
 import style from './style.module.scss';
@@ -8,7 +8,7 @@ import style from './style.module.scss';
 const HotelListSkeleton: FC = () => {
   return (
     <div className={style.list}>
-      {new Array(COUNT_CARD_PER_PAGE)
+      {new Array(ITEMS_PER_PAGE)
         .fill(undefined)
         .map((_, i) => i)
         .map((item) => (
