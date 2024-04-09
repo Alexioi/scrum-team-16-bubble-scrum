@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks';
 import { actions } from '@/store';
 
 import style from './style.module.scss';
-import { guestGroups, guestItems, guestVariants, images } from './data';
+import { guestGroups, guestVariants, images } from './data';
 
 const Hero = () => {
   const dispatch = useAppDispatch();
@@ -47,7 +47,7 @@ const Hero = () => {
               placeholder="Сколько гостей"
               groups={guestGroups}
               variants={guestVariants}
-              items={guestsData.items || guestItems}
+              items={guestsData.items}
               onChange={handleGeustDropdownChange}
             />
           </div>
