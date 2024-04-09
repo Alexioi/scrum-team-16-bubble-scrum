@@ -12,7 +12,7 @@ type Props = {
 const ErrorMessage: FC<Props> = ({ message, description = '' }) => {
   return (
     <div className={style.container}>
-      <Typography tag="p">{message}</Typography>
+      <Typography tag="h2">{message}</Typography>
       {description ?? <Typography tag="p">{description}</Typography>}
     </div>
   );

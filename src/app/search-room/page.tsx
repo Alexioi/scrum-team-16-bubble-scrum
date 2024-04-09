@@ -15,8 +15,8 @@ const SearchRoom = () => {
               Номера, которые мы для вас подобрали
             </Typography>
             <ErrorMessage
-              message="Ничего не найдено."
-              description="Попробуйте изменить параметры поиска."
+              message="Ничего не найдено"
+              description="Попробуйте изменить параметры поиска"
             />
           </div>
         </div>
