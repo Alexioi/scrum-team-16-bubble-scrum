@@ -14,7 +14,10 @@ const SearchRoom = () => {
             <Typography tag="h1">
               Номера, которые мы для вас подобрали
             </Typography>
-            <ErrorMessage message="Здесь ничего нет" />
+            <ErrorMessage
+              message="Ничего не найдено."
+              description="Попробуйте изменить параметры поиска."
+            />
           </div>
         </div>
       </Container>

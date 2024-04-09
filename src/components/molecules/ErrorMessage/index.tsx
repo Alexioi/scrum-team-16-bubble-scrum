@@ -6,12 +6,14 @@ import style from './style.module.scss';
 
 type Props = {
   message: string;
+  description?: string;
 };
 
-const ErrorMessage: FC<Props> = ({ message }) => {
+const ErrorMessage: FC<Props> = ({ message, description = '' }) => {
   return (
     <div className={style.container}>
       <Typography tag="p">{message}</Typography>
+      {description ?? <Typography tag="p">{description}</Typography>}
     </div>
   );
 };
