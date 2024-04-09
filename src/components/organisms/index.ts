@@ -9,4 +9,5 @@ export * from './PriceRangeSlider';
 export * from './SubscriptionInput';
 export * from './CheckboxList';
 export * from './ExpandableCheckboxList';
+export * from './Filter';
 export * from './Pagination';

@@ -8,21 +8,31 @@ import style from './style.module.scss';
 type Props = {
   min: number;
   max: number;
+  from?: number;
+  to?: number;
   onChange(minValue: number, maxValue: number): void;
 };
 
-const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
-  const [minValue, setMinValue] = useState(min);
-  const [maxValue, setMaxValue] = useState(max);
-  const [width, setWidth] = useState(100);
-  const [left, setLeft] = useState(0);
-  const minValueRef = useRef<HTMLInputElement>(null);
-  const maxValueRef = useRef<HTMLInputElement>(null);
-
+const MultiRangeSlider: FC<Props> = ({
+  min,
+  max,
+  from = min,
+  to = max,
+  onChange,
+}) => {
   const getPercent = useCallback(
     (value: number) => Math.round(((value - min) / (max - min)) * 100),
     [min, max],
   );
+
+  const [minValue, setMinValue] = useState(from);
+  const [maxValue, setMaxValue] = useState(to);
+  const [width, setWidth] = useState(
+    getPercent(maxValue) - getPercent(minValue),
+  );
+  const [left, setLeft] = useState(getPercent(minValue));
+  const minValueRef = useRef<HTMLInputElement>(null);
+  const maxValueRef = useRef<HTMLInputElement>(null);
 
   const onChangeMin = (event: ChangeEvent<HTMLInputElement>): void => {
     const value = Math.min(Number(event.target.value), maxValue - 1);

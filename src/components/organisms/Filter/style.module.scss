@@ -1,0 +1,69 @@
+@import '@/style/variables.scss';
+
+.filter {
+  &_opened {
+    & .form {
+      display: block;
+    }
+  }
+}
+
+.form {
+  display: block;
+}
+
+.guests-dropdown {
+  margin-top: 22px;
+}
+
+.range-slider {
+  margin-top: 30px;
+}
+
+.range-text {
+  margin-top: 15px;
+  margin-bottom: 0;
+  color: $dark-shade-50;
+}
+
+.rules-title {
+  margin-top: 30px;
+}
+
+.rules {
+  margin-top: 13px;
+}
+
+.availability-title {
+  margin-top: 31px;
+}
+
+.availability {
+  margin-top: 12px;
+  margin-right: 6px;
+}
+
+.rooms-dropdown {
+  margin-top: 30px;
+}
+
+.dropdown-list {
+  margin-top: 30px;
+  margin-right: 16px;
+}
+
+.toggle-button {
+  margin-top: 30px;
+  justify-content: center;
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .form {
+    display: none;
+  }
+
+  .toggle-button {
+    display: flex;
+  }
+}

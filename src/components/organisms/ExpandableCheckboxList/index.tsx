@@ -2,14 +2,11 @@
 
 import { FC, useState } from 'react';
 
-import { Typography } from '@/components';
-import { Checkbox } from '@/components/molecules';
+import { Typography, Checkbox, ExpandMoreIcon } from '@/components';
 
-import { ExpandMoreIcon } from '@/components/atoms/ExpandMoreIcon';
 import style from './style.module.scss';
 
 type Item = {
-  id: string;
   name: string;
   text: string;
   checked: boolean;
@@ -19,28 +16,18 @@ type Item = {
 type Props = {
   listTitle: string;
   items: Item[];
+  onChange(name: string): void;
 };
 
-const ExpandableCheckboxList: FC<Props> = ({ listTitle, items }) => {
+const ExpandableCheckboxList: FC<Props> = ({ listTitle, items, onChange }) => {
   const [listOpened, setListOpened] = useState(false);
-
-  const checkboxElementsInitialState = items.reduce(
-    (state: { [key: string]: boolean }, item) => ({
-      ...state,
-      [item.name]: item.checked,
-    }),
-    {},
-  );
-
-  const [checkedStatusMap, updateCheckedStatusMap] = useState(
-    checkboxElementsInitialState,
-  );
 
   return (
     <div className={style.wrapper}>
       <button
-        onClick={() => setListOpened((prevState) => !prevState)}
+        onClick={() => setListOpened(!listOpened)}
         className={style.button}
+        type="button"
       >
         <Typography tag="h3">{listTitle}</Typography>
         <ExpandMoreIcon flipped={listOpened} />
@@ -49,12 +36,11 @@ const ExpandableCheckboxList: FC<Props> = ({ listTitle, items }) => {
         <div className={style.list}>
           {items.map((item) => (
             <Checkbox
-              key={item.id}
-              id={item.id}
+              key={item.name}
               name={item.name}
               text={item.text}
-              checked={checkedStatusMap[item.name]}
-              onChange={updateCheckedStatusMap}
+              checked={item.checked}
+              onChange={onChange}
               disabled={item.disabled}
             />
           ))}

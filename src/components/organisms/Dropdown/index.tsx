@@ -3,8 +3,8 @@
 import { useState, FC } from 'react';
 import clsx from 'clsx';
 
-import { DropdownInput } from '../DropdownInput';
-import { Counter, Button } from '../../atoms';
+import { DropdownInput, Counter, Button } from '@/components';
+
 import { calculateValue, isEmptyCounters } from './helpers';
 import style from './style.module.scss';
 
@@ -17,6 +17,12 @@ type Props = {
   placeholder: string;
   variants: string[][];
   hasButtons?: boolean;
+  onChange(
+    value: {
+      name: string;
+      counter: number;
+    }[],
+  ): void;
 };
 
 const Dropdown: FC<Props> = ({
@@ -25,9 +31,10 @@ const Dropdown: FC<Props> = ({
   placeholder,
   variants,
   hasButtons = false,
+  onChange,
 }) => {
-  const [isOpened, setIsOpened] = useState(false);
   const [values, setValues] = useState(items);
+  const [isOpened, setIsOpened] = useState(false);
   const [result, setResult] = useState(
     calculateValue(
       groups,
@@ -61,6 +68,8 @@ const Dropdown: FC<Props> = ({
         return;
       }
 
+      onChange(newValues);
+
       setResult(
         calculateValue(
           groups,
@@ -79,15 +88,20 @@ const Dropdown: FC<Props> = ({
   };
 
   const handleClearButtonClick = () => {
-    setValues(
-      values.map((el) => {
-        return { ...el, counter: 0 };
-      }),
-    );
+    const newValues = values.map((el) => {
+      return { ...el, counter: 0 };
+    });
+
+    setValues(newValues);
+
+    onChange(newValues);
+
     setResult(placeholder);
   };
 
   const handleApplyButtonClick = () => {
+    onChange(values);
+
     setIsOpened(false);
     setResult(
       calculateValue(

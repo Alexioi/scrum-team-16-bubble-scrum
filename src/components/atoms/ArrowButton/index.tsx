@@ -22,7 +22,9 @@ const ArrowButton: FC<Props> = ({ direction, onClick }) => {
     <li className={clsx(style.wrapper)}>
       <button
         onClick={() =>
-          onClick((prevState) => directionPaginationMap[direction](prevState))
+          onClick((prevState) => {
+            return directionPaginationMap[direction](prevState);
+          })
         }
         className={style.button}
         type="button"
