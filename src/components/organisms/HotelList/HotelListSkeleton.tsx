@@ -1,4 +1,4 @@
-import { FC, useId } from 'react';
+import { FC } from 'react';
 
 import { HotelCardSkeleton } from '../HotelCard';
 import style from './style.module.scss';
@@ -8,13 +8,14 @@ type Props = {
 };
 
 const HotelListSkeleton: FC<Props> = ({ count }) => {
-  const id = useId();
-
   return (
     <div className={style.list}>
-      {Array.from(Array(count)).map(() => (
-        <HotelCardSkeleton key={id} />
-      ))}
+      {new Array(count)
+        .fill(undefined)
+        .map((_, i) => i)
+        .map((item) => (
+          <HotelCardSkeleton key={`skeleton-${item}`} />
+        ))}
     </div>
   );
 };
