@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, Dispatch, SetStateAction } from 'react';
+import { FC } from 'react';
 import dynamic from 'next/dynamic';
 
 import ArrowSVG from '@/images/decorative/arrow.svg';
@@ -13,7 +13,7 @@ type CalendarValue = Date | null | [Date | null, Date | null];
 
 type Props = {
   value: CalendarValue;
-  onChange: Dispatch<SetStateAction<CalendarValue>>;
+  onChange(calendarValue: CalendarValue): void;
 };
 
 const ReactCalendar: FC<Props> = ({ value, onChange }) => {

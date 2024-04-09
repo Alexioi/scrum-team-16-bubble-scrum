@@ -1,13 +1,12 @@
 'use client';
 
-import { FC, useState } from 'react';
+import { FC } from 'react';
 
 import { Checkbox, Typography } from '@/components';
 
 import style from './style.module.scss';
 
 type Item = {
-  id: string;
   name: string;
   text: string;
   checked: boolean;
@@ -18,21 +17,10 @@ type Item = {
 type Props = {
   listTitle: string;
   items: Item[];
+  onChange(name: string): void;
 };
 
-const CheckboxList: FC<Props> = ({ listTitle, items }) => {
-  const checkboxElementsInitialState = items.reduce(
-    (state: { [key: string]: boolean }, item) => ({
-      ...state,
-      [item.name]: item.checked,
-    }),
-    {},
-  );
-
-  const [checkedStatusMap, updateCheckedStatusMap] = useState(
-    checkboxElementsInitialState,
-  );
-
+const CheckboxList: FC<Props> = ({ listTitle, items, onChange }) => {
   return (
     <div>
       <div className={style.title}>
@@ -41,14 +29,13 @@ const CheckboxList: FC<Props> = ({ listTitle, items }) => {
       <div className={style.list}>
         {items.map((item) => (
           <Checkbox
-            key={item.id}
-            id={item.id}
+            key={item.name}
             name={item.name}
             text={item.text}
-            checked={checkedStatusMap[item.name]}
+            checked={item.checked}
             disabled={item.disabled}
             description={item.description}
-            onChange={updateCheckedStatusMap}
+            onChange={onChange}
           />
         ))}
       </div>

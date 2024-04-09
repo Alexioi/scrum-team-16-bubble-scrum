@@ -6,19 +6,15 @@ import clsx from 'clsx';
 import style from './style.module.scss';
 
 type Props = {
-  id: string;
   name: string;
   text: string;
   checked: boolean;
   disabled: boolean;
   description?: string;
-  onChange?(
-    callback: (state: { [key: string]: boolean }) => { [key: string]: boolean },
-  ): void;
+  onChange(name: string): void;
 };
 
 const Checkbox: FC<Props> = ({
-  id,
   name,
   text,
   checked,
@@ -26,27 +22,19 @@ const Checkbox: FC<Props> = ({
   description,
   onChange,
 }) => {
-  const handleCheckboxInputChange = () => {
-    if (onChange) {
-      onChange((prevState) => ({
-        ...prevState,
-        [name]: !checked,
-      }));
-    }
-  };
-
   return (
     <div className={style.wrapper}>
-      <label className={style.label} htmlFor={id}>
+      <label className={style.label}>
         <input
           className={clsx(style.input, {
             [style.input_disabled]: disabled,
           })}
-          id={id}
           name={name}
           type="checkbox"
           checked={checked}
-          onChange={handleCheckboxInputChange}
+          onChange={() => {
+            onChange(name);
+          }}
           disabled={disabled}
         />
         <span className={style['checkmark-square-border']}>
