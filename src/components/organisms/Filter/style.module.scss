@@ -12,6 +12,14 @@
   display: block;
 }
 
+.calendar-header {
+  padding-bottom: 5px;
+}
+
+.guests-header {
+  padding-bottom: 5px;
+}
+
 .guests-dropdown {
   margin-top: 22px;
 }
@@ -26,29 +34,25 @@
   color: $dark-shade-50;
 }
 
-.rules-title {
-  margin-top: 30px;
-}
-
 .rules {
-  margin-top: 13px;
-}
-
-.availability-title {
   margin-top: 31px;
 }
 
 .availability {
-  margin-top: 12px;
+  margin-top: 28px;
   margin-right: 6px;
 }
 
+.rooms-dropdown-title {
+  margin-top: 25px;
+}
+
 .rooms-dropdown {
-  margin-top: 30px;
+  margin-top: 5px;
 }
 
 .dropdown-list {
-  margin-top: 30px;
+  margin-top: 15px;
   margin-right: 16px;
 }
 

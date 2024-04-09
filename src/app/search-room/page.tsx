@@ -17,14 +17,14 @@ const SearchRoom = () => {
             <Filter />
           </div>
           <div className={style.column}>
-            <Typography tag="h2">
+            <Typography tag="h1">
               Номера, которые мы для вас подобрали
             </Typography>
             <div className={style['room-list-wrapper']}>
               <HotelList />
             </div>
             <div className={style.pagination}>
-              <Pagination pagesCount={12} totalPagesCount={180} />
+              <Pagination maxItemsCountPerPage={12} itemsCount={189} />
             </div>
           </div>
         </div>

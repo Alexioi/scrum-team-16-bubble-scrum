@@ -10,15 +10,6 @@ const guestVariants = [
   ['младенец', 'младенца', 'младенцев'],
 ];
 
-const guestItems = [
-  {
-    name: 'Взрослые',
-    counter: 0,
-  },
-  { name: 'Дети', counter: 0 },
-  { name: 'Младенцы', counter: 0 },
-];
-
 const guestGroups = [[0], [1], [2]];
 
-export { images, guestVariants, guestItems, guestGroups };
+export { images, guestVariants, guestGroups };
