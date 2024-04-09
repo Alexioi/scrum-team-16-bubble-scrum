@@ -14,7 +14,7 @@ const HotelListSkeleton: FC<Props> = ({ count }) => {
         .fill(undefined)
         .map((_, i) => i)
         .map((item) => (
-          <HotelCardSkeleton key={`skeleton-${item}`} />
+          <HotelCardSkeleton key={item} />
         ))}
     </div>
   );
