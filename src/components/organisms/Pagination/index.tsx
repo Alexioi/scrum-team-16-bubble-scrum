@@ -1,25 +1,24 @@
 'use client';
 
-import { FC, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import { ArrowButton, PaginationButton } from '@/components/atoms';
 import { getRoomCardsCount } from '@/api';
 
 import style from './style.module.scss';
 
-type Props = {
-  itemsCount: number;
-  maxItemsCountPerPage: number;
-};
+const maxItemsCountPerPage = 12;
 
-const Pagination: FC<Props> = ({ itemsCount, maxItemsCountPerPage }) => {
+const Pagination = () => {
   const [activePage, setActivePage] = useState(1);
   const [pagesCount, setPagesCount] = useState(0);
+  const [itemsCount, setItemCount] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
       const count = await getRoomCardsCount();
 
+      setItemCount(count);
       setPagesCount(Math.ceil(count / 12));
     };
 
