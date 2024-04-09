@@ -22,10 +22,10 @@ const Filter = () => {
   const [isOpened, setIsOpened] = useState(false);
   const dispatch = useAppDispatch();
   const expandableListData = useAppSelector(
-    (state) => state.filter.expandableListData,
+    (state) => state.filter.expandableList,
   );
-  const guestData = useAppSelector((state) => state.filter.guestsData);
-  const roomData = useAppSelector((state) => state.filter.roomData);
+  const guestData = useAppSelector((state) => state.filter.guests);
+  const roomData = useAppSelector((state) => state.filter.rooms);
   const rulesList = useAppSelector((state) => state.filter.rulesList);
   const availabilityList = useAppSelector(
     (state) => state.filter.availabilityList,
