@@ -21,23 +21,23 @@
   &_theme {
     &_default {
       padding: 14px 20px 12px;
-      background: linear-gradient(180deg, $purple 0%, #8ba4f9 100%);
+      background: $gradient-purple-100;
       border-radius: 22px;
 
       .text {
-        color: white;
+        color: $white;
       }
     }
 
     &_outlined {
       padding: 14px 20px 12px;
       border-radius: 22px;
-      background: linear-gradient(180deg, $purple 0%, #8ba4f9 100%);
+      background: $gradient-purple-100;
 
       &::before {
         content: '';
         position: absolute;
-        background: white;
+        background: $white;
         top: 0;
         left: 0;
         right: 0;
@@ -62,12 +62,12 @@
     &_long {
       width: 100%;
       padding: 14px 11px 12px 29px;
-      background: linear-gradient(180deg, $purple 0%, #8ba4f9 100%);
+      background: $gradient-purple-100;
       border-radius: 22px;
 
       .text {
         width: 100%;
-        color: white;
+        color: $white;
       }
     }
   }
@@ -79,7 +79,7 @@
 }
 
 .text {
-  font-family: sans-serif;
+  font-family: $font-default;
   font-weight: bold;
   font-size: 12px;
   line-height: 18px;
@@ -97,5 +97,5 @@
 .icon {
   width: 18px;
   height: 18px;
-  fill: white;
+  fill: $white;
 }

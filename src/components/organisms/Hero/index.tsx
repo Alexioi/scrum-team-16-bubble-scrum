@@ -1,13 +1,22 @@
 'use client';
 
 import { AutoSlider, Button, Container, Typography } from '@/components/atoms';
-import { Dropdown } from '@/components/molecules';
+import { Dropdown, Calendar } from '@/components/organisms';
 
 import style from './style.module.scss';
 import { guestGroups, guestItems, guestVariants, images } from './data';
-import { Calendar } from '../Calendar';
 
 const Hero = () => {
+  const handleDateCalendarChange = (value: string[] | null[]) => {
+    console.log(value);
+  };
+
+  const handleGeustDropdownChange = (
+    value: { name: string; counter: number }[],
+  ) => {
+    console.log(value);
+  };
+
   return (
     <div className={style.hero}>
       <Container>
@@ -19,7 +28,7 @@ const Hero = () => {
               <Typography tag="h3">Прибытие</Typography>
               <Typography tag="h3">Выезд</Typography>
             </div>
-            <Calendar />
+            <Calendar onChange={handleDateCalendarChange} />
           </div>
 
           <div className={style['guest-wrapper']}>
@@ -32,6 +41,7 @@ const Hero = () => {
               groups={guestGroups}
               variants={guestVariants}
               items={guestItems}
+              onChange={handleGeustDropdownChange}
             />
           </div>
 

@@ -1,3 +1,1 @@
-import { Gradient } from './Gradient';
-
-export { Gradient };
+export * from './Gradient';
