@@ -9,6 +9,8 @@
 }
 
 .button {
+  padding: 0;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,30 +25,10 @@
   cursor: pointer;
 }
 
-.title {
-  color: #1F2041;
-  font-family: 'Montserrat', Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.icon {
-  width: 12px;
-  height: 8px;
-
-  transition: transform 0.2s ease;
-
-  &_rotated {
-    transform: rotate(180deg);
-    transition: transform 0.2s ease;
-  }
-
-  color: $dark-shade-50;
-}
-
 .list {
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  margin-bottom: 20px;
 }

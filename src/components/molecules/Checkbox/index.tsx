@@ -1,31 +1,40 @@
 'use client';
 
 import { FC } from 'react';
+import clsx from 'clsx';
+
 import style from './style.module.scss';
 
 type Props = {
-  id: string;
   name: string;
   text: string;
-  description?: string;
+  checked: boolean;
   disabled: boolean;
+  description?: string;
+  onChange(name: string): void;
 };
 
 const Checkbox: FC<Props> = ({
-  id,
   name,
   text,
-  description,
+  checked,
   disabled,
-}: Props) => {
+  description,
+  onChange,
+}) => {
   return (
     <div className={style.wrapper}>
-      <label className={style.label} htmlFor={id}>
+      <label className={style.label}>
         <input
-          className={`${style.input} ${disabled && 'input_disabled'}`}
-          id={id}
+          className={clsx(style.input, {
+            [style.input_disabled]: disabled,
+          })}
           name={name}
           type="checkbox"
+          checked={checked}
+          onChange={() => {
+            onChange(name);
+          }}
           disabled={disabled}
         />
         <span className={style['checkmark-square-border']}>

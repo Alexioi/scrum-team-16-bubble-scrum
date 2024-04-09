@@ -1,0 +1,53 @@
+@import '@/style/variables.scss';
+
+.pagination-font-styles {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.25;
+  display: flex;
+  color: $dark-shade-50;
+}
+
+.wrapper {
+  width: fit-content;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 8px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: fit-content;
+
+  list-style: none;
+}
+
+.boundary {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @extend .pagination-font-styles;
+}
+
+.label {
+  display: flex;
+  justify-content: center;
+}
+
+.text {
+  @extend .pagination-font-styles;
+  font-size: 14px;
+  line-height: 1.71;
+  text-align: center;
+}

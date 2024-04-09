@@ -3,13 +3,17 @@
 import { useState, FC } from 'react';
 import clsx from 'clsx';
 
-import { DropdownInput } from '../../organisms';
-import { Counter, Button, ClickAwayListener } from '../../atoms';
-import { calculateValue } from './helpers';
+import {
+  DropdownInput,
+  Counter,
+  Button,
+  ClickAwayListener,
+} from '@/components';
+
+import { calculateValue, isEmptyCounters } from './helpers';
 import style from './style.module.scss';
 
 type Props = {
-  hasButtons: boolean;
   items: {
     name: string;
     counter: number;
@@ -17,17 +21,25 @@ type Props = {
   groups: number[][];
   placeholder: string;
   variants: string[][];
+  hasButtons?: boolean;
+  onChange(
+    value: {
+      name: string;
+      counter: number;
+    }[],
+  ): void;
 };
 
 const Dropdown: FC<Props> = ({
-  hasButtons,
   items,
   groups,
   placeholder,
   variants,
+  hasButtons = false,
+  onChange,
 }) => {
-  const [isOpened, setIsOpened] = useState(false);
   const [values, setValues] = useState(items);
+  const [isOpened, setIsOpened] = useState(false);
   const [result, setResult] = useState(
     calculateValue(
       groups,
@@ -61,6 +73,8 @@ const Dropdown: FC<Props> = ({
         return;
       }
 
+      onChange(newValues);
+
       setResult(
         calculateValue(
           groups,
@@ -79,15 +93,20 @@ const Dropdown: FC<Props> = ({
   };
 
   const handleClearButtonClick = () => {
-    setValues(
-      values.map((el) => {
-        return { ...el, counter: 0 };
-      }),
-    );
+    const newValues = values.map((el) => {
+      return { ...el, counter: 0 };
+    });
+
+    setValues(newValues);
+
+    onChange(newValues);
+
     setResult(placeholder);
   };
 
   const handleApplyButtonClick = () => {
+    onChange(values);
+
     setIsOpened(false);
     setResult(
       calculateValue(
@@ -132,14 +151,10 @@ const Dropdown: FC<Props> = ({
           {hasButtons && (
             <div className={style.buttons}>
               <div className={style['clear-button']}>
-                {values.reduce((acc, el) => {
-                  return acc + el.counter;
-                }, 0) > 0 && (
+                {isEmptyCounters(values) && (
                   <Button
                     text="очистить"
-                    size="default"
                     theme="link"
-                    type="button"
                     onClick={handleClearButtonClick}
                   />
                 )}
@@ -147,9 +162,7 @@ const Dropdown: FC<Props> = ({
               <div className={style['apply-button']}>
                 <Button
                   text="применить"
-                  size="default"
                   theme="link"
-                  type="button"
                   onClick={handleApplyButtonClick}
                 />
               </div>

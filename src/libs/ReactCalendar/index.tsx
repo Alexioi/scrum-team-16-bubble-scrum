@@ -1,16 +1,19 @@
 'use client';
 
-import { FC, Dispatch, SetStateAction } from 'react';
-import Calendar from 'react-calendar';
+import { FC } from 'react';
+import dynamic from 'next/dynamic';
+
 import ArrowSVG from '@/images/decorative/arrow.svg';
 
 import './style.scss';
+
+const Calendar = dynamic(() => import('react-calendar'), { ssr: false });
 
 type CalendarValue = Date | null | [Date | null, Date | null];
 
 type Props = {
   value: CalendarValue;
-  onChange: Dispatch<SetStateAction<CalendarValue>>;
+  onChange(calendarValue: CalendarValue): void;
 };
 
 const ReactCalendar: FC<Props> = ({ value, onChange }) => {
@@ -25,7 +28,6 @@ const ReactCalendar: FC<Props> = ({ value, onChange }) => {
       }}
       onChange={onChange}
       value={value}
-      locale="ru-RU"
       selectRange
       minDate={new Date()}
       minDetail="month"

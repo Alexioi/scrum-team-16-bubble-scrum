@@ -1,13 +1,29 @@
 'use client';
 
+import Link from 'next/link';
+
 import { AutoSlider, Button, Container, Typography } from '@/components/atoms';
-import { Dropdown } from '@/components/molecules';
+import { Dropdown, Calendar } from '@/components/organisms';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+import { actions } from '@/store';
 
 import style from './style.module.scss';
-import { guestGroups, guestItems, guestVariants, images } from './data';
-import { Calendar } from '../Calendar';
+import { guestGroups, guestVariants, images } from './data';
 
 const Hero = () => {
+  const dispatch = useAppDispatch();
+  const { guestsData } = useAppSelector((state) => state.filter);
+
+  const handleDateCalendarChange = (value: string[] | null[]) => {
+    dispatch(actions.filter.changeDates(value));
+  };
+
+  const handleGeustDropdownChange = (
+    value: { name: string; counter: number }[],
+  ) => {
+    dispatch(actions.filter.changeGuestData(value));
+  };
+
   return (
     <div className={style.hero}>
       <Container>
@@ -19,7 +35,7 @@ const Hero = () => {
               <Typography tag="h3">Прибытие</Typography>
               <Typography tag="h3">Выезд</Typography>
             </div>
-            <Calendar />
+            <Calendar onChange={handleDateCalendarChange} />
           </div>
 
           <div className={style['guest-wrapper']}>
@@ -31,12 +47,15 @@ const Hero = () => {
               placeholder="Сколько гостей"
               groups={guestGroups}
               variants={guestVariants}
-              items={guestItems}
+              items={guestsData.items}
+              onChange={handleGeustDropdownChange}
             />
           </div>
 
           <div className={style['button-wrapper']}>
-            <Button text="Подобрать номер" theme="long" onClick={() => {}} />
+            <Link href="/search-room">
+              <Button text="Подобрать номер" theme="long" onClick={() => {}} />
+            </Link>
           </div>
         </div>
       </Container>
