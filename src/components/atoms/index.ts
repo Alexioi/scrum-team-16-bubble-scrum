@@ -12,3 +12,4 @@ export * from './Swiper';
 export * from './Typography';
 export * from './ArrowButton';
 export * from './PaginationButton';
+export * from './Container';

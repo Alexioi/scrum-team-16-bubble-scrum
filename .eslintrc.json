@@ -20,14 +20,15 @@
     "import/no-extraneous-dependencies": "off",
     "react/button-has-type": "off",
     "jsx-a11y/control-has-associated-label": "off",
+    "object-curly-newline": "off",
     "react/jsx-wrap-multilines": "off",
     "@typescript-eslint/indent": "off",
+    "react/jsx-one-expression-per-line": "off",
     "import/no-cycle": "off",
     "linebreak-style": "off",
-    "object-curly-newline": "off",
-    "react/jsx-one-expression-per-line": "off",
-    "jsx-a11y/label-has-associated-control": "off",
+    "operator-linebreak": "off",
     "implicit-arrow-linebreak": "off",
-    "react/jsx-curly-newline": "off"
+    "react/jsx-curly-newline": "off",
+    "jsx-a11y/label-has-associated-control": "off"
   }
 }

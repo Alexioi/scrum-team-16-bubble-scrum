@@ -1,0 +1,51 @@
+.search-room {
+  padding-top: 30px;
+  padding-bottom: 70px;
+  border-bottom: 1px solid rgb(31, 32, 65, 25%);
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter-wrapper {
+  flex-basis: 266px;
+}
+
+.column {
+  flex-basis: 834px;
+}
+
+.room-list-wrapper {
+  padding-top: 21px;
+  padding-bottom: 37px;
+}
+
+.pagination {
+  padding-right: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 1200px) {
+  .content {
+    gap: 20px;
+  }
+
+  .pagination {
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 991px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .filter-wrapper {
+    flex-basis: auto;
+  }
+}
