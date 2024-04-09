@@ -1,18 +1,14 @@
 'use client';
 
-import { RootState, actions } from '@/store';
-import { useAppDispatch, useAppSelector } from '@/hooks';
+import { useAppSelector } from '@/hooks';
 import FacebookSVG from '@/images/decorative/facebook.svg';
 
 import style from './style.module.scss';
 
 const HelloToxin = () => {
-  const dispatch = useAppDispatch();
-  const helloToxin = useAppSelector((state: RootState) => state.helloToxin);
+  const helloToxin = useAppSelector((state) => state.helloToxin);
 
-  const onClickButton = () => {
-    dispatch(actions.helloToxin.change('Hello, Toxin!'));
-  };
+  const onClickButton = () => {};
 
   return (
     <div>

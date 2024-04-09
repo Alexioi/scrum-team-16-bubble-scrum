@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import { AutoSlider, Button, Container, Typography } from '@/components/atoms';
 import { Dropdown, Calendar } from '@/components/organisms';
@@ -11,6 +11,7 @@ import style from './style.module.scss';
 import { guestVariants, images } from './data';
 
 const Hero = () => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const { guests } = useAppSelector((state) => state.filter);
 
@@ -18,7 +19,7 @@ const Hero = () => {
     dispatch(filterActions.changeDates(value));
   };
 
-  const handleGeustDropdownChange = (
+  const handleGuestDropdownChange = (
     value: { name: string; counter: number }[],
   ) => {
     dispatch(filterActions.changeGuestData(value));
@@ -48,14 +49,16 @@ const Hero = () => {
               groups={guests.groups}
               variants={guestVariants}
               items={guests.items}
-              onChange={handleGeustDropdownChange}
+              onChange={handleGuestDropdownChange}
             />
           </div>
 
           <div className={style['button-wrapper']}>
-            <Link href="/search-room">
-              <Button text="Подобрать номер" theme="long" onClick={() => {}} />
-            </Link>
+            <Button
+              text="Подобрать номер"
+              theme="long"
+              onClick={() => router.push('/search-room')}
+            />
           </div>
         </div>
       </Container>
