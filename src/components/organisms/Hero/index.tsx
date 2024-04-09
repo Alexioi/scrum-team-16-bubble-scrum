@@ -5,23 +5,23 @@ import Link from 'next/link';
 import { AutoSlider, Button, Container, Typography } from '@/components/atoms';
 import { Dropdown, Calendar } from '@/components/organisms';
 import { useAppDispatch, useAppSelector } from '@/hooks';
-import { actions } from '@/store';
+import { filterActions } from '@/store';
 
 import style from './style.module.scss';
-import { guestGroups, guestVariants, images } from './data';
+import { guestVariants, images } from './data';
 
 const Hero = () => {
   const dispatch = useAppDispatch();
-  const { guestsData } = useAppSelector((state) => state.filter);
+  const { guests } = useAppSelector((state) => state.filter);
 
   const handleDateCalendarChange = (value: string[] | null[]) => {
-    dispatch(actions.filter.changeDates(value));
+    dispatch(filterActions.changeDates(value));
   };
 
   const handleGeustDropdownChange = (
     value: { name: string; counter: number }[],
   ) => {
-    dispatch(actions.filter.changeGuestData(value));
+    dispatch(filterActions.changeGuestData(value));
   };
 
   return (
@@ -45,9 +45,9 @@ const Hero = () => {
             <Dropdown
               hasButtons
               placeholder="Сколько гостей"
-              groups={guestGroups}
+              groups={guests.groups}
               variants={guestVariants}
-              items={guestsData.items}
+              items={guests.items}
               onChange={handleGeustDropdownChange}
             />
           </div>
