@@ -1,5 +1,10 @@
+'use client';
+
 import { FC } from 'react';
 import clsx from 'clsx';
+
+import { actions } from '@/store';
+import { useAppDispatch } from '@/hooks';
 
 import style from './style.module.scss';
 
@@ -10,6 +15,8 @@ type Props = {
 };
 
 const PaginationButton: FC<Props> = ({ pageNumber, activePage, onClick }) => {
+  const dispatch = useAppDispatch();
+
   return (
     <li
       className={clsx(style.page, {
@@ -17,7 +24,10 @@ const PaginationButton: FC<Props> = ({ pageNumber, activePage, onClick }) => {
       })}
     >
       <button
-        onClick={() => onClick(pageNumber)}
+        onClick={() => {
+          onClick(pageNumber);
+          dispatch(actions.pagination.change(pageNumber));
+        }}
         className={style['page-button']}
         type="button"
       >
