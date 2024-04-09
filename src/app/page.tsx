@@ -1,9 +1,9 @@
 'use client';
 
-import { HotelCardSkeleton } from '@/components';
+import { HotelListSkeleton } from '@/components';
 
 const Home = () => {
-  return <HotelCardSkeleton />;
+  return <HotelListSkeleton count={15} />;
 };
 
 export default Home;
