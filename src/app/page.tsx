@@ -3,7 +3,7 @@
 import { HotelListSkeleton } from '@/components';
 
 const Home = () => {
-  return <HotelListSkeleton count={15} />;
+  return <HotelListSkeleton />;
 };
 
 export default Home;

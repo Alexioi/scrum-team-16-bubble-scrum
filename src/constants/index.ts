@@ -1,1 +1,3 @@
-export * from './search';
+const COUNT_CARD_PER_PAGE = 12;
+
+export { COUNT_CARD_PER_PAGE };
