@@ -56,7 +56,7 @@ const HotelList = () => {
           isLux={item.isLux}
           price={item.price}
           averageRating={item.averageRating}
-          imageUrls={item.imageUrls}
+          imageNames={item.imageNames}
           reviews={item.reviews}
         />
       ))}

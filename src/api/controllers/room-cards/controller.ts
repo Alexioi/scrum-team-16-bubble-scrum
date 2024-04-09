@@ -8,7 +8,7 @@ import {
 } from 'firebase/firestore';
 import z from 'zod';
 
-import { db } from '../../config';
+import { db } from '../../initDB';
 
 const hotelsScheme = z.array(
   z.object({
@@ -17,8 +17,18 @@ const hotelsScheme = z.array(
     price: z.number(),
     averageRating: z.number(),
     isLux: z.boolean(),
-    imageUrls: z.array(z.number()),
+    imageNames: z.array(z.string()),
     reviews: z.number(),
+    startDate: z.string(),
+    endDate: z.string(),
+    rules: z.array(z.string()),
+    guestCount: z.number(),
+    babyCount: z.number(),
+    bedRoomCount: z.number(),
+    bedCount: z.number(),
+    bathroomCount: z.number(),
+    availability: z.array(z.string()),
+    additionalAmenities: z.array(z.string()),
   }),
 );
 

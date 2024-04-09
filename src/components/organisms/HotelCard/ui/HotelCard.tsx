@@ -10,23 +10,12 @@ type Props = {
   price: number;
   averageRating: number;
   isLux: boolean;
-  imageUrls: string[];
+  imageNames: string[];
   reviews: number;
 };
 
-// const hotelsScheme = z.array(
-//   z.object({
-//     id: z.string(),
-//     roomNumber: z.number(),
-//     price: z.number(),
-//     averageRating: z.number(),
-//     isLux: z.boolean(),
-//     imageUrls: z.array(z.number()),
-//   }),
-// );
-
 const HotelCard: FC<Props> = ({
-  imageUrls,
+  imageNames,
   isLux,
   roomNumber,
   price,
@@ -35,7 +24,7 @@ const HotelCard: FC<Props> = ({
 }) => {
   return (
     <div className={style.card}>
-      <Swiper imageURLs={imageUrls} />
+      <Swiper imageURLs={imageNames} />
       <div className={style.body}>
         <div className={style.header}>
           <div className={style.number}>
@@ -57,7 +46,7 @@ const HotelCard: FC<Props> = ({
           <div className={style.reviews}>
             {reviews}
             <span className={style.reviews_prefix}>
-              {declensionReview(145)}
+              {declensionReview(reviews)}
             </span>
           </div>
         </div>
