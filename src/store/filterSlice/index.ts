@@ -8,10 +8,7 @@ const filterSlice = createSlice({
   initialState,
   reducers: {
     changeExpandableListData: (state, { payload }: { payload: string }) => {
-      state.expandableListData = changeChecked(
-        state.expandableListData,
-        payload,
-      );
+      state.expandableList = changeChecked(state.expandableList, payload);
     },
     changeDates: (state, { payload }: { payload: string[] | null[] }) => {
       if (!(payload.length === 2)) {
@@ -28,7 +25,7 @@ const filterSlice = createSlice({
         payload: DropdownValue[];
       },
     ) => {
-      state.guestsData.items = payload;
+      state.guests.items = payload;
     },
     changeRoomData: (
       state,
@@ -38,7 +35,7 @@ const filterSlice = createSlice({
         payload: DropdownValue[];
       },
     ) => {
-      state.roomData.items = payload;
+      state.rooms.items = payload;
     },
     changeRulesList: (
       state,
