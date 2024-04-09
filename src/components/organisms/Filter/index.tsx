@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import clsx from 'clsx';
 
-import { actions } from '@/store';
+import { filterActions } from '@/store';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import {
   Calendar,
@@ -37,11 +37,11 @@ const Filter = () => {
   };
 
   const handleCalendarChange = (value: string[] | null[]) => {
-    dispatch(actions.filter.changeDates(value));
+    dispatch(filterActions.changeDates(value));
   };
 
   const handleExpandableCheckboxListChange = (name: string) => {
-    dispatch(actions.filter.changeExpandableListData(name));
+    dispatch(filterActions.changeExpandableListData(name));
   };
 
   const handleGuestDropdownChange = (
@@ -50,7 +50,7 @@ const Filter = () => {
       counter: number;
     }[],
   ) => {
-    dispatch(actions.filter.changeGuestData(value));
+    dispatch(filterActions.changeGuestData(value));
   };
 
   const handleRoomDropdownChange = (
@@ -59,15 +59,15 @@ const Filter = () => {
       counter: number;
     }[],
   ) => {
-    dispatch(actions.filter.changeRoomData(value));
+    dispatch(filterActions.changeRoomData(value));
   };
 
   const handleRulesListChange = (name: string) => {
-    dispatch(actions.filter.changeRulesList(name));
+    dispatch(filterActions.changeRulesList(name));
   };
 
   const handleAvailabilityListChange = (name: string) => {
-    dispatch(actions.filter.changeAvailabilityList(name));
+    dispatch(filterActions.changeAvailabilityList(name));
   };
 
   return (
@@ -95,7 +95,7 @@ const Filter = () => {
             title="диапазон цены"
             description="Стоимость за сутки пребывания в номере"
             onChange={(prices) => {
-              dispatch(actions.filter.changeRangePrices(prices));
+              dispatch(filterActions.changeRangePrices(prices));
             }}
           />
         </div>
