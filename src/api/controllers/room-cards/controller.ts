@@ -7,7 +7,7 @@ import {
   limit,
 } from 'firebase/firestore';
 
-import { ITEMS_ON_PAGE } from '@/constants';
+import { ITEMS_PER_PAGE } from '@/constants';
 import { hotelsScheme } from '@/schemes';
 
 import { db } from '../../initFirebase';
@@ -16,8 +16,8 @@ const getRoomCards = async (currentPage: number) => {
   const q = query(
     collection(db, 'room-cards'),
     orderBy('roomNumber'),
-    startAt((currentPage - 1) * ITEMS_ON_PAGE + 1),
-    limit(ITEMS_ON_PAGE),
+    startAt((currentPage - 1) * ITEMS_PER_PAGE + 1),
+    limit(ITEMS_PER_PAGE),
   );
 
   const querySnapshot = await getDocs(q);

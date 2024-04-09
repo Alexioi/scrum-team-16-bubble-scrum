@@ -1,3 +1,3 @@
-const ITEMS_ON_PAGE = 12;
+const ITEMS_PER_PAGE = 12;
 
-export { ITEMS_ON_PAGE };
+export { ITEMS_PER_PAGE };

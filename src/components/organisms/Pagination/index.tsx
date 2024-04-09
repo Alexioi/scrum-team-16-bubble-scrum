@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 import { ArrowButton, PaginationButton } from '@/components/atoms';
 import { getRoomCardsCount } from '@/api';
-import { ITEMS_ON_PAGE } from '@/constants';
+import { ITEMS_PER_PAGE } from '@/constants';
 
 import style from './style.module.scss';
 
@@ -24,7 +24,7 @@ const Pagination = () => {
     fetchData();
   }, []);
 
-  const paginationLabelText = `${(activePage - 1) * ITEMS_ON_PAGE + 1} – ${activePage === pagesCount ? itemsCount : activePage * ITEMS_ON_PAGE} из ${itemsCount <= 100 ? itemsCount : '100+'} вариантов аренды`;
+  const paginationLabelText = `${(activePage - 1) * ITEMS_PER_PAGE + 1} – ${activePage === pagesCount ? itemsCount : activePage * ITEMS_PER_PAGE} из ${itemsCount <= 100 ? itemsCount : '100+'} вариантов аренды`;
   if (pagesCount === 0) {
     return null;
   }
