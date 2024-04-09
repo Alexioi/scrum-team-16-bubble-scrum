@@ -3,7 +3,15 @@
 import { useState } from 'react';
 import clsx from 'clsx';
 
-import { filterActions } from '@/store';
+import {
+  filterActions,
+  selectRooms,
+  selectRulesList,
+  selectAvailabilityList,
+  selectRangePrices,
+  selectGuests,
+  selectExpandableList,
+} from '@/store';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import {
   Calendar,
@@ -21,16 +29,12 @@ import style from './style.module.scss';
 const Filter = () => {
   const [isOpened, setIsOpened] = useState(false);
   const dispatch = useAppDispatch();
-  const expandableListData = useAppSelector(
-    (state) => state.filter.expandableList,
-  );
-  const guestData = useAppSelector((state) => state.filter.guests);
-  const roomData = useAppSelector((state) => state.filter.rooms);
-  const rulesList = useAppSelector((state) => state.filter.rulesList);
-  const availabilityList = useAppSelector(
-    (state) => state.filter.availabilityList,
-  );
-  const rangePrices = useAppSelector((state) => state.filter.rangePrices);
+  const expandableList = useAppSelector(selectExpandableList);
+  const guests = useAppSelector(selectGuests);
+  const rooms = useAppSelector(selectRooms);
+  const rulesList = useAppSelector(selectRulesList);
+  const availabilityList = useAppSelector(selectAvailabilityList);
+  const rangePrices = useAppSelector(selectRangePrices);
 
   const handleButtonClick = () => {
     setIsOpened(!isOpened);
@@ -81,8 +85,8 @@ const Filter = () => {
             hasButtons
             placeholder="Сколько гостей"
             variants={guestVariants}
-            items={guestData.items}
-            groups={guestData.groups}
+            items={guests.items}
+            groups={guests.groups}
             onChange={handleGuestDropdownChange}
           />
         </div>
@@ -117,8 +121,8 @@ const Filter = () => {
             hasButtons={false}
             placeholder="Сколько комнат"
             variants={roomVariants}
-            items={roomData.items}
-            groups={roomData.groups}
+            items={rooms.items}
+            groups={rooms.groups}
             onChange={handleRoomDropdownChange}
           />
         </div>
@@ -126,7 +130,7 @@ const Filter = () => {
           <ExpandableCheckboxList
             onChange={handleExpandableCheckboxListChange}
             listTitle="дополнительные удобства"
-            items={expandableListData}
+            items={expandableList}
           />
         </div>
       </form>
