@@ -1,6 +1,6 @@
 import { collection, query, getCountFromServer } from 'firebase/firestore';
 
-import { db } from '../../initDB';
+import { db } from '../../initFirebase';
 
 const getRoomCardsCount = async () => {
   const q = query(collection(db, 'room-cards'));

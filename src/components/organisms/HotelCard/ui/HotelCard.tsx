@@ -24,7 +24,7 @@ const HotelCard: FC<Props> = ({
 }) => {
   return (
     <div className={style.card}>
-      <Swiper imageURLs={imageNames} />
+      <Swiper imageNames={imageNames} />
       <div className={style.body}>
         <div className={style.header}>
           <div className={style.number}>

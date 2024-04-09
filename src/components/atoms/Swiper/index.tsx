@@ -2,48 +2,41 @@
 
 import clsx from 'clsx';
 import { FC, useState, MouseEvent } from 'react';
-import Image from 'next/image';
 
 import LeftArrowSVG from '@/images/decorative/expand-more.svg';
 
+import { SwiperImage } from '../SwiperImage';
 import style from './style.module.scss';
 
 type Props = {
-  imageURLs: string[];
+  imageNames: string[];
 };
 
-const Swiper: FC<Props> = ({ imageURLs }) => {
+const Swiper: FC<Props> = ({ imageNames }) => {
   const [currentImage, setCurrentImage] = useState(0);
 
   const handleNextButtonClick = () => {
     setCurrentImage(
-      currentImage + 1 >= imageURLs.length ? 0 : currentImage + 1,
+      currentImage + 1 >= imageNames.length ? 0 : currentImage + 1,
     );
   };
 
   const handlePrevButtonClick = () => {
     setCurrentImage(
-      currentImage - 1 < 0 ? imageURLs.length - 1 : currentImage - 1,
+      currentImage - 1 < 0 ? imageNames.length - 1 : currentImage - 1,
     );
   };
 
-  const handlePaginationClick = (idx: number) => {
+  const handlePaginationClick = (i: number) => {
     return (e: MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();
-      setCurrentImage(idx);
+      setCurrentImage(i);
     };
   };
 
   return (
     <div className={style.swiper}>
-      <Image
-        src={`/room-cards/${imageURLs[currentImage]}.jpg`}
-        className={style.img}
-        fill
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        priority
-        alt="Фотография номера"
-      />
+      <SwiperImage imageName={imageNames[currentImage]} />
 
       <button className={style.prev} onClick={handlePrevButtonClick}>
         <svg width={12} height={8}>
@@ -58,9 +51,9 @@ const Swiper: FC<Props> = ({ imageURLs }) => {
       </button>
 
       <div className={style.pagination}>
-        {imageURLs.map((url, i) => (
+        {imageNames.map((item, i) => (
           <button
-            key={url}
+            key={item}
             onClick={handlePaginationClick(i)}
             className={clsx(style.item, {
               [style.item_active]: i === currentImage,

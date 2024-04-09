@@ -23,7 +23,6 @@ const HotelList = () => {
         setError('');
         setIsLoading(true);
         const roomCards = await getRoomCards(currentPage);
-        // @ts-ignore
         setData(roomCards);
       } catch (err) {
         if (err instanceof Error) {

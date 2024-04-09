@@ -8,7 +8,7 @@ import {
 } from 'firebase/firestore';
 import z from 'zod';
 
-import { db } from '../../initDB';
+import { db } from '../../initFirebase';
 
 const hotelsScheme = z.array(
   z.object({
