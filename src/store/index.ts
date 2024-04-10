@@ -21,12 +21,14 @@ const selectRangePrices = (state: RootState) => state.filter.rangePrices;
 const selectAvailabilityList = (state: RootState) =>
   state.filter.availabilityList;
 const selectCurrentPage = (state: RootState) => state.pagination.currentPage;
+const selectDates = (state: RootState) => state.filter.dates;
 
 export type { RootState, AppDispatch };
 export {
   store,
   paginationActions,
   filterActions,
+  selectDates,
   selectRooms,
   selectRulesList,
   selectAvailabilityList,
