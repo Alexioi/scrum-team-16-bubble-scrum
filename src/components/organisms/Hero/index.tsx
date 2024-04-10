@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { AutoSlider, Button, Container, Typography } from '@/components/atoms';
 import { Dropdown, Calendar } from '@/components/organisms';
 import { useAppDispatch, useAppSelector } from '@/hooks';
-import { filterActions } from '@/store';
+import { filterActions, selectGuests } from '@/store';
 
 import style from './style.module.scss';
 import { guestVariants, images } from './data';
@@ -13,7 +13,7 @@ import { guestVariants, images } from './data';
 const Hero = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const { guests } = useAppSelector((state) => state.filter);
+  const { items, groups } = useAppSelector(selectGuests);
 
   const handleDateCalendarChange = (value: string[] | null[]) => {
     dispatch(filterActions.changeDates(value));
@@ -46,9 +46,9 @@ const Hero = () => {
             <Dropdown
               hasButtons
               placeholder="Сколько гостей"
-              groups={guests.groups}
+              groups={groups}
               variants={guestVariants}
-              items={guests.items}
+              items={items}
               onChange={handleGuestDropdownChange}
             />
           </div>
