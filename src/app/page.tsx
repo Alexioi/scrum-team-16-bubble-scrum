@@ -1,9 +1,5 @@
-'use client';
-
-import { HotelListSkeleton } from '@/components';
-
 const Home = () => {
-  return <HotelListSkeleton />;
+  return <div>Home</div>;
 };
 
 export default Home;
