@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 import { getRoomCards } from '@/api';
-import { RootState } from '@/store';
+import { selectCurrentPage } from '@/store';
 import { useAppSelector } from '@/hooks';
 
 import { HotelCard, Hotel } from '../HotelCard';
@@ -13,9 +13,7 @@ const HotelList = () => {
   const [data, setData] = useState<(Hotel & { id: string })[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const currentPage = useAppSelector(
-    (state: RootState) => state.pagination.currentPage,
-  );
+  const currentPage = useAppSelector(selectCurrentPage);
 
   useEffect(() => {
     const fetchData = async () => {

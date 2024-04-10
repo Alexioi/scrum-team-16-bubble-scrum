@@ -1,4 +1,4 @@
 export * from './ButtonInput';
-export * from './HelloToxin';
+export * from './ErrorMessage';
 export * from './Checkbox';
 export * from './MultiRangeSlider';

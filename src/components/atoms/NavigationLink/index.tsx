@@ -27,7 +27,7 @@ const NavigationLink: FC<Props> = ({ text, link, list }) => {
     return (
       <ClickAwayListener
         key={text}
-        close={() => {
+        onClose={() => {
           setIsOpened(false);
         }}
       >

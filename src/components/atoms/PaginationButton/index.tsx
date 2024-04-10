@@ -3,7 +3,7 @@
 import { FC } from 'react';
 import clsx from 'clsx';
 
-import { actions } from '@/store';
+import { paginationActions } from '@/store';
 import { useAppDispatch } from '@/hooks';
 
 import style from './style.module.scss';
@@ -26,7 +26,7 @@ const PaginationButton: FC<Props> = ({ pageNumber, activePage, onClick }) => {
       <button
         onClick={() => {
           onClick(pageNumber);
-          dispatch(actions.pagination.change(pageNumber));
+          dispatch(paginationActions.change(pageNumber));
         }}
         className={style['page-button']}
         type="button"

@@ -4,14 +4,14 @@ import { FC, ReactElement, useEffect, useRef } from 'react';
 
 type Props = {
   children: ReactElement;
-  close(): void;
+  onClose(): void;
 };
 
-const ClickAwayListener: FC<Props> = ({ children, close }) => {
+const ClickAwayListener: FC<Props> = ({ children, onClose }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleClickOutsideCalendar = ({ target }: Event) => {
+    const handleOutsideItemClick = ({ target }: Event) => {
       if (!(target instanceof HTMLElement)) {
         return;
       }
@@ -21,15 +21,15 @@ const ClickAwayListener: FC<Props> = ({ children, close }) => {
       }
 
       if (!ref.current.contains(target)) {
-        close();
+        onClose();
       }
     };
 
-    document.addEventListener('click', handleClickOutsideCalendar);
+    document.addEventListener('click', handleOutsideItemClick);
     return () => {
-      document.removeEventListener('click', handleClickOutsideCalendar);
+      document.removeEventListener('click', handleOutsideItemClick);
     };
-  }, [close]);
+  }, [onClose]);
 
   return <div ref={ref}>{children}</div>;
 };

@@ -4,7 +4,7 @@ import { FC } from 'react';
 import clsx from 'clsx';
 
 import ArrowSVG from '@/images/decorative/arrow.svg';
-import { actions } from '@/store';
+import { paginationActions } from '@/store';
 import { useAppDispatch } from '@/hooks';
 
 import style from './style.module.scss';
@@ -30,7 +30,7 @@ const ArrowButton: FC<Props> = ({ direction, onClick }) => {
         onClick={() =>
           onClick((prevState) => {
             dispatch(
-              actions.pagination.change(
+              paginationActions.change(
                 directionPaginationMap[direction](prevState),
               ),
             );

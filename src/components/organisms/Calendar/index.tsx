@@ -66,7 +66,7 @@ const Calendar: FC<Props> = ({ isSingle = false, onChange }) => {
 
   return (
     <ClickAwayListener
-      close={() => {
+      onClose={() => {
         setIsOpened(false);
       }}
     >
