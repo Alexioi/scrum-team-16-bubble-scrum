@@ -1,12 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { helloToxinReducer } from './helloToxinSlice';
 import { HotelListSliceActions, HotelListSliceReducer } from './HotelListSlice';
-import { filterActions, filterReducer } from './filterSlice';
+import { filterActions, filterReducer } from './FilterSlice';
 
 const store = configureStore({
   reducer: {
-    helloToxin: helloToxinReducer,
     hotelList: HotelListSliceReducer,
     filter: filterReducer,
   },

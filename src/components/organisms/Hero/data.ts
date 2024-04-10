@@ -4,4 +4,9 @@ import bg3 from '@/images/content/landing-page-background3.jpg';
 
 const images: string[] = [bg1.src, bg2.src, bg3.src];
 
-export { images };
+const guestVariants = [
+  ['гость', 'гостя', 'гостей'],
+  ['младенец', 'младенца', 'младенцев'],
+];
+
+export { images, guestVariants };
