@@ -1,4 +1,10 @@
-import { Filter, Container, Typography, ErrorMessage } from '@/components';
+import {
+  Filter,
+  Container,
+  Typography,
+  HotelList,
+  Pagination,
+} from '@/components';
 
 import style from './style.module.scss';
 
@@ -14,10 +20,12 @@ const SearchRoom = () => {
             <Typography tag="h1">
               Номера, которые мы для вас подобрали
             </Typography>
-            <ErrorMessage
-              message="Ничего не найдено"
-              description="Попробуйте изменить параметры поиска"
-            />
+            <div className={style['room-list-wrapper']}>
+              <HotelList />
+            </div>
+            <div className={style.pagination}>
+              <Pagination maxItemsCountPerPage={12} itemsCount={189} />
+            </div>
           </div>
         </div>
       </Container>
