@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { HotelListSliceActions, HotelListSliceReducer } from './HotelListSlice';
-import { filterActions, filterReducer } from './FilterSlice';
+import { filterActions, filterReducer } from './filterSlice';
 
 const store = configureStore({
   reducer: {
