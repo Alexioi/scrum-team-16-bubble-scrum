@@ -2,8 +2,8 @@ import {
   Filter,
   Container,
   Typography,
-  HotelList,
   Pagination,
+  HotelListSkeleton,
 } from '@/components';
 
 import style from './style.module.scss';
@@ -21,7 +21,7 @@ const SearchRoom = () => {
               Номера, которые мы для вас подобрали
             </Typography>
             <div className={style['room-list-wrapper']}>
-              <HotelList />
+              <HotelListSkeleton />
             </div>
             <div className={style.pagination}>
               <Pagination maxItemsCountPerPage={12} itemsCount={189} />
