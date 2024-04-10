@@ -12,15 +12,15 @@ type CheckboxItem = {
 };
 
 type InitialState = {
-  expandableListData: CheckboxItem[];
+  expandableList: CheckboxItem[];
   rulesList: CheckboxItem[];
   availabilityList: CheckboxItem[];
   dates: string[] | null[];
-  guestsData: {
+  guests: {
     items: DropdownValue[];
     groups: number[][];
   };
-  roomData: {
+  rooms: {
     items: DropdownValue[];
     groups: number[][];
   };
@@ -28,7 +28,7 @@ type InitialState = {
 };
 
 const initialState: InitialState = {
-  expandableListData: [
+  expandableList: [
     {
       name: 'breakfast',
       text: 'Завтрак',
@@ -103,7 +103,7 @@ const initialState: InitialState = {
     },
   ],
   dates: [null, null],
-  guestsData: {
+  guests: {
     items: [
       {
         name: 'взрослые',
@@ -120,7 +120,7 @@ const initialState: InitialState = {
     ],
     groups: [[0, 1], [2]],
   },
-  roomData: {
+  rooms: {
     items: [
       {
         name: 'спальни',
