@@ -3,7 +3,12 @@
 import { useState, FC } from 'react';
 import clsx from 'clsx';
 
-import { DropdownInput, Counter, Button } from '@/components';
+import {
+  DropdownInput,
+  Counter,
+  Button,
+  ClickAwayListener,
+} from '@/components';
 
 import { calculateValue, isEmptyCounters } from './helpers';
 import style from './style.module.scss';
@@ -116,50 +121,56 @@ const Dropdown: FC<Props> = ({
   };
 
   return (
-    <div className={dropdownClasses}>
-      <DropdownInput
-        type="text"
-        onClick={handleOpeningMenuClick}
-        defaultValue={result}
-        readOnly
-        expanded={isOpened}
-        squareBottom={isOpened}
-      />
-      <div className={style.menu}>
-        <ul className={style.list}>
-          {values.map((el, i) => {
-            return (
-              <Counter
-                key={el.name}
-                name={el.name}
-                value={el.counter}
-                changeValue={makeChangeValue(i)}
-              />
-            );
-          })}
-        </ul>
-        {hasButtons && (
-          <div className={style.buttons}>
-            <div className={style['clear-button']}>
-              {isEmptyCounters(values) && (
-                <Button
-                  text="очистить"
-                  theme="link"
-                  onClick={handleClearButtonClick}
+    <ClickAwayListener
+      onClose={() => {
+        setIsOpened(false);
+      }}
+    >
+      <div className={dropdownClasses}>
+        <DropdownInput
+          type="text"
+          onClick={handleOpeningMenuClick}
+          defaultValue={result}
+          readOnly
+          expanded={isOpened}
+          squareBottom={isOpened}
+        />
+        <div className={style.menu}>
+          <ul className={style.list}>
+            {values.map((el, i) => {
+              return (
+                <Counter
+                  key={el.name}
+                  name={el.name}
+                  value={el.counter}
+                  changeValue={makeChangeValue(i)}
                 />
-              )}
+              );
+            })}
+          </ul>
+          {hasButtons && (
+            <div className={style.buttons}>
+              <div className={style['clear-button']}>
+                {isEmptyCounters(values) && (
+                  <Button
+                    text="очистить"
+                    theme="link"
+                    onClick={handleClearButtonClick}
+                  />
+                )}
+              </div>
+              <div className={style['apply-button']}>
+                <Button
+                  text="применить"
+                  theme="link"
+                  onClick={handleApplyButtonClick}
+                />
+              </div>
             </div>
-            <div className={style['apply-button']}>
-              <Button
-                text="применить"
-                theme="link"
-                onClick={handleApplyButtonClick}
-              />
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
+    </ClickAwayListener>
   );
 };
 
