@@ -3,36 +3,20 @@
 import { useState, useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '@/hooks';
-import { getRoomCardsCount, getRoomCards } from '@/api';
-import { roomListActions, selectRoomListData } from '@/store';
+import { getRoomCardsCount } from '@/api';
+import { paginationActions, selectCurrentPage } from '@/store';
 
 import { Pagination } from '../Pagination';
 
 const RoomListPagination = () => {
   const dispatch = useAppDispatch();
-  const roomListData = useAppSelector(selectRoomListData);
-  const [activePage, setActivePage] = useState(1);
+  const currentPage = useAppSelector(selectCurrentPage);
   const [pagesCount, setPagesCount] = useState(0);
   const [itemsCount, setItemCount] = useState(0);
 
-  const makeHandleArrowButtonClick = (
-    number: -1 | 1,
-    direction: 'next' | 'back',
-  ) => {
+  const makeHandleArrowButtonClick = (number: number) => {
     return () => {
-      // dispatch(paginationActions.change(number));
-      setActivePage(activePage + number);
-      const firstOrLastItemIndex =
-        direction === 'next'
-          ? roomListData[roomListData.length - 1].roomNumber
-          : roomListData[0].roomNumber;
-
-      const getRoomCard = async () => {
-        const roomCards = await getRoomCards(direction, firstOrLastItemIndex);
-        dispatch(roomListActions.changeData(roomCards));
-      };
-
-      getRoomCard();
+      dispatch(paginationActions.change(number));
     };
   };
 
@@ -49,10 +33,9 @@ const RoomListPagination = () => {
 
   return (
     <Pagination
-      onClickBack={makeHandleArrowButtonClick(-1, 'back')}
-      onClickNext={makeHandleArrowButtonClick(1, 'next')}
+      onClick={makeHandleArrowButtonClick}
       itemsCount={itemsCount}
-      activePage={activePage}
+      activePage={currentPage}
       pagesCount={pagesCount}
     />
   );
