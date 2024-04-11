@@ -1,9 +1,14 @@
-import { collection, query, getCountFromServer } from 'firebase/firestore';
+import {
+  collection,
+  query,
+  getCountFromServer,
+  where,
+} from 'firebase/firestore';
 
 import { db } from '../../initFirebase';
 
 const getRoomCardsCount = async () => {
-  const q = query(collection(db, 'room-cards'));
+  const q = query(collection(db, 'room-cards'), where('guestCount', '>=', 4));
 
   const snapshot = await getCountFromServer(q);
 

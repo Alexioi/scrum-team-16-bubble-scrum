@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { getRoomCards } from '@/api';
 import {
   roomListActions,
-  selectCurrentPage,
   selectRoomListData,
   selectRoomListError,
   selectRoomListIsLoading,
@@ -17,7 +16,6 @@ import style from './style.module.scss';
 
 const HotelList = () => {
   const dispatch = useAppDispatch();
-  const currentPage = useAppSelector(selectCurrentPage);
   const roomListData = useAppSelector(selectRoomListData);
   const roomListIsLoading = useAppSelector(selectRoomListIsLoading);
   const roomListError = useAppSelector(selectRoomListError);
@@ -27,7 +25,7 @@ const HotelList = () => {
       try {
         dispatch(roomListActions.changeError(''));
         dispatch(roomListActions.changeIsLoading(true));
-        const roomCards = await getRoomCards(currentPage);
+        const roomCards = await getRoomCards('next', 0);
         dispatch(roomListActions.changeData(roomCards));
       } catch (err) {
         if (err instanceof Error) {
@@ -42,7 +40,7 @@ const HotelList = () => {
     };
 
     fetchData();
-  }, [currentPage, dispatch]);
+  }, [dispatch]);
 
   if (roomListError !== '') {
     return <span>{roomListError}</span>;
