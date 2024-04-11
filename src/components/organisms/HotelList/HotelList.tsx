@@ -6,12 +6,14 @@ import { getRoomCards } from '@/api';
 import {
   roomListActions,
   selectAllFilters,
+  selectCurrentPage,
   selectRoomListData,
   selectRoomListError,
   selectRoomListIsLoading,
 } from '@/store';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { ErrorMessage } from '@/components/molecules';
+import { ITEMS_PER_PAGE } from '@/constants';
 
 import { HotelCard } from '../HotelCard';
 import { HotelListSkeleton } from './HotelListSkeleton';
@@ -23,6 +25,7 @@ const HotelList = () => {
   const roomListData = useAppSelector(selectRoomListData);
   const roomListIsLoading = useAppSelector(selectRoomListIsLoading);
   const roomListError = useAppSelector(selectRoomListError);
+  const currentPage = useAppSelector(selectCurrentPage);
   const filters = useAppSelector(selectAllFilters);
 
   const filterRoomListData = useFilter(filters, roomListData);
@@ -68,9 +71,14 @@ const HotelList = () => {
 
   return (
     <div className={style.list}>
-      {filterRoomListData.map((item) => (
-        <HotelCard key={item.id} hotel={item} />
-      ))}
+      {filterRoomListData
+        .slice(
+          (currentPage - 1) * ITEMS_PER_PAGE,
+          (currentPage - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE,
+        )
+        .map((item) => {
+          return <HotelCard key={item.id} hotel={item} />;
+        })}
     </div>
   );
 };
