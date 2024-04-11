@@ -42,7 +42,7 @@ const initialState: Filters = {
       disabled: false,
     },
     {
-      name: 'isFeedingChhair',
+      name: 'isHighChair',
       text: 'Стул для кормления',
       checked: false,
       disabled: false,

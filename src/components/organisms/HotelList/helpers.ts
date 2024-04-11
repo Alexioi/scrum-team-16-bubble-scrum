@@ -14,4 +14,11 @@ const generateObjectFromDropdown = (
   return obj;
 };
 
-export { generateObjectFromDropdown };
+const generateDateFromString = (stringData: string, isFilterDate: boolean) => {
+  const [first, second, third] = stringData.split('.');
+  return isFilterDate
+    ? new Date(Number(third), Number(second) - 1, Number(first))
+    : new Date(Number(first), Number(second) - 1, Number(third));
+};
+
+export { generateObjectFromDropdown, generateDateFromString };

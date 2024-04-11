@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { Filters } from '@/store';
 
 import { Hotel } from '../HotelCard';
-import { generateObjectFromDropdown } from './helpers';
+import { generateDateFromString, generateObjectFromDropdown } from './helpers';
 
 const checkPrice = (start: number, end: number, hotelPrice: number) =>
   hotelPrice >= start && hotelPrice <= end;
@@ -34,6 +34,20 @@ const checkCheckbox = (
   return flag;
 };
 
+const checkDate = (
+  filter: string[] | null[],
+  hotelStart: string,
+  hotelEnd: string,
+) => {
+  if (filter[0] === null || filter[1] === null) return true;
+  const filterStartDate = generateDateFromString(filter[0], true);
+  const filterEndDate = generateDateFromString(filter[1], true);
+  const hotelStartDate = generateDateFromString(hotelStart, false);
+  const hotelEndDate = generateDateFromString(hotelEnd, false);
+
+  return filterStartDate >= hotelStartDate && filterEndDate <= hotelEndDate;
+};
+
 const useFilter = (filters: Filters, data: Hotel[]) => {
   return useMemo(() => {
     const guestsFilters = generateObjectFromDropdown(
@@ -62,6 +76,7 @@ const useFilter = (filters: Filters, data: Hotel[]) => {
         checkCheckbox(filters.rulesList, i.rules) &&
         checkCheckbox(filters.expandableList, i.additionalAmenities) &&
         checkCheckbox(filters.availabilityList, i.availability) &&
+        checkDate(filters.dates, i.startDate, i.endDate) &&
         checkPrice(filters.rangePrices[0], filters.rangePrices[1], i.price),
     );
   }, [filters, data]);
