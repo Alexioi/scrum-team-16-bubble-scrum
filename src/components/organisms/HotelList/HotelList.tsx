@@ -13,7 +13,7 @@ import {
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { ITEMS_PER_PAGE } from '@/constants';
 
-import { Hotel, HotelCard } from '../HotelCard';
+import { HotelCard } from '../HotelCard';
 import style from './style.module.scss';
 
 const HotelList = () => {
@@ -55,16 +55,10 @@ const HotelList = () => {
   return (
     <div className={style.list}>
       {roomListData
-        .reduce<(Hotel & { id: string })[]>((acc, item, i) => {
-          if (
-            i >= (currentPage - 1) * ITEMS_PER_PAGE &&
-            i < (currentPage - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE
-          ) {
-            return [...acc, item];
-          }
-
-          return [...acc];
-        }, [])
+        .slice(
+          (currentPage - 1) * ITEMS_PER_PAGE,
+          (currentPage - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE,
+        )
         .map((item) => {
           return (
             <HotelCard
