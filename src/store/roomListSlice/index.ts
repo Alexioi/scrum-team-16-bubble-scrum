@@ -10,7 +10,7 @@ type InitialState = {
 
 const initialState: InitialState = {
   data: [],
-  isLoading: false,
+  isLoading: true,
   error: '',
 };
 
