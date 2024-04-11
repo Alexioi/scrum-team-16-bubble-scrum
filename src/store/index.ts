@@ -24,6 +24,8 @@ const selectRangePrices = (state: RootState) => state.filter.rangePrices;
 const selectAvailabilityList = (state: RootState) =>
   state.filter.availabilityList;
 const selectCurrentPage = (state: RootState) => state.pagination.currentPage;
+const selectCountCardsOnPage = (state: RootState) =>
+  state.pagination.countCardsOnPage;
 const selectRoomListData = (state: RootState) => state.roomList.data;
 const selectRoomListIsLoading = (state: RootState) => state.roomList.isLoading;
 const selectRoomListError = (state: RootState) => state.roomList.error;
@@ -42,6 +44,7 @@ export {
   selectExpandableList,
   selectGuests,
   selectCurrentPage,
+  selectCountCardsOnPage,
   selectRoomListData,
   selectRoomListIsLoading,
   selectRoomListError,

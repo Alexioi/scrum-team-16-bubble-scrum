@@ -4,8 +4,8 @@ import { useAppDispatch, useAppSelector } from '@/hooks';
 
 import {
   paginationActions,
+  selectCountCardsOnPage,
   selectCurrentPage,
-  selectRoomListData,
 } from '@/store';
 
 import { Pagination } from '../Pagination';
@@ -13,7 +13,7 @@ import { Pagination } from '../Pagination';
 const RoomListPagination = () => {
   const dispatch = useAppDispatch();
   const currentPage = useAppSelector(selectCurrentPage);
-  const roomListData = useAppSelector(selectRoomListData);
+  const countCards = useAppSelector(selectCountCardsOnPage);
 
   const makeHandleArrowButtonClick = (number: number) => {
     return () => {
@@ -24,9 +24,9 @@ const RoomListPagination = () => {
   return (
     <Pagination
       onClick={makeHandleArrowButtonClick}
-      itemsCount={roomListData.length}
+      itemsCount={countCards}
       activePage={currentPage}
-      pagesCount={Math.ceil(roomListData.length / 12)}
+      pagesCount={Math.ceil(countCards / 12)}
     />
   );
 };
