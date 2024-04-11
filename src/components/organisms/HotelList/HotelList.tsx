@@ -16,6 +16,7 @@ import { ErrorMessage } from '@/components/molecules';
 import { HotelCard } from '../HotelCard';
 import { HotelListSkeleton } from './HotelListSkeleton';
 import style from './style.module.scss';
+import { useFilter } from './hooks';
 
 const HotelList = () => {
   const dispatch = useAppDispatch();
@@ -24,12 +25,14 @@ const HotelList = () => {
   const roomListError = useAppSelector(selectRoomListError);
   const filters = useAppSelector(selectAllFilters);
 
+  const filterRoomListData = useFilter(filters, roomListData);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         dispatch(roomListActions.changeError(''));
         dispatch(roomListActions.changeIsLoading(true));
-        const roomCards = await getRoomCards('next', 0, filters);
+        const roomCards = await getRoomCards();
         dispatch(roomListActions.changeData(roomCards));
       } catch (err) {
         if (err instanceof Error) {
@@ -44,7 +47,7 @@ const HotelList = () => {
     };
 
     fetchData();
-  }, [dispatch, filters]);
+  }, [dispatch]);
 
   if (roomListError !== '') {
     return (
@@ -54,7 +57,7 @@ const HotelList = () => {
 
   if (roomListIsLoading) return <HotelListSkeleton />;
 
-  if (roomListData.length === 0) {
+  if (filterRoomListData.length === 0) {
     return (
       <ErrorMessage
         message="Ничего не найдено"
@@ -65,16 +68,8 @@ const HotelList = () => {
 
   return (
     <div className={style.list}>
-      {roomListData.map((item) => (
-        <HotelCard
-          key={item.id}
-          roomNumber={item.roomNumber}
-          isLux={item.isLux}
-          price={item.price}
-          averageRating={item.averageRating}
-          imageNames={item.imageNames}
-          reviews={item.reviews}
-        />
+      {filterRoomListData.map((item) => (
+        <HotelCard key={item.id} hotel={item} />
       ))}
     </div>
   );

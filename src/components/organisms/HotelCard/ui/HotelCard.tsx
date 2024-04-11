@@ -5,22 +5,46 @@ import { Rating, Swiper } from '@/components/atoms';
 import { declensionReview } from '../lib/declensionReview';
 import style from './style.module.scss';
 
-type Props = {
+type Hotel = {
+  id: string;
   roomNumber: number;
   price: number;
   averageRating: number;
   isLux: boolean;
   imageNames: string[];
   reviews: number;
+  startDate: string;
+  endDate: string;
+  guestCount: number;
+  babyCount: number;
+  bedRoomCount: number;
+  bedCount: number;
+  bathroomCount: number;
+  availability: {
+    isWideCorridor: boolean;
+    isAssistant: boolean;
+  };
+  additionalAmenities: {
+    isBreakfast: boolean;
+    isDesk: boolean;
+    isHighChair: boolean;
+    isCrib: boolean;
+    isTv: boolean;
+    isShampoo: boolean;
+  };
+  rules: {
+    isSmoke: boolean;
+    isAnimals: boolean;
+    isLotOfGuests: boolean;
+  };
+};
+
+type Props = {
+  hotel: Hotel;
 };
 
 const HotelCard: FC<Props> = ({
-  imageNames,
-  isLux,
-  roomNumber,
-  price,
-  averageRating,
-  reviews,
+  hotel: { imageNames, isLux, roomNumber, price, averageRating, reviews },
 }) => {
   return (
     <div className={style.card}>
@@ -56,4 +80,4 @@ const HotelCard: FC<Props> = ({
 };
 
 export { HotelCard };
-export type { Props as Hotel };
+export type { Hotel };
