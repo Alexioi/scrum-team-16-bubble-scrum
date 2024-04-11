@@ -29,6 +29,7 @@ const selectCountCardsOnPage = (state: RootState) =>
 const selectRoomListData = (state: RootState) => state.roomList.data;
 const selectRoomListIsLoading = (state: RootState) => state.roomList.isLoading;
 const selectRoomListError = (state: RootState) => state.roomList.error;
+const selectDates = (state: RootState) => state.filter.dates;
 
 export type { RootState, AppDispatch, Filters };
 export {
@@ -48,4 +49,5 @@ export {
   selectRoomListData,
   selectRoomListIsLoading,
   selectRoomListError,
+  selectDates,
 };

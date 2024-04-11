@@ -18,4 +18,33 @@ const getStringDate = (date: Date) => {
   return `${day} ${month}`;
 };
 
-export { getFullStringDate, getStringDate };
+const getFirstInputValue = (values: string[] | null[], isSingle: boolean) => {
+  if (values[0] === null || values[1] === null) {
+    return '';
+  }
+
+  return isSingle ? `${values[0]}-${values[1]}` : values[0];
+};
+
+const getInitCalendarDates = (
+  values: string[] | null[],
+): null | [Date, Date] => {
+  if (values[0] === null || values[1] === null) {
+    return null;
+  }
+
+  const [firstDay, firstMonth, firstYear] = values[0].split('.');
+  const [secondDay, secondMonth, secondYear] = values[1].split('.');
+
+  return [
+    new Date([firstMonth, firstDay, firstYear].join('.')),
+    new Date([secondMonth, secondDay, secondYear].join('.')),
+  ];
+};
+
+export {
+  getFullStringDate,
+  getStringDate,
+  getFirstInputValue,
+  getInitCalendarDates,
+};
