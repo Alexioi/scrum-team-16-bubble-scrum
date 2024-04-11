@@ -1,18 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-
 import { useAppDispatch, useAppSelector } from '@/hooks';
-import { getRoomCardsCount } from '@/api';
-import { paginationActions, selectCurrentPage } from '@/store';
+
+import {
+  paginationActions,
+  selectCurrentPage,
+  selectRoomListData,
+} from '@/store';
 
 import { Pagination } from '../Pagination';
 
 const RoomListPagination = () => {
   const dispatch = useAppDispatch();
   const currentPage = useAppSelector(selectCurrentPage);
-  const [pagesCount, setPagesCount] = useState(0);
-  const [itemsCount, setItemCount] = useState(0);
+  const roomListData = useAppSelector(selectRoomListData);
 
   const makeHandleArrowButtonClick = (number: number) => {
     return () => {
@@ -20,23 +21,12 @@ const RoomListPagination = () => {
     };
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const count = await getRoomCardsCount();
-
-      setItemCount(count);
-      setPagesCount(Math.ceil(count / 12));
-    };
-
-    fetchData();
-  }, []);
-
   return (
     <Pagination
       onClick={makeHandleArrowButtonClick}
-      itemsCount={itemsCount}
+      itemsCount={roomListData.length}
       activePage={currentPage}
-      pagesCount={pagesCount}
+      pagesCount={Math.ceil(roomListData.length / 12)}
     />
   );
 };
