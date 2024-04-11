@@ -11,7 +11,7 @@ type CheckboxItem = {
   description?: string;
 };
 
-type InitialState = {
+type Filters = {
   expandableList: CheckboxItem[];
   rulesList: CheckboxItem[];
   availabilityList: CheckboxItem[];
@@ -27,40 +27,40 @@ type InitialState = {
   rangePrices: number[];
 };
 
-const initialState: InitialState = {
+const initialState: Filters = {
   expandableList: [
     {
-      name: 'breakfast',
+      name: 'isBreakfast',
       text: 'Завтрак',
       checked: false,
       disabled: false,
     },
     {
-      name: 'desk',
+      name: 'isDesk',
       text: 'Письменный стол',
       checked: false,
       disabled: false,
     },
     {
-      name: 'feeding-chair',
+      name: 'isFeedingChhair',
       text: 'Стул для кормления',
       checked: false,
       disabled: false,
     },
     {
-      name: 'crib',
+      name: 'isCrib',
       text: 'Кроватка',
       checked: false,
       disabled: false,
     },
     {
-      name: 'tv',
+      name: 'isTv',
       text: 'Телевизор',
       checked: false,
       disabled: false,
     },
     {
-      name: 'shampoo',
+      name: 'isShampoo',
       text: 'Шампунь',
       checked: false,
       disabled: false,
@@ -68,19 +68,19 @@ const initialState: InitialState = {
   ],
   rulesList: [
     {
-      name: 'smoking-allowed',
+      name: 'isSmoke',
       text: 'Можно курить',
       checked: false,
       disabled: false,
     },
     {
-      name: 'pets-allowed',
+      name: 'isAnimals',
       text: 'Можно с питомцами',
       checked: false,
       disabled: false,
     },
     {
-      name: 'party-allowed',
+      name: 'isLotOfGuests',
       text: 'Можно пригласить гостей (до 10 человек)',
       checked: false,
       disabled: false,
@@ -88,14 +88,14 @@ const initialState: InitialState = {
   ],
   availabilityList: [
     {
-      name: 'name1',
+      name: 'isWideCorridor',
       text: 'Широкий коридор',
       description: 'Ширина коридоров в номере не менее 91 см.',
       checked: false,
       disabled: false,
     },
     {
-      name: 'name2',
+      name: 'isAssistant',
       text: 'Помощник для инвалидов',
       description: 'На 1 этаже вас встретит специалист и проводит до номера.',
       checked: false,
@@ -140,5 +140,5 @@ const initialState: InitialState = {
   rangePrices: [2000, 8000],
 };
 
-export type { DropdownValue };
+export type { DropdownValue, Filters };
 export { initialState };

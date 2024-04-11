@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { getRoomCards } from '@/api';
 import {
   roomListActions,
+  selectAllFilters,
   selectCurrentPage,
   selectRoomListData,
   selectRoomListError,
@@ -13,6 +14,7 @@ import {
 import { useAppDispatch, useAppSelector } from '@/hooks';
 
 import { HotelCard } from '../HotelCard';
+import { HotelListSkeleton } from './HotelListSkeleton';
 import style from './style.module.scss';
 
 const HotelList = () => {
@@ -21,13 +23,14 @@ const HotelList = () => {
   const roomListData = useAppSelector(selectRoomListData);
   const roomListIsLoading = useAppSelector(selectRoomListIsLoading);
   const roomListError = useAppSelector(selectRoomListError);
+  const filters = useAppSelector(selectAllFilters);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         dispatch(roomListActions.changeError(''));
         dispatch(roomListActions.changeIsLoading(true));
-        const roomCards = await getRoomCards(currentPage);
+        const roomCards = await getRoomCards(currentPage, filters);
         dispatch(roomListActions.changeData(roomCards));
       } catch (err) {
         if (err instanceof Error) {
@@ -42,14 +45,14 @@ const HotelList = () => {
     };
 
     fetchData();
-  }, [currentPage, dispatch]);
+  }, [currentPage, dispatch, filters]);
 
   if (roomListError !== '') {
     return <span>{roomListError}</span>;
   }
 
   if (roomListIsLoading) {
-    return 'Загрузка...';
+    return <HotelListSkeleton />;
   }
 
   return (

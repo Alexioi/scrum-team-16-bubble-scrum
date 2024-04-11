@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { DropdownValue, initialState } from './initialState';
+import { DropdownValue, initialState, Filters } from './initialState';
 import { changeChecked } from './helpers';
 
 const filterSlice = createSlice({
@@ -74,3 +74,4 @@ const filterActions = filterSlice.actions;
 const filterReducer = filterSlice.reducer;
 
 export { filterActions, filterReducer };
+export type { Filters };

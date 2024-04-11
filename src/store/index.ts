@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { paginationActions, paginationReducer } from './paginationSlice';
-import { filterActions, filterReducer } from './filterSlice';
+import { filterActions, filterReducer, Filters } from './filterSlice';
 import { roomListActions, roomListReducer } from './roomListSlice';
 
 const store = configureStore({
@@ -15,6 +15,7 @@ const store = configureStore({
 type RootState = ReturnType<typeof store.getState>;
 type AppDispatch = typeof store.dispatch;
 
+const selectAllFilters = (state: RootState) => state.filter;
 const selectExpandableList = (state: RootState) => state.filter.expandableList;
 const selectGuests = (state: RootState) => state.filter.guests;
 const selectRooms = (state: RootState) => state.filter.rooms;
@@ -27,12 +28,13 @@ const selectRoomListData = (state: RootState) => state.roomList.data;
 const selectRoomListIsLoading = (state: RootState) => state.roomList.isLoading;
 const selectRoomListError = (state: RootState) => state.roomList.error;
 
-export type { RootState, AppDispatch };
+export type { RootState, AppDispatch, Filters };
 export {
   store,
   paginationActions,
   filterActions,
   roomListActions,
+  selectAllFilters,
   selectRooms,
   selectRulesList,
   selectAvailabilityList,
