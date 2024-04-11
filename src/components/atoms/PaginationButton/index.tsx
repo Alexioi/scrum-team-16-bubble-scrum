@@ -8,16 +8,23 @@ import style from './style.module.scss';
 type Props = {
   pageNumber: number;
   activePage: number;
+  onClick(number: number): void;
 };
 
-const PaginationButton: FC<Props> = ({ pageNumber, activePage }) => {
+const PaginationButton: FC<Props> = ({ pageNumber, activePage, onClick }) => {
   return (
     <li
       className={clsx(style.page, {
         [style.page_current]: activePage === pageNumber,
       })}
     >
-      <span className={style['page-button']}>{pageNumber}</span>
+      <button
+        onClick={() => onClick(pageNumber)}
+        className={style['page-button']}
+        type="button"
+      >
+        {pageNumber}
+      </button>
     </li>
   );
 };

@@ -1,11 +1,11 @@
-import { collection, query, getDocs } from 'firebase/firestore';
+import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 
 import { hotelsScheme } from '@/schemes';
 
 import { db } from '../../initFirebase';
 
 const getRoomCards = async () => {
-  const q = query(collection(db, 'room-cards'));
+  const q = query(collection(db, 'room-cards'), orderBy('roomNumber'));
 
   const querySnapshot = await getDocs(q);
 
@@ -19,9 +19,7 @@ const getRoomCards = async () => {
     throw new Error('некорректные данные на сервере');
   }
 
-  return result.data.sort((a, b) => {
-    return a.roomNumber - b.roomNumber;
-  });
+  return result.data;
 };
 
 export { getRoomCards };
