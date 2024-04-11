@@ -3,8 +3,8 @@ import {
   query,
   orderBy,
   getDocs,
-  startAt,
   limit,
+  startAfter,
 } from 'firebase/firestore';
 
 import { ITEMS_PER_PAGE } from '@/constants';
@@ -14,13 +14,17 @@ import { Filters } from '@/store';
 import { db } from '../../initFirebase';
 import { generateFilters } from './helpers';
 
-const getRoomCards = async (currentPage: number, filters: Filters) => {
+const getRoomCards = async (
+  direction: 'back' | 'next',
+  firstOrLastItemIndex: number,
+  filters: Filters,
+) => {
   const q = query(
     collection(db, 'room-cards'),
-    orderBy('roomNumber'),
-    startAt((currentPage - 1) * ITEMS_PER_PAGE + 1),
-    limit(ITEMS_PER_PAGE),
+    orderBy('roomNumber', direction === 'next' ? 'asc' : 'desc'),
     ...generateFilters(filters),
+    startAfter(firstOrLastItemIndex),
+    limit(ITEMS_PER_PAGE),
   );
 
   const querySnapshot = await getDocs(q);
@@ -35,7 +39,9 @@ const getRoomCards = async (currentPage: number, filters: Filters) => {
     throw new Error('некорректные данные на сервере');
   }
 
-  return result.data;
+  return result.data.sort((a, b) => {
+    return a.roomNumber - b.roomNumber;
+  });
 };
 
 export { getRoomCards };

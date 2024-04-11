@@ -8,17 +8,19 @@ import { ITEMS_PER_PAGE } from '@/constants';
 import style from './style.module.scss';
 
 type Props = {
-  onClick(number: -1 | 1): () => void;
+  onClickBack(): void;
+  onClickNext(): void;
   pagesCount: number;
   activePage: number;
   itemsCount: number;
 };
 
 const Pagination: FC<Props> = ({
-  onClick,
   pagesCount,
   activePage,
   itemsCount,
+  onClickBack,
+  onClickNext,
 }) => {
   const paginationLabelText = `${(activePage - 1) * ITEMS_PER_PAGE + 1} – ${activePage === pagesCount ? itemsCount : activePage * ITEMS_PER_PAGE} из ${itemsCount <= 100 ? itemsCount : '100+'} вариантов аренды`;
 
@@ -31,7 +33,7 @@ const Pagination: FC<Props> = ({
       <div className={style.wrapper}>
         <ul className={style.list}>
           {activePage > 1 && (
-            <ArrowButton direction="left" onClick={onClick(-1)} />
+            <ArrowButton direction="left" onClick={onClickBack} />
           )}
           {Array(pagesCount)
             .fill(null)
@@ -44,7 +46,7 @@ const Pagination: FC<Props> = ({
               />
             ))}
           {activePage < pagesCount && (
-            <ArrowButton direction="right" onClick={onClick(1)} />
+            <ArrowButton direction="right" onClick={onClickNext} />
           )}
         </ul>
         <div className={style.label}>
@@ -58,7 +60,7 @@ const Pagination: FC<Props> = ({
     <div className={style.wrapper}>
       <ul className={style.list}>
         {activePage > 1 && (
-          <ArrowButton direction="left" onClick={onClick(-1)} />
+          <ArrowButton direction="left" onClick={onClickBack} />
         )}
         {activePage < 3 && (
           <>
@@ -158,7 +160,7 @@ const Pagination: FC<Props> = ({
           </>
         )}
         {activePage < pagesCount && (
-          <ArrowButton direction="right" onClick={onClick(1)} />
+          <ArrowButton direction="right" onClick={onClickNext} />
         )}
       </ul>
       <div className={style.label}>

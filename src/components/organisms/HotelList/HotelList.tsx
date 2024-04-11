@@ -6,7 +6,6 @@ import { getRoomCards } from '@/api';
 import {
   roomListActions,
   selectAllFilters,
-  selectCurrentPage,
   selectRoomListData,
   selectRoomListError,
   selectRoomListIsLoading,
@@ -20,7 +19,6 @@ import style from './style.module.scss';
 
 const HotelList = () => {
   const dispatch = useAppDispatch();
-  const currentPage = useAppSelector(selectCurrentPage);
   const roomListData = useAppSelector(selectRoomListData);
   const roomListIsLoading = useAppSelector(selectRoomListIsLoading);
   const roomListError = useAppSelector(selectRoomListError);
@@ -31,7 +29,7 @@ const HotelList = () => {
       try {
         dispatch(roomListActions.changeError(''));
         dispatch(roomListActions.changeIsLoading(true));
-        const roomCards = await getRoomCards(currentPage, filters);
+        const roomCards = await getRoomCards('next', 0, filters);
         dispatch(roomListActions.changeData(roomCards));
       } catch (err) {
         if (err instanceof Error) {
@@ -46,7 +44,7 @@ const HotelList = () => {
     };
 
     fetchData();
-  }, [currentPage, dispatch, filters]);
+  }, [dispatch, filters]);
 
   if (roomListError !== '') {
     return (
