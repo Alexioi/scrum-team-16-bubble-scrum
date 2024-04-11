@@ -16,17 +16,8 @@
   border-radius: 50%;
 
   &:not(.page_current) {
-    *:hover {
-      cursor: pointer;
-    }
-
     border: 1px solid transparent;
     transition: all 0.2s ease;
-
-    &:hover {
-      border: 1px solid $dark-shade-50;
-      transition: all 0.2s ease;
-    }
   }
 }
 
