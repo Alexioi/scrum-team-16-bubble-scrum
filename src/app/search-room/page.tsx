@@ -5,7 +5,7 @@ import {
   Container,
   Typography,
   HotelList,
-  Pagination,
+  RoomListPagination,
 } from '@/components';
 
 import style from './style.module.scss';
@@ -26,7 +26,7 @@ const SearchRoom = () => {
               <HotelList />
             </div>
             <div className={style.pagination}>
-              <Pagination />
+              <RoomListPagination />
             </div>
           </div>
         </div>

@@ -1,40 +1,26 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { FC } from 'react';
 
 import { ArrowButton, PaginationButton } from '@/components/atoms';
-import { getRoomCardsCount } from '@/api';
 import { ITEMS_PER_PAGE } from '@/constants';
-import { paginationActions } from '@/store';
-import { useAppDispatch } from '@/hooks';
 
 import style from './style.module.scss';
 
-const Pagination = () => {
-  const dispatch = useAppDispatch();
-  const [activePage, setActivePage] = useState(1);
-  const [pagesCount, setPagesCount] = useState(0);
-  const [itemsCount, setItemCount] = useState(0);
+type Props = {
+  onClick(number: -1 | 1): () => void;
+  pagesCount: number;
+  activePage: number;
+  itemsCount: number;
+};
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const count = await getRoomCardsCount();
-
-      setItemCount(count);
-      setPagesCount(Math.ceil(count / 12));
-    };
-
-    fetchData();
-  }, []);
-
+const Pagination: FC<Props> = ({
+  onClick,
+  pagesCount,
+  activePage,
+  itemsCount,
+}) => {
   const paginationLabelText = `${(activePage - 1) * ITEMS_PER_PAGE + 1} – ${activePage === pagesCount ? itemsCount : activePage * ITEMS_PER_PAGE} из ${itemsCount <= 100 ? itemsCount : '100+'} вариантов аренды`;
-
-  const makeHandleArrowButtonClick = (number: -1 | 1) => {
-    return () => {
-      dispatch(paginationActions.change(number));
-      setActivePage(activePage + number);
-    };
-  };
 
   if (pagesCount === 0) {
     return null;
@@ -45,10 +31,7 @@ const Pagination = () => {
       <div className={style.wrapper}>
         <ul className={style.list}>
           {activePage > 1 && (
-            <ArrowButton
-              direction="left"
-              onClick={makeHandleArrowButtonClick(-1)}
-            />
+            <ArrowButton direction="left" onClick={onClick(-1)} />
           )}
           {Array(pagesCount)
             .fill(null)
@@ -61,10 +44,7 @@ const Pagination = () => {
               />
             ))}
           {activePage < pagesCount && (
-            <ArrowButton
-              direction="right"
-              onClick={makeHandleArrowButtonClick(1)}
-            />
+            <ArrowButton direction="right" onClick={onClick(1)} />
           )}
         </ul>
         <div className={style.label}>
@@ -78,10 +58,7 @@ const Pagination = () => {
     <div className={style.wrapper}>
       <ul className={style.list}>
         {activePage > 1 && (
-          <ArrowButton
-            direction="left"
-            onClick={makeHandleArrowButtonClick(-1)}
-          />
+          <ArrowButton direction="left" onClick={onClick(-1)} />
         )}
         {activePage < 3 && (
           <>
@@ -181,10 +158,7 @@ const Pagination = () => {
           </>
         )}
         {activePage < pagesCount && (
-          <ArrowButton
-            direction="right"
-            onClick={makeHandleArrowButtonClick(1)}
-          />
+          <ArrowButton direction="right" onClick={onClick(1)} />
         )}
       </ul>
       <div className={style.label}>
