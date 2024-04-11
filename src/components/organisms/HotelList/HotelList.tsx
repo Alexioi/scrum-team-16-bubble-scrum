@@ -1,52 +1,60 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { getRoomCards } from '@/api';
-import { selectCurrentPage } from '@/store';
-import { useAppSelector } from '@/hooks';
+import {
+  roomListActions,
+  selectCurrentPage,
+  selectRoomListData,
+  selectRoomListError,
+  selectRoomListIsLoading,
+} from '@/store';
+import { useAppDispatch, useAppSelector } from '@/hooks';
 
-import { HotelCard, Hotel } from '../HotelCard';
+import { HotelCard } from '../HotelCard';
 import style from './style.module.scss';
 
 const HotelList = () => {
-  const [data, setData] = useState<(Hotel & { id: string })[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const dispatch = useAppDispatch();
   const currentPage = useAppSelector(selectCurrentPage);
+  const roomListData = useAppSelector(selectRoomListData);
+  const roomListIsLoading = useAppSelector(selectRoomListIsLoading);
+  const roomListError = useAppSelector(selectRoomListError);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setError('');
-        setIsLoading(true);
+        dispatch(roomListActions.changeError(''));
+        dispatch(roomListActions.changeIsLoading(true));
         const roomCards = await getRoomCards(currentPage);
-        setData(roomCards);
+        dispatch(roomListActions.changeData(roomCards));
       } catch (err) {
         if (err instanceof Error) {
-          setError(err.message);
+          dispatch(roomListActions.changeError(err.message));
+
           return;
         }
-        setError('неизвестная ошибка');
+        dispatch(roomListActions.changeError('неизвестная ошибка'));
       } finally {
-        setIsLoading(false);
+        dispatch(roomListActions.changeIsLoading(false));
       }
     };
 
     fetchData();
-  }, [currentPage]);
+  }, [currentPage, dispatch]);
 
-  if (error !== '') {
-    return <span>{error}</span>;
+  if (roomListError !== '') {
+    return <span>{roomListError}</span>;
   }
 
-  if (isLoading) {
+  if (roomListIsLoading) {
     return 'Загрузка...';
   }
 
   return (
     <div className={style.list}>
-      {data.map((item) => (
+      {roomListData.map((item) => (
         <HotelCard
           key={item.id}
           roomNumber={item.roomNumber}
