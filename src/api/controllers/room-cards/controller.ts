@@ -5,7 +5,6 @@ import {
   getDocs,
   startAt,
   limit,
-  where,
 } from 'firebase/firestore';
 
 import { ITEMS_PER_PAGE } from '@/constants';
@@ -13,7 +12,7 @@ import { hotelsScheme } from '@/schemes';
 import { Filters } from '@/store';
 
 import { db } from '../../initFirebase';
-import { generateWhereFromCheckbox } from './helpers';
+import { generateFilters } from './helpers';
 
 const getRoomCards = async (currentPage: number, filters: Filters) => {
   const q = query(
@@ -21,18 +20,7 @@ const getRoomCards = async (currentPage: number, filters: Filters) => {
     orderBy('roomNumber'),
     startAt((currentPage - 1) * ITEMS_PER_PAGE + 1),
     limit(ITEMS_PER_PAGE),
-    where('price', '>=', filters.rangePrices[0]),
-    where('price', '<=', filters.rangePrices[1]),
-    where(
-      'guestCount',
-      '>=',
-      filters.guests.items[0].counter + filters.guests.items[1].counter,
-    ),
-    where('babyCount', '>=', filters.guests.items[2].counter),
-    where('price', '<=', filters.rangePrices[1]),
-    ...generateWhereFromCheckbox('rules', filters.rulesList),
-    ...generateWhereFromCheckbox('additionalAmenities', filters.expandableList),
-    ...generateWhereFromCheckbox('availability', filters.availabilityList),
+    ...generateFilters(filters),
   );
 
   const querySnapshot = await getDocs(q);

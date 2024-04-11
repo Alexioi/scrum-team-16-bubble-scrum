@@ -12,6 +12,7 @@ import {
   selectRoomListIsLoading,
 } from '@/store';
 import { useAppDispatch, useAppSelector } from '@/hooks';
+import { ErrorMessage } from '@/components/molecules';
 
 import { HotelCard } from '../HotelCard';
 import { HotelListSkeleton } from './HotelListSkeleton';
@@ -48,11 +49,20 @@ const HotelList = () => {
   }, [currentPage, dispatch, filters]);
 
   if (roomListError !== '') {
-    return <span>{roomListError}</span>;
+    return (
+      <ErrorMessage message="Произошла ошибка" description={roomListError} />
+    );
   }
 
-  if (roomListIsLoading) {
-    return <HotelListSkeleton />;
+  if (roomListIsLoading) return <HotelListSkeleton />;
+
+  if (roomListData.length === 0) {
+    return (
+      <ErrorMessage
+        message="Ничего не найдено"
+        description="Попробуйте изменить фильтры"
+      />
+    );
   }
 
   return (
