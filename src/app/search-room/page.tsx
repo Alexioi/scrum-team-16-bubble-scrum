@@ -1,9 +1,11 @@
+'use client';
+
 import {
   Filter,
   Container,
   Typography,
   HotelList,
-  Pagination,
+  RoomListPagination,
 } from '@/components';
 
 import style from './style.module.scss';
@@ -24,7 +26,7 @@ const SearchRoom = () => {
               <HotelList />
             </div>
             <div className={style.pagination}>
-              <Pagination maxItemsCountPerPage={12} itemsCount={189} />
+              <RoomListPagination />
             </div>
           </div>
         </div>

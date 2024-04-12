@@ -1,3 +1,5 @@
+'use client';
+
 import { FC } from 'react';
 import clsx from 'clsx';
 
@@ -6,7 +8,7 @@ import style from './style.module.scss';
 type Props = {
   pageNumber: number;
   activePage: number;
-  onClick(state: number): void;
+  onClick(number: number): void;
 };
 
 const PaginationButton: FC<Props> = ({ pageNumber, activePage, onClick }) => {
