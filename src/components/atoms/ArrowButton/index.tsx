@@ -21,7 +21,9 @@ const ArrowButton: FC<Props> = ({ direction, onClick }) => {
             [style.arrow_rotated]: direction === 'left',
           })}
         >
-          <ArrowSVG />
+          <g fill="currentColor">
+            <ArrowSVG />
+          </g>
         </svg>
       </button>
     </li>

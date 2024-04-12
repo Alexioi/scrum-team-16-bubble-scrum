@@ -33,12 +33,16 @@ const ReactCalendar: FC<Props> = ({ value, onChange }) => {
       minDetail="month"
       prevLabel={
         <svg height={18}>
-          <ArrowSVG />
+          <g fill="currentColor">
+            <ArrowSVG />
+          </g>
         </svg>
       }
       nextLabel={
         <svg height={18}>
-          <ArrowSVG />
+          <g fill="currentColor">
+            <ArrowSVG />
+          </g>
         </svg>
       }
     />
