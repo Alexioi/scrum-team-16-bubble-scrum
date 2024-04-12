@@ -1,0 +1,10 @@
+@keyframes skeleton-loading {
+  0%, 50% {
+    background-color: $dark-shade-5;
+  }
+  100% {
+    background-color: $dark-shade-10;
+  }
+}
+
+$animation-skeleton-loading: skeleton-loading 1s linear infinite alternate;
