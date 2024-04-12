@@ -32,7 +32,7 @@ const RoomListPagination: FC<Props> = ({ listRef }) => {
 
   return (
     <Pagination
-      onClick={makeHandleArrowButtonClick}
+      makeOnClick={makeHandleArrowButtonClick}
       itemsCount={countCards}
       activePage={currentPage}
       pagesCount={Math.ceil(countCards / 12)}

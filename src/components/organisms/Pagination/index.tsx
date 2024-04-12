@@ -11,14 +11,14 @@ type Props = {
   pagesCount: number;
   activePage: number;
   itemsCount: number;
-  onClick(number: number): () => void;
+  makeOnClick(number: number): () => void;
 };
 
 const Pagination: FC<Props> = ({
   pagesCount,
   activePage,
   itemsCount,
-  onClick,
+  makeOnClick: onClick,
 }) => {
   const paginationLabelText = `${(activePage - 1) * ITEMS_PER_PAGE + 1} – ${activePage === pagesCount ? itemsCount : activePage * ITEMS_PER_PAGE} из ${itemsCount <= 100 ? itemsCount : '100+'} вариантов аренды`;
 

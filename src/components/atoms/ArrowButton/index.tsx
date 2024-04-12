@@ -8,8 +8,8 @@ import ArrowSVG from '@/images/decorative/arrow.svg';
 import style from './style.module.scss';
 
 type Props = {
-  onClick(): void;
   direction: 'left' | 'right';
+  onClick(): void;
 };
 
 const ArrowButton: FC<Props> = ({ direction, onClick }) => {
