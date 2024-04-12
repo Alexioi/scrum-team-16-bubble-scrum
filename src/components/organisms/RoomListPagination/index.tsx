@@ -23,7 +23,7 @@ const RoomListPagination = () => {
 
   return (
     <Pagination
-      onClick={makeHandleArrowButtonClick}
+      makeOnClick={makeHandleArrowButtonClick}
       itemsCount={roomListData.length}
       activePage={currentPage}
       pagesCount={Math.ceil(roomListData.length / 12)}
