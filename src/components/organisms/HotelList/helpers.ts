@@ -5,9 +5,9 @@ const generateObjectFromDropdown = (
 ) => {
   const obj: Record<string, number> = {};
 
-  groups.forEach((i, idx) => {
-    obj[fileds[idx]] = i
-      .map((subi) => conditions[subi].counter)
+  groups.forEach((item, i) => {
+    obj[fileds[i]] = item
+      .map((subItem) => conditions[subItem].counter)
       .reduce((prev, current) => prev + current, 0);
   });
 

@@ -14,8 +14,8 @@ const checkDropDownValues = (
 ) => {
   let flag = true;
 
-  Object.keys(filters).forEach((k) => {
-    flag = flag && k in hotel && filters[k] <= hotel[k];
+  Object.keys(filters).forEach((item) => {
+    flag = flag && item in hotel && filters[item] <= hotel[item];
   });
 
   return flag;
