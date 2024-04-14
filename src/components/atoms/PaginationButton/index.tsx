@@ -3,20 +3,15 @@
 import { FC } from 'react';
 import clsx from 'clsx';
 
-import { paginationActions } from '@/store';
-import { useAppDispatch } from '@/hooks';
-
 import style from './style.module.scss';
 
 type Props = {
   pageNumber: number;
   activePage: number;
-  onClick(state: number): void;
+  onClick(number: number): void;
 };
 
 const PaginationButton: FC<Props> = ({ pageNumber, activePage, onClick }) => {
-  const dispatch = useAppDispatch();
-
   return (
     <li
       className={clsx(style.page, {
@@ -24,10 +19,7 @@ const PaginationButton: FC<Props> = ({ pageNumber, activePage, onClick }) => {
       })}
     >
       <button
-        onClick={() => {
-          onClick(pageNumber);
-          dispatch(paginationActions.change(pageNumber));
-        }}
+        onClick={() => onClick(pageNumber)}
         className={style['page-button']}
         type="button"
       >

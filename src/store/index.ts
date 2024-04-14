@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { paginationActions, paginationReducer } from './paginationSlice';
 import { filterActions, filterReducer } from './filterSlice';
+import { roomListActions, roomListReducer } from './roomListSlice';
 
 const store = configureStore({
   reducer: {
     pagination: paginationReducer,
     filter: filterReducer,
+    roomList: roomListReducer,
   },
 });
 
@@ -22,6 +24,9 @@ const selectAvailabilityList = (state: RootState) =>
   state.filter.availabilityList;
 const selectCurrentPage = (state: RootState) => state.pagination.currentPage;
 const selectDates = (state: RootState) => state.filter.dates;
+const selectRoomListData = (state: RootState) => state.roomList.data;
+const selectRoomListIsLoading = (state: RootState) => state.roomList.isLoading;
+const selectRoomListError = (state: RootState) => state.roomList.error;
 
 export type { RootState, AppDispatch };
 export {
@@ -29,6 +34,7 @@ export {
   paginationActions,
   filterActions,
   selectDates,
+  roomListActions,
   selectRooms,
   selectRulesList,
   selectAvailabilityList,
@@ -36,4 +42,7 @@ export {
   selectExpandableList,
   selectGuests,
   selectCurrentPage,
+  selectRoomListData,
+  selectRoomListIsLoading,
+  selectRoomListError,
 };

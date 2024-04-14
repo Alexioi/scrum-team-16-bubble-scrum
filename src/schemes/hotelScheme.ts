@@ -11,14 +11,28 @@ const hotelsScheme = z.array(
     reviews: z.number(),
     startDate: z.string(),
     endDate: z.string(),
-    rules: z.array(z.string()),
+    rules: z.object({
+      isSmoke: z.boolean(),
+      isAnimals: z.boolean(),
+      isLotOfGuests: z.boolean(),
+    }),
     guestCount: z.number(),
     babyCount: z.number(),
     bedRoomCount: z.number(),
     bedCount: z.number(),
     bathroomCount: z.number(),
-    availability: z.array(z.string()),
-    additionalAmenities: z.array(z.string()),
+    availability: z.object({
+      isWideCorridor: z.boolean(),
+      isAssistant: z.boolean(),
+    }),
+    additionalAmenities: z.object({
+      isBreakfast: z.boolean(),
+      isDesk: z.boolean(),
+      isHighChair: z.boolean(),
+      isCrib: z.boolean(),
+      isTv: z.boolean(),
+      isShampoo: z.boolean(),
+    }),
   }),
 );
 

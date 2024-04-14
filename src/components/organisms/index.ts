@@ -12,3 +12,4 @@ export * from './ExpandableCheckboxList';
 export * from './Filter';
 export * from './Pagination';
 export * from './Hero';
+export * from './RoomListPagination';

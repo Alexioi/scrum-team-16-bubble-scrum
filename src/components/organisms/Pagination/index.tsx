@@ -1,30 +1,27 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { FC } from 'react';
 
 import { ArrowButton, PaginationButton } from '@/components/atoms';
-import { getRoomCardsCount } from '@/api';
 import { ITEMS_PER_PAGE } from '@/constants';
 
 import style from './style.module.scss';
 
-const Pagination = () => {
-  const [activePage, setActivePage] = useState(1);
-  const [pagesCount, setPagesCount] = useState(0);
-  const [itemsCount, setItemCount] = useState(0);
+type Props = {
+  pagesCount: number;
+  activePage: number;
+  itemsCount: number;
+  makeOnClick(number: number): () => void;
+};
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const count = await getRoomCardsCount();
-
-      setItemCount(count);
-      setPagesCount(Math.ceil(count / 12));
-    };
-
-    fetchData();
-  }, []);
-
+const Pagination: FC<Props> = ({
+  pagesCount,
+  activePage,
+  itemsCount,
+  makeOnClick: onClick,
+}) => {
   const paginationLabelText = `${(activePage - 1) * ITEMS_PER_PAGE + 1} – ${activePage === pagesCount ? itemsCount : activePage * ITEMS_PER_PAGE} из ${itemsCount <= 100 ? itemsCount : '100+'} вариантов аренды`;
+
   if (pagesCount === 0) {
     return null;
   }
@@ -34,7 +31,7 @@ const Pagination = () => {
       <div className={style.wrapper}>
         <ul className={style.list}>
           {activePage > 1 && (
-            <ArrowButton direction="left" onClick={setActivePage} />
+            <ArrowButton direction="left" onClick={onClick(activePage - 1)} />
           )}
           {Array(pagesCount)
             .fill(null)
@@ -44,11 +41,11 @@ const Pagination = () => {
                 key={page}
                 pageNumber={page}
                 activePage={activePage}
-                onClick={setActivePage}
+                onClick={onClick(page)}
               />
             ))}
           {activePage < pagesCount && (
-            <ArrowButton direction="right" onClick={setActivePage} />
+            <ArrowButton direction="right" onClick={onClick(activePage + 1)} />
           )}
         </ul>
         <div className={style.label}>
@@ -62,7 +59,7 @@ const Pagination = () => {
     <div className={style.wrapper}>
       <ul className={style.list}>
         {activePage > 1 && (
-          <ArrowButton direction="left" onClick={setActivePage} />
+          <ArrowButton direction="left" onClick={onClick(activePage - 1)} />
         )}
         {activePage < 3 && (
           <>
@@ -75,14 +72,14 @@ const Pagination = () => {
                   key={page}
                   pageNumber={page}
                   activePage={activePage}
-                  onClick={setActivePage}
+                  onClick={onClick(page)}
                 />
               ))}
             <li className={style.boundary}>...</li>
             <PaginationButton
               pageNumber={pagesCount}
               activePage={activePage}
-              onClick={setActivePage}
+              onClick={onClick(pagesCount)}
             />
           </>
         )}
@@ -97,14 +94,14 @@ const Pagination = () => {
                   key={page}
                   pageNumber={page}
                   activePage={activePage}
-                  onClick={setActivePage}
+                  onClick={onClick(page)}
                 />
               ))}
             <li className={style.boundary}>...</li>
             <PaginationButton
               pageNumber={pagesCount}
               activePage={activePage}
-              onClick={setActivePage}
+              onClick={onClick(pagesCount)}
             />
           </>
         )}
@@ -113,29 +110,29 @@ const Pagination = () => {
             <PaginationButton
               pageNumber={1}
               activePage={activePage}
-              onClick={setActivePage}
+              onClick={onClick(1)}
             />
             <li className={style.boundary}>...</li>
             <PaginationButton
               pageNumber={activePage - 1}
               activePage={activePage}
-              onClick={setActivePage}
+              onClick={onClick(activePage - 1)}
             />
             <PaginationButton
               pageNumber={activePage}
               activePage={activePage}
-              onClick={setActivePage}
+              onClick={onClick(activePage)}
             />
             <PaginationButton
               pageNumber={activePage + 1}
               activePage={activePage}
-              onClick={setActivePage}
+              onClick={onClick(activePage + 1)}
             />
             <li className={style.boundary}>...</li>
             <PaginationButton
               pageNumber={pagesCount}
               activePage={activePage}
-              onClick={setActivePage}
+              onClick={onClick(pagesCount)}
             />
           </>
         )}
@@ -144,13 +141,13 @@ const Pagination = () => {
             <PaginationButton
               pageNumber={1}
               activePage={activePage}
-              onClick={setActivePage}
+              onClick={onClick(1)}
             />
             <li className={style.boundary}>...</li>
             <PaginationButton
               pageNumber={activePage - 1}
               activePage={activePage}
-              onClick={setActivePage}
+              onClick={onClick(activePage - 1)}
             />
             {Array(pagesCount)
               .fill(null)
@@ -161,7 +158,7 @@ const Pagination = () => {
                   key={page}
                   pageNumber={page}
                   activePage={activePage}
-                  onClick={setActivePage}
+                  onClick={onClick(page)}
                 />
               ))}
           </>
@@ -171,18 +168,18 @@ const Pagination = () => {
             <PaginationButton
               pageNumber={1}
               activePage={activePage}
-              onClick={setActivePage}
+              onClick={onClick(1)}
             />
             <li className={style.boundary}>...</li>
             <PaginationButton
               pageNumber={activePage - 2}
               activePage={activePage}
-              onClick={setActivePage}
+              onClick={onClick(activePage - 2)}
             />
             <PaginationButton
               pageNumber={activePage - 1}
               activePage={activePage}
-              onClick={setActivePage}
+              onClick={onClick(activePage - 1)}
             />
             {Array(pagesCount)
               .fill(null)
@@ -193,13 +190,13 @@ const Pagination = () => {
                   key={page}
                   pageNumber={page}
                   activePage={activePage}
-                  onClick={setActivePage}
+                  onClick={onClick(page)}
                 />
               ))}
           </>
         )}
         {activePage < pagesCount && (
-          <ArrowButton direction="right" onClick={setActivePage} />
+          <ArrowButton direction="right" onClick={onClick(activePage + 1)} />
         )}
       </ul>
       <div className={style.label}>

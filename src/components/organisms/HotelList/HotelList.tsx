@@ -1,62 +1,77 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { getRoomCards } from '@/api';
-import { selectCurrentPage } from '@/store';
-import { useAppSelector } from '@/hooks';
+import {
+  roomListActions,
+  selectRoomListData,
+  selectRoomListError,
+  selectRoomListIsLoading,
+  selectCurrentPage,
+} from '@/store';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+import { ITEMS_PER_PAGE } from '@/constants';
 
-import { HotelCard, Hotel } from '../HotelCard';
+import { HotelCard } from '../HotelCard';
 import style from './style.module.scss';
 
 const HotelList = () => {
-  const [data, setData] = useState<(Hotel & { id: string })[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const dispatch = useAppDispatch();
+  const roomListData = useAppSelector(selectRoomListData);
+  const roomListIsLoading = useAppSelector(selectRoomListIsLoading);
+  const roomListError = useAppSelector(selectRoomListError);
   const currentPage = useAppSelector(selectCurrentPage);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setError('');
-        setIsLoading(true);
-        const roomCards = await getRoomCards(currentPage);
-        setData(roomCards);
+        dispatch(roomListActions.changeError(''));
+        dispatch(roomListActions.changeIsLoading(true));
+        const roomCards = await getRoomCards();
+        dispatch(roomListActions.changeData(roomCards));
       } catch (err) {
         if (err instanceof Error) {
-          setError(err.message);
+          dispatch(roomListActions.changeError(err.message));
           return;
         }
-        setError('неизвестная ошибка');
+        dispatch(roomListActions.changeError('неизвестная ошибка'));
       } finally {
-        setIsLoading(false);
+        dispatch(roomListActions.changeIsLoading(false));
       }
     };
 
     fetchData();
-  }, [currentPage]);
+  }, [dispatch]);
 
-  if (error !== '') {
-    return <span>{error}</span>;
+  if (roomListError !== '') {
+    return <span>{roomListError}</span>;
   }
 
-  if (isLoading) {
+  if (roomListIsLoading) {
     return 'Загрузка...';
   }
 
   return (
     <div className={style.list}>
-      {data.map((item) => (
-        <HotelCard
-          key={item.id}
-          roomNumber={item.roomNumber}
-          isLux={item.isLux}
-          price={item.price}
-          averageRating={item.averageRating}
-          imageNames={item.imageNames}
-          reviews={item.reviews}
-        />
-      ))}
+      {roomListData
+        .slice(
+          (currentPage - 1) * ITEMS_PER_PAGE,
+          (currentPage - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE,
+        )
+        .map((item) => {
+          return (
+            <HotelCard
+              key={item.id}
+              roomNumber={item.roomNumber}
+              isLux={item.isLux}
+              price={item.price}
+              averageRating={item.averageRating}
+              imageNames={item.imageNames}
+              reviews={item.reviews}
+            />
+          );
+        })}
     </div>
   );
 };
