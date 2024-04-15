@@ -11,6 +11,7 @@ import {
   selectRangePrices,
   selectGuests,
   selectExpandableList,
+  selectDates,
 } from '@/store';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import {
@@ -35,6 +36,7 @@ const Filter = () => {
   const rulesList = useAppSelector(selectRulesList);
   const availabilityList = useAppSelector(selectAvailabilityList);
   const rangePrices = useAppSelector(selectRangePrices);
+  const dates = useAppSelector(selectDates);
 
   const handleButtonClick = () => {
     setIsOpened(!isOpened);
@@ -80,7 +82,7 @@ const Filter = () => {
         <div className={style['calendar-header']}>
           <Typography tag="h3">даты пребывания в отеле</Typography>
         </div>
-        <Calendar isSingle onChange={handleCalendarChange} />
+        <Calendar isSingle onChange={handleCalendarChange} values={dates} />
         <div className={style['guests-dropdown']}>
           <div className={style['guests-header']}>
             <Typography tag="h3">гости</Typography>
