@@ -23,6 +23,7 @@ const selectRangePrices = (state: RootState) => state.filter.rangePrices;
 const selectAvailabilityList = (state: RootState) =>
   state.filter.availabilityList;
 const selectCurrentPage = (state: RootState) => state.pagination.currentPage;
+const selectDates = (state: RootState) => state.filter.dates;
 const selectRoomListData = (state: RootState) => state.roomList.data;
 const selectRoomListIsLoading = (state: RootState) => state.roomList.isLoading;
 const selectRoomListError = (state: RootState) => state.roomList.error;
@@ -32,6 +33,7 @@ export {
   store,
   paginationActions,
   filterActions,
+  selectDates,
   roomListActions,
   selectRooms,
   selectRulesList,

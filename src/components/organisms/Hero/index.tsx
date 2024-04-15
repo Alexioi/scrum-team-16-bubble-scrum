@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { AutoSlider, Button, Container, Typography } from '@/components/atoms';
 import { Dropdown, Calendar } from '@/components/organisms';
 import { useAppDispatch, useAppSelector } from '@/hooks';
-import { filterActions, selectGuests } from '@/store';
+import { filterActions, selectGuests, selectDates } from '@/store';
 
 import style from './style.module.scss';
 import { guestVariants, images } from './data';
@@ -14,6 +14,7 @@ const Hero = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { items, groups } = useAppSelector(selectGuests);
+  const dates = useAppSelector(selectDates);
 
   const handleDateCalendarChange = (value: string[] | null[]) => {
     dispatch(filterActions.changeDates(value));
@@ -36,7 +37,7 @@ const Hero = () => {
               <Typography tag="h3">Прибытие</Typography>
               <Typography tag="h3">Выезд</Typography>
             </div>
-            <Calendar onChange={handleDateCalendarChange} />
+            <Calendar onChange={handleDateCalendarChange} values={dates} />
           </div>
 
           <div className={style['guest-wrapper']}>

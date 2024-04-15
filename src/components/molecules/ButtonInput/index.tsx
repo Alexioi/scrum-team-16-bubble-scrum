@@ -15,7 +15,7 @@ type Props = {
   min?: number;
   max?: number;
   placeholder?: string;
-  defaultValue?: string | number | readonly string[];
+  value?: string | number | readonly string[];
   inputMode?:
     | 'text'
     | 'email'
@@ -42,7 +42,7 @@ const ButtonInput: FC<Props> = ({
   max,
   placeholder,
   inputMode,
-  defaultValue,
+  value,
   readOnly,
   squareBottom,
   active,
@@ -60,7 +60,7 @@ const ButtonInput: FC<Props> = ({
         readOnly={readOnly}
         onClick={inputOnClick}
         inputMode={inputMode}
-        defaultValue={defaultValue}
+        value={value}
         squareBottom={squareBottom}
         active={active}
       />

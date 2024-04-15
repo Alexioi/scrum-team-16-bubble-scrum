@@ -130,7 +130,7 @@ const Dropdown: FC<Props> = ({
         <DropdownInput
           type="text"
           onClick={handleOpeningMenuClick}
-          defaultValue={result}
+          value={result}
           readOnly
           expanded={isOpened}
           squareBottom={isOpened}
