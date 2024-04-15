@@ -1,3 +1,5 @@
+@import '@/style/variables.scss';
+
 .swiper {
   position: relative;
   height: 151px;
@@ -37,7 +39,7 @@
 
   svg {
     path {
-      fill: white;
+      fill: $white;
     }
     rotate: 90deg;
   }
@@ -68,11 +70,17 @@
   height: 8px;
   width: 8px;
   border-radius: 50%;
-  border: 1px solid white;
+  border: 1px solid $white;
   transition: 0.3s;
   padding: 0;
 }
 
 .item_active {
-  background-color: white;
+  background-color: $white;
+}
+
+.skeleton {
+  background-color: $dark-shade-10;
+
+  animation: $animation-skeleton-loading;
 }
