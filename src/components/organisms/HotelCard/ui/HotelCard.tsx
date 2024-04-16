@@ -2,26 +2,17 @@ import { FC } from 'react';
 import Link from 'next/link';
 
 import { Rating, Swiper } from '@/components/atoms';
+import { Hotel } from '@/types';
 
 import { declensionReview } from '../lib/declensionReview';
 import style from './style.module.scss';
 
 type Props = {
-  roomNumber: number;
-  price: number;
-  averageRating: number;
-  isLux: boolean;
-  imageNames: string[];
-  reviews: number;
+  hotel: Hotel;
 };
 
 const HotelCard: FC<Props> = ({
-  imageNames,
-  isLux,
-  roomNumber,
-  price,
-  averageRating,
-  reviews,
+  hotel: { imageNames, isLux, roomNumber, price, averageRating, reviews },
 }) => {
   return (
     <div className={style.card}>
@@ -59,4 +50,4 @@ const HotelCard: FC<Props> = ({
 };
 
 export { HotelCard };
-export type { Props as Hotel };
+export type { Hotel };

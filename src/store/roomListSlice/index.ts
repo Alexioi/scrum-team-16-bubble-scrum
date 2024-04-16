@@ -1,16 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { Hotel } from '@/components';
+import { Hotel } from '@/types';
 
 type InitialState = {
-  data: (Hotel & { id: string })[];
+  data: Hotel[];
   isLoading: boolean;
   error: string;
 };
 
 const initialState: InitialState = {
   data: [],
-  isLoading: false,
+  isLoading: true,
   error: '',
 };
 
@@ -18,10 +18,7 @@ const roomListSlice = createSlice({
   name: 'roomList',
   initialState,
   reducers: {
-    changeData: (
-      state,
-      { payload }: { payload: (Hotel & { id: string })[] },
-    ) => {
+    changeData: (state, { payload }: { payload: Hotel[] }) => {
       state.data = payload;
     },
     changeIsLoading: (state, { payload }: { payload: boolean }) => {
