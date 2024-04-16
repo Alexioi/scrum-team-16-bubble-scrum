@@ -36,30 +36,32 @@ $gradients: $gradient-yellow-100, $gradient-green-100, $gradient-purple-100, $gr
 
 .legend {
   padding-left: 30px;
-  padding-top: 30px;
-  
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
 
-    @for $i from 1 to 5 {
-      li:nth-child(#{$i}) {
-        position: relative;
+  display: flex;
+}
 
-        display: flex;
-        align-items: center;
+.legend-list {
+  margin: 0;
+  margin-top: auto;
+  padding: 0;
+  list-style-type: none;
 
-        &::before {
-          content: "";
+  @for $i from 1 to 5 {
+    &_item:nth-child(#{$i}) {
+      position: relative;
 
-          margin-right: 5px;
+      display: flex;
+      align-items: center;
 
-          width: 10px;
-          height: 10px;
-          border-radius: 5px;
-          background: list.nth($gradients, $i);
-        }
+      &::before {
+        content: "";
+
+        margin-right: 5px;
+
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background: list.nth($gradients, $i);
       }
     }
   }

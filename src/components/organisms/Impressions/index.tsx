@@ -31,11 +31,11 @@ const Impressions: FC<Props> = ({ data }) => {
         </p>
       </div>
       <div className={style.legend}>
-        <ul>
-          <li>Великолепно</li>
-          <li>Хорошо</li>
-          <li>Удовлетворительно</li>
-          <li>Разочарован</li>
+        <ul className={style['legend-list']}>
+          <li className={style['legend-list_item']}>Великолепно</li>
+          <li className={style['legend-list_item']}>Хорошо</li>
+          <li className={style['legend-list_item']}>Удовлетворительно</li>
+          <li className={style['legend-list_item']}>Разочарован</li>
         </ul>
       </div>
     </div>
