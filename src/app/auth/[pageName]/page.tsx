@@ -5,15 +5,15 @@ import { notFound } from 'next/navigation';
 import style from './style.module.scss';
 
 const Auth = ({ params }: { params: { pageName: string } }) => {
-  if (!['login', 'registration'].includes(params.pageName)) {
+  if (!['sign-in', 'sign-up'].includes(params.pageName)) {
     notFound();
   }
 
   return (
     <div className={style.registration}>
       <div className={style.form}>
-        {params.pageName === 'login' && 'login'}
-        {params.pageName === 'registration' && 'registration'}
+        {params.pageName === 'sign-in' && 'sign-in'}
+        {params.pageName === 'sign-up' && 'sign-up'}
       </div>
     </div>
   );
