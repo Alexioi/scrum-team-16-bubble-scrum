@@ -19,7 +19,7 @@ const SwiperImage: FC<Props> = ({ imageName }) => {
   }, [imageName]);
 
   return (
-    <div>
+    <div className={style.container}>
       {imageUrl === '' ? (
         'Загрузка'
       ) : (

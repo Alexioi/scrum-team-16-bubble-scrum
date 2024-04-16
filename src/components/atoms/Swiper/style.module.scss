@@ -45,12 +45,14 @@
 .prev {
   @extend %button;
   @extend %swiper-arrow;
+  top: 0;
 }
 
 .next {
   @extend %button;
   @extend %swiper-arrow;
   rotate: 180deg;
+  top: 0;
   right: 0;
 }
 
