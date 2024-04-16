@@ -1,0 +1,66 @@
+@use 'sass:list';
+@import '@/style/variables.scss';
+
+$gradients: $gradient-yellow-100, $gradient-green-100, $gradient-purple-100, $gradient-gray-100;
+
+.container {
+  display: flex;
+}
+
+.chart-wrapper {
+  position: relative;
+  width: fit-content;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .label {
+    position: absolute;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    color: $purple;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+  
+    &_count {
+      font-size: 24px;
+    }
+  }
+}
+
+.legend {
+  padding-left: 30px;
+  padding-top: 30px;
+  
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    @for $i from 1 to 5 {
+      li:nth-child(#{$i}) {
+        position: relative;
+
+        display: flex;
+        align-items: center;
+
+        &::before {
+          content: "";
+
+          margin-right: 5px;
+
+          width: 10px;
+          height: 10px;
+          border-radius: 5px;
+          background: list.nth($gradients, $i);
+        }
+      }
+    }
+  }
+}

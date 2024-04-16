@@ -9,9 +9,14 @@ $purple: #bc9cff;
 $green: #6fcf97;
 $white: #ffffff;
 $red: #cf716f;
+$yellow: #ffe39c;
 
 $gradient-purple-100: linear-gradient($purple, #8ba4f9);
 $gradient-purple-50: linear-gradient(#bc9cff80, #8ba4f980);
 
 $gradient-green-100: linear-gradient($green, #66d2ea);
 $gradient-green-50: linear-gradient(#6fcf9780, #66d2ea80);
+
+$gradient-yellow-100: linear-gradient($yellow, #ffba9c);
+
+$gradient-gray-100: linear-gradient(#909090, #3d4975);

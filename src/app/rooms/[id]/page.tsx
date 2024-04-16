@@ -1,14 +1,6 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-
-const ImpressionsChart = dynamic(
-  () =>
-    import('@/components/molecules/ImpressionsChart').then(
-      (component) => component.ImpressionsChart,
-    ),
-  { ssr: false },
-);
+import { Impressions } from '@/components';
 
 const data = [
   {
@@ -30,7 +22,7 @@ const data = [
 ];
 
 const RoomPage = () => {
-  return <ImpressionsChart data={data} />;
+  return <Impressions data={data} />;
 };
 
 export default RoomPage;
