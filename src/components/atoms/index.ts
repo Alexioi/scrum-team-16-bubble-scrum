@@ -15,3 +15,4 @@ export * from './PaginationButton';
 export * from './Container';
 export * from './ClickAwayListener';
 export * from './RadioButtons';
+export * from './Toggle';

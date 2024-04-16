@@ -3,7 +3,7 @@
 import { notFound } from 'next/navigation';
 import { useState } from 'react';
 
-import { RadioButtons } from '@/components';
+import { RadioButtons, Toggle } from '@/components';
 
 import style from './style.module.scss';
 
@@ -12,6 +12,8 @@ const Auth = ({ params }: { params: { pageName: string } }) => {
     { value: 'man', text: 'мужчина', isChecked: true },
     { value: 'woman', text: 'женщина', isChecked: false },
   ]);
+
+  const [toggleValues, setToggleValues] = useState(true);
 
   if (!['sign-in', 'sign-up'].includes(params.pageName)) {
     notFound();
@@ -25,6 +27,11 @@ const Auth = ({ params }: { params: { pageName: string } }) => {
             name="sex"
             values={radioButtonsValues}
             onChange={setRadioButtonsValues}
+          />
+          <Toggle
+            text="Получать спецпредложения"
+            isChecked={toggleValues}
+            onClick={setToggleValues}
           />
         </div>
         {params.pageName === 'sign-in' && 'sign-in'}
