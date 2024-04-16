@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, RefObject } from 'react';
+import { FC } from 'react';
 
 import { useAppDispatch, useAppSelector } from '@/hooks';
 
@@ -13,19 +13,17 @@ import {
 import { Pagination } from '../Pagination';
 
 type Props = {
-  listRef: RefObject<HTMLDivElement>;
+  onClick: () => void;
 };
 
-const RoomListPagination: FC<Props> = ({ listRef }) => {
+const RoomListPagination: FC<Props> = ({ onClick }) => {
   const dispatch = useAppDispatch();
   const currentPage = useAppSelector(selectCurrentPage);
   const countCards = useAppSelector(selectCountCardsOnPage);
 
   const makeHandleArrowButtonClick = (number: number) => {
     return () => {
-      if (listRef.current) {
-        listRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      onClick();
       dispatch(paginationActions.change(number));
     };
   };

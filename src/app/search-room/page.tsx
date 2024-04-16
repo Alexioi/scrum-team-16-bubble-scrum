@@ -15,6 +15,12 @@ import style from './style.module.scss';
 const SearchRoom = () => {
   const listRef = useRef<HTMLDivElement>(null);
 
+  const handlePaginationButtonClick = () => {
+    if (listRef.current) {
+      listRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className={style['search-room']}>
       <Container>
@@ -30,7 +36,7 @@ const SearchRoom = () => {
               <HotelList />
             </div>
             <div className={style.pagination}>
-              <RoomListPagination listRef={listRef} />
+              <RoomListPagination onClick={handlePaginationButtonClick} />
             </div>
           </div>
         </div>
