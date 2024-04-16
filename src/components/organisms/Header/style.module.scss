@@ -2,7 +2,7 @@
 
 .header {
   box-shadow: 0 10px 20px $dark-shade-5;
-  background-color: white;
+  background-color: $white;
   padding: 9px 0;
 
   &_mobile-navigation-opened {
