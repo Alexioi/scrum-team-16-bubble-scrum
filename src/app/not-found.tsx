@@ -1,5 +1,6 @@
-import { ErrorMessage } from '@/components';
 import React from 'react';
+
+import { ErrorMessage } from '@/components';
 
 const NotFound = () => {
   return (
