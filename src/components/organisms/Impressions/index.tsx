@@ -21,21 +21,24 @@ type Props = {
 };
 
 const Impressions: FC<Props> = ({ data }) => {
+  const count = data.reduce((sum, item) => sum + item.value, 0);
+
   return (
     <div className={style.container}>
       <div className={style['chart-wrapper']}>
         <Chart data={data} />
         <p className={style.label}>
-          <span className={style.label_count}>260</span>
+          <span className={style.count}>{count}</span>
           <span>голосов</span>
         </p>
       </div>
       <div className={style.legend}>
         <ul className={style['legend-list']}>
-          <li className={style['legend-list_item']}>Великолепно</li>
-          <li className={style['legend-list_item']}>Хорошо</li>
-          <li className={style['legend-list_item']}>Удовлетворительно</li>
-          <li className={style['legend-list_item']}>Разочарован</li>
+          {data.map((item) => (
+            <li className={style['legend-list_item']} key={item.name}>
+              {item.name}
+            </li>
+          ))}
         </ul>
       </div>
     </div>
