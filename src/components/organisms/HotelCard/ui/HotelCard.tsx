@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useRouter } from 'next/navigation';
 
 import { Rating, Swiper } from '@/components/atoms';
 
@@ -6,6 +7,7 @@ import { declensionReview } from '../lib/declensionReview';
 import style from './style.module.scss';
 
 type Props = {
+  id: string;
   roomNumber: number;
   price: number;
   averageRating: number;
@@ -15,6 +17,7 @@ type Props = {
 };
 
 const HotelCard: FC<Props> = ({
+  id,
   imageNames,
   isLux,
   roomNumber,
@@ -22,10 +25,15 @@ const HotelCard: FC<Props> = ({
   averageRating,
   reviews,
 }) => {
+  const router = useRouter();
+
+  const handleRoomButtonClick = (roomId: string) =>
+    router.push(`/search-room/${roomId}`);
+
   return (
     <div className={style.card}>
       <Swiper imageNames={imageNames} />
-      <div className={style.body}>
+      <button className={style.body} onClick={() => handleRoomButtonClick(id)}>
         <div className={style.header}>
           <div className={style.number}>
             <span className={style.number_icon}>№ </span>
@@ -50,7 +58,7 @@ const HotelCard: FC<Props> = ({
             </span>
           </div>
         </div>
-      </div>
+      </button>
     </div>
   );
 };
