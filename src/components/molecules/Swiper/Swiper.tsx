@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { FC, useState, MouseEvent } from 'react';
 
 import LeftArrowSVG from '@/images/decorative/expand-more.svg';
-import { SwiperImage } from '@/components/atoms/SwiperImage';
+import { SwiperImage } from '@/components/atoms';
 
 import style from './style.module.scss';
 
