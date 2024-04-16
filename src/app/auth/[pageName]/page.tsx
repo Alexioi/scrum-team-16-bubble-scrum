@@ -13,7 +13,7 @@ const Auth = ({ params }: { params: { pageName: string } }) => {
     { value: 'woman', text: 'женщина', isChecked: false },
   ]);
 
-  if (!['login', 'registration'].includes(params.pageName)) {
+  if (!['sign-in', 'sign-up'].includes(params.pageName)) {
     notFound();
   }
 
@@ -27,8 +27,8 @@ const Auth = ({ params }: { params: { pageName: string } }) => {
             onChange={setRadioButtonsValues}
           />
         </div>
-        {params.pageName === 'login' && 'login'}
-        {params.pageName === 'registration' && 'registration'}
+        {params.pageName === 'sign-in' && 'sign-in'}
+        {params.pageName === 'sign-up' && 'sign-up'}
       </div>
     </div>
   );
