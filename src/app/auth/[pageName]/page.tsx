@@ -1,10 +1,18 @@
 'use client';
 
 import { notFound } from 'next/navigation';
+import { useState } from 'react';
+
+import { RadioButtons } from '@/components';
 
 import style from './style.module.scss';
 
 const Auth = ({ params }: { params: { pageName: string } }) => {
+  const [radioButtonsValues, setRadioButtonsValues] = useState([
+    { value: 'man', text: 'мужчина', isChecked: true },
+    { value: 'woman', text: 'женщина', isChecked: false },
+  ]);
+
   if (!['login', 'registration'].includes(params.pageName)) {
     notFound();
   }
@@ -12,6 +20,13 @@ const Auth = ({ params }: { params: { pageName: string } }) => {
   return (
     <div className={style.registration}>
       <div className={style.form}>
+        <div style={{ background: 'white', padding: '10px' }}>
+          <RadioButtons
+            name="sex"
+            values={radioButtonsValues}
+            onChange={setRadioButtonsValues}
+          />
+        </div>
         {params.pageName === 'login' && 'login'}
         {params.pageName === 'registration' && 'registration'}
       </div>
