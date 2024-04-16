@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import clsx from 'clsx';
 
-import { SwiperSkeleton } from '@/components/atoms';
+import { SwiperSkeleton } from '@/components/molecules';
 
 import style from './style.module.scss';
 
