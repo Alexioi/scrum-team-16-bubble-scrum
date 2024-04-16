@@ -1,43 +1,10 @@
 import { FC } from 'react';
 
 import { Rating, Swiper } from '@/components/atoms';
+import { Hotel } from '@/types';
 
 import { declensionReview } from '../lib/declensionReview';
 import style from './style.module.scss';
-
-type Hotel = {
-  id: string;
-  roomNumber: number;
-  price: number;
-  averageRating: number;
-  isLux: boolean;
-  imageNames: string[];
-  reviews: number;
-  startDate: string;
-  endDate: string;
-  guestCount: number;
-  babyCount: number;
-  bedRoomCount: number;
-  bedCount: number;
-  bathroomCount: number;
-  availability: {
-    isWideCorridor: boolean;
-    isAssistant: boolean;
-  };
-  additionalAmenities: {
-    isBreakfast: boolean;
-    isDesk: boolean;
-    isHighChair: boolean;
-    isCrib: boolean;
-    isTv: boolean;
-    isShampoo: boolean;
-  };
-  rules: {
-    isSmoke: boolean;
-    isAnimals: boolean;
-    isLotOfGuests: boolean;
-  };
-};
 
 type Props = {
   hotel: Hotel;
