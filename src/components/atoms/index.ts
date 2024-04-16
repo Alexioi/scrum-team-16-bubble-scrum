@@ -8,7 +8,6 @@ export * from './Logo';
 export * from './NavigationLink';
 export * from './Rating';
 export * from './StoreProvider';
-export * from './Swiper';
 export * from './Typography';
 export * from './ArrowButton';
 export * from './PaginationButton';

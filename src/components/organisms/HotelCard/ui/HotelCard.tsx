@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
-import { Rating, Swiper } from '@/components/atoms';
+import { Rating } from '@/components/atoms';
+import { Swiper } from '@/components/molecules';
 
 import { declensionReview } from '../lib/declensionReview';
 import style from './style.module.scss';
