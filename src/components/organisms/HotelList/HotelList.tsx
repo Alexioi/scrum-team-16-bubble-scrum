@@ -63,7 +63,6 @@ const HotelList = () => {
           return (
             <HotelCard
               key={item.id}
-              id={item.id}
               roomNumber={item.roomNumber}
               isLux={item.isLux}
               price={item.price}
