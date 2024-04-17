@@ -3,7 +3,7 @@
 import { notFound } from 'next/navigation';
 import { useState } from 'react';
 
-import { RadioButtons, Toggle } from '@/components';
+import { RadioButtons, Toggle, SingIn } from '@/components';
 
 import style from './style.module.scss';
 
@@ -34,7 +34,7 @@ const Auth = ({ params }: { params: { pageName: string } }) => {
             onClick={setToggleValues}
           />
         </div>
-        {params.pageName === 'sign-in' && 'sign-in'}
+        {params.pageName === 'sign-in' && <SingIn />}
         {params.pageName === 'sign-up' && 'sign-up'}
       </div>
     </div>
