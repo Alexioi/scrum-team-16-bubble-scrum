@@ -9,8 +9,8 @@ import style from './style.module.scss';
 
 const Auth = ({ params }: { params: { pageName: string } }) => {
   const [radioButtonsValues, setRadioButtonsValues] = useState([
-    { value: 'man', text: 'мужчина', isChecked: true },
-    { value: 'woman', text: 'женщина', isChecked: false },
+    { value: 'man', text: 'Мужчина', isChecked: true },
+    { value: 'woman', text: 'Женщина', isChecked: false },
   ]);
 
   if (!['sign-in', 'sign-up'].includes(params.pageName)) {
