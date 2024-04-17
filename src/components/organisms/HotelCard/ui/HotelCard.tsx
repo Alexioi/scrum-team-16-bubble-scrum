@@ -12,12 +12,12 @@ type Props = {
 };
 
 const HotelCard: FC<Props> = ({
-  hotel: { imageNames, isLux, roomNumber, price, averageRating, reviews },
+  hotel: { id, imageNames, isLux, roomNumber, price, averageRating, reviews },
 }) => {
   return (
     <div className={style.card}>
       <Swiper imageNames={imageNames} />
-      <Link className={style.link} href={`/rooms/${roomNumber}`}>
+      <Link className={style.link} href={`/rooms/${id}`}>
         <div className={style.body}>
           <div className={style.header}>
             <div className={style.number}>
