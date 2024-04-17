@@ -14,3 +14,4 @@ export * from './Pagination';
 export * from './Hero';
 export * from './RoomListPagination';
 export * from './SingIn';
+export * from './SingUp';
