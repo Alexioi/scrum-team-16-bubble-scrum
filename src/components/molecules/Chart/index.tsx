@@ -4,6 +4,7 @@ import React, { FC } from 'react';
 import { PieChart, Pie, Cell } from 'recharts';
 
 import { Gradient } from '@/components/atoms';
+import color from '@/style/global/color.module.scss';
 
 const colors = ['yellow', 'green', 'purple', 'gray'];
 
@@ -20,10 +21,26 @@ const Chart: FC<Props> = ({ data }) => {
   return (
     <PieChart width={120} height={120}>
       <defs>
-        <Gradient startColor="#ffe39c" endColor="#ffba9c" id="yellow" />
-        <Gradient startColor="#6fcf97" endColor="#66d2ea" id="green" />
-        <Gradient startColor="#bc9cff" endColor="#8ba4f9" id="purple" />
-        <Gradient startColor="#909090" endColor="#3d4975" id="gray" />
+        <Gradient
+          startColor={color.yellow}
+          endColor={color.orange}
+          id="yellow"
+        />
+        <Gradient
+          startColor={color.green}
+          endColor={color.blue}
+          id="green"
+          x1={50}
+          y1={30}
+          x2={50}
+          y2={150}
+        />
+        <Gradient
+          startColor={color.purple}
+          endColor={color.violet}
+          id="purple"
+        />
+        <Gradient startColor={color.gray} endColor={color.grayDark} id="gray" />
       </defs>
       <Pie
         dataKey="value"
