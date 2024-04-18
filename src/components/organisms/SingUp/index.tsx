@@ -16,7 +16,7 @@ import {
   authActions,
   selectName,
   selectSurname,
-  selectSex,
+  selectSexes,
   selectBirthday,
   selectIsSubscribes,
 } from '@/store';
@@ -27,12 +27,13 @@ import style from './style.module.scss';
 const SingUp = () => {
   const dispatch = useAppDispatch();
   const isSubscribes = useAppSelector(selectIsSubscribes);
-  const sex = useAppSelector(selectSex);
+  const sex = useAppSelector(selectSexes);
   const name = useAppSelector(selectName);
   const surname = useAppSelector(selectSurname);
   const birthday = useAppSelector(selectBirthday);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleNameInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(authActions.changeName(e.currentTarget.value));
@@ -58,21 +59,27 @@ const SingUp = () => {
     dispatch(authActions.changeSex(value));
   };
   const handleSingUpButtonClick = async () => {
-    const sexValue = sex.find((item) => {
-      return item.isChecked;
-    })?.value;
+    try {
+      const sexValue = sex.find((item) => {
+        return item.isChecked;
+      })?.value;
 
-    const { uid } = await createNewUser(
-      name,
-      surname,
-      sexValue === undefined ? 'man' : sexValue,
-      birthday,
-      email,
-      password,
-      isSubscribes,
-    );
+      const { uid } = await createNewUser(
+        name,
+        surname,
+        sexValue === undefined ? 'man' : sexValue,
+        birthday,
+        email,
+        password,
+        isSubscribes,
+      );
 
-    dispatch(authActions.changeUID(uid));
+      dispatch(authActions.changeUID(uid));
+    } catch (e) {
+      if (e instanceof Error) {
+        setError(e.message);
+      }
+    }
   };
 
   return (
@@ -145,6 +152,7 @@ const SingUp = () => {
             onClick={handleToggleClick}
           />
         </div>
+
         <div className={style['submit-button']}>
           <Button
             theme="long"
@@ -152,6 +160,7 @@ const SingUp = () => {
             onClick={handleSingUpButtonClick}
           />
         </div>
+        {error}
       </form>
       <div className={style['question-about-auth']}>
         <QuestionAboutAuth

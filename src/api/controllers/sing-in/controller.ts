@@ -1,6 +1,8 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 
+import { userInfoScheme } from '@/schemes';
+
 import { auth, db } from '../../initFirebase';
 
 const getUserData = async (email: string, password: string) => {
@@ -11,15 +13,19 @@ const getUserData = async (email: string, password: string) => {
 
   const q = query(usersInfoCollection, where('uid', '==', uid));
 
-  const querySnapshot: any = await getDocs(q);
+  const querySnapshot = await getDocs(q);
 
-  const { name, surname, sex, birthday, isSubscribed } = querySnapshot.docs.map(
-    (item: { data: () => any }) => {
-      return { ...item.data() };
-    },
-  )[0];
+  const result = userInfoScheme.safeParse(
+    querySnapshot.docs.map((el) => {
+      return { ...el.data() };
+    })[0],
+  );
 
-  return { uid, name, surname, sex, birthday, isSubscribed };
+  if (!result.success) {
+    throw new Error('некорректные данные на сервере');
+  }
+
+  return { uid, ...result.data };
 };
 
 export { getUserData };

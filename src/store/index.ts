@@ -32,7 +32,7 @@ const selectRoomListError = (state: RootState) => state.roomList.error;
 const selectUID = (state: RootState) => state.auth.uid;
 const selectName = (state: RootState) => state.auth.name;
 const selectSurname = (state: RootState) => state.auth.surname;
-const selectSex = (state: RootState) => state.auth.sex;
+const selectSexes = (state: RootState) => state.auth.sexes;
 const selectBirthday = (state: RootState) => state.auth.birthday;
 const selectIsSubscribes = (state: RootState) => state.auth.isSubscribed;
 
@@ -57,7 +57,7 @@ export {
   selectUID,
   selectName,
   selectSurname,
-  selectSex,
+  selectSexes,
   selectBirthday,
   selectIsSubscribes,
 };

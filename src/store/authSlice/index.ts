@@ -6,7 +6,7 @@ type InitialState = {
   uid: string;
   name: string;
   surname: string;
-  sex: Sex[];
+  sexes: Sex[];
   birthday: string;
   isSubscribed: boolean;
 };
@@ -15,7 +15,7 @@ const initialState: InitialState = {
   uid: '',
   name: '',
   surname: '',
-  sex: [
+  sexes: [
     { value: 'man', text: 'мужчина', isChecked: true },
     { value: 'woman', text: 'женщина', isChecked: false },
   ],
@@ -37,7 +37,15 @@ const authSlice = createSlice({
       state.surname = payload;
     },
     changeSex: (state, { payload }: { payload: Sex[] }) => {
-      state.sex = payload;
+      state.sexes = payload;
+    },
+    changeSexByName: (state, { payload }: { payload: string }) => {
+      state.sexes.map((item) => {
+        if (item.value === payload) {
+          return { ...item, isChecked: true };
+        }
+        return { ...item, isChecked: false };
+      });
     },
     changeBirthday: (state, { payload }: { payload: string }) => {
       state.birthday = payload;

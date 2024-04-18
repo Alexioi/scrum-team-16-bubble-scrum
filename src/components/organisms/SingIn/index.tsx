@@ -18,6 +18,7 @@ const SingIn = () => {
   const dispatch = useAppDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleEmailInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.currentTarget.value);
@@ -26,15 +27,21 @@ const SingIn = () => {
     setPassword(e.currentTarget.value);
   };
   const handleSingInButtonClick = async () => {
-    const { uid, name, surname, sex, birthday, isSubscribed } =
-      await getUserData(email, password);
+    try {
+      const { uid, name, surname, sex, birthday, isSubscribed } =
+        await getUserData(email, password);
 
-    dispatch(authActions.changeUID(uid));
-    dispatch(authActions.changeName(name));
-    dispatch(authActions.changeSurname(surname));
-    dispatch(authActions.changeSex(sex));
-    dispatch(authActions.changeBirthday(birthday));
-    dispatch(authActions.changeIsSubscribed(isSubscribed));
+      dispatch(authActions.changeUID(uid));
+      dispatch(authActions.changeName(name));
+      dispatch(authActions.changeSurname(surname));
+      dispatch(authActions.changeSexByName(sex));
+      dispatch(authActions.changeBirthday(birthday));
+      dispatch(authActions.changeIsSubscribed(isSubscribed));
+    } catch (e) {
+      if (e instanceof Error) {
+        setError(e.message);
+      }
+    }
   };
 
   return (
@@ -63,6 +70,7 @@ const SingIn = () => {
         <div className={style['submit-button']}>
           <Button theme="long" text="войти" onClick={handleSingInButtonClick} />
         </div>
+        {error}
       </form>
       <div className={style['question-about-auth']}>
         <QuestionAboutAuth
