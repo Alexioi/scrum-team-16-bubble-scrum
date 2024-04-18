@@ -4,12 +4,17 @@ import { useState } from 'react';
 import clsx from 'clsx';
 
 import MenuSVG from '@/images/decorative/menu.svg';
+import { selectUID, selectName, selectSurname } from '@/store';
+import { useAppSelector } from '@/hooks';
 
 import { ButtonLink, NavigationLink, Logo } from '../../atoms';
 import style from './style.module.scss';
 import { data } from './data';
 
 const Header = () => {
+  const uid = useAppSelector(selectUID);
+  const name = useAppSelector(selectName);
+  const surname = useAppSelector(selectSurname);
   const [isOpened, setIsOpened] = useState(false);
 
   const handleBurgerButtonClick = () => {
@@ -51,7 +56,7 @@ const Header = () => {
             </ul>
           </nav>
           <div className={style.login}>
-            {data.username === '' ? (
+            {uid === '' ? (
               <>
                 <ButtonLink
                   text="Войти"
@@ -67,7 +72,9 @@ const Header = () => {
                 />
               </>
             ) : (
-              <span className={style.username}>{data.username}</span>
+              <span className={style.username}>
+                {name} {surname}
+              </span>
             )}
           </div>
         </div>

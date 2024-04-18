@@ -19,9 +19,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="ru">
       <body className={montserrat.variable}>
-        <Header />
-        <StoreProvider>{children}</StoreProvider>
-        <Footer />
+        <StoreProvider>
+          <Header />
+          {children}
+          <Footer />
+        </StoreProvider>
       </body>
     </html>
   );

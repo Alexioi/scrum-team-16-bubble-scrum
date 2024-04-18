@@ -57,12 +57,12 @@ const SingUp = () => {
   ) => {
     dispatch(authActions.changeSex(value));
   };
-  const handleSingUpButtonClick = () => {
+  const handleSingUpButtonClick = async () => {
     const sexValue = sex.find((item) => {
       return item.isChecked;
     })?.value;
 
-    createNewUser(
+    const { uid } = await createNewUser(
       name,
       surname,
       sexValue === undefined ? 'man' : sexValue,
@@ -71,6 +71,8 @@ const SingUp = () => {
       password,
       isSubscribes,
     );
+
+    dispatch(authActions.changeUID(uid));
   };
 
   return (
