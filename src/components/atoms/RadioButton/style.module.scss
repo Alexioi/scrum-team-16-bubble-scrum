@@ -10,7 +10,7 @@
   height: 0;
   position: absolute;
 
-  &:focus {
+  &:focus-visible {
     & ~ .icon {
       outline: 1px solid black;
     }
