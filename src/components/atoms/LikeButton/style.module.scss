@@ -1,0 +1,49 @@
+@import '@/style/variables.scss';
+
+.button {
+  cursor: pointer;
+  transition: $transition-color;
+
+  background-color: transparent;
+
+  border-radius: 10px;
+  padding: 3px 9px 4px 5px;
+
+  font-size: 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 3px;
+
+  color: $dark-shade-25;
+  border: 1px solid $dark-shade-25;
+
+  .favorite-fill {
+    opacity: 0;
+  }
+
+  .favorite-border {
+    opacity: 1;
+  }
+
+  &__active {
+    color: $purple;
+    border: 1px solid $purple;
+    .favorite-border {
+      opacity: 0;
+    }
+    .favorite-fill {
+      opacity: 1;
+    }
+  }
+
+  &__less10 {
+    gap: 6px;
+    padding-right: 11px;
+  }
+}
+
+.favorite-fill,
+.favorite-border {
+  transition: $transition-default;
+}
