@@ -1,11 +1,5 @@
 @import '@/style/variables';
 
-.radio-buttons {
-  display: flex;
-  gap: 20px;
-  word-break: break-word;
-}
-
 .item {
   display: flex;
 }
@@ -18,7 +12,7 @@
 
   &:focus {
     & ~ .icon {
-      box-shadow: 0 0 10px rgb($dark-shade-100, 30%);
+      outline: 1px solid black;
     }
   }
 

@@ -3,14 +3,14 @@
 import { notFound } from 'next/navigation';
 import { useState } from 'react';
 
-import { RadioButtons } from '@/components';
+import { RadioButtonList } from '@/components';
 
 import style from './style.module.scss';
 
 const Auth = ({ params }: { params: { pageName: string } }) => {
-  const [radioButtonsValues, setRadioButtonsValues] = useState([
-    { value: 'man', text: 'Мужчина', isChecked: true },
-    { value: 'woman', text: 'Женщина', isChecked: false },
+  const [RadioButtonListValues, setRadioButtonListValues] = useState([
+    { value: 'man', text: 'Мужчина', checked: true },
+    { value: 'woman', text: 'Женщина', checked: false },
   ]);
 
   if (!['sign-in', 'sign-up'].includes(params.pageName)) {
@@ -21,10 +21,10 @@ const Auth = ({ params }: { params: { pageName: string } }) => {
     <div className={style.registration}>
       <div className={style.form}>
         <div style={{ background: 'white', padding: '10px' }}>
-          <RadioButtons
+          <RadioButtonList
             name="sex"
-            values={radioButtonsValues}
-            onChange={setRadioButtonsValues}
+            values={RadioButtonListValues}
+            onChange={setRadioButtonListValues}
           />
         </div>
         {params.pageName === 'sign-in' && 'sign-in'}
