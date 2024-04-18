@@ -1,0 +1,58 @@
+@import '@/style/variables';
+
+.item {
+  display: flex;
+}
+
+.input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+
+  &:focus-visible {
+    & ~ .icon {
+      outline: 1px solid black;
+    }
+  }
+
+  &:checked {
+    & ~ .icon {
+      border-color: #bc9cff;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 12px;
+        height: 12px;
+        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+        border-radius: 10px;
+      }
+    }
+
+    & ~ .text {
+      color: $dark-shade-75;
+    }
+  }
+}
+
+.icon {
+  content: '';
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid $dark-shade-25;
+  border-radius: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 20px;
+  color: $dark-shade-50;
+  cursor: pointer;
+}
