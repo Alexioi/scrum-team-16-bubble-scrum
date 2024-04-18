@@ -5,10 +5,7 @@ import { userInfoScheme } from '@/schemes';
 
 import { auth, db } from '../../initFirebase';
 
-const getUserData = async (email: string, password: string) => {
-  const SignInResult = await signInWithEmailAndPassword(auth, email, password);
-  const { uid } = SignInResult.user;
-
+const getUserInfo = async (uid: string) => {
   const usersInfoCollection = collection(db, 'users-info');
 
   const q = query(usersInfoCollection, where('uid', '==', uid));
@@ -28,4 +25,13 @@ const getUserData = async (email: string, password: string) => {
   return { uid, ...result.data };
 };
 
-export { getUserData };
+const login = async (email: string, password: string) => {
+  const SignInResult = await signInWithEmailAndPassword(auth, email, password);
+  const { uid } = SignInResult.user;
+
+  const result = await getUserInfo(uid);
+
+  return result;
+};
+
+export { getUserInfo, login };

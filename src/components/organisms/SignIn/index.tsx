@@ -8,7 +8,7 @@ import {
   Button,
   QuestionAboutAuth,
 } from '@/components';
-import { getUserData } from '@/api';
+import { login } from '@/api';
 import { useAppDispatch } from '@/hooks';
 import { authActions } from '@/store';
 
@@ -28,8 +28,12 @@ const SignIn = () => {
   };
   const handleSignInButtonClick = async () => {
     try {
-      const { uid, name, surname, sex, birthday, isSubscribed } =
-        await getUserData(email, password);
+      const { uid, name, surname, sex, birthday, isSubscribed } = await login(
+        email,
+        password,
+      );
+
+      localStorage.setItem('uid', uid);
 
       dispatch(authActions.changeUID(uid));
       dispatch(authActions.changeName(name));

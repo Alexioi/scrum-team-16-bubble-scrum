@@ -74,6 +74,8 @@ const SignUp = () => {
         isSubscribes,
       );
 
+      localStorage.setItem('uid', uid);
+
       dispatch(authActions.changeUID(uid));
     } catch (e) {
       if (e instanceof Error) {
