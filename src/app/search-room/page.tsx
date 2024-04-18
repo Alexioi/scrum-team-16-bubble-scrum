@@ -1,5 +1,7 @@
 'use client';
 
+import { useRef } from 'react';
+
 import {
   Filter,
   Container,
@@ -11,6 +13,14 @@ import {
 import style from './style.module.scss';
 
 const SearchRoom = () => {
+  const listRef = useRef<HTMLDivElement>(null);
+
+  const handlePaginationButtonClick = () => {
+    if (listRef.current) {
+      listRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className={style['search-room']}>
       <Container>
@@ -22,11 +32,11 @@ const SearchRoom = () => {
             <Typography tag="h1">
               Номера, которые мы для вас подобрали
             </Typography>
-            <div className={style['room-list-wrapper']}>
+            <div className={style['room-list-wrapper']} ref={listRef}>
               <HotelList />
             </div>
             <div className={style.pagination}>
-              <RoomListPagination />
+              <RoomListPagination onClick={handlePaginationButtonClick} />
             </div>
           </div>
         </div>
