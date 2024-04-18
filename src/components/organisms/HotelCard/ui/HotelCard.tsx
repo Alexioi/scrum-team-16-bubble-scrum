@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Link from 'next/link';
 
 import { Rating } from '@/components/atoms';
 import { Swiper } from '@/components/molecules';
@@ -12,37 +13,39 @@ type Props = {
 };
 
 const HotelCard: FC<Props> = ({
-  hotel: { imageNames, isLux, roomNumber, price, averageRating, reviews },
+  hotel: { id, imageNames, isLux, roomNumber, price, averageRating, reviews },
 }) => {
   return (
     <div className={style.card}>
       <Swiper imageNames={imageNames} />
-      <div className={style.body}>
-        <div className={style.header}>
-          <div className={style.number}>
-            <span className={style.number_icon}>№ </span>
-            {roomNumber}
-            {isLux && <span className={style.luxury}>ЛЮКС</span>}
+      <Link className={style.link} href={`/rooms/${id}`}>
+        <div className={style.body}>
+          <div className={style.header}>
+            <div className={style.number}>
+              <span className={style.number_icon}>№ </span>
+              {roomNumber}
+              {isLux && <span className={style.luxury}>ЛЮКС</span>}
+            </div>
+
+            <div className={style.price}>
+              {price.toLocaleString('ru')}₽
+              <span className={style.price_prefix}> в сутки</span>
+            </div>
           </div>
 
-          <div className={style.price}>
-            {price.toLocaleString('ru')}₽
-            <span className={style.price_prefix}> в сутки</span>
+          <div className={style.line} />
+
+          <div className={style.footer}>
+            <Rating rating={averageRating} />
+            <div className={style.reviews}>
+              {reviews}
+              <span className={style.reviews_prefix}>
+                {declensionReview(reviews)}
+              </span>
+            </div>
           </div>
         </div>
-
-        <div className={style.line} />
-
-        <div className={style.footer}>
-          <Rating rating={averageRating} />
-          <div className={style.reviews}>
-            {reviews}
-            <span className={style.reviews_prefix}>
-              {declensionReview(reviews)}
-            </span>
-          </div>
-        </div>
-      </div>
+      </Link>
     </div>
   );
 };
