@@ -3,3 +3,4 @@ export * from './ErrorMessage';
 export * from './Checkbox';
 export * from './MultiRangeSlider';
 export * from './UserReviewAvatar';
+export * from './RadioButtonList';
