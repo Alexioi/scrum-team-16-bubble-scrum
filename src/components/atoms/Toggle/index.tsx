@@ -6,13 +6,13 @@ import style from './style.module.scss';
 
 type Props = {
   text: string;
-  isChecked: boolean;
+  checked: boolean;
   onClick(value: boolean): void;
 };
 
-const Toggle: FC<Props> = ({ text, isChecked, onClick }) => {
+const Toggle: FC<Props> = ({ text, checked, onClick }) => {
   const handleInputClick = () => {
-    onClick(!isChecked);
+    onClick(!checked);
   };
 
   return (
@@ -20,7 +20,7 @@ const Toggle: FC<Props> = ({ text, isChecked, onClick }) => {
       <input
         className={style.checkbox}
         type="checkbox"
-        checked={isChecked}
+        checked={checked}
         onChange={handleInputClick}
       />
       <span className={style.icon} />

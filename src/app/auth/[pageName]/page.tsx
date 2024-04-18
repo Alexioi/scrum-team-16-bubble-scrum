@@ -30,7 +30,7 @@ const Auth = ({ params }: { params: { pageName: string } }) => {
           />
           <Toggle
             text="Получать спецпредложения"
-            isChecked={toggleValues}
+            checked={toggleValues}
             onClick={setToggleValues}
           />
         </div>
