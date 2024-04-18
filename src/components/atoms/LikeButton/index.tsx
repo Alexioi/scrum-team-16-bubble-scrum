@@ -12,7 +12,7 @@ import { Gradient } from '../Gradient';
 type Props = {
   countLikes: number;
   active: boolean;
-  onClick: () => void;
+  onClick(): void;
 };
 
 const LikeButton: FC<Props> = ({ countLikes, active, onClick }) => {
