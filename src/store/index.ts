@@ -3,12 +3,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import { paginationActions, paginationReducer } from './paginationSlice';
 import { filterActions, filterReducer } from './filterSlice';
 import { roomListActions, roomListReducer } from './roomListSlice';
+import { authReducer, authActions } from './authSlice';
 
 const store = configureStore({
   reducer: {
     pagination: paginationReducer,
     filter: filterReducer,
     roomList: roomListReducer,
+    auth: authReducer,
   },
 });
 
@@ -27,12 +29,19 @@ const selectDates = (state: RootState) => state.filter.dates;
 const selectRoomListData = (state: RootState) => state.roomList.data;
 const selectRoomListIsLoading = (state: RootState) => state.roomList.isLoading;
 const selectRoomListError = (state: RootState) => state.roomList.error;
+const selectUID = (state: RootState) => state.auth.uid;
+const selectName = (state: RootState) => state.auth.name;
+const selectSurname = (state: RootState) => state.auth.surname;
+const selectSex = (state: RootState) => state.auth.sex;
+const selectBirthday = (state: RootState) => state.auth.birthday;
+const selectIsSubscribes = (state: RootState) => state.auth.isSubscribed;
 
 export type { RootState, AppDispatch };
 export {
   store,
   paginationActions,
   filterActions,
+  authActions,
   selectDates,
   roomListActions,
   selectRooms,
@@ -45,4 +54,10 @@ export {
   selectRoomListData,
   selectRoomListIsLoading,
   selectRoomListError,
+  selectUID,
+  selectName,
+  selectSurname,
+  selectSex,
+  selectBirthday,
+  selectIsSubscribes,
 };

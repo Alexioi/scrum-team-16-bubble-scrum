@@ -12,29 +12,36 @@ import {
   Toggle,
 } from '@/components';
 import { createNewUser } from '@/api';
+import {
+  authActions,
+  selectName,
+  selectSurname,
+  selectSex,
+  selectBirthday,
+  selectIsSubscribes,
+} from '@/store';
+import { useAppDispatch, useAppSelector } from '@/hooks';
 
 import style from './style.module.scss';
 
 const SingUp = () => {
-  const [toggleValue, setToggleValue] = useState(true);
-  const [radioButtonsValues, setRadioButtonsValues] = useState([
-    { value: 'man', text: 'мужчина', isChecked: true },
-    { value: 'woman', text: 'женщина', isChecked: false },
-  ]);
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [birthday, setBirthday] = useState('');
+  const dispatch = useAppDispatch();
+  const isSubscribes = useAppSelector(selectIsSubscribes);
+  const sex = useAppSelector(selectSex);
+  const name = useAppSelector(selectName);
+  const surname = useAppSelector(selectSurname);
+  const birthday = useAppSelector(selectBirthday);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleNameInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setName(e.currentTarget.value);
+    dispatch(authActions.changeName(e.currentTarget.value));
   };
   const handleSurnameInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSurname(e.currentTarget.value);
+    dispatch(authActions.changeSurname(e.currentTarget.value));
   };
   const handleBirthdayInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setBirthday(e.currentTarget.value);
+    dispatch(authActions.changeBirthday(e.currentTarget.value));
   };
   const handleEmailInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.currentTarget.value);
@@ -42,18 +49,27 @@ const SingUp = () => {
   const handlePasswordInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.currentTarget.value);
   };
-
+  const handleToggleClick = (value: boolean) => {
+    dispatch(authActions.changeIsSubscribed(value));
+  };
+  const handleRadioButtonsChange = (
+    value: { value: string; text: string; isChecked: boolean }[],
+  ) => {
+    dispatch(authActions.changeSex(value));
+  };
   const handleSingUpButtonClick = () => {
+    const sexValue = sex.find((item) => {
+      return item.isChecked;
+    })?.value;
+
     createNewUser(
       name,
       surname,
-      radioButtonsValues.find((item) => {
-        return item.isChecked;
-      })?.value || 'man',
+      sexValue === undefined ? 'man' : sexValue,
       birthday,
       email,
       password,
-      toggleValue,
+      isSubscribes,
     );
   };
 
@@ -82,8 +98,8 @@ const SingUp = () => {
         <div className={style['radio-buttons']}>
           <RadioButtons
             name="sex"
-            values={radioButtonsValues}
-            onChange={setRadioButtonsValues}
+            values={sex}
+            onChange={handleRadioButtonsChange}
           />
         </div>
         <div className={style.birthday}>
@@ -123,8 +139,8 @@ const SingUp = () => {
         <div className={style.toggle}>
           <Toggle
             text="Получать спецпредложения"
-            isChecked={toggleValue}
-            onClick={setToggleValue}
+            isChecked={isSubscribes}
+            onClick={handleToggleClick}
           />
         </div>
         <div className={style['submit-button']}>
