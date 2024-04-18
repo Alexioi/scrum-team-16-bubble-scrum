@@ -1,7 +1,7 @@
 import { AuthBackground } from '@/components';
 
-const SingIn = () => {
+const SignIn = () => {
   return <AuthBackground>sign-in</AuthBackground>;
 };
 
-export default SingIn;
+export default SignIn;
