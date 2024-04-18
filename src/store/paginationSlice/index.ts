@@ -2,10 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 type InitialState = {
   currentPage: number;
+  countCardsOnPage: number;
 };
 
 const initialState: InitialState = {
   currentPage: 1,
+  countCardsOnPage: 0,
 };
 
 const paginationSlice = createSlice({
@@ -14,6 +16,9 @@ const paginationSlice = createSlice({
   reducers: {
     change: (state, { payload }: { payload: number }) => {
       state.currentPage = payload;
+    },
+    setCountCards: (state, { payload }: { payload: number }) => {
+      state.countCardsOnPage = payload;
     },
   },
 });

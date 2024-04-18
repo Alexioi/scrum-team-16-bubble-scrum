@@ -6,6 +6,7 @@ import { FC, useState, useEffect } from 'react';
 import { getImageURL } from '@/api';
 
 import style from './style.module.scss';
+import { SwiperSkeleton } from '../Swiper/SwiperSkeleton';
 
 type Props = { imageName: string };
 
@@ -21,7 +22,7 @@ const SwiperImage: FC<Props> = ({ imageName }) => {
   return (
     <div>
       {imageUrl === '' ? (
-        'Загрузка'
+        <SwiperSkeleton />
       ) : (
         <Image
           src={imageUrl}

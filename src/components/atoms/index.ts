@@ -15,3 +15,4 @@ export * from './PaginationButton';
 export * from './Container';
 export * from './ClickAwayListener';
 export * from './AuthBackground';
+export * from './LikeButton';
