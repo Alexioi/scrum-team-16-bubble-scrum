@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-type Sex = { value: string; text: string; isChecked: boolean };
+type Sex = { value: string; text: string; checked: boolean };
 
 type InitialState = {
   uid: string;
@@ -16,8 +16,8 @@ const initialState: InitialState = {
   name: '',
   surname: '',
   sexes: [
-    { value: 'man', text: 'мужчина', isChecked: true },
-    { value: 'woman', text: 'женщина', isChecked: false },
+    { value: 'man', text: 'мужчина', checked: true },
+    { value: 'woman', text: 'женщина', checked: false },
   ],
   birthday: '',
   isSubscribed: true,

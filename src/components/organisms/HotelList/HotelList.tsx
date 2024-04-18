@@ -4,17 +4,22 @@ import { useEffect } from 'react';
 
 import { getRoomCards } from '@/api';
 import {
+  paginationActions,
   roomListActions,
+  selectAllFilters,
+  selectCurrentPage,
   selectRoomListData,
   selectRoomListError,
   selectRoomListIsLoading,
-  selectCurrentPage,
 } from '@/store';
 import { useAppDispatch, useAppSelector } from '@/hooks';
+import { ErrorMessage } from '@/components/molecules';
 import { ITEMS_PER_PAGE } from '@/constants';
 
 import { HotelCard } from '../HotelCard';
+import { HotelListSkeleton } from './HotelListSkeleton';
 import style from './style.module.scss';
+import { useFilter } from './hooks';
 
 const HotelList = () => {
   const dispatch = useAppDispatch();
@@ -22,6 +27,14 @@ const HotelList = () => {
   const roomListIsLoading = useAppSelector(selectRoomListIsLoading);
   const roomListError = useAppSelector(selectRoomListError);
   const currentPage = useAppSelector(selectCurrentPage);
+  const filters = useAppSelector(selectAllFilters);
+
+  const filterRoomListData = useFilter(filters, roomListData);
+
+  useEffect(() => {
+    dispatch(paginationActions.setCountCards(filterRoomListData.length));
+    dispatch(paginationActions.change(1));
+  }, [filterRoomListData, dispatch]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,6 +46,7 @@ const HotelList = () => {
       } catch (err) {
         if (err instanceof Error) {
           dispatch(roomListActions.changeError(err.message));
+
           return;
         }
         dispatch(roomListActions.changeError('неизвестная ошибка'));
@@ -45,32 +59,31 @@ const HotelList = () => {
   }, [dispatch]);
 
   if (roomListError !== '') {
-    return <span>{roomListError}</span>;
+    return (
+      <ErrorMessage message="Произошла ошибка" description={roomListError} />
+    );
   }
 
-  if (roomListIsLoading) {
-    return 'Загрузка...';
+  if (roomListIsLoading) return <HotelListSkeleton />;
+
+  if (filterRoomListData.length === 0) {
+    return (
+      <ErrorMessage
+        message="Ничего не найдено"
+        description="Попробуйте изменить фильтры"
+      />
+    );
   }
 
   return (
     <div className={style.list}>
-      {roomListData
+      {filterRoomListData
         .slice(
           (currentPage - 1) * ITEMS_PER_PAGE,
           (currentPage - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE,
         )
         .map((item) => {
-          return (
-            <HotelCard
-              key={item.id}
-              roomNumber={item.roomNumber}
-              isLux={item.isLux}
-              price={item.price}
-              averageRating={item.averageRating}
-              imageNames={item.imageNames}
-              reviews={item.reviews}
-            />
-          );
+          return <HotelCard key={item.id} hotel={item} />;
         })}
     </div>
   );

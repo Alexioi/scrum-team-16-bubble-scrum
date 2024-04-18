@@ -22,7 +22,7 @@ const Pagination: FC<Props> = ({
 }) => {
   const paginationLabelText = `${(activePage - 1) * ITEMS_PER_PAGE + 1} – ${activePage === pagesCount ? itemsCount : activePage * ITEMS_PER_PAGE} из ${itemsCount <= 100 ? itemsCount : '100+'} вариантов аренды`;
 
-  if (pagesCount === 0) {
+  if (pagesCount <= 1) {
     return null;
   }
 

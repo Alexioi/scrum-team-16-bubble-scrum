@@ -14,7 +14,7 @@ import { authActions } from '@/store';
 
 import style from './style.module.scss';
 
-const SingIn = () => {
+const SignIn = () => {
   const dispatch = useAppDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,7 +26,7 @@ const SingIn = () => {
   const handlePasswordInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.currentTarget.value);
   };
-  const handleSingInButtonClick = async () => {
+  const handleSignInButtonClick = async () => {
     try {
       const { uid, name, surname, sex, birthday, isSubscribed } =
         await getUserData(email, password);
@@ -68,7 +68,7 @@ const SingIn = () => {
           />
         </div>
         <div className={style['submit-button']}>
-          <Button theme="long" text="войти" onClick={handleSingInButtonClick} />
+          <Button theme="long" text="войти" onClick={handleSignInButtonClick} />
         </div>
         {error}
       </form>
@@ -83,4 +83,4 @@ const SingIn = () => {
   );
 };
 
-export { SingIn };
+export { SignIn };

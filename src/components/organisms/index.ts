@@ -13,5 +13,5 @@ export * from './Filter';
 export * from './Pagination';
 export * from './Hero';
 export * from './RoomListPagination';
-export * from './SingIn';
-export * from './SingUp';
+export * from './SignIn';
+export * from './SignUp';

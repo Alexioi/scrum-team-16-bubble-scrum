@@ -61,13 +61,13 @@ const Header = () => {
                 <ButtonLink
                   text="Войти"
                   theme="outlined"
-                  link="/auth/sign-in"
+                  link="/sign-in"
                   size="low"
                 />
                 <ButtonLink
                   text="Зарегистрироваться"
                   theme="default"
-                  link="/auth/sign-up"
+                  link="/sign-up"
                   size="low"
                 />
               </>

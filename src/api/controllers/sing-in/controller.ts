@@ -6,8 +6,8 @@ import { userInfoScheme } from '@/schemes';
 import { auth, db } from '../../initFirebase';
 
 const getUserData = async (email: string, password: string) => {
-  const singInResult = await signInWithEmailAndPassword(auth, email, password);
-  const { uid } = singInResult.user;
+  const SignInResult = await signInWithEmailAndPassword(auth, email, password);
+  const { uid } = SignInResult.user;
 
   const usersInfoCollection = collection(db, 'users-info');
 

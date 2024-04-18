@@ -8,7 +8,7 @@ import {
   Input,
   Button,
   QuestionAboutAuth,
-  RadioButtons,
+  RadioButtonList,
   Toggle,
 } from '@/components';
 import { createNewUser } from '@/api';
@@ -24,10 +24,10 @@ import { useAppDispatch, useAppSelector } from '@/hooks';
 
 import style from './style.module.scss';
 
-const SingUp = () => {
+const SignUp = () => {
   const dispatch = useAppDispatch();
   const isSubscribes = useAppSelector(selectIsSubscribes);
-  const sex = useAppSelector(selectSexes);
+  const sexes = useAppSelector(selectSexes);
   const name = useAppSelector(selectName);
   const surname = useAppSelector(selectSurname);
   const birthday = useAppSelector(selectBirthday);
@@ -54,14 +54,14 @@ const SingUp = () => {
     dispatch(authActions.changeIsSubscribed(value));
   };
   const handleRadioButtonsChange = (
-    value: { value: string; text: string; isChecked: boolean }[],
+    value: { value: string; text: string; checked: boolean }[],
   ) => {
     dispatch(authActions.changeSex(value));
   };
   const handleSingUpButtonClick = async () => {
     try {
-      const sexValue = sex.find((item) => {
-        return item.isChecked;
+      const sexValue = sexes.find((item) => {
+        return item.checked;
       })?.value;
 
       const { uid } = await createNewUser(
@@ -105,9 +105,9 @@ const SingUp = () => {
           />
         </div>
         <div className={style['radio-buttons']}>
-          <RadioButtons
+          <RadioButtonList
             name="sex"
-            values={sex}
+            values={sexes}
             onChange={handleRadioButtonsChange}
           />
         </div>
@@ -148,7 +148,7 @@ const SingUp = () => {
         <div className={style.toggle}>
           <Toggle
             text="Получать спецпредложения"
-            isChecked={isSubscribes}
+            checked={isSubscribes}
             onClick={handleToggleClick}
           />
         </div>
@@ -173,4 +173,4 @@ const SingUp = () => {
   );
 };
 
-export { SingUp };
+export { SignUp };
