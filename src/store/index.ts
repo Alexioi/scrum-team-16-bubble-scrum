@@ -3,12 +3,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import { paginationActions, paginationReducer } from './paginationSlice';
 import { filterActions, filterReducer, Filters } from './filterSlice';
 import { roomListActions, roomListReducer } from './roomListSlice';
+import { commentListActions, commentListReducer } from './commentListSlice';
 
 const store = configureStore({
   reducer: {
     pagination: paginationReducer,
     filter: filterReducer,
     roomList: roomListReducer,
+    commentList: commentListReducer,
   },
 });
 
@@ -37,6 +39,7 @@ export {
   paginationActions,
   filterActions,
   roomListActions,
+  commentListActions,
   selectAllFilters,
   selectRooms,
   selectRulesList,
