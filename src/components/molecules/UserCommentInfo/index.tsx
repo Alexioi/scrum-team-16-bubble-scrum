@@ -11,7 +11,7 @@ type Props = {
   date: string;
 };
 
-const UserReviewAvatar: FC<Props> = ({ avatarUrl, date, name }) => {
+const UserCommentInfo: FC<Props> = ({ avatarUrl, date, name }) => {
   return (
     <div className={style.user}>
       <Avatar avatarUrl={avatarUrl} />
@@ -25,4 +25,4 @@ const UserReviewAvatar: FC<Props> = ({ avatarUrl, date, name }) => {
   );
 };
 
-export { UserReviewAvatar };
+export { UserCommentInfo };
