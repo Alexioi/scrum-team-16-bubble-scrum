@@ -1,27 +1,20 @@
 import { FC } from 'react';
-import Image from 'next/image';
 
-import { Typography } from '@/components/atoms';
+import { Avatar, Typography } from '@/components/atoms';
 
 import style from './style.module.scss';
 import { calcDate } from './helpers/calcTime';
 
 type Props = {
   name: string;
-  avaratUrl: string;
+  avatarUrl: string;
   date: string;
 };
 
-const UserReviewAvatar: FC<Props> = ({ avaratUrl, date, name }) => {
+const UserReviewAvatar: FC<Props> = ({ avatarUrl, date, name }) => {
   return (
     <div className={style.user}>
-      <Image
-        className={style.avatar}
-        src={avaratUrl}
-        alt="Аватар"
-        width={48}
-        height={48}
-      />
+      <Avatar avatarUrl={avatarUrl} />
       <div>
         <div className={style.name}>
           <Typography tag="p">{name}</Typography>
