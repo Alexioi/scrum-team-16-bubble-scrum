@@ -17,6 +17,10 @@ const store = configureStore({
 type RootState = ReturnType<typeof store.getState>;
 type AppDispatch = typeof store.dispatch;
 
+const selectComments = (state: RootState) => state.commentList.data;
+const selectCommentsLoading = (state: RootState) => state.commentList.isLoading;
+const selectCommentsError = (state: RootState) => state.commentList.error;
+
 const selectAllFilters = (state: RootState) => state.filter;
 const selectExpandableList = (state: RootState) => state.filter.expandableList;
 const selectGuests = (state: RootState) => state.filter.guests;
@@ -53,4 +57,7 @@ export {
   selectRoomListIsLoading,
   selectRoomListError,
   selectDates,
+  selectComments,
+  selectCommentsError,
+  selectCommentsLoading,
 };
