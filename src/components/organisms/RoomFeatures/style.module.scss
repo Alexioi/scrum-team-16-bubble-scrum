@@ -1,0 +1,28 @@
+@import '@/style/variables.scss';
+
+.about {
+  max-width: fit-content;
+}
+
+.feature-wrapper {
+  &:nth-child(1) {
+    margin-top: 3px;
+    margin-left: 4px;
+  }
+
+  &:nth-child(2) {
+    margin-top: 2px;
+    margin-left: 6px;
+  }
+
+  &:nth-child(3) {
+    margin-top: 3px;
+    margin-left: 7px;
+  }
+}
+
+.feature-wrapper {
+  &:not(:last-child) {
+    border-bottom: 1px solid $dark-shade-10;
+  }
+}
