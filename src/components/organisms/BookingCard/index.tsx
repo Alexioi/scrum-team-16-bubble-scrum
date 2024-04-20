@@ -1,27 +1,49 @@
 'use client';
 
-import { Calendar, Typography, Dropdown, Button, RoomInfo } from '@/components';
+import { useState } from 'react';
 
+import { Calendar, Typography, Dropdown, Button, RoomInfo } from '@/components';
+import { useAppSelector } from '@/hooks';
+import { selectRoom, selectRoomIsLoading } from '@/store';
+
+import { calculateDays } from './helpers';
 import style from './style.module.scss';
 
 const BookingCard = () => {
-  const isLux = true;
-  const price = 10;
+  const room = useAppSelector(selectRoom);
+  const roomIsLoading = useAppSelector(selectRoomIsLoading);
+  const [dates, setDates] = useState<[null, null] | [string, string]>([
+    null,
+    null,
+  ]);
 
-  const roomNumber = 1000;
+  const price = room === null ? 0 : room.price;
+  const roomNumber = room === null ? 0 : room.roomNumber;
+  const isLux = room === null ? false : room.isLux;
+  const discount = room === null ? 0 : room.discount;
+  const additionalServices = room === null ? 0 : room.additionalServices;
+  const day = dates[0] === null && dates[1] === null ? 0 : calculateDays(dates);
   const expensesItems = [
     {
-      about: `${price.toLocaleString()}₽ х 4 суток`,
-      value: `(${(price * 4).toLocaleString()}₽`,
+      about: `${price.toLocaleString()}₽ х ${day} суток`,
+      value: `${(price * day).toLocaleString()}₽`,
       info: '',
     },
-    { about: 'Скидка', value: '0', info: 'Тут что-то про скидку' },
+    { about: 'Скидка', value: discount, info: 'Тут что-то про скидку' },
     {
       about: 'Сбор за дополнительные услуги',
-      value: '0',
+      value: additionalServices,
       info: 'Тут что-то про доп. услуги',
     },
   ];
+
+  const handleCalendarChange = (values: [null, null] | [string, string]) => {
+    setDates(values);
+  };
+
+  if (roomIsLoading) {
+    return 'Загрузка...';
+  }
 
   return (
     <form>
@@ -36,7 +58,7 @@ const BookingCard = () => {
           <Typography tag="h3">Прибытие</Typography>
           <Typography tag="h3">Выезд</Typography>
         </div>
-        <Calendar values={[null, null]} onChange={() => {}} />
+        <Calendar values={dates} onChange={handleCalendarChange} />
       </div>
       <div className={style['dropdown-heading']}>
         <Typography tag="h3">Гости</Typography>
@@ -75,7 +97,9 @@ const BookingCard = () => {
           <span className={style['total-text']}>Итого</span>
           <span className={style['total-line']} />
           <span className={style['total-value']}>
-            {(price * 4).toLocaleString()}
+            {day === 0
+              ? 0
+              : (price * day - discount + additionalServices).toLocaleString()}
           </span>
         </div>
       </ul>
