@@ -19,3 +19,4 @@ export * from './RadioButton';
 export * from './AuthBackground';
 export * from './LikeButton';
 export * from './RoomInfo';
+export * from './GetRoomCardData';
