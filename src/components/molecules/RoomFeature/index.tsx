@@ -1,8 +1,8 @@
 import { FC, useId } from 'react';
 
-import FeatureComfortSVG from '@/images/decorative/smile.svg';
-import FeatureConvenienceSVG from '@/images/decorative/house.svg';
-import FeatureCosinessSVG from '@/images/decorative/flame.svg';
+import SmileSVG from '@/images/decorative/smile.svg';
+import HouseSVG from '@/images/decorative/house.svg';
+import FlameSVG from '@/images/decorative/flame.svg';
 import { Gradient } from '@/components';
 
 import style from './style.module.scss';
@@ -15,9 +15,9 @@ const RoomFeature: FC<Props> = ({ featureType }) => {
   const gradientId = useId();
 
   const featureTypeIconMap = {
-    comfort: <FeatureComfortSVG />,
-    convenience: <FeatureConvenienceSVG />,
-    cosiness: <FeatureCosinessSVG />,
+    comfort: <SmileSVG />,
+    convenience: <HouseSVG />,
+    cosiness: <FlameSVG />,
   };
 
   const featureTypeTitleMap = {
