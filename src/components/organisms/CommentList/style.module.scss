@@ -1,5 +1,18 @@
-.list {
-    display: flex;
-    flex-direction: column;
-    gap: 23px;
+.head {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-end;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+  margin-top: 21px;
+}
+
+.count {
+    line-height: 14px;
 }
