@@ -1,8 +1,9 @@
-import { FC } from 'react';
+import { FC, useId } from 'react';
 
-import FeatureComfortSVG from '@/images/decorative/feature-comfort.svg';
-import FeatureConvenienceSVG from '@/images/decorative/feature-convenience.svg';
-import FeatureCosinessSVG from '@/images/decorative/feature-cosiness.svg';
+import FeatureComfortSVG from '@/images/decorative/smile.svg';
+import FeatureConvenienceSVG from '@/images/decorative/house.svg';
+import FeatureCosinessSVG from '@/images/decorative/flame.svg';
+import { Gradient } from '@/components';
 
 import style from './style.module.scss';
 
@@ -11,6 +12,8 @@ type Props = {
 };
 
 const RoomFeature: FC<Props> = ({ featureType }) => {
+  const gradientId = useId();
+
   const featureTypeIconMap = {
     comfort: <FeatureComfortSVG />,
     convenience: <FeatureConvenienceSVG />,
@@ -32,7 +35,18 @@ const RoomFeature: FC<Props> = ({ featureType }) => {
   return (
     <div className={style.feature}>
       <div className={style.wrapper}>
-        <div className={style.icon}>{featureTypeIconMap[featureType]}</div>
+        <div className={style.icon}>
+          <svg height={43} width={40}>
+            <g fill={`url(#${gradientId})`}>
+              <Gradient
+                id={gradientId}
+                startColor="#BC9CFF"
+                endColor="#8BA4F9"
+              />
+              {featureTypeIconMap[featureType]}
+            </g>
+          </svg>
+        </div>
         <div className={style.text}>
           <span className={style.title}>
             {featureTypeTitleMap[featureType]}
