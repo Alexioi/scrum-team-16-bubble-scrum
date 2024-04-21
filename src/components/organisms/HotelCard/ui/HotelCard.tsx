@@ -3,8 +3,8 @@ import Link from 'next/link';
 
 import { Rating, Swiper } from '@/components/atoms';
 import { Hotel } from '@/types';
+import { getPlural } from '@/helpers';
 
-import { declensionReview } from '../lib/declensionReview';
 import style from './style.module.scss';
 
 type Props = {
@@ -39,7 +39,7 @@ const HotelCard: FC<Props> = ({
             <div className={style.reviews}>
               {reviews}
               <span className={style.reviews_prefix}>
-                {declensionReview(reviews)}
+                {getPlural([' Отзыв', ' Отзыва', ' Отзывов'], reviews)}
               </span>
             </div>
           </div>

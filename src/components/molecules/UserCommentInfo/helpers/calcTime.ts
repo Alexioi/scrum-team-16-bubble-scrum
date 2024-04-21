@@ -1,4 +1,4 @@
-import { getDeclension } from './declensions';
+import { getPlural } from '@/helpers';
 
 const calcDate = (date: string) => {
   const diffTime = new Date().getTime() - new Date(date).getTime();
@@ -12,30 +12,30 @@ const calcDate = (date: string) => {
   const years = months / 12;
 
   if (seconds < 60) {
-    return getDeclension(Math.round(seconds), 'секунда', 'секунды', 'секунд');
+    return `${Math.round(seconds)} ${getPlural([' секунда', ' секунды', ' секунд'], Math.round(seconds))} назад`;
   }
 
   if (minutes < 60) {
-    return getDeclension(Math.round(minutes), 'минута', 'минуты', 'минут');
+    return `${Math.round(minutes)} ${getPlural([' минута', ' минуты', ' минут'], Math.round(minutes))} назад`;
   }
 
   if (hours < 24) {
-    return getDeclension(Math.round(hours), 'час', 'часа', 'часов');
+    return `${Math.round(hours)} ${getPlural([' час', ' часа', ' часов'], Math.round(hours))} назад`;
   }
 
   if (days < 7) {
-    return getDeclension(Math.round(days), 'день', 'дня', 'дней');
+    return `${Math.round(days)} ${getPlural([' день', ' дня', ' дней'], Math.round(days))} назад`;
   }
 
   if (weeks < 4) {
-    return getDeclension(Math.round(weeks), 'неделя', 'недели', 'недель');
+    return `${Math.round(weeks)} ${getPlural([' неделя', ' недели', ' недель'], Math.round(weeks))} назад`;
   }
 
   if (months < 12) {
-    return getDeclension(Math.round(months), 'месяц', 'месяца', 'месяцев');
+    return `${Math.round(months)} ${getPlural([' месяц', ' месяца', ' месяцев'], Math.round(months))} назад`;
   }
 
-  return getDeclension(Math.round(years), 'год', 'года', 'лет');
+  return `${Math.round(years)} ${getPlural([' год', ' года', ' лет'], Math.round(years))} назад`;
 };
 
 export { calcDate };
