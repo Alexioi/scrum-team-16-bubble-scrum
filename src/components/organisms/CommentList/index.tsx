@@ -20,8 +20,8 @@ const CommentList = () => {
         </div>
       </div>
       <div className={style.body}>
-        {comments.map((i) => (
-          <CommentCard key={i.id} comment={i} />
+        {comments.map((item) => (
+          <CommentCard key={item.id} comment={item} />
         ))}
       </div>
     </div>
