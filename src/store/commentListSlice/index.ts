@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { Comment } from '@/types';
-import { commentsData } from './data';
 
 type InitialState = {
   error: string;
@@ -10,7 +9,7 @@ type InitialState = {
 };
 
 const initialState: InitialState = {
-  data: commentsData,
+  data: [],
   error: '',
   isLoading: false,
 };

@@ -1,22 +1,38 @@
-import { FC } from 'react';
+'use client';
+
+import { FC, useEffect, useState } from 'react';
 import Image from 'next/image';
+
+import { getImageURL } from '@/api';
 
 import style from './style.module.scss';
 
 type Props = {
-  avatarUrl: string;
+  avatarName: string;
 };
 
-const Avatar: FC<Props> = ({ avatarUrl }) => {
-  return (
-    <Image
-      className={style.avatar}
-      src={avatarUrl}
-      alt="Аватар"
-      width={48}
-      height={48}
-    />
-  );
+const Avatar: FC<Props> = ({ avatarName }) => {
+  const [imageUrl, setImageUrl] = useState('');
+
+  useEffect(() => {
+    getImageURL(`${avatarName}.jpg`).then((value: string) => {
+      setImageUrl(value);
+    });
+  }, [avatarName]);
+
+  if (imageUrl !== '') {
+    return (
+      <Image
+        className={style.avatar}
+        src={imageUrl}
+        alt="Аватар"
+        width={48}
+        height={48}
+      />
+    );
+  }
+
+  return 'Загрузка...';
 };
 
 export { Avatar };

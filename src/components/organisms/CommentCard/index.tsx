@@ -1,6 +1,5 @@
 import { FC } from 'react';
 
-import muradImage from '@/images/content/murad.jpg';
 import { LikeButton, Typography } from '@/components/atoms';
 import { UserCommentInfo } from '@/components/molecules';
 import { Comment } from '@/types';
@@ -14,11 +13,7 @@ type Props = {
 const CommentCard: FC<Props> = ({ comment }) => {
   return (
     <div className={style.card}>
-      <UserCommentInfo
-        avatarUrl={muradImage.src}
-        date={comment.date}
-        name="Мурад Сарафанов"
-      />
+      <UserCommentInfo date={comment.date} userUid={comment.userUid} />
       <div className={style.body}>
         <div className={style.like}>
           <LikeButton
