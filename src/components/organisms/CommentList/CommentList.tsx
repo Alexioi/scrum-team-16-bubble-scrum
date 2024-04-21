@@ -9,16 +9,20 @@ import {
   commentListActions,
   selectComments,
   selectCommentsError,
+  selectCommentsLoading,
 } from '@/store';
 import { Typography } from '@/components/atoms';
 import { getCommentsByRoomId } from '@/api';
+import { ErrorMessage } from '@/components/molecules';
 
-import { CommentCard } from '../CommentCard';
+import { CommentCard } from '../CommentCard/CommentCard';
+import { CommentListSkeleton } from './CommentListSkeleton';
 import style from './style.module.scss';
 
 const CommentList = () => {
   const comments = useAppSelector(selectComments);
   const commentsError = useAppSelector(selectCommentsError);
+  const commentsLoading = useAppSelector(selectCommentsLoading);
   const dispatch = useAppDispatch();
   const roomId = useParams<{ id: string }>();
 
@@ -42,6 +46,29 @@ const CommentList = () => {
 
     fetchData();
   }, [dispatch, roomId]);
+
+  if (commentsLoading) {
+    return <CommentListSkeleton />;
+  }
+
+  if (!commentsLoading && (comments.length === 0 || commentsError)) {
+    return (
+      <div>
+        <div className={style.head}>
+          <Typography tag="h2">Отзывы посетителей номера</Typography>
+          <div className={style.count}>0 отзывов</div>
+        </div>
+        <ErrorMessage
+          message={commentsError ? 'Произошла ошибка' : 'Список отзывов пуст'}
+          description={
+            commentsError
+              ? commentsError
+              : 'Данный номер не имеет ни одного отзыва'
+          }
+        />
+      </div>
+    );
+  }
 
   return (
     <div>

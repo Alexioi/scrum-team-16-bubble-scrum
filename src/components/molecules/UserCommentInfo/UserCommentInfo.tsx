@@ -10,6 +10,7 @@ import { userInfoScheme } from '@/schemes';
 
 import style from './style.module.scss';
 import { calcDate } from './helpers/calcTime';
+import { UserCommentInfoSkeleton } from './UserCommentInfoSkeleton';
 
 type Props = {
   userUid: string;
@@ -44,7 +45,7 @@ const UserCommentInfo: FC<Props> = ({ userUid, date }) => {
     );
   }
 
-  return 'Загрузка...';
+  return <UserCommentInfoSkeleton />;
 };
 
 export { UserCommentInfo };

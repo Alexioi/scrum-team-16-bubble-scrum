@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { getImageURL } from '@/api';
 
 import style from './style.module.scss';
+import { AvatarSkeleton } from './AvatarSkeleton';
 
 type Props = {
   avatarName: string;
@@ -32,7 +33,7 @@ const Avatar: FC<Props> = ({ avatarName }) => {
     );
   }
 
-  return 'Загрузка...';
+  return <AvatarSkeleton />;
 };
 
 export { Avatar };
