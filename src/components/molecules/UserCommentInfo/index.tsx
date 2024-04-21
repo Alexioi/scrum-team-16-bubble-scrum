@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import { Avatar, Typography } from '@/components/atoms';
+import { Timestamp } from '@/types';
 
 import style from './style.module.scss';
 import { calcDate } from './helpers/calcTime';
@@ -8,7 +9,7 @@ import { calcDate } from './helpers/calcTime';
 type Props = {
   name: string;
   avatarUrl: string;
-  date: string;
+  date: Timestamp;
 };
 
 const UserCommentInfo: FC<Props> = ({ avatarUrl, date, name }) => {
