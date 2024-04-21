@@ -15,7 +15,7 @@ import { Typography } from '@/components/atoms';
 import { getCommentsByRoomId } from '@/api';
 import { ErrorMessage } from '@/components/molecules';
 
-import { CommentCard } from '../CommentCard/CommentCard';
+import { CommentCard } from '../CommentCard';
 import { CommentListSkeleton } from './CommentListSkeleton';
 import style from './style.module.scss';
 
