@@ -1,7 +1,8 @@
-import { db } from '@/api/initFirebase';
-
-import { commentsScheme } from '@/schemes';
 import { collection, getDocs, orderBy, query, where } from 'firebase/firestore';
+
+import { db } from '@/api/initFirebase';
+import { INCORRECT_DATA_ERROR } from '@/constants';
+import { commentsScheme } from '@/schemes';
 
 const getCommentsByRoomId = async (id: string) => {
   const q = query(
@@ -19,7 +20,7 @@ const getCommentsByRoomId = async (id: string) => {
   );
 
   if (!result.success) {
-    throw new Error('некорректные данные на сервере');
+    throw new Error(INCORRECT_DATA_ERROR);
   }
 
   return result.data;
