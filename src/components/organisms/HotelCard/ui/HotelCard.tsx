@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import Link from 'next/link';
 
-import { Rating, Swiper } from '@/components/atoms';
+import { Rating } from '@/components/atoms';
+import { Swiper } from '@/components/molecules';
 import { Hotel } from '@/types';
 import { getPlural } from '@/helpers';
 

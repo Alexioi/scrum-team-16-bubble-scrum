@@ -17,7 +17,7 @@ const AutoSlider: FC<Props> = ({ imagesURLs }) => {
           fill
           src={url}
           alt="Номер отеля"
-          priority={false}
+          priority
         />
       ))}
     </div>
