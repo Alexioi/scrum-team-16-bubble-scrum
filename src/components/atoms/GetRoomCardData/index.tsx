@@ -34,6 +34,10 @@ const GetRoomCardData: FC<Props> = ({ children, id }) => {
     };
 
     fetchData();
+
+    return () => {
+      dispatch(roomActions.changeIsLoading(true));
+    };
   }, [dispatch, id]);
 
   return <div>{children}</div>;
