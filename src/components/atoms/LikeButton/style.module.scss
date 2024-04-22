@@ -41,6 +41,10 @@
     gap: 6px;
     padding-right: 11px;
   }
+
+  &:disabled {
+    cursor: auto;
+  }
 }
 
 .favorite-fill,

@@ -61,9 +61,7 @@ const CommentList = () => {
         <ErrorMessage
           message={commentsError ? 'Произошла ошибка' : 'Список отзывов пуст'}
           description={
-            commentsError
-              ? commentsError
-              : 'Данный номер не имеет ни одного отзыва'
+            commentsError ? commentsError : 'У данного номера пока нет отзывов'
           }
         />
       </div>
