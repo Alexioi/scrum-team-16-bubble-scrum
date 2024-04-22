@@ -3,8 +3,9 @@ import { FC } from 'react';
 import { LikeButton, Typography } from '@/components/atoms';
 import { UserCommentInfo } from '@/components/molecules';
 import { Comment } from '@/types';
-import { useAppSelector } from '@/hooks';
-import { selectUID } from '@/store';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+import { commentListActions, selectUID } from '@/store';
+import { likeComment } from '@/api';
 
 import style from './style.module.scss';
 
@@ -13,7 +14,13 @@ type Props = {
 };
 
 const CommentCard: FC<Props> = ({ comment }) => {
+  const dispatch = useAppDispatch();
   const uid = useAppSelector(selectUID);
+
+  const handleClickLikeButton = async () => {
+    await likeComment(comment, uid);
+    dispatch(commentListActions.changeLike({ commentId: comment.id, uid }));
+  };
 
   return (
     <div className={style.card}>
@@ -23,7 +30,7 @@ const CommentCard: FC<Props> = ({ comment }) => {
           <LikeButton
             active={!!comment.likes.find((item) => item === uid)}
             countLikes={comment.likes.length}
-            onClick={() => {}}
+            onClick={handleClickLikeButton}
             disabled={!uid}
           />
         </div>
