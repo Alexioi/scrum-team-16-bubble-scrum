@@ -79,7 +79,7 @@ const SignIn = () => {
       <div className={style['question-about-auth']}>
         <QuestionAboutAuth
           questionText="Нет аккаунта на Toxin?"
-          buttonLink="/auth/sign-up"
+          buttonLink="/sign-up"
           buttonText="создать"
         />
       </div>
