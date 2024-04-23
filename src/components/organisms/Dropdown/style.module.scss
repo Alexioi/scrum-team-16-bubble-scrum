@@ -1,3 +1,5 @@
+@import '@/style/variables.scss';
+
 .dropdown {
   $root: &;
 
@@ -16,7 +18,7 @@
   z-index: 10;
   display: none;
   width: 100%;
-  background-color: white;
+  background-color: $white;
   padding: 7px 7px 3px 15px;
   border: 1px solid rgb(31, 32, 65, 0.5);
   border-top: none;
