@@ -4,6 +4,7 @@ import { paginationActions, paginationReducer } from './paginationSlice';
 import { filterActions, filterReducer, Filters } from './filterSlice';
 import { roomListActions, roomListReducer } from './roomListSlice';
 import { commentListActions, commentListReducer } from './commentListSlice';
+import { roomActions, roomReducer } from './roomSlice';
 import { authReducer, authActions } from './authSlice';
 
 const store = configureStore({
@@ -12,6 +13,7 @@ const store = configureStore({
     filter: filterReducer,
     roomList: roomListReducer,
     commentList: commentListReducer,
+    room: roomReducer,
     auth: authReducer,
   },
 });
@@ -44,6 +46,9 @@ const selectSexes = (state: RootState) => state.auth.sexes;
 const selectBirthday = (state: RootState) => state.auth.birthday;
 const selectIsSubscribes = (state: RootState) => state.auth.isSubscribed;
 const selectDates = (state: RootState) => state.filter.dates;
+const selectRoom = (state: RootState) => state.room.data;
+const selectRoomError = (state: RootState) => state.room.error;
+const selectRoomIsLoading = (state: RootState) => state.room.isLoading;
 
 export type { RootState, AppDispatch, Filters };
 export {
@@ -53,6 +58,7 @@ export {
   authActions,
   roomListActions,
   commentListActions,
+  roomActions,
   selectAllFilters,
   selectRooms,
   selectRulesList,
@@ -69,6 +75,9 @@ export {
   selectComments,
   selectCommentsError,
   selectCommentsLoading,
+  selectRoom,
+  selectRoomError,
+  selectRoomIsLoading,
   selectUID,
   selectName,
   selectSurname,
