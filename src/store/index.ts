@@ -4,6 +4,7 @@ import { paginationActions, paginationReducer } from './paginationSlice';
 import { filterActions, filterReducer, Filters } from './filterSlice';
 import { roomListActions, roomListReducer } from './roomListSlice';
 import { roomActions, roomReducer } from './roomSlice';
+import { authReducer, authActions } from './authSlice';
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     filter: filterReducer,
     roomList: roomListReducer,
     room: roomReducer,
+    auth: authReducer,
   },
 });
 
@@ -31,6 +33,12 @@ const selectCountCardsOnPage = (state: RootState) =>
 const selectRoomListData = (state: RootState) => state.roomList.data;
 const selectRoomListIsLoading = (state: RootState) => state.roomList.isLoading;
 const selectRoomListError = (state: RootState) => state.roomList.error;
+const selectUID = (state: RootState) => state.auth.uid;
+const selectName = (state: RootState) => state.auth.name;
+const selectSurname = (state: RootState) => state.auth.surname;
+const selectSexes = (state: RootState) => state.auth.sexes;
+const selectBirthday = (state: RootState) => state.auth.birthday;
+const selectIsSubscribes = (state: RootState) => state.auth.isSubscribed;
 const selectDates = (state: RootState) => state.filter.dates;
 const selectRoom = (state: RootState) => state.room.data;
 const selectRoomError = (state: RootState) => state.room.error;
@@ -41,6 +49,8 @@ export {
   store,
   paginationActions,
   filterActions,
+  authActions,
+  selectDates,
   roomListActions,
   roomActions,
   selectAllFilters,
@@ -55,8 +65,13 @@ export {
   selectRoomListData,
   selectRoomListIsLoading,
   selectRoomListError,
-  selectDates,
   selectRoom,
   selectRoomError,
   selectRoomIsLoading,
+  selectUID,
+  selectName,
+  selectSurname,
+  selectSexes,
+  selectBirthday,
+  selectIsSubscribes,
 };
