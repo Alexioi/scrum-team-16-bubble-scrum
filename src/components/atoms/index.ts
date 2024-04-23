@@ -19,5 +19,7 @@ export * from './Card';
 export * from './RadioButton';
 export * from './AuthBackground';
 export * from './LikeButton';
+export * from './RoomInfo';
+export * from './GetRoomCardData';
 export * from './GetLocalStorageData';
 export * from './Avatar';

@@ -31,6 +31,7 @@
     "react/jsx-curly-newline": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "function-paren-newline": "off",
-    "no-unneeded-ternary": "off"
+    "no-unneeded-ternary": "off",
+    "jsx-a11y/no-noninteractive-tabindex": "off"
   }
 }

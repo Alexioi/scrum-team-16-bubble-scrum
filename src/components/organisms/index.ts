@@ -14,5 +14,6 @@ export * from './Pagination';
 export * from './Hero';
 export * from './RoomListPagination';
 export * from './CommentList';
+export * from './BookingCard';
 export * from './SignIn';
 export * from './SignUp';
