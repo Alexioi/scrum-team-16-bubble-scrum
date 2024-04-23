@@ -20,3 +20,4 @@ export * from './RadioButton';
 export * from './AuthBackground';
 export * from './LikeButton';
 export * from './GetLocalStorageData';
+export * from './Avatar';
