@@ -1,0 +1,25 @@
+@import '@/style/variables.scss';
+
+.body {
+  margin-top: 10px;
+  display: flex;
+  gap: 15px;
+}
+
+.like {
+  padding-left: 5px;
+  margin-top: 3px;
+}
+
+.skeleton {
+  animation: $animation-skeleton-loading;
+  color: rgba(#000000, 0);
+  user-select: none;
+  border-radius: 4px;
+}
+
+.skeleton_like {
+  width: 39px;
+  height: 20px;
+  border-radius: 10px;
+}

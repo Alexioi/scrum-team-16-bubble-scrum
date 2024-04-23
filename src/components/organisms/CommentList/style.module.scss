@@ -1,0 +1,27 @@
+@import '@/style/variables.scss';
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-end;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+  margin-top: 21px;
+}
+
+.count {
+  line-height: 14px;
+}
+
+.skeleton {
+  animation: $animation-skeleton-loading;
+  color: rgba(#000000, 0);
+  user-select: none;
+  border-radius: 4px;
+}

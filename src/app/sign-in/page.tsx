@@ -1,7 +1,23 @@
-import { AuthBackground } from '@/components';
+'use client';
 
-const SignIn = () => {
-  return <AuthBackground>sign-in</AuthBackground>;
+import { redirect } from 'next/navigation';
+
+import { AuthBackground, SignIn } from '@/components';
+import { selectUID } from '@/store';
+import { useAppSelector } from '@/hooks';
+
+const SignInPage = () => {
+  const uid = useAppSelector(selectUID);
+
+  if (uid !== '') {
+    return redirect('/');
+  }
+
+  return (
+    <AuthBackground>
+      <SignIn />
+    </AuthBackground>
+  );
 };
 
-export default SignIn;
+export default SignInPage;

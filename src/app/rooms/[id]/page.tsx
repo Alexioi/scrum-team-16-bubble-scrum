@@ -1,23 +1,36 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, FC } from 'react';
 
-import { LikeButton, RoomRules } from '@/components';
+import {
+  LikeButton,
+  RoomRules,
+  GetRoomCardData,
+  BookingCard,
+} from '@/components';
 import { rules } from '@/components/organisms/RoomRules/data';
 
-const RoomPage = () => {
+type Props = { params: { id: string } };
+
+const RoomPage: FC<Props> = ({ params }) => {
   const [isLiked, setIsLiked] = useState(false);
 
   return (
     <>
-      <LikeButton
-        countLikes={isLiked ? 23 : 22}
-        active={isLiked}
-        onClick={() => {
-          setIsLiked(!isLiked);
-        }}
-      />
-      <RoomRules rules={rules} />
+      <GetRoomCardData id={params.id}>
+        <LikeButton
+          countLikes={isLiked ? 23 : 22}
+          active={isLiked}
+          onClick={() => {
+            setIsLiked(!isLiked);
+          }}
+        />
+        <RoomRules rules={rules} />
+
+        <div style={{ width: '380px', margin: 'auto' }}>
+          <BookingCard />
+        </div>
+      </GetRoomCardData>{' '}
     </>
   );
 };
