@@ -1,14 +1,14 @@
 import { FC } from 'react';
 import clsx from 'clsx';
 
-import { SwiperSkeleton } from '@/components/atoms';
+import { SwiperImageSkeleton } from '@/components/atoms';
 
 import style from './style.module.scss';
 
 const HotelCardSkeleton: FC = () => {
   return (
     <div className={clsx(style.card, style.skeleton)}>
-      <SwiperSkeleton />
+      <SwiperImageSkeleton />
 
       <div className={style.body}>
         <div className={style.header}>

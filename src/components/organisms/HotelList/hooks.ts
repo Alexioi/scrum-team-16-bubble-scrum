@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 
 import { Filters } from '@/store';
+import { Hotel } from '@/types';
 
-import { Hotel } from '../HotelCard';
 import { generateDateFromString, generateObjectFromDropdown } from './helpers';
 
 const checkPrice = (start: number, end: number, hotelPrice: number) =>

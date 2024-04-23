@@ -1,7 +1,12 @@
 import { Montserrat } from 'next/font/google';
 import type { Metadata } from 'next';
 
-import { Footer, Header, StoreProvider } from '@/components';
+import {
+  Footer,
+  Header,
+  StoreProvider,
+  GetLocalStorageData,
+} from '@/components';
 import './globals.scss';
 
 const montserrat = Montserrat({
@@ -19,9 +24,13 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="ru">
       <body className={montserrat.variable}>
-        <Header />
-        <StoreProvider>{children}</StoreProvider>
-        <Footer />
+        <StoreProvider>
+          <GetLocalStorageData>
+            <Header />
+            {children}
+            <Footer />
+          </GetLocalStorageData>
+        </StoreProvider>
       </body>
     </html>
   );

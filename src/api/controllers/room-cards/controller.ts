@@ -1,6 +1,6 @@
 import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 
-import { hotelsScheme } from '@/schemes';
+import { hotelScheme } from '@/schemes';
 
 import { db } from '../../initFirebase';
 
@@ -9,7 +9,7 @@ const getRoomCards = async () => {
 
   const querySnapshot = await getDocs(q);
 
-  const result = hotelsScheme.safeParse(
+  const result = hotelScheme.array().safeParse(
     querySnapshot.docs.map((el) => {
       return { id: el.id, ...el.data() };
     }),
