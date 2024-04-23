@@ -6,7 +6,6 @@ type Data = {
     link?: string;
     list?: List;
   }[];
-  username: string;
 };
 
 const data: Data = {
@@ -29,7 +28,6 @@ const data: Data = {
       ],
     },
   ],
-  username: '',
 };
 
 export { data };

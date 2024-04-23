@@ -30,6 +30,8 @@ type Hotel = {
     isAnimals: boolean;
     isLotOfGuests: boolean;
   };
+  discount: number;
+  additionalServices: number;
 };
 
 export type { Hotel };

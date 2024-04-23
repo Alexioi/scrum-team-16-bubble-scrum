@@ -1,14 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, FC } from 'react';
 
-import { LikeButton, RoomFeatures } from '@/components';
+import {
+  LikeButton,
+  RoomFeatures,
+  BookingCard,
+  GetRoomCardData,
+} from '@/components';
 
-const RoomPage = () => {
+type Props = { params: { id: string } };
+
+const RoomPage: FC<Props> = ({ params }) => {
   const [isLiked, setIsLiked] = useState(false);
 
   return (
-    <>
+    <GetRoomCardData id={params.id}>
       <LikeButton
         countLikes={isLiked ? 23 : 22}
         active={isLiked}
@@ -17,7 +24,11 @@ const RoomPage = () => {
         }}
       />
       <RoomFeatures />
-    </>
+
+      <div style={{ width: '380px', margin: 'auto' }}>
+        <BookingCard />
+      </div>
+    </GetRoomCardData>
   );
 };
 

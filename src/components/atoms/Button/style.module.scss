@@ -3,7 +3,7 @@
 .button {
   $root: &;
 
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   border: none;
@@ -92,6 +92,7 @@
 .arrow {
   display: flex;
   margin-left: auto;
+  color: white;
 }
 
 .icon {
