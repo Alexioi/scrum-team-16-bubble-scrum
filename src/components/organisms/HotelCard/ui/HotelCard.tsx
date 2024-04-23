@@ -1,8 +1,7 @@
 import { FC } from 'react';
 import Link from 'next/link';
 
-import { Rating } from '@/components/atoms';
-import { Swiper } from '@/components/molecules';
+import { Rating, Swiper, RoomInfo } from '@/components';
 import { Hotel } from '@/types';
 import { getPlural } from '@/helpers';
 
@@ -20,18 +19,7 @@ const HotelCard: FC<Props> = ({
       <Swiper imageNames={imageNames} />
       <Link className={style.link} href={`/rooms/${id}`}>
         <div className={style.body}>
-          <div className={style.header}>
-            <div className={style.number}>
-              <span className={style.number_icon}>№ </span>
-              {roomNumber}
-              {isLux && <span className={style.luxury}>ЛЮКС</span>}
-            </div>
-
-            <div className={style.price}>
-              {price.toLocaleString('ru')}₽
-              <span className={style.price_prefix}> в сутки</span>
-            </div>
-          </div>
+          <RoomInfo isLux={isLux} roomNumber={roomNumber} price={price} />
 
           <div className={style.line} />
 
@@ -51,4 +39,3 @@ const HotelCard: FC<Props> = ({
 };
 
 export { HotelCard };
-export type { Hotel };

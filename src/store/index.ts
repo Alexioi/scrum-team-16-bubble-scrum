@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { paginationActions, paginationReducer } from './paginationSlice';
 import { filterActions, filterReducer, Filters } from './filterSlice';
 import { roomListActions, roomListReducer } from './roomListSlice';
+import { roomActions, roomReducer } from './roomSlice';
 import { authReducer, authActions } from './authSlice';
 
 const store = configureStore({
@@ -10,6 +11,7 @@ const store = configureStore({
     pagination: paginationReducer,
     filter: filterReducer,
     roomList: roomListReducer,
+    room: roomReducer,
     auth: authReducer,
   },
 });
@@ -38,6 +40,9 @@ const selectSexes = (state: RootState) => state.auth.sexes;
 const selectBirthday = (state: RootState) => state.auth.birthday;
 const selectIsSubscribes = (state: RootState) => state.auth.isSubscribed;
 const selectDates = (state: RootState) => state.filter.dates;
+const selectRoom = (state: RootState) => state.room.data;
+const selectRoomError = (state: RootState) => state.room.error;
+const selectRoomIsLoading = (state: RootState) => state.room.isLoading;
 
 export type { RootState, AppDispatch, Filters };
 export {
@@ -47,6 +52,7 @@ export {
   authActions,
   selectDates,
   roomListActions,
+  roomActions,
   selectAllFilters,
   selectRooms,
   selectRulesList,
@@ -59,6 +65,9 @@ export {
   selectRoomListData,
   selectRoomListIsLoading,
   selectRoomListError,
+  selectRoom,
+  selectRoomError,
+  selectRoomIsLoading,
   selectUID,
   selectName,
   selectSurname,

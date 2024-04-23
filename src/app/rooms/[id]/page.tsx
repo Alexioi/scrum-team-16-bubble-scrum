@@ -1,74 +1,27 @@
-import { UserCommentInfo } from '@/components';
+'use client';
 
-import muradImage from '@/images/content/murad.jpg';
+import { useState, FC } from 'react';
 
-const RoomPage = () => {
+import { LikeButton, BookingCard, GetRoomCardData } from '@/components';
+
+type Props = { params: { id: string } };
+
+const RoomPage: FC<Props> = ({ params }) => {
+  const [isLiked, setIsLiked] = useState(false);
+
   return (
-    <div>
-      <UserCommentInfo
-        name="Мурад Сарафанов"
-        date={new Date(2024, 3, 18, 11, 32, 2).toString()}
-        avatarUrl={muradImage.src}
+    <GetRoomCardData id={params.id}>
+      <LikeButton
+        countLikes={isLiked ? 23 : 22}
+        active={isLiked}
+        onClick={() => {
+          setIsLiked(!isLiked);
+        }}
       />
-      <UserCommentInfo
-        name="Мурад Сарафанов"
-        date={new Date(2024, 3, 18, 2, 32, 2).toString()}
-        avatarUrl={muradImage.src}
-      />
-
-      <UserCommentInfo
-        name="Мурад Сарафанов"
-        date={new Date(2024, 3, 16, 2, 32, 2).toString()}
-        avatarUrl={muradImage.src}
-      />
-      <UserCommentInfo
-        name="Мурад Сарафанов"
-        date={new Date(2024, 3, 13, 2, 32, 2).toString()}
-        avatarUrl={muradImage.src}
-      />
-
-      <UserCommentInfo
-        name="Мурад Сарафанов"
-        date={new Date(2024, 3, 11, 11, 32, 2).toString()}
-        avatarUrl={muradImage.src}
-      />
-      <UserCommentInfo
-        name="Мурад Сарафанов"
-        date={new Date(2024, 3, 1, 11, 32, 2).toString()}
-        avatarUrl={muradImage.src}
-      />
-      <UserCommentInfo
-        name="Мурад Сарафанов"
-        date={new Date(2024, 2, 27, 11, 32, 2).toString()}
-        avatarUrl={muradImage.src}
-      />
-
-      <UserCommentInfo
-        name="Мурад Сарафанов"
-        date={new Date(2024, 2, 18, 11, 32, 2).toString()}
-        avatarUrl={muradImage.src}
-      />
-      <UserCommentInfo
-        name="Мурад Сарафанов"
-        date={new Date(2024, 1, 18, 11, 32, 2).toString()}
-        avatarUrl={muradImage.src}
-      />
-      <UserCommentInfo
-        name="Мурад Сарафанов"
-        date={new Date(2023, 7, 18, 11, 32, 2).toString()}
-        avatarUrl={muradImage.src}
-      />
-      <UserCommentInfo
-        name="Мурад Сарафанов"
-        date={new Date(2022, 3, 18, 11, 32, 2).toString()}
-        avatarUrl={muradImage.src}
-      />
-      <UserCommentInfo
-        name="Мурад Сарафанов"
-        date={new Date(2019, 3, 18, 11, 32, 2).toString()}
-        avatarUrl={muradImage.src}
-      />
-    </div>
+      <div style={{ width: '380px', margin: 'auto' }}>
+        <BookingCard />
+      </div>
+    </GetRoomCardData>
   );
 };
 

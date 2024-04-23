@@ -13,5 +13,6 @@ export * from './Filter';
 export * from './Pagination';
 export * from './Hero';
 export * from './RoomListPagination';
+export * from './BookingCard';
 export * from './SignIn';
 export * from './SignUp';
