@@ -2,7 +2,14 @@
 
 import { useState } from 'react';
 
-import { Calendar, Typography, Dropdown, Button, RoomInfo } from '@/components';
+import {
+  Calendar,
+  Typography,
+  Dropdown,
+  Button,
+  RoomInfo,
+  Card,
+} from '@/components';
 import { useAppSelector } from '@/hooks';
 import { selectRoom, selectRoomIsLoading } from '@/store';
 
@@ -46,65 +53,71 @@ const BookingCard = () => {
   }
 
   return (
-    <form>
-      <RoomInfo
-        roomNumber={roomNumber}
-        isLux={isLux}
-        price={price}
-        isBigRoomNumber
-      />
-      <div className={style.calendar}>
-        <div className={style['calendar-heading']}>
-          <Typography tag="h3">Прибытие</Typography>
-          <Typography tag="h3">Выезд</Typography>
+    <Card>
+      <form>
+        <RoomInfo
+          roomNumber={roomNumber}
+          isLux={isLux}
+          price={price}
+          isBigRoomNumber
+        />
+        <div className={style.calendar}>
+          <div className={style['calendar-heading']}>
+            <Typography tag="h3">Прибытие</Typography>
+            <Typography tag="h3">Выезд</Typography>
+          </div>
+          <Calendar values={dates} onChange={handleCalendarChange} />
         </div>
-        <Calendar values={dates} onChange={handleCalendarChange} />
-      </div>
-      <div className={style['dropdown-heading']}>
-        <Typography tag="h3">Гости</Typography>
-      </div>
-      <Dropdown
-        items={[
-          { name: 'взрослые', counter: 0 },
-          { name: 'дети', counter: 0 },
-          { name: 'младенцы', counter: 0 },
-        ]}
-        placeholder="Сколько гостей"
-        groups={[[0, 1], [2]]}
-        onChange={() => {}}
-        variants={[
-          ['гость', 'гостя', 'гостей'],
-          ['младенец', 'младенца', 'младенцев'],
-        ]}
-      />
-      <ul className={style['expenses-list']}>
-        {expensesItems.map((item) => {
-          return (
-            <li className={style['expenses-item']} key={item.about}>
-              <div className={style['expenses-about']}>{item.about}</div>
-              {item.info !== '' && (
-                <div
-                  className={style['expenses-info']}
-                  data-info={item.info}
-                  tabIndex={0}
-                />
-              )}
-              <div className={style['expenses-value']}>{item.value}</div>
-            </li>
-          );
-        })}
-        <div className={style.total}>
-          <span className={style['total-text']}>Итого</span>
-          <span className={style['total-line']} />
-          <span className={style['total-value']}>
-            {day === 0
-              ? 0
-              : (price * day - discount + additionalServices).toLocaleString()}
-          </span>
+        <div className={style['dropdown-heading']}>
+          <Typography tag="h3">Гости</Typography>
         </div>
-      </ul>
-      <Button theme="long" onClick={() => {}} text="забронировать" />
-    </form>
+        <Dropdown
+          items={[
+            { name: 'взрослые', counter: 0 },
+            { name: 'дети', counter: 0 },
+            { name: 'младенцы', counter: 0 },
+          ]}
+          placeholder="Сколько гостей"
+          groups={[[0, 1], [2]]}
+          onChange={() => {}}
+          variants={[
+            ['гость', 'гостя', 'гостей'],
+            ['младенец', 'младенца', 'младенцев'],
+          ]}
+        />
+        <ul className={style['expenses-list']}>
+          {expensesItems.map((item) => {
+            return (
+              <li className={style['expenses-item']} key={item.about}>
+                <div className={style['expenses-about']}>{item.about}</div>
+                {item.info !== '' && (
+                  <div
+                    className={style['expenses-info']}
+                    data-info={item.info}
+                    tabIndex={0}
+                  />
+                )}
+                <div className={style['expenses-value']}>{item.value}</div>
+              </li>
+            );
+          })}
+          <div className={style.total}>
+            <span className={style['total-text']}>Итого</span>
+            <span className={style['total-line']} />
+            <span className={style['total-value']}>
+              {day === 0
+                ? 0
+                : (
+                    price * day -
+                    discount +
+                    additionalServices
+                  ).toLocaleString()}
+            </span>
+          </div>
+        </ul>
+        <Button theme="long" onClick={() => {}} text="забронировать" />
+      </form>
+    </Card>
   );
 };
 

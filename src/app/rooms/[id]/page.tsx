@@ -18,7 +18,7 @@ const RoomPage: FC<Props> = ({ params }) => {
           setIsLiked(!isLiked);
         }}
       />
-      <div style={{ width: '380px', margin: 'auto', padding: '30px' }}>
+      <div style={{ width: '380px', margin: 'auto' }}>
         <BookingCard />
       </div>
     </GetRoomCardData>
