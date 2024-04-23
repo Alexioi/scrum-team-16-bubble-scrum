@@ -1,16 +1,20 @@
 'use client';
 
 import { useState, ChangeEvent } from 'react';
+
 import {
   Card,
   Typography,
   Input,
   Button,
   QuestionAboutAuth,
+  ErrorMassage,
 } from '@/components';
 import { login } from '@/api';
 import { useAppDispatch } from '@/hooks';
 import { authActions } from '@/store';
+import { FIREBASE_AUTH_ERRORS } from '@/constants';
+import { isErrorWithCode } from '@/helpers';
 
 import style from './style.module.scss';
 
@@ -41,9 +45,12 @@ const SignIn = () => {
       dispatch(authActions.changeSexByName(sex));
       dispatch(authActions.changeBirthday(birthday));
       dispatch(authActions.changeIsSubscribed(isSubscribed));
-    } catch (e) {
-      if (e instanceof Error) {
-        setError(e.message);
+    } catch (err) {
+      if (
+        isErrorWithCode(err) &&
+        Object.keys(FIREBASE_AUTH_ERRORS).includes(err.code)
+      ) {
+        setError(FIREBASE_AUTH_ERRORS[err.code]);
       }
     }
   };
@@ -71,10 +78,10 @@ const SignIn = () => {
             onChange={handlePasswordInputChange}
           />
         </div>
+        <ErrorMassage>{error}</ErrorMassage>
         <div className={style['submit-button']}>
           <Button theme="long" text="войти" onClick={handleSignInButtonClick} />
         </div>
-        {error}
       </form>
       <div className={style['question-about-auth']}>
         <QuestionAboutAuth

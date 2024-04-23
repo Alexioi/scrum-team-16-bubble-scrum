@@ -23,3 +23,4 @@ export * from './RoomInfo';
 export * from './GetRoomCardData';
 export * from './GetLocalStorageData';
 export * from './Avatar';
+export * from './ErrorMassage';
