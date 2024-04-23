@@ -8,7 +8,6 @@ import {
   GetRoomCardData,
   BookingCard,
 } from '@/components';
-import { rules } from '@/components/organisms/RoomRules/data';
 
 type Props = { params: { id: string } };
 
@@ -25,7 +24,7 @@ const RoomPage: FC<Props> = ({ params }) => {
             setIsLiked(!isLiked);
           }}
         />
-        <RoomRules rules={rules} />
+        <RoomRules />
 
         <div style={{ width: '380px', margin: 'auto' }}>
           <BookingCard />

@@ -1,15 +1,16 @@
-import { FC } from 'react';
-
 import { Typography } from '@/components';
+import { useAppSelector } from '@/hooks';
+import { selectRoom } from '@/store';
 
+import { title, rules } from './data';
 import style from './style.module.scss';
 
-type Props = {
-  rules: string[];
-};
+const RoomRules = () => {
+  const room = useAppSelector(selectRoom);
 
-const RoomRules: FC<Props> = ({ rules }) => {
-  const title = 'Правила';
+  if (room === null) {
+    return null;
+  }
 
   return (
     <div className={style.rules}>
@@ -17,11 +18,13 @@ const RoomRules: FC<Props> = ({ rules }) => {
         <Typography tag="h2">{title}</Typography>
       </div>
       <ul className={style.list}>
-        {rules.map((rule) => (
-          <li key={rule} className={style.item}>
-            <span className={style.text}>{rule}</span>
-          </li>
-        ))}
+        {rules.map((item) => {
+          return item.trigger === null || !room.rules[item.trigger] ? (
+            <li className={style.item} key={item.data}>
+              <span className={style.text}>{item.data}</span>
+            </li>
+          ) : null;
+        })}
       </ul>
     </div>
   );
