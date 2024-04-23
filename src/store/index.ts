@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { paginationActions, paginationReducer } from './paginationSlice';
 import { filterActions, filterReducer, Filters } from './filterSlice';
 import { roomListActions, roomListReducer } from './roomListSlice';
+import { commentListActions, commentListReducer } from './commentListSlice';
 import { roomActions, roomReducer } from './roomSlice';
 import { authReducer, authActions } from './authSlice';
 
@@ -11,6 +12,7 @@ const store = configureStore({
     pagination: paginationReducer,
     filter: filterReducer,
     roomList: roomListReducer,
+    commentList: commentListReducer,
     room: roomReducer,
     auth: authReducer,
   },
@@ -18,6 +20,10 @@ const store = configureStore({
 
 type RootState = ReturnType<typeof store.getState>;
 type AppDispatch = typeof store.dispatch;
+
+const selectComments = (state: RootState) => state.commentList.data;
+const selectCommentsLoading = (state: RootState) => state.commentList.isLoading;
+const selectCommentsError = (state: RootState) => state.commentList.error;
 
 const selectAllFilters = (state: RootState) => state.filter;
 const selectExpandableList = (state: RootState) => state.filter.expandableList;
@@ -50,8 +56,8 @@ export {
   paginationActions,
   filterActions,
   authActions,
-  selectDates,
   roomListActions,
+  commentListActions,
   roomActions,
   selectAllFilters,
   selectRooms,
@@ -65,6 +71,10 @@ export {
   selectRoomListData,
   selectRoomListIsLoading,
   selectRoomListError,
+  selectDates,
+  selectComments,
+  selectCommentsError,
+  selectCommentsLoading,
   selectRoom,
   selectRoomError,
   selectRoomIsLoading,
