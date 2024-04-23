@@ -40,7 +40,7 @@ const GetRoomCardData: FC<Props> = ({ children, id }) => {
     };
   }, [dispatch, id]);
 
-  return <div>{children}</div>;
+  return children;
 };
 
 export { GetRoomCardData };
