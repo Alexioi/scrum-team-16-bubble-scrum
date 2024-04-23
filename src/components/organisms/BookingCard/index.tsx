@@ -23,6 +23,11 @@ const BookingCard = () => {
     null,
     null,
   ]);
+  const [guests, setGuests] = useState([
+    { name: 'взрослые', counter: 0 },
+    { name: 'дети', counter: 0 },
+    { name: 'младенцы', counter: 0 },
+  ]);
 
   const price = room === null ? 0 : room.price;
   const roomNumber = room === null ? 0 : room.roomNumber;
@@ -46,6 +51,15 @@ const BookingCard = () => {
 
   const handleCalendarChange = (values: [null, null] | [string, string]) => {
     setDates(values);
+  };
+
+  const handleDropdownChange = (
+    value: {
+      name: string;
+      counter: number;
+    }[],
+  ) => {
+    setGuests(value);
   };
 
   if (roomIsLoading) {
@@ -72,14 +86,10 @@ const BookingCard = () => {
           <Typography tag="h3">Гости</Typography>
         </div>
         <Dropdown
-          items={[
-            { name: 'взрослые', counter: 0 },
-            { name: 'дети', counter: 0 },
-            { name: 'младенцы', counter: 0 },
-          ]}
+          items={guests}
           placeholder="Сколько гостей"
           groups={[[0, 1], [2]]}
-          onChange={() => {}}
+          onChange={handleDropdownChange}
           variants={[
             ['гость', 'гостя', 'гостей'],
             ['младенец', 'младенца', 'младенцев'],
