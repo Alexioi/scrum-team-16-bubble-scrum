@@ -27,8 +27,8 @@ const getUserInfo = async (uid: string) => {
 };
 
 const login = async (email: string, password: string) => {
-  const SignInResult = await signInWithEmailAndPassword(auth, email, password);
-  const { uid } = SignInResult.user;
+  const signInResult = await signInWithEmailAndPassword(auth, email, password);
+  const { uid } = signInResult.user;
 
   const result = await getUserInfo(uid);
 

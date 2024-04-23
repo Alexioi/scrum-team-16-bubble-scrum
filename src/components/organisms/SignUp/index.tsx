@@ -167,7 +167,7 @@ const SignUp = () => {
       <div className={style['question-about-auth']}>
         <QuestionAboutAuth
           questionText="Уже есть аккаунт на Toxin?"
-          buttonLink="/auth/sign-in"
+          buttonLink="/sign-in"
           buttonText="войти"
         />
       </div>
