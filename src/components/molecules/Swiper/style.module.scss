@@ -4,9 +4,6 @@
   position: relative;
   height: 151px;
 
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-
   overflow: hidden;
 
   cursor: pointer;
@@ -48,12 +45,14 @@
 .prev {
   @extend %button;
   @extend %swiper-arrow;
+  top: 0;
 }
 
 .next {
   @extend %button;
   @extend %swiper-arrow;
   rotate: 180deg;
+  top: 0;
   right: 0;
 }
 
@@ -77,10 +76,4 @@
 
 .item_active {
   background-color: $white;
-}
-
-.skeleton {
-  background-color: $dark-shade-10;
-
-  animation: $animation-skeleton-loading;
 }
