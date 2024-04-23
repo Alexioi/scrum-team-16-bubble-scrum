@@ -1,7 +1,9 @@
 import { getPlural } from '@/helpers';
+import { Timestamp } from '@/types';
 
-const calcDate = (date: string) => {
-  const diffTime = new Date().getTime() - new Date(date).getTime();
+const calcDate = (date: Timestamp) => {
+  const diffTime =
+    new Date().getTime() - new Date(date.seconds * 1000).getTime();
 
   const seconds = diffTime / 1000;
   const minutes = seconds / 60;

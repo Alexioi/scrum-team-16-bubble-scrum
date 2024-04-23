@@ -1,9 +1,11 @@
 import { FC } from 'react';
 
-import muradImage from '@/images/content/murad.jpg';
 import { LikeButton, Typography } from '@/components/atoms';
 import { UserCommentInfo } from '@/components/molecules';
 import { Comment } from '@/types';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+import { commentListActions, selectUID } from '@/store';
+import { likeComment } from '@/api';
 
 import style from './style.module.scss';
 
@@ -12,19 +14,24 @@ type Props = {
 };
 
 const CommentCard: FC<Props> = ({ comment }) => {
+  const dispatch = useAppDispatch();
+  const uid = useAppSelector(selectUID);
+
+  const handleClickLikeButton = async () => {
+    await likeComment(comment, uid);
+    dispatch(commentListActions.changeLike({ commentId: comment.id, uid }));
+  };
+
   return (
     <div className={style.card}>
-      <UserCommentInfo
-        avatarUrl={muradImage.src}
-        date={comment.date}
-        name="Мурад Сарафанов"
-      />
+      <UserCommentInfo date={comment.date} userUid={comment.userUid} />
       <div className={style.body}>
         <div className={style.like}>
           <LikeButton
-            active={false}
+            active={!!comment.likes.find((item) => item === uid)}
             countLikes={comment.likes.length}
-            onClick={() => {}}
+            onClick={handleClickLikeButton}
+            disabled={!uid}
           />
         </div>
         <Typography tag="p">{comment.content}</Typography>

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { Comment } from '@/types';
-import { commentsData } from './data';
+import { changeStringInArray } from '@/helpers';
 
 type InitialState = {
   error: string;
@@ -10,7 +10,7 @@ type InitialState = {
 };
 
 const initialState: InitialState = {
-  data: commentsData,
+  data: [],
   error: '',
   isLoading: false,
 };
@@ -27,6 +27,18 @@ const commentListSlice = createSlice({
     },
     changeError: (state, { payload }: { payload: string }) => {
       state.error = payload;
+    },
+    changeLike: (
+      state,
+      { payload }: { payload: { commentId: string; uid: string } },
+    ) => {
+      state.data = state.data.map((item) => {
+        if (item.id !== payload.commentId) return item;
+
+        item.likes = changeStringInArray(item.likes, payload.uid);
+
+        return item;
+      });
     },
   },
 });

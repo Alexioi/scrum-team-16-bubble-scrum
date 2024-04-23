@@ -1,10 +1,15 @@
+type Timestamp = {
+  seconds: number;
+  nanoseconds: number;
+};
+
 type Comment = {
   id: string;
   userUid: string;
   roomId: string;
   content: string;
   likes: string[];
-  date: string;
+  date: Timestamp;
 };
 
-export type { Comment };
+export type { Comment, Timestamp };

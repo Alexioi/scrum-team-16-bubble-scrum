@@ -1,6 +1,7 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 
+import { INCORRECT_DATA_ERROR } from '@/constants';
 import { userInfoScheme } from '@/schemes';
 
 import { auth, db } from '../../initFirebase';
@@ -19,7 +20,7 @@ const getUserInfo = async (uid: string) => {
   );
 
   if (!result.success) {
-    throw new Error('некорректные данные на сервере');
+    throw new Error(INCORRECT_DATA_ERROR);
   }
 
   return { uid, ...result.data };
