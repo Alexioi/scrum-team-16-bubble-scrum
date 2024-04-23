@@ -35,7 +35,7 @@ const GetLocalStorageData: FC<Props> = ({ children }) => {
     }
   }, [dispatch]);
 
-  return <div>{children}</div>;
+  return children;
 };
 
 export { GetLocalStorageData };
