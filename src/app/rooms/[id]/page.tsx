@@ -15,8 +15,8 @@ const RoomPage: FC<Props> = ({ params }) => {
   const [isLiked, setIsLiked] = useState(false);
 
   return (
-    <>
-      <GetRoomCardData id={params.id}>
+    <GetRoomCardData id={params.id}>
+      <div style={{ width: '380px', margin: 'auto' }}>
         <LikeButton
           countLikes={isLiked ? 23 : 22}
           active={isLiked}
@@ -26,11 +26,9 @@ const RoomPage: FC<Props> = ({ params }) => {
         />
         <RoomRules />
 
-        <div style={{ width: '380px', margin: 'auto' }}>
-          <BookingCard />
-        </div>
-      </GetRoomCardData>{' '}
-    </>
+        <BookingCard />
+      </div>
+    </GetRoomCardData>
   );
 };
 

@@ -2,39 +2,3 @@
   margin-left: 20px;
   margin-bottom: 18px;
 }
-
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  margin: 0;
-  padding: 0;
-
-  .item {
-    list-style: none;
-    display: flex;
-
-    &::before {
-      content: '';
-      display: inline-block;
-      margin-right: 10px;
-      margin-top: 7px;
-      width: 10px;
-      height: 10px;
-      flex-shrink: 0;
-      border-radius: 50%;
-      background: rgba(31, 32, 65, 0.25);
-    }
-
-    .text {
-      display: inline-block;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 1.71;
-      vertical-align: middle;
-      color: rgba(31, 32, 65, 0.75);
-    }
-  }
-}
