@@ -2,12 +2,13 @@
 
 import { FC, useState, useEffect } from 'react';
 
-import { RoomFeature, Typography } from '@/components';
+import { ErrorMessage, RoomFeature, Typography } from '@/components';
 import { useAppSelector } from '@/hooks';
 import { selectRoom } from '@/store';
 import { getFeaturesByRoomId } from '@/api';
 
 import { title } from './constants';
+import { Skeleton } from './Skeleton';
 import style from './style.module.scss';
 
 const RoomFeatures: FC = () => {
@@ -51,11 +52,15 @@ const RoomFeatures: FC = () => {
   }, [room]);
 
   if (isLoading) {
-    return 'Загрузка...';
+    return <Skeleton />;
+  }
+
+  if (features.length === 0) {
+    return <ErrorMessage message="Особенностей у номера нет." />;
   }
 
   if (error) {
-    return error;
+    return <ErrorMessage message="Произошла ошибка" description={error} />;
   }
 
   return (
