@@ -18,6 +18,10 @@ const CommentCard: FC<Props> = ({ comment }) => {
   const uid = useAppSelector(selectUID);
 
   const handleClickLikeButton = async () => {
+    if (uid === null) {
+      return;
+    }
+
     await likeComment(comment, uid);
     dispatch(commentListActions.changeLike({ commentId: comment.id, uid }));
   };

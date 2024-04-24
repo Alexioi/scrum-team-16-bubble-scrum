@@ -19,7 +19,6 @@ const GetLocalStorageData: FC<Props> = ({ children }) => {
         await getUserInfo(uid);
 
       dispatch(authActions.changeUID(uid));
-      dispatch(authActions.changeUID(uid));
       dispatch(authActions.changeName(name));
       dispatch(authActions.changeSurname(surname));
       dispatch(authActions.changeSexByName(sex));
@@ -32,6 +31,8 @@ const GetLocalStorageData: FC<Props> = ({ children }) => {
     if (typeof uid === 'string') {
       localStorage.setItem('uid', uid);
       getUserData(uid);
+    } else {
+      dispatch(authActions.changeUID(''));
     }
   }, [dispatch]);
 
