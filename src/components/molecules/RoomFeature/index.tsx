@@ -1,36 +1,18 @@
 import { FC, useId } from 'react';
 
-import SmileSVG from '@/images/decorative/smile.svg';
-import HouseSVG from '@/images/decorative/house.svg';
-import FlameSVG from '@/images/decorative/flame.svg';
 import { Gradient } from '@/components';
 
+import { FeatureIcon } from './FeatureIcon';
 import style from './style.module.scss';
 
 type Props = {
-  featureType: 'comfort' | 'convenience' | 'cosiness';
+  name: string;
+  title: string;
+  text: string;
 };
 
-const RoomFeature: FC<Props> = ({ featureType }) => {
+const RoomFeature: FC<Props> = ({ name, title, text }) => {
   const gradientId = useId();
-
-  const featureTypeIconMap = {
-    comfort: <SmileSVG />,
-    convenience: <HouseSVG />,
-    cosiness: <FlameSVG />,
-  };
-
-  const featureTypeTitleMap = {
-    comfort: 'Комфорт',
-    convenience: 'Удобство',
-    cosiness: 'Уют',
-  };
-
-  const featureTypeDescriptionMap = {
-    comfort: 'Шумопоглощающие стены',
-    convenience: 'Окно в каждой из спален',
-    cosiness: 'Номер оснащён камином',
-  };
 
   return (
     <div className={style.feature}>
@@ -43,17 +25,13 @@ const RoomFeature: FC<Props> = ({ featureType }) => {
                 startColor="#BC9CFF"
                 endColor="#8BA4F9"
               />
-              {featureTypeIconMap[featureType]}
+              <FeatureIcon name={name} />
             </g>
           </svg>
         </div>
         <div className={style.text}>
-          <span className={style.title}>
-            {featureTypeTitleMap[featureType]}
-          </span>
-          <span className={style.description}>
-            {featureTypeDescriptionMap[featureType]}
-          </span>
+          <span className={style.title}>{title}</span>
+          <span className={style.description}>{text}</span>
         </div>
       </div>
     </div>
