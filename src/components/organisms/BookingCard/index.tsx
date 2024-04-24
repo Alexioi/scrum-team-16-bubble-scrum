@@ -63,7 +63,21 @@ const BookingCard = () => {
   };
 
   if (roomIsLoading) {
-    return 'Загрузка...';
+    return (
+      <Card>
+        <div className={style['skeleton-wrapper']}>
+          <div className={style.skeleton} />
+          <div className={style.skeleton} />
+        </div>
+        <div className={style.skeleton} />
+        <div className={style.skeleton} />
+        <div className={style.skeleton} />
+        <div className={style.skeleton} />
+        <div className={style.skeleton} />
+        <div className={style.skeleton} />
+        <div className={style['skeleton-button']} />
+      </Card>
+    );
   }
 
   return (
