@@ -7,7 +7,18 @@ const Skeleton = () => {
   return (
     <div className={style.about}>
       <Typography tag="h2">{title}</Typography>
-      <div className={style.skeleton} />
+      <div className={style['skeleton-wrapper']}>
+        <div className={style['skeleton-circle']} />
+        <div className={style.skeleton} />
+      </div>
+      <div className={style['skeleton-wrapper']}>
+        <div className={style['skeleton-circle']} />
+        <div className={style.skeleton} />
+      </div>
+      <div className={style['skeleton-wrapper']}>
+        <div className={style['skeleton-circle']} />
+        <div className={style.skeleton} />
+      </div>
     </div>
   );
 };
