@@ -17,8 +17,8 @@ const RoomPage: FC<Props> = ({ params }) => {
 
   return (
     <GetRoomCardData id={params.id}>
+      <ImageGallery />
       <div style={{ width: '380px', margin: 'auto' }}>
-        <ImageGallery />
         <LikeButton
           countLikes={isLiked ? 23 : 22}
           active={isLiked}

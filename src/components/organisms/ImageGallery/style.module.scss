@@ -1,19 +1,37 @@
 @import '@/style/variables.scss';
 
 .gallery {
+  height: 485px;
+  width: 100%;
+  
   display: flex;
   justify-content: center;
 }
 
-.container {
+.wrapper {
   aspect-ratio: 16 / 9;
+}
+
+.row {
+  height: 100%;
+  position: relative;
+
+  &__half {
+    height: 50%;
+  }
 }
 
 .column {
   display: flex;
   flex-direction: column;
 
-  width: 460px;
+  &__small {
+    width: 460px;
+  }
+
+  &__big {
+    width: 980px;
+  }
 }
 
 .image {
@@ -23,8 +41,6 @@
 }
 
 .skeleton {
-  height: 485px;
-
   animation: $animation-skeleton-loading;
 }
 
