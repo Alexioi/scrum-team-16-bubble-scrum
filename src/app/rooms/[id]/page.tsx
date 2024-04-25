@@ -4,6 +4,7 @@ import { useState, FC } from 'react';
 
 import {
   LikeButton,
+  RoomFeatures,
   BookingCard,
   GetRoomCardData,
   ImageGallery,
@@ -24,7 +25,9 @@ const RoomPage: FC<Props> = ({ params }) => {
           setIsLiked(!isLiked);
         }}
       />
+
       <div style={{ width: '380px', margin: 'auto' }}>
+        <RoomFeatures />
         <BookingCard />
       </div>
     </GetRoomCardData>
