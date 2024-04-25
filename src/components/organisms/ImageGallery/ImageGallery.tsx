@@ -9,7 +9,6 @@ import { getImageURL } from '@/api';
 import { Swiper } from '@/components/molecules';
 
 import style from './style.module.scss';
-import { Placeholder } from './Placeholder';
 import { Skeleton } from './Skeleton';
 
 const ImageGallery = () => {
@@ -22,21 +21,22 @@ const ImageGallery = () => {
     if (room === null) {
       return;
     }
-    const imagePaths: string[] = [];
-    room.imageNames.map((item) =>
-      getImageURL(`${item}.jpg`).then((value: string) =>
-        imagePaths.push(value),
-      ),
-    );
-    setImages(imagePaths);
+    const getImageURLs = async () => {
+      const imagePaths = await Promise.all(
+        room.imageNames.map(async (item) => {
+          const path = await getImageURL(`${item}.jpg`);
+          return path;
+        }),
+      );
+
+      setImages(imagePaths);
+    };
+
+    getImageURLs();
   }, [room]);
 
   if (room === null) {
     return <Skeleton />;
-  }
-
-  if (images.length === 0) {
-    return <Placeholder />;
   }
 
   if (windowSize[0] < 992) {

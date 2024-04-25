@@ -52,21 +52,8 @@
   animation: $animation-skeleton-loading;
 }
 
-.placeholder {
-  height: 485px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: $dark-shade-10;
-}
-
 @media (max-width: 992px) {
   .skeleton {
-    aspect-ratio: 16 / 9;
-  }
-  .placeholder {
     aspect-ratio: 16 / 9;
   }
 }
