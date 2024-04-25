@@ -22,7 +22,11 @@ const ImageGallery = () => {
   }
 
   if (windowSize[0] < 992) {
-    return <Swiper imageNames={images.map((item) => item.src)} />;
+    return (
+      <div className={style.container}>
+        <Swiper imageNames={images.map((item) => item.src)} />
+      </div>
+    );
   }
 
   return (

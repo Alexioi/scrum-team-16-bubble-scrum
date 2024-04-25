@@ -5,6 +5,10 @@
   justify-content: center;
 }
 
+.container {
+  height: 240px;
+}
+
 .column {
   display: flex;
   flex-direction: column;
@@ -32,4 +36,10 @@
   align-items: center;
 
   background-color: $dark-shade-10;
+}
+
+@media (max-width: 992px) {
+  .placeholder {
+    height: 240px;
+  }
 }
