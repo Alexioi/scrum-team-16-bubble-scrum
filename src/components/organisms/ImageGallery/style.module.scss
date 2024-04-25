@@ -1,5 +1,8 @@
+@import '@/style/variables.scss';
+
 .gallery {
   display: flex;
+  justify-content: center;
 }
 
 .column {
@@ -13,4 +16,20 @@
   display: block;
   height: 100%;
   object-fit: cover;
+}
+
+.skeleton {
+  height: 485px;
+
+  animation: $animation-skeleton-loading;
+}
+
+.placeholder {
+  height: 485px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $dark-shade-10;
 }
