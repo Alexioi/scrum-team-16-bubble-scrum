@@ -12,10 +12,16 @@ import { Gradient } from '../Gradient';
 type Props = {
   countLikes: number;
   active: boolean;
+  disabled?: boolean;
   onClick(): void;
 };
 
-const LikeButton: FC<Props> = ({ countLikes, active, onClick }) => {
+const LikeButton: FC<Props> = ({
+  countLikes,
+  active,
+  disabled = false,
+  onClick,
+}) => {
   const gradientId = useId();
 
   return (
@@ -25,6 +31,7 @@ const LikeButton: FC<Props> = ({ countLikes, active, onClick }) => {
         [style.button__less10]: countLikes < 10,
       })}
       onClick={onClick}
+      disabled={disabled}
     >
       <svg height={8} width={10}>
         <g fill={`url(#${gradientId})`} className={style['favorite-fill']}>

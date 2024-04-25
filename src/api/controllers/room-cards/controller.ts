@@ -1,5 +1,6 @@
 import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 
+import { INCORRECT_DATA_ERROR } from '@/constants';
 import { hotelScheme } from '@/schemes';
 
 import { db } from '../../initFirebase';
@@ -16,7 +17,7 @@ const getRoomCards = async () => {
   );
 
   if (!result.success) {
-    throw new Error('некорректные данные на сервере');
+    throw new Error(INCORRECT_DATA_ERROR);
   }
 
   return result.data;

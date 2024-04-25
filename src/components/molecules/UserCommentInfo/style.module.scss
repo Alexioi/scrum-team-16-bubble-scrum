@@ -1,3 +1,5 @@
+@import '@/style/variables.scss';
+
 .user {
   display: flex;
   gap: 10px;
@@ -6,3 +8,17 @@
 .name {
   font-weight: bold;
 }
+
+.skeleton_text {
+  animation: $animation-skeleton-loading;
+  color: rgba(#000000, 0);
+  border-radius: 4px;
+  line-height: 16px;
+  user-select: none;
+}
+
+.skeleton_date {
+  margin-top: 10px;
+  display: inline-block;
+}
+

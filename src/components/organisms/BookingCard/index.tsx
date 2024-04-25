@@ -13,6 +13,7 @@ import {
 import { useAppSelector } from '@/hooks';
 import { selectRoom, selectRoomIsLoading } from '@/store';
 
+import { Skeleton } from './Skeleton';
 import { calculateDays } from './helpers';
 import style from './style.module.scss';
 
@@ -63,7 +64,7 @@ const BookingCard = () => {
   };
 
   if (roomIsLoading) {
-    return 'Загрузка...';
+    return <Skeleton />;
   }
 
   return (

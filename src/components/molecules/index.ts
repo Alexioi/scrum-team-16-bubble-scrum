@@ -7,3 +7,4 @@ export * from './QuestionAboutAuth';
 export * from './UserCommentInfo';
 export * from './RadioButtonList';
 export * from './Swiper';
+export * from './RoomFeature';

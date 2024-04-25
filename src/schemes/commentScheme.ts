@@ -5,8 +5,13 @@ const commentScheme = z.object({
   userUid: z.string(),
   roomId: z.string(),
   content: z.string(),
-  date: z.string(),
+  date: z.object({
+    seconds: z.number(),
+    nanoseconds: z.number(),
+  }),
   likes: z.array(z.string()),
 });
 
-export { commentScheme };
+const commentsScheme = z.array(commentScheme);
+
+export { commentScheme, commentsScheme };
