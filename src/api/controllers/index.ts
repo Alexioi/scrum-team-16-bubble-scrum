@@ -5,3 +5,4 @@ export * from './room-card';
 export * from './sign-up';
 export * from './sing-in';
 export * from './comment-like';
+export * from './features';

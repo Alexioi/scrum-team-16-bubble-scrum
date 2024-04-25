@@ -10,6 +10,7 @@ import {
   QuestionAboutAuth,
   RadioButtonList,
   Toggle,
+  DangerErrorMessage,
 } from '@/components';
 import { createNewUser } from '@/api';
 import {
@@ -21,6 +22,8 @@ import {
   selectIsSubscribes,
 } from '@/store';
 import { useAppDispatch, useAppSelector } from '@/hooks';
+import { isErrorWithCode } from '@/helpers';
+import { FIREBASE_AUTH_ERRORS } from '@/constants';
 
 import style from './style.module.scss';
 
@@ -77,9 +80,12 @@ const SignUp = () => {
       localStorage.setItem('uid', uid);
 
       dispatch(authActions.changeUID(uid));
-    } catch (e) {
-      if (e instanceof Error) {
-        setError(e.message);
+    } catch (err) {
+      if (
+        isErrorWithCode(err) &&
+        Object.keys(FIREBASE_AUTH_ERRORS).includes(err.code)
+      ) {
+        setError(FIREBASE_AUTH_ERRORS[err.code]);
       }
     }
   };
@@ -154,7 +160,7 @@ const SignUp = () => {
             onClick={handleToggleClick}
           />
         </div>
-
+        <DangerErrorMessage>{error}</DangerErrorMessage>
         <div className={style['submit-button']}>
           <Button
             theme="long"
@@ -162,7 +168,6 @@ const SignUp = () => {
             onClick={handleSingUpButtonClick}
           />
         </div>
-        {error}
       </form>
       <div className={style['question-about-auth']}>
         <QuestionAboutAuth
