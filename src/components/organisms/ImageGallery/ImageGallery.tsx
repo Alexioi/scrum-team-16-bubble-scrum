@@ -31,9 +31,6 @@ const ImageGallery = () => {
   if (room === null) {
     return <Skeleton />;
   }
-  console.log(images.length);
-  console.log(images);
-  console.log(images[0]);
 
   if (images.length === 0) {
     return <Placeholder />;
