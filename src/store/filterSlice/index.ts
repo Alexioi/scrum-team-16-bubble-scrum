@@ -15,6 +15,10 @@ const filterSlice = createSlice({
         return;
       }
 
+      if (JSON.stringify(state.dates) === JSON.stringify(payload)) {
+        return;
+      }
+
       state.dates = payload;
     },
     changeGuestData: (
