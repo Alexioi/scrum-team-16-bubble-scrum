@@ -69,12 +69,14 @@ const BookingCard = () => {
           <div className={style.skeleton} />
           <div className={style.skeleton} />
         </div>
-        <div className={style.skeleton} />
-        <div className={style.skeleton} />
-        <div className={style.skeleton} />
-        <div className={style.skeleton} />
-        <div className={style.skeleton} />
-        <div className={style.skeleton} />
+        {new Array(6)
+          .fill(undefined)
+          .map((_, i) => {
+            return i;
+          })
+          .map((item) => {
+            return <div key={item} className={style.skeleton} />;
+          })}
         <div className={style['skeleton-button']} />
       </Card>
     );
