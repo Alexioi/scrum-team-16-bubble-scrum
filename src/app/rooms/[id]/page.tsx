@@ -2,7 +2,12 @@
 
 import { useState, FC } from 'react';
 
-import { LikeButton, BookingCard, GetRoomCardData } from '@/components';
+import {
+  LikeButton,
+  BookingCard,
+  GetRoomCardData,
+  ImageGallery,
+} from '@/components';
 
 type Props = { params: { id: string } };
 
@@ -11,6 +16,7 @@ const RoomPage: FC<Props> = ({ params }) => {
 
   return (
     <GetRoomCardData id={params.id}>
+      <ImageGallery />
       <LikeButton
         countLikes={isLiked ? 23 : 22}
         active={isLiked}
