@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 type Sex = { value: string; text: string; checked: boolean };
 
 type InitialState = {
-  uid: string;
+  uid: string | null;
   name: string;
   surname: string;
   sexes: Sex[];
@@ -12,7 +12,7 @@ type InitialState = {
 };
 
 const initialState: InitialState = {
-  uid: '',
+  uid: null,
   name: '',
   surname: '',
   sexes: [

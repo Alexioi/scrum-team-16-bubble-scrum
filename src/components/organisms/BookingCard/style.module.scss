@@ -112,3 +112,23 @@
     word-break: break-word;
   }
 }
+
+.skeleton-wrapper {
+  display: flex;
+  gap: 100px;
+}
+
+.skeleton {
+  width: 100%;
+  height: 40px;
+  animation: $animation-skeleton-loading;
+  margin-bottom: 10px;
+}
+
+.skeleton-button {
+  width: 100%;
+  height: 40px;
+  animation: $animation-skeleton-loading;
+  margin-bottom: 10px;
+  border-radius: 22px;
+}

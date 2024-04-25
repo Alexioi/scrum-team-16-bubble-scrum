@@ -6,8 +6,9 @@ import clsx from 'clsx';
 import MenuSVG from '@/images/decorative/menu.svg';
 import { selectUID, selectName, selectSurname } from '@/store';
 import { useAppSelector } from '@/hooks';
+import { ButtonLink, NavigationLink, Logo } from '@/components';
 
-import { ButtonLink, NavigationLink, Logo } from '../../atoms';
+import { Skeleton } from './Skeleton';
 import style from './style.module.scss';
 import { data } from './data';
 
@@ -56,7 +57,8 @@ const Header = () => {
             </ul>
           </nav>
           <div className={style.login}>
-            {uid === '' ? (
+            {uid === null && <Skeleton />}
+            {uid === '' && (
               <>
                 <ButtonLink
                   text="Войти"
@@ -71,7 +73,8 @@ const Header = () => {
                   size="low"
                 />
               </>
-            ) : (
+            )}
+            {uid !== null && uid.length > 0 && (
               <span className={style.username}>
                 {name} {surname}
               </span>
