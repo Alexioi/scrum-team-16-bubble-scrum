@@ -3,10 +3,7 @@
 import { useEffect, useState } from 'react';
 
 const useScreenSize = () => {
-  const [windowSize, setWindowSize] = useState([
-    window.innerWidth,
-    window.innerHeight,
-  ]);
+  const [windowSize, setWindowSize] = useState([1080, 720]);
 
   useEffect(() => {
     const windowSizeHandler = () => {

@@ -47,6 +47,8 @@
 }
 
 .skeleton {
+  height: 485px;
+
   animation: $animation-skeleton-loading;
 }
 
@@ -61,7 +63,10 @@
 }
 
 @media (max-width: 992px) {
+  .skeleton {
+    aspect-ratio: 16 / 9;
+  }
   .placeholder {
-    height: 240px;
+    aspect-ratio: 16 / 9;
   }
 }
