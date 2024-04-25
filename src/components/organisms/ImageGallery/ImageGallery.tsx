@@ -19,8 +19,11 @@ const ImageGallery = () => {
   const windowSize = useScreenSize();
 
   useEffect(() => {
+    if (room === null) {
+      return;
+    }
     const imagePaths: string[] = [];
-    room?.imageNames.map((item) =>
+    room.imageNames.map((item) =>
       getImageURL(`${item}.jpg`).then((value: string) =>
         imagePaths.push(value),
       ),
