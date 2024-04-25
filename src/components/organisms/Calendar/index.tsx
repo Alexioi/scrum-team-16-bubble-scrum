@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FC, useRef } from 'react';
+import { useState, FC } from 'react';
 import clsx from 'clsx';
 
 import { ReactCalendar } from '@/libs';
@@ -34,7 +34,6 @@ const Calendar: FC<Props> = ({ isSingle = false, values, onChange }) => {
   const [secondInputValue, setSecondInputValue] = useState(
     values[1] === null ? '' : values[1],
   );
-  const calendarRef = useRef(null);
 
   const handleInputButtonClick = () => {
     setIsOpened(!isOpened);
@@ -105,7 +104,6 @@ const Calendar: FC<Props> = ({ isSingle = false, values, onChange }) => {
           )}
         </div>
         <div
-          ref={calendarRef}
           className={clsx(style['calendar-menu'], {
             [style['calendar-menu_opened']]: isOpened,
           })}
