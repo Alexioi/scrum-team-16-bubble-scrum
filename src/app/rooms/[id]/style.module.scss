@@ -1,0 +1,103 @@
+@import '@/style/variables.scss';
+
+.room-details {
+  border-bottom: 1px solid $dark-shade-25;
+}
+
+.content-block {
+  margin: 70px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-column {
+  flex-basis: 712px;
+}
+
+.room-statistic {
+  display: flex;
+  gap: 80px;
+}
+
+.icon-text-list {
+  flex-basis: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
+
+.pie-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.text {
+  color: $dark-shade-75;
+}
+
+.rules {
+  display: flex;
+  margin-top: 31px;
+  gap: 101px;
+}
+
+.bullet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex-basis: 260px;
+}
+
+.rules-title {
+  padding-left: 20px;
+}
+
+.reset {
+  flex-basis: 341px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.room-booking {
+  max-width: 380px;
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .content-block {
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rules {
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .bullet-list {
+    flex-basis: auto;
+  }
+
+  .rules-title {
+    padding: 0;
+  }
+
+  .reset {
+    flex-basis: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .room-statistic {
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .comments-title {
+    gap: 10px;
+    flex-direction: column;
+  }
+}
