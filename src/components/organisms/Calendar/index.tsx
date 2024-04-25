@@ -58,7 +58,7 @@ const Calendar: FC<Props> = ({ isSingle = false, values, onChange }) => {
       return;
     }
 
-    setIsOpened(!isOpened);
+    setIsOpened(false);
 
     const firstFullStringDate = getFullStringDate(firstDate);
     const secondFullStringDate = getFullStringDate(secondDate);
@@ -79,6 +79,7 @@ const Calendar: FC<Props> = ({ isSingle = false, values, onChange }) => {
   return (
     <ClickAwayListener
       onClose={() => {
+        handleApplyButtonClick();
         setIsOpened(false);
       }}
     >
