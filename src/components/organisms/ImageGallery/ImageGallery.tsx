@@ -39,6 +39,10 @@ const ImageGallery = () => {
     return <Skeleton />;
   }
 
+  if (images.length === 0) {
+    return <Skeleton />;
+  }
+
   if (windowSize[0] < 992) {
     return (
       <div className={style.wrapper}>
