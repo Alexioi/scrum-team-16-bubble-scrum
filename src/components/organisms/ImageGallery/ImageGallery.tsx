@@ -47,7 +47,7 @@ const ImageGallery = () => {
   return (
     <div className={style.gallery}>
       <div className={style.column__big}>
-        <div className={style.row}>
+        <div className={style.item1}>
           <Image
             className={style.image}
             src={images[0]}
@@ -60,7 +60,7 @@ const ImageGallery = () => {
       </div>
       {images.length >= 3 && (
         <div className={style.column__small}>
-          <div className={style.row__half}>
+          <div className={style.item2}>
             <Image
               className={style.image}
               src={images[1]}
@@ -70,7 +70,7 @@ const ImageGallery = () => {
               priority
             />
           </div>
-          <div className={style.row}>
+          <div className={style.item3}>
             <Image
               className={style.image}
               src={images[2]}

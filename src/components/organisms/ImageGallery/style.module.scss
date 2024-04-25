@@ -12,13 +12,19 @@
   aspect-ratio: 16 / 9;
 }
 
-.row {
-  height: 100%;
+.item1 {
   position: relative;
+  height: 485px;
+}
 
-  &__half {
-    height: 50%;
-  }
+.item2 {
+  position: relative;
+  height: 243px;
+}
+
+.item3 {
+  position: relative;
+  height: 242px;
 }
 
 .column {
