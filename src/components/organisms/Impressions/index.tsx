@@ -1,8 +1,9 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import React, { FC } from 'react';
+import React from 'react';
 
+import { getPlural } from '@/helpers';
 import style from './style.module.scss';
 
 const Chart = dynamic(
@@ -11,16 +12,26 @@ const Chart = dynamic(
   { ssr: false },
 );
 
-type Value = {
-  name: string;
-  value: number;
-};
+const data = [
+  {
+    name: 'Великолепно',
+    value: 130,
+  },
+  {
+    name: 'Хорошо',
+    value: 65,
+  },
+  {
+    name: 'Удовлетворительно',
+    value: 65,
+  },
+  {
+    name: 'Разочарован',
+    value: 0,
+  },
+];
 
-type Props = {
-  data: Value[];
-};
-
-const Impressions: FC<Props> = ({ data }) => {
+const Impressions = () => {
   const count = data.reduce((sum, item) => sum + item.value, 0);
 
   return (
@@ -29,7 +40,7 @@ const Impressions: FC<Props> = ({ data }) => {
         <Chart data={data} />
         <p className={style.label}>
           <span className={style.count}>{count}</span>
-          <span>голосов</span>
+          <span>{getPlural(['голос', 'голоса', 'голосов'], count)}</span>
         </p>
       </div>
       <div className={style.legend}>
