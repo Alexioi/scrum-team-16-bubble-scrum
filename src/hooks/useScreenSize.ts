@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 
 const useScreenSize = () => {
@@ -20,4 +22,4 @@ const useScreenSize = () => {
   return windowSize;
 };
 
-export default useScreenSize;
+export { useScreenSize };

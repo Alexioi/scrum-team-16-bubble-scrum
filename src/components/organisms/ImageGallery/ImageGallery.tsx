@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-import useScreenSize from '@/hooks/useScreenSize';
+import { useScreenSize } from '@/hooks';
 import { Swiper } from '@/components/molecules';
 import img1 from '@/images/content/gallery-main.jpg';
 import img2 from '@/images/content/gallery-sub-top.jpg';
@@ -24,8 +24,6 @@ const ImageGallery = () => {
   if (windowSize[0] < 992) {
     return <Swiper imageNames={images.map((item) => item.src)} />;
   }
-
-  console.log(images[0].src);
 
   return (
     <div className={style.gallery}>
