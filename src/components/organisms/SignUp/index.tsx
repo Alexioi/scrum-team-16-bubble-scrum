@@ -10,7 +10,7 @@ import {
   QuestionAboutAuth,
   RadioButtonList,
   Toggle,
-  ErrorMassage,
+  DangerErrorMessage,
 } from '@/components';
 import { createNewUser } from '@/api';
 import {
@@ -160,7 +160,7 @@ const SignUp = () => {
             onClick={handleToggleClick}
           />
         </div>
-        <ErrorMassage>{error}</ErrorMassage>
+        <DangerErrorMessage>{error}</DangerErrorMessage>
         <div className={style['submit-button']}>
           <Button
             theme="long"

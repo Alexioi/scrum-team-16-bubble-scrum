@@ -8,7 +8,7 @@ import {
   Input,
   Button,
   QuestionAboutAuth,
-  ErrorMassage,
+  DangerErrorMessage,
 } from '@/components';
 import { login } from '@/api';
 import { useAppDispatch } from '@/hooks';
@@ -78,7 +78,7 @@ const SignIn = () => {
             onChange={handlePasswordInputChange}
           />
         </div>
-        <ErrorMassage>{error}</ErrorMassage>
+        <DangerErrorMessage>{error}</DangerErrorMessage>
         <div className={style['submit-button']}>
           <Button theme="long" text="войти" onClick={handleSignInButtonClick} />
         </div>
