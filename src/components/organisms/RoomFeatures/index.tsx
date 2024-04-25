@@ -15,7 +15,7 @@ const RoomFeatures: FC = () => {
   const room = useAppSelector(selectRoom);
   const [features, setFeatures] = useState<
     {
-      name: string;
+      name: 'smile' | 'house' | 'flame';
       title: string;
       text: string;
       userUid: string;

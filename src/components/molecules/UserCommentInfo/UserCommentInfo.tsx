@@ -27,7 +27,7 @@ const UserCommentInfo: FC<Props> = ({ userUid, date }) => {
     };
 
     fetchData();
-  }, []);
+  }, [userUid]);
 
   if (user) {
     return (

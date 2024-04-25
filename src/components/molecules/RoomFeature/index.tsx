@@ -6,7 +6,7 @@ import { FeatureIcon } from './FeatureIcon';
 import style from './style.module.scss';
 
 type Props = {
-  name: string;
+  name: 'smile' | 'house' | 'flame';
   title: string;
   text: string;
 };
