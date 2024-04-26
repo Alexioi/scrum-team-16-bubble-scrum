@@ -4,6 +4,7 @@ import { FC } from 'react';
 
 import {
   BookingCard,
+  RoomRules,
   GetRoomCardData,
   Container,
   CommentList,
@@ -31,7 +32,9 @@ const RoomPage: FC<Props> = ({ params }) => {
               </div>
               <CommentList />
               <div className={style.rules}>
-                <section className={style['bullet-list']}>rules</section>
+                <section className={style['bullet-list']}>
+                  <RoomRules />
+                </section>
                 <section className={style.reset}>
                   <Typography tag="h2">Отмена</Typography>
                   <div className={style.text}>
