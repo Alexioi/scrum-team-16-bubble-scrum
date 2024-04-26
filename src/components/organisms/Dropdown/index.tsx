@@ -121,11 +121,7 @@ const Dropdown: FC<Props> = ({
   };
 
   return (
-    <ClickAwayListener
-      onClose={() => {
-        setIsOpened(false);
-      }}
-    >
+    <ClickAwayListener onClose={handleApplyButtonClick}>
       <div className={dropdownClasses}>
         <DropdownInput
           type="text"
