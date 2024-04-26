@@ -1,3 +1,10 @@
+type Reviews = {
+  great: number;
+  good: number;
+  satisfactorily: number;
+  bad: number;
+};
+
 type Hotel = {
   id: string;
   roomNumber: number;
@@ -5,7 +12,7 @@ type Hotel = {
   averageRating: number;
   isLux: boolean;
   imageNames: string[];
-  reviews: number;
+  reviews: Reviews;
   startDate: string;
   endDate: string;
   guestCount: number;
@@ -34,4 +41,4 @@ type Hotel = {
   additionalServices: number;
 };
 
-export type { Hotel };
+export type { Hotel, Reviews };

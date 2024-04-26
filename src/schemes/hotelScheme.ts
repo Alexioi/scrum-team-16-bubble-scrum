@@ -7,7 +7,12 @@ const hotelScheme = z.object({
   averageRating: z.number(),
   isLux: z.boolean(),
   imageNames: z.array(z.string()),
-  reviews: z.number(),
+  reviews: z.object({
+    great: z.number(),
+    good: z.number(),
+    satisfactorily: z.number(),
+    bad: z.number(),
+  }),
   startDate: z.string(),
   endDate: z.string(),
   guestCount: z.number(),
