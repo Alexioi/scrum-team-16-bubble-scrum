@@ -14,6 +14,8 @@ type Props = {
 const HotelCard: FC<Props> = ({
   hotel: { id, imageNames, isLux, roomNumber, price, averageRating, reviews },
 }) => {
+  const count = Object.values(reviews).reduce((sum, item) => sum + item, 0);
+
   return (
     <div className={style.card}>
       <Swiper imageNames={imageNames} />
@@ -26,9 +28,9 @@ const HotelCard: FC<Props> = ({
           <div className={style.footer}>
             <Rating rating={averageRating} />
             <div className={style.reviews}>
-              {reviews}
+              {count}
               <span className={style.reviews_prefix}>
-                {getPlural([' Отзыв', ' Отзыва', ' Отзывов'], reviews)}
+                {getPlural([' Отзыв', ' Отзыва', ' Отзывов'], count)}
               </span>
             </div>
           </div>

@@ -66,3 +66,28 @@ $gradients: $gradient-yellow-100, $gradient-green-100, $gradient-purple-100, $gr
     }
   }
 }
+
+.skeleton {
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.chart-skeleton {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  animation: $animation-skeleton-loading;
+}
+
+.legend-list-skeleton {
+
+  &_item {
+    margin-top: 4px;
+    color: transparent;
+    border-radius: 4px;
+    animation: $animation-skeleton-loading;
+  }
+}

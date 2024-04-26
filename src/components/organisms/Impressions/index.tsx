@@ -1,10 +1,15 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
+import { selectRoom } from '@/store';
+import { useAppSelector } from '@/hooks';
 import { getPlural } from '@/helpers';
+
+import { Skeleton } from './Skeleton';
 import style from './style.module.scss';
+import { getTitleByName } from './helpers';
 
 const Chart = dynamic(
   () =>
@@ -12,32 +17,38 @@ const Chart = dynamic(
   { ssr: false },
 );
 
-const data = [
-  {
-    name: 'Великолепно',
-    value: 130,
-  },
-  {
-    name: 'Хорошо',
-    value: 65,
-  },
-  {
-    name: 'Удовлетворительно',
-    value: 65,
-  },
-  {
-    name: 'Разочарован',
-    value: 0,
-  },
-];
-
 const Impressions = () => {
-  const count = data.reduce((sum, item) => sum + item.value, 0);
+  const room = useAppSelector(selectRoom);
+  const [reviews, setReviews] = useState({
+    great: 0,
+    good: 0,
+    satisfactorily: 0,
+    bad: 0,
+  });
+
+  useEffect(() => {
+    if (room === null) {
+      return;
+    }
+
+    setReviews(room.reviews);
+  }, [room]);
+
+  const count = Object.values(reviews).reduce((sum, item) => sum + item, 0);
+
+  if (room === null) {
+    return <Skeleton />;
+  }
 
   return (
     <div className={style.container}>
       <div className={style['chart-wrapper']}>
-        <Chart data={data} />
+        <Chart
+          data={Object.entries(reviews).map((item) => ({
+            name: item[0],
+            value: item[1],
+          }))}
+        />
         <p className={style.label}>
           <span className={style.count}>{count}</span>
           <span>{getPlural(['голос', 'голоса', 'голосов'], count)}</span>
@@ -45,9 +56,9 @@ const Impressions = () => {
       </div>
       <div className={style.legend}>
         <ul className={style['legend-list']}>
-          {data.map((item) => (
-            <li className={style['legend-list_item']} key={item.name}>
-              {item.name}
+          {Object.entries(reviews).map((item) => (
+            <li className={style['legend-list_item']} key={item[0]}>
+              {getTitleByName(item[0])}
             </li>
           ))}
         </ul>
