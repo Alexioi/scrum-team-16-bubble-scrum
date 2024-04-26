@@ -20,10 +20,10 @@ import style from './style.module.scss';
 const BookingCard = () => {
   const room = useAppSelector(selectRoom);
   const roomIsLoading = useAppSelector(selectRoomIsLoading);
-  const [dates, setDates] = useState<[null, null] | [string, string]>([
-    null,
-    null,
-  ]);
+  const [dates, setDates] = useState<{
+    from: string | null;
+    to: string | null;
+  }>({ from: null, to: null });
   const [guests, setGuests] = useState([
     { name: 'взрослые', counter: 0 },
     { name: 'дети', counter: 0 },
@@ -35,7 +35,7 @@ const BookingCard = () => {
   const isLux = room === null ? false : room.isLux;
   const discount = room === null ? 0 : room.discount;
   const additionalServices = room === null ? 0 : room.additionalServices;
-  const day = dates[0] === null && dates[1] === null ? 0 : calculateDays(dates);
+  const day = calculateDays(dates);
   const expensesItems = [
     {
       about: `${price.toLocaleString()}₽ х ${day} суток`,
@@ -50,7 +50,10 @@ const BookingCard = () => {
     },
   ];
 
-  const handleCalendarChange = (values: [null, null] | [string, string]) => {
+  const handleCalendarChange = (values: {
+    from: string | null;
+    to: string | null;
+  }) => {
     setDates(values);
   };
 

@@ -18,8 +18,8 @@ import style from './style.module.scss';
 type CalendarValue = null | Date | [null | Date, null | Date];
 
 type Props = {
-  onChange(value: string[] | null[]): void;
-  values: string[] | null[];
+  onChange(value: { from: string | null; to: string | null }): void;
+  values: { from: string | null; to: string | null };
   isSingle?: boolean;
 };
 
@@ -32,7 +32,7 @@ const Calendar: FC<Props> = ({ isSingle = false, values, onChange }) => {
     getFirstInputValue(values, isSingle),
   );
   const [secondInputValue, setSecondInputValue] = useState(
-    values[1] === null ? '' : values[1],
+    values.from === null ? '' : values.from,
   );
 
   const handleInputButtonClick = () => {
@@ -43,7 +43,7 @@ const Calendar: FC<Props> = ({ isSingle = false, values, onChange }) => {
     setFirstInputValue('');
     setSecondInputValue('');
     setCalendarValue(null);
-    onChange([null, null]);
+    onChange({ from: null, to: null });
   };
 
   const handleApplyButtonClick = () => {
@@ -66,13 +66,13 @@ const Calendar: FC<Props> = ({ isSingle = false, values, onChange }) => {
       setFirstInputValue(
         `${getStringDate(firstDate)} - ${getStringDate(secondDate)}`,
       );
-      onChange([firstFullStringDate, secondFullStringDate]);
+      onChange({ from: firstFullStringDate, to: secondFullStringDate });
       return;
     }
 
     setFirstInputValue(firstFullStringDate);
     setSecondInputValue(secondFullStringDate);
-    onChange([firstFullStringDate, secondFullStringDate]);
+    onChange({ from: firstFullStringDate, to: secondFullStringDate });
   };
 
   return (

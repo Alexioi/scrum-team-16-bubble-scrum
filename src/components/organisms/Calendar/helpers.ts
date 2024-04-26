@@ -18,23 +18,27 @@ const getStringDate = (date: Date) => {
   return `${day} ${month}`;
 };
 
-const getFirstInputValue = (values: string[] | null[], isSingle: boolean) => {
-  if (values[0] === null || values[1] === null) {
+const getFirstInputValue = (
+  values: { from: string | null; to: string | null },
+  isSingle: boolean,
+) => {
+  if (values.from === null || values.to === null) {
     return '';
   }
 
-  return isSingle ? `${values[0]}-${values[1]}` : values[0];
+  return isSingle ? `${values.from}-${values.to}` : values.from;
 };
 
-const getInitCalendarDates = (
-  values: string[] | null[],
-): null | [Date, Date] => {
-  if (values[0] === null || values[1] === null) {
+const getInitCalendarDates = (values: {
+  from: string | null;
+  to: string | null;
+}): null | [Date, Date] => {
+  if (values.from === null || values.to === null) {
     return null;
   }
 
-  const [firstDay, firstMonth, firstYear] = values[0].split('.');
-  const [secondDay, secondMonth, secondYear] = values[1].split('.');
+  const [firstDay, firstMonth, firstYear] = values.from.split('.');
+  const [secondDay, secondMonth, secondYear] = values.to.split('.');
 
   return [
     new Date([firstMonth, firstDay, firstYear].join('.')),
