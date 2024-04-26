@@ -10,6 +10,8 @@ import {
   CommentList,
   RoomFeatures,
   Typography,
+  ImageGallery,
+  Impressions,
 } from '@/components';
 
 import style from './style.module.scss';
@@ -20,7 +22,7 @@ const RoomPage: FC<Props> = ({ params }) => {
   return (
     <GetRoomCardData id={params.id}>
       <div className={style['room-details']}>
-        Галерея
+        <ImageGallery />
         <Container>
           <div className={style['content-block']}>
             <div className={style['content-column']}>
@@ -28,7 +30,10 @@ const RoomPage: FC<Props> = ({ params }) => {
                 <section className={style['icon-text-list']}>
                   <RoomFeatures />
                 </section>
-                <section className={style['pie-chart']}>pie-chart</section>
+                <section className={style['pie-chart']}>
+                  <Typography tag="h2">Впечатления от номера</Typography>
+                  <Impressions />
+                </section>
               </div>
               <CommentList />
               <div className={style.rules}>

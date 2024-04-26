@@ -17,6 +17,7 @@
 .room-statistic {
   display: flex;
   gap: 80px;
+  padding-bottom: 40px;
 }
 
 .icon-text-list {
@@ -91,6 +92,10 @@
 }
 
 @media (max-width: 768px) {
+  .icon-text-list {
+    flex-basis: auto;
+  }
+
   .room-statistic {
     gap: 20px;
     flex-direction: column;
