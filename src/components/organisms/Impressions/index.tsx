@@ -12,8 +12,7 @@ import style from './style.module.scss';
 import { getTitleByName } from './helpers';
 
 const Chart = dynamic(
-  () =>
-    import('@/components/molecules/Chart').then((component) => component.Chart),
+  () => import('@/libs/Chart').then((component) => component.Chart),
   { ssr: false },
 );
 
