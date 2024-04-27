@@ -20,10 +20,8 @@ import style from './style.module.scss';
 const BookingCard = () => {
   const room = useAppSelector(selectRoom);
   const roomIsLoading = useAppSelector(selectRoomIsLoading);
-  const [dates, setDates] = useState<{
-    from: string | null;
-    to: string | null;
-  }>({ from: null, to: null });
+  const [from, setFrom] = useState<string | null>(null);
+  const [to, setTo] = useState<string | null>(null);
   const [guests, setGuests] = useState([
     { name: 'взрослые', counter: 0 },
     { name: 'дети', counter: 0 },
@@ -35,7 +33,7 @@ const BookingCard = () => {
   const isLux = room === null ? false : room.isLux;
   const discount = room === null ? 0 : room.discount;
   const additionalServices = room === null ? 0 : room.additionalServices;
-  const day = calculateDays(dates);
+  const day = calculateDays({ from, to });
   const expensesItems = [
     {
       about: `${price.toLocaleString()}₽ х ${day} суток`,
@@ -54,7 +52,8 @@ const BookingCard = () => {
     from: string | null;
     to: string | null;
   }) => {
-    setDates(values);
+    setFrom(values.from);
+    setTo(values.to);
   };
 
   const handleDropdownChange = (
@@ -84,7 +83,7 @@ const BookingCard = () => {
             <Typography tag="h3">Прибытие</Typography>
             <Typography tag="h3">Выезд</Typography>
           </div>
-          <Calendar values={dates} onChange={handleCalendarChange} />
+          <Calendar values={{ from, to }} onChange={handleCalendarChange} />
         </div>
         <div className={style['dropdown-heading']}>
           <Typography tag="h3">Гости</Typography>
