@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC } from 'react';
+import React, { FC, useId } from 'react';
 import { PieChart, Pie, Cell } from 'recharts';
 
 import { Gradient } from '@/components/atoms';
@@ -18,18 +18,20 @@ type Props = {
 };
 
 const Chart: FC<Props> = ({ data }) => {
+  const id = useId();
+
   return (
     <PieChart width={120} height={120}>
       <defs>
         <Gradient
           startColor={color.yellow}
           endColor={color.orange}
-          id="yellow"
+          id={`${id}_yellow`}
         />
         <Gradient
           startColor={color.green}
           endColor={color.blue}
-          id="green"
+          id={`${id}_green`}
           x1={50}
           y1={30}
           x2={50}
@@ -38,9 +40,13 @@ const Chart: FC<Props> = ({ data }) => {
         <Gradient
           startColor={color.purple}
           endColor={color.violet}
-          id="purple"
+          id={`${id}_purple`}
         />
-        <Gradient startColor={color.gray} endColor={color.grayDark} id="gray" />
+        <Gradient
+          startColor={color.gray}
+          endColor={color.grayDark}
+          id={`${id}_gray`}
+        />
       </defs>
       <Pie
         dataKey="value"
