@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 import { selectRoom } from '@/store';
 import { useAppSelector } from '@/hooks';
-import { getPlural } from '@/helpers';
+import { getObjectValuesSum, getPlural } from '@/helpers';
 
 import { Skeleton } from './Skeleton';
 import style from './style.module.scss';
@@ -33,7 +33,7 @@ const Impressions = () => {
     setReviews(room.reviews);
   }, [room]);
 
-  const count = Object.values(reviews).reduce((sum, item) => sum + item, 0);
+  const count = getObjectValuesSum(reviews);
 
   if (room === null) {
     return <Skeleton />;
