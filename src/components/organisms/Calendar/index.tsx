@@ -9,7 +9,6 @@ import { Button, ClickAwayListener } from '../../atoms';
 import { DropdownInput } from '../DropdownInput';
 import {
   getFullStringDate,
-  getStringDate,
   getFirstInputValue,
   getInitCalendarDates,
 } from './helpers';
@@ -28,20 +27,12 @@ const Calendar: FC<Props> = ({ isSingle = false, values, onChange }) => {
     getInitCalendarDates(values),
   );
   const [isOpened, setIsOpened] = useState(false);
-  const [firstInputValue, setFirstInputValue] = useState(
-    getFirstInputValue(values, isSingle),
-  );
-  const [secondInputValue, setSecondInputValue] = useState(
-    values.from === null ? '' : values.from,
-  );
 
   const handleInputButtonClick = () => {
     setIsOpened(!isOpened);
   };
 
   const handleClearButtonClick = () => {
-    setFirstInputValue('');
-    setSecondInputValue('');
     setCalendarValue(null);
     onChange({ from: null, to: null });
   };
@@ -63,15 +54,10 @@ const Calendar: FC<Props> = ({ isSingle = false, values, onChange }) => {
     const secondFullStringDate = getFullStringDate(secondDate);
 
     if (isSingle) {
-      setFirstInputValue(
-        `${getStringDate(firstDate)} - ${getStringDate(secondDate)}`,
-      );
       onChange({ from: firstFullStringDate, to: secondFullStringDate });
       return;
     }
 
-    setFirstInputValue(firstFullStringDate);
-    setSecondInputValue(secondFullStringDate);
     onChange({ from: firstFullStringDate, to: secondFullStringDate });
   };
 
@@ -86,16 +72,16 @@ const Calendar: FC<Props> = ({ isSingle = false, values, onChange }) => {
         <div className={style.inputs}>
           <DropdownInput
             type="text"
-            value={firstInputValue}
+            value={getFirstInputValue(values, isSingle)}
             expanded={isOpened}
             onClick={handleInputButtonClick}
-            placeholder={isSingle ? 'ДД.ММ.ГГГГ - ДД.ММ.ГГГГ' : 'ДД.ММ.ГГГГ'}
+            placeholder={isSingle ? 'ДД.ММ - ДД.ММ' : 'ДД.ММ.ГГГГ'}
             readOnly
           />
           {!isSingle && (
             <DropdownInput
               type="text"
-              value={secondInputValue}
+              value={values.to === null ? '' : values.to}
               expanded={isOpened}
               onClick={handleInputButtonClick}
               placeholder="ДД.ММ.ГГГГ"
