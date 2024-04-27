@@ -15,7 +15,7 @@ type Filters = {
   expandableList: CheckboxItem[];
   rulesList: CheckboxItem[];
   availabilityList: CheckboxItem[];
-  dates: string[] | null[];
+  dates: { from: string | null; to: string | null };
   guests: {
     items: DropdownValue[];
     groups: number[][];
@@ -102,7 +102,7 @@ const initialState: Filters = {
       disabled: false,
     },
   ],
-  dates: [null, null],
+  dates: { from: null, to: null },
   guests: {
     items: [
       {

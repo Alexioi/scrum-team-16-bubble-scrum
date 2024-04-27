@@ -10,16 +10,12 @@ const filterSlice = createSlice({
     changeExpandableListData: (state, { payload }: { payload: string }) => {
       state.expandableList = changeChecked(state.expandableList, payload);
     },
-    changeDates: (state, { payload }: { payload: string[] | null[] }) => {
-      if (!(payload.length === 2)) {
-        return;
-      }
-
-      if (JSON.stringify(state.dates) === JSON.stringify(payload)) {
-        return;
-      }
-
-      state.dates = payload;
+    changeDates: (
+      state,
+      { payload }: { payload: { from: string | null; to: string | null } },
+    ) => {
+      state.dates.from = payload.from;
+      state.dates.to = payload.to;
     },
     changeGuestData: (
       state,

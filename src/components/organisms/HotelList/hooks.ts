@@ -35,13 +35,13 @@ const checkCheckbox = (
 };
 
 const checkDate = (
-  filter: string[] | null[],
+  filter: { from: string | null; to: string | null },
   hotelStart: string,
   hotelEnd: string,
 ) => {
-  if (filter[0] === null || filter[1] === null) return true;
-  const filterStartDate = generateDateFromString(filter[0], true);
-  const filterEndDate = generateDateFromString(filter[1], true);
+  if (filter.from === null || filter.to === null) return true;
+  const filterStartDate = generateDateFromString(filter.from, true);
+  const filterEndDate = generateDateFromString(filter.to, true);
   const hotelStartDate = generateDateFromString(hotelStart, false);
   const hotelEndDate = generateDateFromString(hotelEnd, false);
 
