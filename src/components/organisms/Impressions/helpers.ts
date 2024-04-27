@@ -1,4 +1,4 @@
-const getTitleByName = (name: string) => {
+const getTitleByName = (name: 'great' | 'good' | 'satisfactorily' | 'bad') => {
   switch (name) {
     case 'great':
       return 'Великолепно';
