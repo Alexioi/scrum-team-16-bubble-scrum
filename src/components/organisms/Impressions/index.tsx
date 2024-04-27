@@ -9,12 +9,18 @@ import { getObjectValuesSum, getPlural } from '@/helpers';
 
 import { Skeleton } from './Skeleton';
 import style from './style.module.scss';
-import { getTitleByName } from './helpers';
 
 const Chart = dynamic(
   () => import('@/libs/Chart').then((component) => component.Chart),
   { ssr: false },
 );
+
+const reviewNameLocale: { [key: string]: string } = {
+  great: 'Великолепно',
+  good: 'Хорошо',
+  satisfactorily: 'Удовлетворительно',
+  bad: 'Плохо',
+};
 
 const Impressions = () => {
   const room = useAppSelector(selectRoom);
@@ -42,9 +48,11 @@ const Impressions = () => {
       </div>
       <div className={style.legend}>
         <ul className={style['legend-list']}>
-          {Object.entries(reviews).map((item) => (
-            <li className={style['legend-list_item']} key={item[0]}>
-              {getTitleByName(item[0])}
+          {Object.keys(reviews).map((item) => (
+            <li className={style['legend-list_item']} key={item}>
+              {reviewNameLocale[item] === undefined
+                ? item
+                : reviewNameLocale[item]}
             </li>
           ))}
         </ul>
