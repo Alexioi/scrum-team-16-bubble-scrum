@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { selectRoom } from '@/store';
 import { useAppSelector } from '@/hooks';
@@ -18,26 +18,13 @@ const Chart = dynamic(
 
 const Impressions = () => {
   const room = useAppSelector(selectRoom);
-  const [reviews, setReviews] = useState({
-    great: 0,
-    good: 0,
-    satisfactorily: 0,
-    bad: 0,
-  });
-
-  useEffect(() => {
-    if (room === null) {
-      return;
-    }
-
-    setReviews(room.reviews);
-  }, [room]);
-
-  const count = getObjectValuesSum(reviews);
 
   if (room === null) {
     return <Skeleton />;
   }
+
+  const { reviews } = room;
+  const count = getObjectValuesSum(reviews);
 
   return (
     <div className={style.container}>
