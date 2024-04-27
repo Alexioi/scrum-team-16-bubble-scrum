@@ -60,7 +60,10 @@ const Chart: FC<Props> = ({ data }) => {
         paddingAngle={1}
       >
         {data.map((item, i) => (
-          <Cell key={item.name} fill={`url(#${colors[i % colors.length]})`} />
+          <Cell
+            key={item.name}
+            fill={`url(#${id}_${colors[i % colors.length]})`}
+          />
         ))}
       </Pie>
     </PieChart>
