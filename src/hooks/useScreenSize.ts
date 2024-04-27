@@ -19,7 +19,7 @@ const useScreenSize = () => {
     return () => {
       window.removeEventListener('resize', windowSizeHandler);
     };
-  }, []);
+  }, [windowSize]);
 
   return windowSize;
 };
