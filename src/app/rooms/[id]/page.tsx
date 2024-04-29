@@ -27,9 +27,7 @@ const RoomPage: FC<Props> = ({ params }) => {
           <div className={style['content-block']}>
             <div className={style['content-column']}>
               <div className={style['room-statistic']}>
-                <section className={style['icon-text-list']}>
-                  <RoomFeatures />
-                </section>
+                <RoomFeatures />
                 <section className={style['pie-chart']}>
                   <Typography tag="h2">Впечатления от номера</Typography>
                   <Impressions />
