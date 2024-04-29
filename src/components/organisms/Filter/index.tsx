@@ -42,7 +42,10 @@ const Filter = () => {
     setIsOpened(!isOpened);
   };
 
-  const handleCalendarChange = (value: string[] | null[]) => {
+  const handleCalendarChange = (value: {
+    from: string | null;
+    to: string | null;
+  }) => {
     dispatch(filterActions.changeDates(value));
   };
 
