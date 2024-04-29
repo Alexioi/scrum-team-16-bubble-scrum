@@ -6,13 +6,23 @@ $dark-shade-10: #1f20411a;
 $dark-shade-5: #1f20410d;
 $dark-shade: #1f2041;
 $purple: #bc9cff;
+$violet: #8ba4f9;
+$blue: #66d2ea;
 $green: #6fcf97;
 $cyan: #6bd0bf;
 $white: #ffffff;
 $red: #cf716f;
+$yellow: #ffe39c;
+$orange: #ffba9c;
+$gray: #909090;
+$gray-dark: #3d4975;
 
-$gradient-purple-100: linear-gradient($purple, #8ba4f9);
+$gradient-purple-100: linear-gradient($purple, $violet);
 $gradient-purple-50: linear-gradient(#bc9cff80, #8ba4f980);
 
-$gradient-green-100: linear-gradient($green, #66d2ea);
+$gradient-green-100: linear-gradient($green, $blue);
 $gradient-green-50: linear-gradient(#6fcf9780, #66d2ea80);
+
+$gradient-yellow-100: linear-gradient($yellow, $orange);
+
+$gradient-gray-100: linear-gradient($gray, $gray-dark);

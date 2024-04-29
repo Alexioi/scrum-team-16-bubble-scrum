@@ -7,6 +7,7 @@ import {
   RoomRules,
   GetRoomCardData,
   BookingCard,
+  Impressions,
 } from '@/components';
 
 type Props = { params: { id: string } };
@@ -25,6 +26,7 @@ const RoomPage: FC<Props> = ({ params }) => {
           }}
         />
         <RoomRules />
+        <Impressions />
 
         <BookingCard />
       </div>

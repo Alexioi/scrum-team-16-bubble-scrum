@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { Rating, Swiper, RoomInfo } from '@/components';
 import { Hotel } from '@/types';
-import { getPlural } from '@/helpers';
+import { getObjectValuesSum, getPlural } from '@/helpers';
 
 import style from './style.module.scss';
 
@@ -14,6 +14,8 @@ type Props = {
 const HotelCard: FC<Props> = ({
   hotel: { id, imageNames, isLux, roomNumber, price, averageRating, reviews },
 }) => {
+  const count = getObjectValuesSum(reviews);
+
   return (
     <div className={style.card}>
       <Swiper imageNames={imageNames} />
@@ -26,9 +28,9 @@ const HotelCard: FC<Props> = ({
           <div className={style.footer}>
             <Rating rating={averageRating} />
             <div className={style.reviews}>
-              {reviews}
+              {count}
               <span className={style.reviews_prefix}>
-                {getPlural([' Отзыв', ' Отзыва', ' Отзывов'], reviews)}
+                {getPlural([' Отзыв', ' Отзыва', ' Отзывов'], count)}
               </span>
             </div>
           </div>
