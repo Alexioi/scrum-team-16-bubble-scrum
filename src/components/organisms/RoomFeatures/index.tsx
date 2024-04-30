@@ -56,7 +56,7 @@ const RoomFeatures: FC = () => {
   }
 
   if (features.length === 0) {
-    return <ErrorMessage message="Особенностей у номера нет." />;
+    return null;
   }
 
   if (error) {
