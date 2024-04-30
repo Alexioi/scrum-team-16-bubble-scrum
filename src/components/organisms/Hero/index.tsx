@@ -22,7 +22,10 @@ const Hero = () => {
   const { items, groups } = useAppSelector(selectGuests);
   const dates = useAppSelector(selectDates);
 
-  const handleDateCalendarChange = (value: string[] | null[]) => {
+  const handleDateCalendarChange = (value: {
+    from: string | null;
+    to: string | null;
+  }) => {
     dispatch(filterActions.changeDates(value));
   };
 

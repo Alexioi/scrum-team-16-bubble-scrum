@@ -9,32 +9,16 @@ const getFullStringDate = (date: Date) => {
   return `${dayString}.${mouthString}.${year}`;
 };
 
-const getStringDate = (date: Date) => {
-  const day = date.getDate();
-  const month = date
-    .toLocaleString('default', { month: 'short' })
-    .substring(0, 3);
-
-  return `${day} ${month}`;
-};
-
-const getFirstInputValue = (values: string[] | null[], isSingle: boolean) => {
-  if (values[0] === null || values[1] === null) {
-    return '';
-  }
-
-  return isSingle ? `${values[0]}-${values[1]}` : values[0];
-};
-
-const getInitCalendarDates = (
-  values: string[] | null[],
-): null | [Date, Date] => {
-  if (values[0] === null || values[1] === null) {
+const getInitCalendarDates = (values: {
+  from: string | null;
+  to: string | null;
+}): null | [Date, Date] => {
+  if (values.from === null || values.to === null) {
     return null;
   }
 
-  const [firstDay, firstMonth, firstYear] = values[0].split('.');
-  const [secondDay, secondMonth, secondYear] = values[1].split('.');
+  const [firstDay, firstMonth, firstYear] = values.from.split('.');
+  const [secondDay, secondMonth, secondYear] = values.to.split('.');
 
   return [
     new Date([firstMonth, firstDay, firstYear].join('.')),
@@ -42,9 +26,42 @@ const getInitCalendarDates = (
   ];
 };
 
+const getStringDate = (values: { from: string | null; to: string | null }) => {
+  const dates = getInitCalendarDates(values);
+
+  if (dates === null) {
+    return '';
+  }
+
+  const [from, to] = dates;
+
+  const dayFrom = from.getDate();
+  const monthFrom = from
+    .toLocaleString('default', { month: 'short' })
+    .substring(0, 3);
+
+  const dayTo = to.getDate();
+  const monthTo = to
+    .toLocaleString('default', { month: 'short' })
+    .substring(0, 3);
+
+  return `${dayFrom} ${monthFrom} - ${dayTo} ${monthTo}`;
+};
+
+const getFirstInputValue = (
+  values: { from: string | null; to: string | null },
+  isSingle: boolean,
+) => {
+  if (values.from === null || values.to === null) {
+    return '';
+  }
+
+  return isSingle ? `${getStringDate(values)}` : values.from;
+};
+
 export {
+  getInitCalendarDates,
   getFullStringDate,
   getStringDate,
   getFirstInputValue,
-  getInitCalendarDates,
 };
