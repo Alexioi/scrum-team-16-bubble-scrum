@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { Rating, Swiper, RoomInfo } from '@/components';
 import { Hotel } from '@/types';
-import { getPlural } from '@/helpers';
+import { getObjectValuesSum, getPlural } from '@/helpers';
 
 import style from './style.module.scss';
 
@@ -14,13 +14,11 @@ type Props = {
 const HotelCard: FC<Props> = ({
   hotel: { id, imageNames, isLux, roomNumber, price, averageRating, reviews },
 }) => {
-  const count = Object.values(reviews).reduce((sum, item) => sum + item, 0);
+  const count = getObjectValuesSum(reviews);
 
   return (
     <div className={style.card}>
-      <div className={style.head}>
-        <Swiper imageNames={imageNames} />
-      </div>
+      <Swiper imageNames={imageNames} />
       <Link className={style.link} href={`/rooms/${id}`}>
         <div className={style.body}>
           <RoomInfo isLux={isLux} roomNumber={roomNumber} price={price} />
