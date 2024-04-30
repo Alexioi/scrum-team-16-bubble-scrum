@@ -12,7 +12,7 @@ type Props = {
   theme?: 'outlined' | 'default' | 'link' | 'long';
   type?: 'submit' | 'reset' | 'button';
   size?: 'low' | 'default';
-  onClick(): void;
+  onClick?(): void;
 };
 
 const Button: FC<Props> = ({
