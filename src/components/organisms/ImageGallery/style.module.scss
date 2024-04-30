@@ -1,0 +1,59 @@
+@import '@/style/variables.scss';
+
+.gallery {
+  height: 485px;
+  width: 100%;
+  
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  aspect-ratio: 16 / 9;
+}
+
+.item1 {
+  position: relative;
+  height: 485px;
+}
+
+.item2 {
+  position: relative;
+  height: 243px;
+}
+
+.item3 {
+  position: relative;
+  height: 242px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+
+  &__small {
+    width: 460px;
+  }
+
+  &__big {
+    width: 980px;
+  }
+}
+
+.image {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+}
+
+.skeleton {
+  height: 485px;
+
+  animation: $animation-skeleton-loading;
+}
+
+@media (max-width: 992px) {
+  .skeleton {
+    aspect-ratio: 16 / 9;
+  }
+}

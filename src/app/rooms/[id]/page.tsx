@@ -4,9 +4,10 @@ import { useState, FC } from 'react';
 
 import {
   LikeButton,
+  BookingCard,
   RoomRules,
   GetRoomCardData,
-  BookingCard,
+  ImageGallery,
   Impressions,
 } from '@/components';
 
@@ -17,6 +18,7 @@ const RoomPage: FC<Props> = ({ params }) => {
 
   return (
     <GetRoomCardData id={params.id}>
+      <ImageGallery />
       <div style={{ width: '380px', margin: 'auto' }}>
         <LikeButton
           countLikes={isLiked ? 23 : 22}

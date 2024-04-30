@@ -8,7 +8,9 @@ import style from './style.module.scss';
 const HotelCardSkeleton: FC = () => {
   return (
     <div className={clsx(style.card, style.skeleton)}>
-      <SwiperImageSkeleton />
+      <div className={style.head}>
+        <SwiperImageSkeleton />
+      </div>
 
       <div className={style.body}>
         <div className={style.header}>

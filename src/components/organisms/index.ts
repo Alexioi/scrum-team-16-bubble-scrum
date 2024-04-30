@@ -5,6 +5,7 @@ export * from './Footer';
 export * from './Header';
 export * from './HotelCard';
 export * from './HotelList';
+export * from './ImageGallery';
 export * from './Impressions';
 export * from './PriceRangeSlider';
 export * from './SubscriptionInput';
