@@ -64,12 +64,17 @@
 }
 
 .username {
+  text-decoration: none;
   border-left: 1px solid rgb($dark-shade, 0.1);
   padding: 6px 0 6px 20px;
   font-size: 14px;
   line-height: 17px;
   color: $dark-shade-50;
   text-align: center;
+
+  &:hover {
+    color: $dark-shade;
+  }
 }
 
 .skeleton {
