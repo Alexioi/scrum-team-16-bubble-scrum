@@ -4,7 +4,8 @@ import { redirect } from 'next/navigation';
 
 import { selectUID } from '@/store';
 import { useAppSelector } from '@/hooks';
-import { UserInfo } from '@/components';
+import { UserInfo, Button } from '@/components';
+import { logout } from '@/api';
 
 const Profile = () => {
   const uid = useAppSelector(selectUID);
@@ -13,7 +14,18 @@ const Profile = () => {
     return redirect('/');
   }
 
-  return <UserInfo />;
+  return (
+    <>
+      <Button
+        onClick={() => {
+          logout();
+        }}
+        text="выход"
+        type="button"
+      />
+      <UserInfo />
+    </>
+  );
 };
 
 export default Profile;
