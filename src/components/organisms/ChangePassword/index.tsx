@@ -40,6 +40,8 @@ const ChangePassword = () => {
       };
     }
 
+    setErrors(validErrors);
+
     if (
       validErrors._errors.length === 0 &&
       validErrors.repeatPassword === undefined
@@ -63,7 +65,7 @@ const ChangePassword = () => {
         } else {
           setMessage({
             type: 'error',
-            text: 'Произошла ошибка при изменении пароля',
+            text: 'Произошла ошибка при изменении пароля. Повторите попытку',
           });
         }
       }

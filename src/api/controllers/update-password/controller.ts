@@ -15,7 +15,9 @@ const updatePassword = async (oldPassword: string, newPassword: string) => {
     try {
       await updateFirebasePassword(user, newPassword);
     } catch {
-      throw new Error('Произошла ошибка при изменении пароля');
+      throw new Error(
+        'Произошла ошибка при изменении пароля. Повторите попытку',
+      );
     }
   }
 };
