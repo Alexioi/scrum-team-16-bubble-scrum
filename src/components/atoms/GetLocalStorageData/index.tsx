@@ -15,7 +15,7 @@ const GetLocalStorageData: FC<Props> = ({ children }) => {
 
   useEffect(() => {
     const getUserData = async (uid: string) => {
-      const { name, surname, sex, birthday, isSubscribed } =
+      const { name, surname, sex, birthday, isSubscribed, email } =
         await getUserInfo(uid);
 
       dispatch(authActions.changeUID(uid));
@@ -24,6 +24,7 @@ const GetLocalStorageData: FC<Props> = ({ children }) => {
       dispatch(authActions.changeSexByName(sex));
       dispatch(authActions.changeBirthday(birthday));
       dispatch(authActions.changeIsSubscribed(isSubscribed));
+      dispatch(authActions.changeEmail(email));
     };
 
     const uid = localStorage.getItem('uid');

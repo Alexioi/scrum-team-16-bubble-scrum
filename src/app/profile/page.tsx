@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 
 import { selectUID } from '@/store';
 import { useAppSelector } from '@/hooks';
+import { UserInfo } from '@/components';
 
 const Profile = () => {
   const uid = useAppSelector(selectUID);
@@ -12,7 +13,7 @@ const Profile = () => {
     return redirect('/');
   }
 
-  return null;
+  return <UserInfo />;
 };
 
 export default Profile;

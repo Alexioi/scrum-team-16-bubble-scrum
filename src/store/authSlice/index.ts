@@ -9,6 +9,7 @@ type InitialState = {
   sexes: Sex[];
   birthday: string;
   isSubscribed: boolean;
+  email: string;
 };
 
 const initialState: InitialState = {
@@ -21,6 +22,7 @@ const initialState: InitialState = {
   ],
   birthday: '',
   isSubscribed: true,
+  email: '',
 };
 
 const authSlice = createSlice({
@@ -52,6 +54,9 @@ const authSlice = createSlice({
     },
     changeIsSubscribed: (state, { payload }: { payload: boolean }) => {
       state.isSubscribed = payload;
+    },
+    changeEmail: (state, { payload }: { payload: string }) => {
+      state.email = payload;
     },
   },
 });
