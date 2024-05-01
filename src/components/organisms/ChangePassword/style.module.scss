@@ -1,11 +1,21 @@
+@import '@/style/variables.scss';
+
 .form {
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .change_button {
-    width: 100%;
-    margin-top: 24px;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.message {
+  margin-top: 8px;
+
+  &_error {
+    color: $red;
+  }
 }
