@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useRef, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import clsx from 'clsx';
 
 import { Button, Input, Modal, Typography } from '@/components/atoms';
@@ -10,7 +10,6 @@ import style from './style.module.scss';
 import { FormErrors, formScheme } from './sheme';
 
 const ChangePassword = () => {
-  const errorsRef = useRef<FormErrors>({ _errors: [] });
   const [errors, setErrors] = useState<FormErrors>({ _errors: [] });
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState<{
@@ -24,26 +23,26 @@ const ChangePassword = () => {
     const data = new FormData(e.currentTarget);
     const formData = Object.fromEntries(data.entries());
     const validResult = formScheme.safeParse(formData);
+    let validErrors: FormErrors = { _errors: [] };
 
     if ('error' in validResult) {
-      const validErrors = validResult.error.format();
-      errorsRef.current = validErrors;
+      validErrors = validResult.error.format();
     }
 
     if (validResult.success) {
-      errorsRef.current = { _errors: [] };
+      validErrors = { _errors: [] };
     }
 
     if (formData['newPassword'] !== formData['repeatPassword']) {
-      errorsRef.current = {
-        ...errorsRef.current,
+      validErrors = {
+        ...validErrors,
         repeatPassword: { _errors: ['Пароль не совпадает с введённым выше'] },
       };
     }
 
     if (
-      errorsRef.current._errors.length === 0 &&
-      errorsRef.current.repeatPassword === undefined
+      validErrors._errors.length === 0 &&
+      validErrors.repeatPassword === undefined
     ) {
       try {
         await updatePassword(
@@ -54,8 +53,8 @@ const ChangePassword = () => {
       } catch (error) {
         if (error instanceof Error) {
           if (error.message === 'Пароль введён неверно') {
-            errorsRef.current = {
-              ...errorsRef.current,
+            validErrors = {
+              ...validErrors,
               oldPassword: {
                 _errors: ['Пароль введён неверно'],
               },
@@ -64,13 +63,13 @@ const ChangePassword = () => {
         } else {
           setMessage({
             type: 'error',
-            text: ' Произошла ошибка при изменении пароля',
+            text: 'Произошла ошибка при изменении пароля',
           });
         }
       }
     }
 
-    setErrors(errorsRef.current);
+    setErrors(validErrors);
   };
 
   return (
