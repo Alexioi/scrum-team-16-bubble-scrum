@@ -6,10 +6,16 @@ import { userInfoScheme } from '@/schemes';
 
 import { auth, db } from '../../initFirebase';
 
-const getUserInfo = async (uid: string) => {
+const getUserInfo = async () => {
+  const user = auth.currentUser;
+
+  if (user === null || user.email === null) {
+    return null;
+  }
+
   const usersInfoCollection = collection(db, 'users-info');
 
-  const q = query(usersInfoCollection, where('uid', '==', uid));
+  const q = query(usersInfoCollection, where('uid', '==', user.uid));
 
   const querySnapshot = await getDocs(q);
 
@@ -23,16 +29,11 @@ const getUserInfo = async (uid: string) => {
     throw new Error(INCORRECT_DATA_ERROR);
   }
 
-  return { uid, ...result.data };
+  return { uid: user.uid, email: user.email, ...result.data };
 };
 
 const login = async (email: string, password: string) => {
-  const signInResult = await signInWithEmailAndPassword(auth, email, password);
-  const { uid } = signInResult.user;
-
-  const result = await getUserInfo(uid);
-
-  return result;
+  await signInWithEmailAndPassword(auth, email, password);
 };
 
 export { getUserInfo, login };

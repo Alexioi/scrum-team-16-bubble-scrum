@@ -28,7 +28,7 @@ const CommentCard: FC<Props> = ({ comment }) => {
 
   return (
     <div className={style.card}>
-      <UserCommentInfo date={comment.date} userUid={comment.userUid} />
+      <UserCommentInfo date={comment.date} />
       <div className={style.body}>
         <div className={style.like}>
           <LikeButton

@@ -10,7 +10,7 @@ import {
   QuestionAboutAuth,
   DangerErrorMessage,
 } from '@/components';
-import { login } from '@/api';
+import { getUserInfo, login } from '@/api';
 import { useAppDispatch } from '@/hooks';
 import { authActions } from '@/store';
 import { FIREBASE_AUTH_ERRORS } from '@/constants';
@@ -32,12 +32,14 @@ const SignIn = () => {
   };
   const handleSignInButtonClick = async () => {
     try {
-      const { uid, name, surname, sex, birthday, isSubscribed } = await login(
-        email,
-        password,
-      );
+      await login(email, password);
+      const result = await getUserInfo();
 
-      localStorage.setItem('uid', uid);
+      if (result === null) {
+        return;
+      }
+
+      const { uid, name, surname, sex, birthday, isSubscribed } = result;
 
       dispatch(authActions.changeUID(uid));
       dispatch(authActions.changeName(name));
@@ -45,6 +47,7 @@ const SignIn = () => {
       dispatch(authActions.changeSexByName(sex));
       dispatch(authActions.changeBirthday(birthday));
       dispatch(authActions.changeIsSubscribed(isSubscribed));
+      dispatch(authActions.changeEmail(result.email));
     } catch (err) {
       if (
         isErrorWithCode(err) &&
