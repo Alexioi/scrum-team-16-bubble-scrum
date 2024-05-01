@@ -41,6 +41,7 @@ const ChangePassword = () => {
             placeholder="Повторите новый пароль"
             type="password"
             name="repeatPassrord"
+            error="asdadsads"
           />
           <div className={style.change_button}>
             <Button
