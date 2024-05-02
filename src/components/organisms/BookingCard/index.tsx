@@ -1,6 +1,7 @@
 'use client';
 
 import { FormEvent, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import {
   Calendar,
@@ -21,6 +22,7 @@ import { calculateDays } from './helpers';
 import style from './style.module.scss';
 
 const BookingCard = () => {
+  const router = useRouter();
   const uid = useAppSelector(selectUID);
   const room = useAppSelector(selectRoom);
   const [from, setFrom] = useState<string | null>(null);
@@ -66,10 +68,14 @@ const BookingCard = () => {
 
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (uid === null || uid === '') {
+      router.push('/sign-in');
+      return;
+    }
+
     setError('');
     if (
       room === null ||
-      uid === null ||
       from === null ||
       to === null ||
       guests[0].counter + guests[1].counter + guests[2].counter === 0
@@ -78,18 +84,18 @@ const BookingCard = () => {
       return;
     }
 
-    const price1 = 1000;
-
     try {
       await createBooking(
         uid,
         room.id,
-        price1,
+        price * day - discount + additionalServices,
         guests[0].counter + guests[1].counter,
         guests[2].counter,
         from,
         to,
       );
+      setGuestCount(guests[0].counter + guests[1].counter);
+      setBabyCount(guests[2].counter);
       setIsBooking(true);
     } catch (err) {
       setError('Что то пошло не так, попробуйте забронировать еще раз.');
@@ -111,23 +117,19 @@ const BookingCard = () => {
     }
 
     const fetchData = async () => {
-      try {
-        const result = await getBooking(room.id);
+      const result = await getBooking(room.id);
 
-        if (result === undefined) {
-          return;
-        }
-
-        setIsBooking(true);
-        setGuestCount(result.guestCount);
-        setBabyCount(result.babyCount);
-        setFrom(result.startDate);
-        setTo(result.endDate);
-      } catch (err) {
-        /* empty */
-      } finally {
+      if (result === null) {
         setIsLoading(false);
+        return;
       }
+
+      setIsBooking(true);
+      setGuestCount(result.guestCount);
+      setBabyCount(result.babyCount);
+      setFrom(result.startDate);
+      setTo(result.endDate);
+      setIsLoading(false);
     };
 
     fetchData();

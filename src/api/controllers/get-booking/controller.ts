@@ -2,7 +2,6 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 
 import { db } from '@/api/initFirebase';
 import { bookingScheme } from '@/schemes';
-import { INCORRECT_DATA_ERROR } from '@/constants';
 
 const getBooking = async (id: string) => {
   const q = query(collection(db, 'bookings'), where('roomId', '==', id));
@@ -16,7 +15,7 @@ const getBooking = async (id: string) => {
   );
 
   if (!result.success) {
-    throw new Error(INCORRECT_DATA_ERROR);
+    return null;
   }
 
   return result.data;
