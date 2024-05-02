@@ -89,7 +89,13 @@ const HotelList = () => {
             return null;
           }
 
-          return <HotelCard key={item.id} hotel={item} />;
+          return (
+            <HotelCard
+              key={item.id}
+              hotel={item}
+              isBooking={uid === item.bookingUserId}
+            />
+          );
         })}
     </div>
   );
