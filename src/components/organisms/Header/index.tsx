@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import clsx from 'clsx';
 
@@ -75,9 +76,9 @@ const Header = () => {
               </>
             )}
             {uid !== null && uid.length > 0 && (
-              <span className={style.username}>
+              <Link href="/profile" className={style.username}>
                 {name} {surname}
-              </span>
+              </Link>
             )}
           </div>
         </div>
