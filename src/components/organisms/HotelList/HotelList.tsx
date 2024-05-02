@@ -16,6 +16,7 @@ import {
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { ErrorMessage } from '@/components/molecules';
 import { ITEMS_PER_PAGE } from '@/constants';
+import { Hotel } from '@/types';
 
 import { HotelCard } from '../HotelCard';
 import { HotelListSkeleton } from './HotelListSkeleton';
@@ -80,15 +81,18 @@ const HotelList = () => {
   return (
     <div className={style.list}>
       {filterRoomListData
+        .reduce<Hotel[]>((acc, item) => {
+          if (item.bookingUserId !== undefined && uid !== item.bookingUserId) {
+            return acc;
+          }
+
+          return [...acc, item];
+        }, [])
         .slice(
           (currentPage - 1) * ITEMS_PER_PAGE,
           (currentPage - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE,
         )
         .map((item) => {
-          if (item.bookingUserId !== undefined && uid !== item.bookingUserId) {
-            return null;
-          }
-
           return (
             <HotelCard
               key={item.id}
