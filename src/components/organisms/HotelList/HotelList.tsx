@@ -11,6 +11,7 @@ import {
   selectRoomListData,
   selectRoomListError,
   selectRoomListIsLoading,
+  selectUID,
 } from '@/store';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { ErrorMessage } from '@/components/molecules';
@@ -28,6 +29,7 @@ const HotelList = () => {
   const roomListError = useAppSelector(selectRoomListError);
   const currentPage = useAppSelector(selectCurrentPage);
   const filters = useAppSelector(selectAllFilters);
+  const uid = useAppSelector(selectUID);
 
   const filterRoomListData = useFilter(filters, roomListData);
 
@@ -83,6 +85,10 @@ const HotelList = () => {
           (currentPage - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE,
         )
         .map((item) => {
+          if (item.bookingUserId !== undefined && uid !== item.bookingUserId) {
+            return null;
+          }
+
           return <HotelCard key={item.id} hotel={item} />;
         })}
     </div>
