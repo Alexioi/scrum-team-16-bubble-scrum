@@ -39,6 +39,7 @@ const hotelScheme = z.object({
   }),
   discount: z.number(),
   additionalServices: z.number(),
+  bookingUserId: z.undefined().or(z.string()),
 });
 
 export { hotelScheme };
