@@ -89,18 +89,21 @@ const ChangePassword = () => {
             placeholder="Старый пароль"
             type="password"
             name="oldPassword"
+            required
             error={errors.oldPassword ? errors.oldPassword._errors[0] : ''}
           />
           <Input
             placeholder="Новый пароль"
             type="password"
             name="newPassword"
+            required
             error={errors.newPassword ? errors.newPassword._errors[0] : ''}
           />
           <Input
             placeholder="Повторите новый пароль"
             type="password"
             name="repeatPassword"
+            required
             error={
               errors.repeatPassword ? errors.repeatPassword._errors[0] : ''
             }
