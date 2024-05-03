@@ -49,6 +49,7 @@ const selectDates = (state: RootState) => state.filter.dates;
 const selectRoom = (state: RootState) => state.room.data;
 const selectRoomError = (state: RootState) => state.room.error;
 const selectRoomIsLoading = (state: RootState) => state.room.isLoading;
+const selectEmail = (state: RootState) => state.auth.email;
 
 export type { RootState, AppDispatch, Filters };
 export {
@@ -84,4 +85,5 @@ export {
   selectSexes,
   selectBirthday,
   selectIsSubscribes,
+  selectEmail,
 };

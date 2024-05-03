@@ -20,6 +20,7 @@ import {
   selectSexes,
   selectBirthday,
   selectIsSubscribes,
+  selectEmail,
 } from '@/store';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { isErrorWithCode } from '@/helpers';
@@ -35,7 +36,7 @@ const SignUp = () => {
   const name = useAppSelector(selectName);
   const surname = useAppSelector(selectSurname);
   const birthday = useAppSelector(selectBirthday);
-  const [email, setEmail] = useState('');
+  const email = useAppSelector(selectEmail);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
@@ -49,7 +50,7 @@ const SignUp = () => {
     dispatch(authActions.changeBirthday(e.currentTarget.value));
   };
   const handleEmailInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.currentTarget.value);
+    dispatch(authActions.changeEmail(e.currentTarget.value));
   };
   const handlePasswordInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.currentTarget.value);
@@ -92,8 +93,6 @@ const SignUp = () => {
         password,
         isSubscribes,
       );
-
-      localStorage.setItem('uid', uid);
 
       dispatch(authActions.changeUID(uid));
     } catch (err) {

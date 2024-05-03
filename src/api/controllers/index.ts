@@ -6,5 +6,6 @@ export * from './sign-up';
 export * from './sing-in';
 export * from './comment-like';
 export * from './features';
+export * from './user-info';
 export * from './create-booking';
 export * from './get-booking';
