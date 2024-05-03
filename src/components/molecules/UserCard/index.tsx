@@ -2,21 +2,21 @@
 
 import { useAppDispatch } from '@/hooks';
 import { UserInfo, Button } from '@/components';
-import { logout } from '@/api';
+import { signOut } from '@/api';
 import { authActions } from '@/store';
 
 const UserCard = () => {
   const dispatch = useAppDispatch();
 
-  const handleLogoutClick = () => {
+  const handleSignOutClick = () => {
     dispatch(authActions.reset());
-    logout();
+    signOut();
   };
 
   return (
     <div>
       <UserInfo />
-      <Button onClick={handleLogoutClick} text="выход" type="button" />
+      <Button onClick={handleSignOutClick} text="выход" type="button" />
     </div>
   );
 };

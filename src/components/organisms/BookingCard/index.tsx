@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import {
   Calendar,
@@ -9,19 +10,28 @@ import {
   Button,
   RoomInfo,
   Card,
+  DangerErrorMessage,
 } from '@/components';
 import { useAppSelector } from '@/hooks';
-import { selectRoom, selectRoomIsLoading } from '@/store';
+import { selectRoom, selectUID } from '@/store';
+import { createBooking, getBooking } from '@/api';
+import { getPlural } from '@/helpers';
 
 import { Skeleton } from './Skeleton';
 import { calculateDays } from './helpers';
 import style from './style.module.scss';
 
 const BookingCard = () => {
+  const router = useRouter();
+  const uid = useAppSelector(selectUID);
   const room = useAppSelector(selectRoom);
-  const roomIsLoading = useAppSelector(selectRoomIsLoading);
   const [from, setFrom] = useState<string | null>(null);
   const [to, setTo] = useState<string | null>(null);
+  const [isBooking, setIsBooking] = useState(false);
+  const [guestCount, setGuestCount] = useState(0);
+  const [babyCount, setBabyCount] = useState(0);
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
   const [guests, setGuests] = useState([
     { name: 'взрослые', counter: 0 },
     { name: 'дети', counter: 0 },
@@ -56,6 +66,42 @@ const BookingCard = () => {
     setTo(values.to);
   };
 
+  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (uid === null || uid === '') {
+      router.push('/sign-in');
+      return;
+    }
+
+    setError('');
+    if (
+      room === null ||
+      from === null ||
+      to === null ||
+      guests[0].counter + guests[1].counter + guests[2].counter === 0
+    ) {
+      setError('Гости или даты не выбраны.');
+      return;
+    }
+
+    try {
+      await createBooking(
+        uid,
+        room.id,
+        price * day - discount + additionalServices,
+        guests[0].counter + guests[1].counter,
+        guests[2].counter,
+        from,
+        to,
+      );
+      setGuestCount(guests[0].counter + guests[1].counter);
+      setBabyCount(guests[2].counter);
+      setIsBooking(true);
+    } catch (err) {
+      setError('Что то пошло не так, попробуйте забронировать еще раз.');
+    }
+  };
+
   const handleDropdownChange = (
     value: {
       name: string;
@@ -65,39 +111,81 @@ const BookingCard = () => {
     setGuests(value);
   };
 
-  if (roomIsLoading) {
+  useEffect(() => {
+    if (room === null) {
+      return;
+    }
+
+    const fetchData = async () => {
+      const result = await getBooking(room.id);
+
+      if (result === null) {
+        setIsLoading(false);
+        return;
+      }
+
+      setIsBooking(true);
+      setGuestCount(result.guestCount);
+      setBabyCount(result.babyCount);
+      setFrom(result.startDate);
+      setTo(result.endDate);
+      setIsLoading(false);
+    };
+
+    fetchData();
+  }, [room]);
+
+  if (isLoading) {
     return <Skeleton />;
   }
 
   return (
     <Card>
-      <form>
+      <form onSubmit={handleFormSubmit}>
         <RoomInfo
           roomNumber={roomNumber}
           isLux={isLux}
           price={price}
           isBigRoomNumber
         />
-        <div className={style.calendar}>
-          <div className={style['calendar-heading']}>
-            <Typography tag="h3">Прибытие</Typography>
-            <Typography tag="h3">Выезд</Typography>
+        {isBooking && (
+          <div>
+            <Typography tag="span">
+              {guestCount} {getPlural(['гость', 'гостя', 'гостей'], guestCount)}
+            </Typography>
+            ,
+            <Typography tag="span">
+              {babyCount}{' '}
+              {getPlural(['младенец', 'младенца', 'младенцев'], babyCount)}
+            </Typography>
           </div>
-          <Calendar values={{ from, to }} onChange={handleCalendarChange} />
-        </div>
-        <div className={style['dropdown-heading']}>
-          <Typography tag="h3">Гости</Typography>
-        </div>
-        <Dropdown
-          items={guests}
-          placeholder="Сколько гостей"
-          groups={[[0, 1], [2]]}
-          onChange={handleDropdownChange}
-          variants={[
-            ['гость', 'гостя', 'гостей'],
-            ['младенец', 'младенца', 'младенцев'],
-          ]}
-        />
+        )}
+        {!isBooking && (
+          <div className={style.calendar}>
+            <div className={style['calendar-heading']}>
+              <Typography tag="h3">Прибытие</Typography>
+              <Typography tag="h3">Выезд</Typography>
+            </div>
+            <Calendar values={{ from, to }} onChange={handleCalendarChange} />
+          </div>
+        )}
+        {!isBooking && (
+          <>
+            <div className={style['dropdown-heading']}>
+              <Typography tag="h3">Гости</Typography>
+            </div>
+            <Dropdown
+              items={guests}
+              placeholder="Сколько гостей"
+              groups={[[0, 1], [2]]}
+              onChange={handleDropdownChange}
+              variants={[
+                ['гость', 'гостя', 'гостей'],
+                ['младенец', 'младенца', 'младенцев'],
+              ]}
+            />
+          </>
+        )}
         <ul className={style['expenses-list']}>
           {expensesItems.map((item) => {
             return (
@@ -128,7 +216,11 @@ const BookingCard = () => {
             </span>
           </div>
         </ul>
-        <Button theme="long" onClick={() => {}} text="забронировать" />
+        <DangerErrorMessage>{error}</DangerErrorMessage>
+        {!isBooking && (
+          <Button theme="long" type="submit" text="забронировать" />
+        )}
+        {isBooking && <div className={style.text}>Забронировано</div>}
       </form>
     </Card>
   );

@@ -31,6 +31,7 @@ const Input: FC<Props> = ({ type, squareBottom, active, ...standardProps }) => {
       pattern={standardProps.pattern}
       onChange={standardProps.onChange}
       defaultValue={standardProps.defaultValue}
+      required={standardProps.required}
     />
   );
 };
