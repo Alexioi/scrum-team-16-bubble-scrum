@@ -118,12 +118,7 @@ const ChangePassword = () => {
             </div>
           )}
           <div className={style.change_button}>
-            <Button
-              onClick={() => {}}
-              type="submit"
-              text="Изменить"
-              theme="long"
-            />
+            <Button type="submit" text="Изменить" theme="long" />
           </div>
         </form>
       </Modal>
