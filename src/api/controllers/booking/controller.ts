@@ -17,7 +17,7 @@ const getBooking = async (id: string) => {
 
   const result = bookingScheme.safeParse(
     querySnapshot.docs.map((el) => {
-      return el.data();
+      return { id: el.id, ...el.data() };
     })[0],
   );
 
