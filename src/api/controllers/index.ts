@@ -7,4 +7,5 @@ export * from './sing-in';
 export * from './comment-like';
 export * from './features';
 export * from './create-booking';
-export * from './get-booking';
+export * from './booking';
+export * from './bookings';

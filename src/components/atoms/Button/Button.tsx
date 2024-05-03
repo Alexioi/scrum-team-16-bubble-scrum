@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, MouseEvent } from 'react';
 import { clsx } from 'clsx';
 
 import ArrowSVG from '@/images/decorative/arrow.svg';
@@ -12,7 +12,7 @@ type Props = {
   theme?: 'outlined' | 'default' | 'link' | 'long';
   type?: 'submit' | 'reset' | 'button';
   size?: 'low' | 'default';
-  onClick?(): void;
+  onClick?(e?: MouseEvent<HTMLButtonElement>): void;
 };
 
 const Button: FC<Props> = ({
