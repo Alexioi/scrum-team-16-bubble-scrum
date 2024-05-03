@@ -39,6 +39,7 @@ type Hotel = {
   };
   discount: number;
   additionalServices: number;
+  bookingUserId?: string;
 };
 
 export type { Hotel, Reviews };
