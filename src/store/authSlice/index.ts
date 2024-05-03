@@ -58,6 +58,18 @@ const authSlice = createSlice({
     changeEmail: (state, { payload }: { payload: string }) => {
       state.email = payload;
     },
+    reset: (state) => {
+      state.uid = null;
+      state.name = '';
+      state.surname = '';
+      state.sexes = [
+        { value: 'man', text: 'мужчина', checked: true },
+        { value: 'woman', text: 'женщина', checked: false },
+      ];
+      state.birthday = '';
+      state.isSubscribed = true;
+      state.email = '';
+    },
   },
 });
 
