@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 
 import {
   Card,
@@ -30,7 +30,11 @@ const SignIn = () => {
   const handlePasswordInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.currentTarget.value);
   };
-  const handleSignInButtonClick = async () => {
+  const handleSignInButtonClick = () => {
+    setError('');
+  };
+  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
       const { uid, name, surname, sex, birthday, isSubscribed } = await login(
         email,
@@ -57,7 +61,7 @@ const SignIn = () => {
 
   return (
     <Card>
-      <form>
+      <form onSubmit={handleFormSubmit}>
         <Typography tag="h1">Войти</Typography>
         <div className={style['login-input']}>
           <Input
@@ -67,6 +71,7 @@ const SignIn = () => {
             placeholder="Email"
             value={email}
             onChange={handleEmailInputChange}
+            required
           />
         </div>
         <div className={style['password-input']}>
@@ -76,11 +81,17 @@ const SignIn = () => {
             placeholder="Пароль"
             value={password}
             onChange={handlePasswordInputChange}
+            required
           />
         </div>
         <DangerErrorMessage>{error}</DangerErrorMessage>
         <div className={style['submit-button']}>
-          <Button theme="long" text="войти" onClick={handleSignInButtonClick} />
+          <Button
+            theme="long"
+            text="войти"
+            type="submit"
+            onClick={handleSignInButtonClick}
+          />
         </div>
       </form>
       <div className={style['question-about-auth']}>
