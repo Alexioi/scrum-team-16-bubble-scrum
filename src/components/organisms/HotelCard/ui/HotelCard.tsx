@@ -9,16 +9,23 @@ import style from './style.module.scss';
 
 type Props = {
   hotel: Hotel;
+  isBooking: boolean;
 };
 
 const HotelCard: FC<Props> = ({
   hotel: { id, imageNames, isLux, roomNumber, price, averageRating, reviews },
+  isBooking = false,
 }) => {
   const count = getObjectValuesSum(reviews);
 
   return (
     <div className={style.card}>
-      <Swiper imageNames={imageNames} />
+      <div className={style.head}>
+        {isBooking && (
+          <div className={style['booking-label']}>Забронировано</div>
+        )}
+        <Swiper imageNames={imageNames} />
+      </div>
       <Link className={style.link} href={`/rooms/${id}`}>
         <div className={style.body}>
           <RoomInfo isLux={isLux} roomNumber={roomNumber} price={price} />

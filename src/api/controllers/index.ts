@@ -7,3 +7,7 @@ export * from './sing-in';
 export * from './comment-like';
 export * from './features';
 export * from './update-password';
+export * from './signOut';
+export * from './user-info';
+export * from './create-booking';
+export * from './get-booking';

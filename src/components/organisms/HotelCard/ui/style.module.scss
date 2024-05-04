@@ -10,10 +10,22 @@
   box-shadow: 0px 10px 20px 0px $dark-shade-5;
   border-radius: 4px;
   overflow: hidden;
+  position: relative;
 }
 
 .head {
   height: 151px;
+}
+
+.booking-label {
+  position: absolute;
+  z-index: 100;
+  background-color: $green;
+  padding: 2px;
+  color: white;
+  border-radius: 22px;
+  right: 10px;
+  top: 10px;
 }
 
 .link {

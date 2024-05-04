@@ -3,3 +3,4 @@ export * from './commentScheme';
 export * from './userInfoScheme';
 export * from './featureScheme';
 export * from './passwordScheme';
+export * from './bookingScheme';

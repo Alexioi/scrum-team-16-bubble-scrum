@@ -4,7 +4,7 @@ import { ReactNode, FC, useEffect } from 'react';
 
 import { useAppDispatch } from '@/hooks';
 import { authActions } from '@/store';
-import { getUserInfo } from '@/api';
+import { getUserInfo, auth } from '@/api';
 
 type Props = {
   children: ReactNode;
@@ -14,9 +14,15 @@ const GetLocalStorageData: FC<Props> = ({ children }) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const getUserData = async (uid: string) => {
-      const { name, surname, sex, birthday, isSubscribed } =
-        await getUserInfo(uid);
+    auth.onAuthStateChanged(async () => {
+      const result = await getUserInfo();
+
+      if (result == null) {
+        dispatch(authActions.changeUID(''));
+        return;
+      }
+
+      const { uid, name, surname, sex, birthday, isSubscribed, email } = result;
 
       dispatch(authActions.changeUID(uid));
       dispatch(authActions.changeName(name));
@@ -24,16 +30,8 @@ const GetLocalStorageData: FC<Props> = ({ children }) => {
       dispatch(authActions.changeSexByName(sex));
       dispatch(authActions.changeBirthday(birthday));
       dispatch(authActions.changeIsSubscribed(isSubscribed));
-    };
-
-    const uid = localStorage.getItem('uid');
-
-    if (typeof uid === 'string') {
-      localStorage.setItem('uid', uid);
-      getUserData(uid);
-    } else {
-      dispatch(authActions.changeUID(''));
-    }
+      dispatch(authActions.changeEmail(email));
+    });
   }, [dispatch]);
 
   return children;
