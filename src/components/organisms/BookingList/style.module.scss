@@ -1,0 +1,16 @@
+@import '@/style/variables.scss';
+
+.list {
+  display: flex;
+  gap: 10px;
+  overflow: auto;
+}
+
+.item {
+  min-width: 260px;
+}
+
+.link {
+  text-decoration: none;
+  color: $dark-shade-75;
+}

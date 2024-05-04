@@ -2,7 +2,7 @@
 
 import { redirect } from 'next/navigation';
 
-import { BookingList, UserCard } from '@/components';
+import { BookingList, UserCard, Container } from '@/components';
 import { selectUID } from '@/store';
 import { useAppSelector } from '@/hooks';
 
@@ -14,10 +14,10 @@ const Profile = () => {
   }
 
   return (
-    <>
+    <Container>
       <UserCard />
       <BookingList />
-    </>
+    </Container>
   );
 };
 

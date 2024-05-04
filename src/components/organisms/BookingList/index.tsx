@@ -1,58 +1,15 @@
 'use client';
 
-import Link from 'next/link';
-import { useEffect, useState, MouseEvent, FC } from 'react';
+import { useEffect, useState } from 'react';
 
-import { Card, Button } from '@/components';
+import { Card, ErrorMessage, HotelCardSkeleton } from '@/components';
 import { useAppSelector } from '@/hooks';
 import { selectUID } from '@/store';
-import { deleteBooking, getBookings } from '@/api';
+import { getBookings } from '@/api';
 import { Booking } from '@/types';
 
-type Props = {
-  id: string;
-  roomId: string;
-  startDate: string;
-  endDate: string;
-  guestCount: number;
-  babyCount: number;
-  price: number;
-  onClickCancel(id: string): void;
-};
-
-const BookingCard: FC<Props> = ({
-  id,
-  roomId,
-  startDate,
-  endDate,
-  guestCount,
-  babyCount,
-  price,
-  onClickCancel,
-}) => {
-  const handleButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    deleteBooking(id);
-    onClickCancel(id);
-  };
-
-  return (
-    <Link href={`/rooms/${roomId}`}>
-      <Card>
-        <div>
-          c {startDate} по {endDate}
-        </div>
-        <div>
-          Гостей: {guestCount} Детей: {babyCount}
-        </div>
-        <div>
-          Стоимость: {price}
-          <Button text="Отменить" onClick={handleButtonClick} />
-        </div>
-      </Card>
-    </Link>
-  );
-};
+import { BookingCard } from './BookingCard';
+import style from './style.module.scss';
 
 const BookingList = () => {
   const uid = useAppSelector(selectUID);
@@ -97,30 +54,58 @@ const BookingList = () => {
   }
 
   if (isLoading) {
-    return 'loading';
+    return (
+      <Card>
+        <div className={style.list}>
+          {new Array(5)
+            .fill(undefined)
+            .map((_, i) => i)
+            .map((item) => (
+              <HotelCardSkeleton key={item} />
+            ))}
+        </div>
+      </Card>
+    );
   }
 
   if (error !== '') {
-    return error;
+    return (
+      <Card>
+        <ErrorMessage message="Произошла ошибка" description={error} />
+      </Card>
+    );
+  }
+
+  if (data.length === 0) {
+    return (
+      <Card>
+        <ErrorMessage
+          message="Пока что тут пусто"
+          description="Забронируйте хотя бы один номер"
+        />
+      </Card>
+    );
   }
 
   return (
     <Card>
-      {data.map((item) => {
-        return (
-          <BookingCard
-            key={item.roomId}
-            id={item.id}
-            roomId={item.roomId}
-            startDate={item.startDate}
-            endDate={item.endDate}
-            guestCount={item.guestCount}
-            babyCount={item.babyCount}
-            price={item.price}
-            onClickCancel={handleBookingCardCancelClick}
-          />
-        );
-      })}
+      <div className={style.list}>
+        {data.map((item) => {
+          return (
+            <BookingCard
+              key={item.roomId}
+              id={item.id}
+              roomId={item.roomId}
+              startDate={item.startDate}
+              endDate={item.endDate}
+              guestCount={item.guestCount}
+              babyCount={item.babyCount}
+              price={item.price}
+              onClickCancel={handleBookingCardCancelClick}
+            />
+          );
+        })}
+      </div>
     </Card>
   );
 };
