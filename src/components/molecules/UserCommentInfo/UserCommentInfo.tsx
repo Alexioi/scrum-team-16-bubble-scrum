@@ -13,21 +13,20 @@ import { calcDate } from './helpers/calcTime';
 import { UserCommentInfoSkeleton } from './UserCommentInfoSkeleton';
 
 type Props = {
-  userUid: string;
   date: Timestamp;
 };
 
-const UserCommentInfo: FC<Props> = ({ userUid, date }) => {
+const UserCommentInfo: FC<Props> = ({ date }) => {
   const [user, setUser] = useState<z.infer<typeof userInfoScheme> | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const userInfo = await getUserInfo(userUid);
+      const userInfo = await getUserInfo();
       setUser(userInfo);
     };
 
     fetchData();
-  }, [userUid]);
+  }, []);
 
   if (user) {
     return (

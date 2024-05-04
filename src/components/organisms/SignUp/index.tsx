@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 
 import {
   Card,
@@ -20,12 +20,14 @@ import {
   selectSexes,
   selectBirthday,
   selectIsSubscribes,
+  selectEmail,
 } from '@/store';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { isErrorWithCode } from '@/helpers';
 import { FIREBASE_AUTH_ERRORS } from '@/constants';
 
 import style from './style.module.scss';
+import { validateInputs } from './helpers';
 
 const SignUp = () => {
   const dispatch = useAppDispatch();
@@ -34,7 +36,7 @@ const SignUp = () => {
   const name = useAppSelector(selectName);
   const surname = useAppSelector(selectSurname);
   const birthday = useAppSelector(selectBirthday);
-  const [email, setEmail] = useState('');
+  const email = useAppSelector(selectEmail);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
@@ -48,7 +50,7 @@ const SignUp = () => {
     dispatch(authActions.changeBirthday(e.currentTarget.value));
   };
   const handleEmailInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.currentTarget.value);
+    dispatch(authActions.changeEmail(e.currentTarget.value));
   };
   const handlePasswordInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.currentTarget.value);
@@ -61,7 +63,22 @@ const SignUp = () => {
   ) => {
     dispatch(authActions.changeSex(value));
   };
-  const handleSingUpButtonClick = async () => {
+  const handleSingUpButtonClick = () => {
+    setError('');
+  };
+
+  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      validateInputs(name, surname, password);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      }
+      return;
+    }
+
     try {
       const sexValue = sexes.find((item) => {
         return item.checked;
@@ -77,8 +94,6 @@ const SignUp = () => {
         isSubscribes,
       );
 
-      localStorage.setItem('uid', uid);
-
       dispatch(authActions.changeUID(uid));
     } catch (err) {
       if (
@@ -92,7 +107,7 @@ const SignUp = () => {
 
   return (
     <Card>
-      <form>
+      <form onSubmit={handleFormSubmit}>
         <Typography tag="h1">Регистрация аккаунта</Typography>
         <div className={style.name}>
           <Input
@@ -101,6 +116,7 @@ const SignUp = () => {
             placeholder="Имя"
             value={name}
             onChange={handleNameInputChange}
+            required
           />
         </div>
         <div className={style.surname}>
@@ -110,6 +126,7 @@ const SignUp = () => {
             placeholder="Фамилия"
             value={surname}
             onChange={handleSurnameInputChange}
+            required
           />
         </div>
         <div className={style['radio-buttons']}>
@@ -129,6 +146,7 @@ const SignUp = () => {
             placeholder="ДД.ММ.ГГГГ"
             value={birthday}
             onChange={handleBirthdayInputChange}
+            required
           />
         </div>
         <div className={style.login}>
@@ -142,6 +160,7 @@ const SignUp = () => {
             placeholder="Email"
             value={email}
             onChange={handleEmailInputChange}
+            required
           />
         </div>
         <div className={style.password}>
@@ -151,6 +170,7 @@ const SignUp = () => {
             placeholder="Пароль"
             value={password}
             onChange={handlePasswordInputChange}
+            required
           />
         </div>
         <div className={style.toggle}>
@@ -165,6 +185,7 @@ const SignUp = () => {
           <Button
             theme="long"
             text="зарегистрироваться"
+            type="submit"
             onClick={handleSingUpButtonClick}
           />
         </div>

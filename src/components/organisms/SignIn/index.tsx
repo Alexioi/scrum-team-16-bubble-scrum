@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 
 import {
   Card,
@@ -10,7 +10,7 @@ import {
   QuestionAboutAuth,
   DangerErrorMessage,
 } from '@/components';
-import { login } from '@/api';
+import { getUserInfo, login } from '@/api';
 import { useAppDispatch } from '@/hooks';
 import { authActions } from '@/store';
 import { FIREBASE_AUTH_ERRORS } from '@/constants';
@@ -30,14 +30,20 @@ const SignIn = () => {
   const handlePasswordInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.currentTarget.value);
   };
-  const handleSignInButtonClick = async () => {
+  const handleSignInButtonClick = () => {
+    setError('');
+  };
+  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
-      const { uid, name, surname, sex, birthday, isSubscribed } = await login(
-        email,
-        password,
-      );
+      await login(email, password);
+      const result = await getUserInfo();
 
-      localStorage.setItem('uid', uid);
+      if (result === null) {
+        return;
+      }
+
+      const { uid, name, surname, sex, birthday, isSubscribed } = result;
 
       dispatch(authActions.changeUID(uid));
       dispatch(authActions.changeName(name));
@@ -45,6 +51,7 @@ const SignIn = () => {
       dispatch(authActions.changeSexByName(sex));
       dispatch(authActions.changeBirthday(birthday));
       dispatch(authActions.changeIsSubscribed(isSubscribed));
+      dispatch(authActions.changeEmail(result.email));
     } catch (err) {
       if (
         isErrorWithCode(err) &&
@@ -57,7 +64,7 @@ const SignIn = () => {
 
   return (
     <Card>
-      <form>
+      <form onSubmit={handleFormSubmit}>
         <Typography tag="h1">Войти</Typography>
         <div className={style['login-input']}>
           <Input
@@ -67,6 +74,7 @@ const SignIn = () => {
             placeholder="Email"
             value={email}
             onChange={handleEmailInputChange}
+            required
           />
         </div>
         <div className={style['password-input']}>
@@ -76,11 +84,17 @@ const SignIn = () => {
             placeholder="Пароль"
             value={password}
             onChange={handlePasswordInputChange}
+            required
           />
         </div>
         <DangerErrorMessage>{error}</DangerErrorMessage>
         <div className={style['submit-button']}>
-          <Button theme="long" text="войти" onClick={handleSignInButtonClick} />
+          <Button
+            theme="long"
+            text="войти"
+            type="submit"
+            onClick={handleSignInButtonClick}
+          />
         </div>
       </form>
       <div className={style['question-about-auth']}>
