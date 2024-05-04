@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { MouseEvent, FC } from 'react';
 
-import { Card, Button } from '@/components';
+import { Card, Button, Swiper } from '@/components';
 import { deleteBooking } from '@/api';
 
 import style from './style.module.scss';
@@ -16,6 +16,8 @@ type Props = {
   guestCount: number;
   babyCount: number;
   price: number;
+  roomNumber: number;
+  imageNames: string[];
   onClickCancel(id: string): void;
 };
 
@@ -27,6 +29,8 @@ const BookingCard: FC<Props> = ({
   guestCount,
   babyCount,
   price,
+  roomNumber,
+  imageNames,
   onClickCancel,
 }) => {
   const handleButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
@@ -37,8 +41,12 @@ const BookingCard: FC<Props> = ({
 
   return (
     <div className={style.item}>
-      <Link href={`/rooms/${roomId}`} className={style.link}>
-        <Card>
+      <Card>
+        <div className={style.swiper}>
+          <Swiper imageNames={imageNames} />
+        </div>
+        <Link href={`/rooms/${roomId}`} className={style.link}>
+          <div>№ {roomNumber}</div>
           <div>
             c {startDate} по {endDate}
           </div>
@@ -49,8 +57,8 @@ const BookingCard: FC<Props> = ({
             Стоимость: {price}
             <Button theme="link" text="Отменить" onClick={handleButtonClick} />
           </div>
-        </Card>
-      </Link>
+        </Link>
+      </Card>
     </div>
   );
 };

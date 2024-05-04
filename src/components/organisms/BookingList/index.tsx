@@ -6,14 +6,14 @@ import { Card, ErrorMessage, HotelCardSkeleton } from '@/components';
 import { useAppSelector } from '@/hooks';
 import { selectUID } from '@/store';
 import { getBookings } from '@/api';
-import { Booking } from '@/types';
+import { Booking, Hotel } from '@/types';
 
 import { BookingCard } from './BookingCard';
 import style from './style.module.scss';
 
 const BookingList = () => {
   const uid = useAppSelector(selectUID);
-  const [data, setData] = useState<Booking[]>([]);
+  const [data, setData] = useState<(Booking & Hotel)[]>([]);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -101,6 +101,8 @@ const BookingList = () => {
               guestCount={item.guestCount}
               babyCount={item.babyCount}
               price={item.price}
+              roomNumber={item.roomNumber}
+              imageNames={item.imageNames}
               onClickCancel={handleBookingCardCancelClick}
             />
           );
