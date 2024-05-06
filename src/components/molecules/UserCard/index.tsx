@@ -1,7 +1,7 @@
 'use client';
 
 import { useAppDispatch } from '@/hooks';
-import { UserInfo, Button } from '@/components';
+import { UserInfo, Button, Card, ChangePassword } from '@/components';
 import { signOut } from '@/api';
 import { authActions } from '@/store';
 
@@ -14,10 +14,11 @@ const UserCard = () => {
   };
 
   return (
-    <div>
+    <Card>
       <UserInfo />
       <Button onClick={handleSignOutClick} text="выход" type="button" />
-    </div>
+      <ChangePassword />
+    </Card>
   );
 };
 

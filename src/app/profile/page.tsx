@@ -2,9 +2,9 @@
 
 import { redirect } from 'next/navigation';
 
+import { BookingList, UserCard, Container } from '@/components';
 import { selectUID } from '@/store';
 import { useAppSelector } from '@/hooks';
-import { ChangePassword } from '@/components';
 
 const Profile = () => {
   const uid = useAppSelector(selectUID);
@@ -13,7 +13,12 @@ const Profile = () => {
     return redirect('/');
   }
 
-  return <ChangePassword />;
+  return (
+    <Container>
+      <UserCard />
+      <BookingList />
+    </Container>
+  );
 };
 
 export default Profile;

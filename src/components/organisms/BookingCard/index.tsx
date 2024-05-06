@@ -133,6 +133,11 @@ const BookingCard = () => {
     };
 
     fetchData();
+
+    return () => {
+      setIsBooking(false);
+      setIsLoading(true);
+    };
   }, [room]);
 
   if (isLoading) {

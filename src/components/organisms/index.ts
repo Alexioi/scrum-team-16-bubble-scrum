@@ -22,4 +22,5 @@ export * from './BookingCard';
 export * from './SignIn';
 export * from './SignUp';
 export * from './DotList';
+export * from './BookingList';
 export * from './ChangePassword';

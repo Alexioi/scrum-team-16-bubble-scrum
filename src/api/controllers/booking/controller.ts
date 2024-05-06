@@ -1,4 +1,11 @@
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  query,
+  where,
+  doc,
+  deleteDoc,
+} from 'firebase/firestore';
 
 import { db } from '@/api/initFirebase';
 import { bookingScheme } from '@/schemes';
@@ -10,7 +17,7 @@ const getBooking = async (id: string) => {
 
   const result = bookingScheme.safeParse(
     querySnapshot.docs.map((el) => {
-      return el.data();
+      return { id: el.id, ...el.data() };
     })[0],
   );
 
@@ -21,4 +28,8 @@ const getBooking = async (id: string) => {
   return result.data;
 };
 
-export { getBooking };
+const deleteBooking = async (id: string) => {
+  await deleteDoc(doc(db, 'bookings', id));
+};
+
+export { getBooking, deleteBooking };

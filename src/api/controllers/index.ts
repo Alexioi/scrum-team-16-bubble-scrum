@@ -10,4 +10,5 @@ export * from './update-password';
 export * from './signOut';
 export * from './user-info';
 export * from './create-booking';
-export * from './get-booking';
+export * from './booking';
+export * from './bookings';
