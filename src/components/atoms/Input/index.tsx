@@ -9,30 +9,40 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {
   type: 'text' | 'email' | 'password' | 'date';
   squareBottom?: boolean;
   active?: boolean;
+  error?: string;
 };
 
-const Input: FC<Props> = ({ type, squareBottom, active, ...standardProps }) => {
+const Input: FC<Props> = ({
+  type,
+  squareBottom,
+  active,
+  error,
+  ...standardProps
+}) => {
   return (
-    <input
-      className={clsx(style.input, {
-        [style['input_square-bottom']]: squareBottom,
-        [style.input_active]: active,
-      })}
-      type={type}
-      name={standardProps.name}
-      id={standardProps.id}
-      value={standardProps.value}
-      min={standardProps.min}
-      max={standardProps.max}
-      placeholder={standardProps.placeholder}
-      readOnly={standardProps.readOnly}
-      onClick={standardProps.onClick}
-      inputMode={standardProps.inputMode}
-      pattern={standardProps.pattern}
-      onChange={standardProps.onChange}
-      defaultValue={standardProps.defaultValue}
-      required={standardProps.required}
-    />
+    <div>
+      <input
+        className={clsx(style.input, {
+          [style['input_square-bottom']]: squareBottom,
+          [style.input_active]: active,
+          [style.input_error]: !!error,
+        })}
+        type={type}
+        name={standardProps.name}
+        id={standardProps.id}
+        value={standardProps.value}
+        min={standardProps.min}
+        max={standardProps.max}
+        placeholder={standardProps.placeholder}
+        readOnly={standardProps.readOnly}
+        onClick={standardProps.onClick}
+        inputMode={standardProps.inputMode}
+        pattern={standardProps.pattern}
+        onChange={standardProps.onChange}
+        defaultValue={standardProps.defaultValue}
+      />
+      {error && <div className={style.error}>{error}</div>}
+    </div>
   );
 };
 
