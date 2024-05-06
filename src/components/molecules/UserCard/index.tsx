@@ -1,7 +1,7 @@
 'use client';
 
 import { useAppDispatch } from '@/hooks';
-import { UserInfo, Button, Card } from '@/components';
+import { UserInfo, Button, Card, ChangePassword } from '@/components';
 import { signOut } from '@/api';
 import { authActions } from '@/store';
 
@@ -17,6 +17,7 @@ const UserCard = () => {
     <Card>
       <UserInfo />
       <Button onClick={handleSignOutClick} text="выход" type="button" />
+      <ChangePassword />
     </Card>
   );
 };

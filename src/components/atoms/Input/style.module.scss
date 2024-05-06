@@ -46,8 +46,17 @@
     cursor: pointer;
   }
 
+  &_error,
+  &:invalid {
+    border-color: $red;
+  }
+
   &_square-bottom {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
+}
+
+.error {
+  color: $red;
 }
