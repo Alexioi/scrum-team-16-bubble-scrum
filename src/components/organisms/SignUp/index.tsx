@@ -11,6 +11,7 @@ import {
   RadioButtonList,
   Toggle,
   DangerErrorMessage,
+  MaskInput,
 } from '@/components';
 import { createNewUser } from '@/api';
 import {
@@ -46,8 +47,8 @@ const SignUp = () => {
   const handleSurnameInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(authActions.changeSurname(e.currentTarget.value));
   };
-  const handleBirthdayInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(authActions.changeBirthday(e.currentTarget.value));
+  const handleBirthdayInputChange = (value: string) => {
+    dispatch(authActions.changeBirthday(value));
   };
   const handleEmailInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(authActions.changeEmail(e.currentTarget.value));
@@ -140,10 +141,9 @@ const SignUp = () => {
           <Typography tag="h3">дата рождения</Typography>
         </div>
         <div className={style['birthday-input']}>
-          <Input
-            type="text"
+          <MaskInput
             name="birthday"
-            placeholder="ДД.ММ.ГГГГ"
+            mask="date"
             value={birthday}
             onChange={handleBirthdayInputChange}
             required

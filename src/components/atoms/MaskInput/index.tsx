@@ -1,24 +1,57 @@
 'use client';
 
-import { useState, ChangeEvent } from 'react';
+import { ChangeEvent, FC } from 'react';
 
 import { Input } from '@/components';
 
-import { makeMaskedPhone } from './helpers';
+import { makeMaskedPhone, makeMaskedDate } from './helpers';
 
-const MaskInput = () => {
-  const [value, setValue] = useState('');
+type Props = {
+  value: string;
+  name: string;
+  mask?: 'phone' | 'date';
+  required?: boolean;
+  onChange(value: string): void;
+};
 
+const MaskInput: FC<Props> = ({
+  value,
+  name,
+  mask = 'date',
+  required = false,
+  onChange,
+}) => {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(makeMaskedPhone(e.target.value));
+    if (mask === 'phone') {
+      onChange(makeMaskedPhone(e.target.value));
+    }
+
+    if (mask === 'date') {
+      onChange(makeMaskedDate(e.target.value));
+    }
   };
+
+  if (mask === 'phone') {
+    return (
+      <Input
+        type="text"
+        value={value}
+        placeholder="+7 (875) 323-23-32"
+        onChange={handleInputChange}
+        required={required}
+        name={name}
+      />
+    );
+  }
 
   return (
     <Input
       type="tel"
       value={value}
-      placeholder="+7 (875) 323-23-32"
+      placeholder="ДД.ММ.ГГГГ"
       onChange={handleInputChange}
+      required={required}
+      name={name}
     />
   );
 };
