@@ -72,7 +72,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      validateInputs(name, surname, password);
+      validateInputs(name, surname, password, birthday);
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
