@@ -40,6 +40,7 @@ const Input: FC<Props> = ({
         pattern={standardProps.pattern}
         onChange={standardProps.onChange}
         defaultValue={standardProps.defaultValue}
+        required={standardProps.required}
       />
       {error && <div className={style.error}>{error}</div>}
     </div>
