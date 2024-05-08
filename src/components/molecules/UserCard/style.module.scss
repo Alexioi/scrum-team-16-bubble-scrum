@@ -1,0 +1,12 @@
+.form {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  max-width: 320px;
+}
+
+.input-wrapper {
+  display: flex;
+
+  gap: 10px;
+}

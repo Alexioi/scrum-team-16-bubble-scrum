@@ -6,6 +6,7 @@ const userInfoScheme = z.object({
   sex: z.string(),
   birthday: z.string(),
   isSubscribed: z.boolean(),
+  phone: z.string().or(z.undefined()),
 });
 
 export { userInfoScheme };
