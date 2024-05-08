@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 type Sex = { value: string; text: string; checked: boolean };
 
 type InitialState = {
+  id: string;
   uid: string | null;
   name: string;
   surname: string;
@@ -14,6 +15,7 @@ type InitialState = {
 };
 
 const initialState: InitialState = {
+  id: '',
   uid: null,
   name: '',
   surname: '',
@@ -62,6 +64,9 @@ const authSlice = createSlice({
     },
     changePhone: (state, { payload }: { payload: string }) => {
       state.phone = payload;
+    },
+    changeID: (state, { payload }: { payload: string }) => {
+      state.id = payload;
     },
     reset: (state) => {
       state.uid = null;

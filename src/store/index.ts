@@ -51,6 +51,7 @@ const selectRoomError = (state: RootState) => state.room.error;
 const selectRoomIsLoading = (state: RootState) => state.room.isLoading;
 const selectEmail = (state: RootState) => state.auth.email;
 const selectPhone = (state: RootState) => state.auth.phone;
+const selectUserInfoID = (state: RootState) => state.auth.id;
 
 export type { RootState, AppDispatch, Filters };
 export {
@@ -88,4 +89,5 @@ export {
   selectIsSubscribes,
   selectEmail,
   selectPhone,
+  selectUserInfoID,
 };

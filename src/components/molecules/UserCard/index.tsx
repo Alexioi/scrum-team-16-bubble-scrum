@@ -11,14 +11,15 @@ import {
   MaskInput,
   DangerErrorMessage,
 } from '@/components';
-import { signOut } from '@/api';
-import { authActions, selectPhone } from '@/store';
+import { changePhone, signOut } from '@/api';
+import { authActions, selectPhone, selectUserInfoID } from '@/store';
 
 import style from './style.module.scss';
 
 const UserCard = () => {
   const dispatch = useAppDispatch();
   const phone = useAppSelector(selectPhone);
+  const id = useAppSelector(selectUserInfoID);
   const [phoneValue, setPhoneValue] = useState(phone);
   const [phoneError, setPhoneError] = useState('');
 
@@ -31,7 +32,7 @@ const UserCard = () => {
     setPhoneValue(value);
   };
 
-  const handlePhoneFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handlePhoneFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (phoneValue.length < 18) {
@@ -39,8 +40,15 @@ const UserCard = () => {
       return;
     }
 
-    dispatch(authActions.changePhone(phoneValue));
-    setPhoneError('');
+    try {
+      await changePhone(id, phoneValue);
+      dispatch(authActions.changePhone(phoneValue));
+      setPhoneError('');
+    } catch (err) {
+      if (err instanceof Error) {
+        setPhoneError(err.message);
+      }
+    }
   };
 
   return (

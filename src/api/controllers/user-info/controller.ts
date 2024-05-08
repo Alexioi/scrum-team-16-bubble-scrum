@@ -1,4 +1,11 @@
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  updateDoc,
+  doc,
+} from 'firebase/firestore';
 
 import { INCORRECT_DATA_ERROR } from '@/constants';
 import { userInfoScheme } from '@/schemes';
@@ -20,7 +27,7 @@ const getUserInfo = async () => {
 
   const result = userInfoScheme.safeParse(
     querySnapshot.docs.map((el) => {
-      return { ...el.data() };
+      return { id: el.id, ...el.data() };
     })[0],
   );
 
@@ -31,4 +38,8 @@ const getUserInfo = async () => {
   return { uid: user.uid, email: user.email, ...result.data };
 };
 
-export { getUserInfo };
+const changePhone = async (id: string, phone: string) => {
+  await updateDoc(doc(db, 'users-info', id), { phone });
+};
+
+export { getUserInfo, changePhone };

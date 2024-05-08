@@ -22,8 +22,17 @@ const GetLocalStorageData: FC<Props> = ({ children }) => {
         return;
       }
 
-      const { uid, name, surname, sex, birthday, isSubscribed, email, phone } =
-        result;
+      const {
+        uid,
+        name,
+        surname,
+        sex,
+        birthday,
+        isSubscribed,
+        email,
+        phone,
+        id,
+      } = result;
 
       dispatch(authActions.changeUID(uid));
       dispatch(authActions.changeName(name));
@@ -33,6 +42,7 @@ const GetLocalStorageData: FC<Props> = ({ children }) => {
       dispatch(authActions.changeIsSubscribed(isSubscribed));
       dispatch(authActions.changeEmail(email));
       dispatch(authActions.changePhone(phone === undefined ? '' : phone));
+      dispatch(authActions.changeID(id));
     });
   }, [dispatch]);
 
