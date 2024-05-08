@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from 'react';
 
-import { useAppDispatch } from '@/hooks';
+import { useAppDispatch, useAppSelector } from '@/hooks';
 import {
   UserInfo,
   Button,
@@ -12,13 +12,14 @@ import {
   DangerErrorMessage,
 } from '@/components';
 import { signOut } from '@/api';
-import { authActions } from '@/store';
+import { authActions, selectPhone } from '@/store';
 
 import style from './style.module.scss';
 
 const UserCard = () => {
   const dispatch = useAppDispatch();
-  const [phoneValue, setPhoneValue] = useState('');
+  const phone = useAppSelector(selectPhone);
+  const [phoneValue, setPhoneValue] = useState(phone);
   const [phoneError, setPhoneError] = useState('');
 
   const handleSignOutClick = () => {
@@ -38,6 +39,7 @@ const UserCard = () => {
       return;
     }
 
+    dispatch(authActions.changePhone(phoneValue));
     setPhoneError('');
   };
 
