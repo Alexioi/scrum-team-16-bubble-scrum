@@ -6,6 +6,8 @@ import { BookingList, UserCard, Container } from '@/components';
 import { selectUID } from '@/store';
 import { useAppSelector } from '@/hooks';
 
+import style from './style.module.scss';
+
 const Profile = () => {
   const uid = useAppSelector(selectUID);
 
@@ -15,8 +17,10 @@ const Profile = () => {
 
   return (
     <Container>
-      <UserCard />
-      <BookingList />
+      <div className={style.page}>
+        <UserCard />
+        <BookingList />
+      </div>
     </Container>
   );
 };

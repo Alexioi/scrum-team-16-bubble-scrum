@@ -35,9 +35,19 @@ const HotelList = () => {
   const filterRoomListData = useFilter(filters, roomListData);
 
   useEffect(() => {
-    dispatch(paginationActions.setCountCards(filterRoomListData.length));
+    dispatch(
+      paginationActions.setCountCards(
+        filterRoomListData.reduce<Hotel[]>((acc, item) => {
+          if (item.bookingUserId !== undefined && uid !== item.bookingUserId) {
+            return acc;
+          }
+
+          return [...acc, item];
+        }, []).length,
+      ),
+    );
     dispatch(paginationActions.change(1));
-  }, [filterRoomListData, dispatch]);
+  }, [filterRoomListData, dispatch, uid]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,6 +69,12 @@ const HotelList = () => {
     };
 
     fetchData();
+
+    return () => {
+      dispatch(roomListActions.changeError(''));
+      dispatch(roomListActions.changeIsLoading(true));
+      dispatch(roomListActions.changeData([]));
+    };
   }, [dispatch]);
 
   if (roomListError !== '') {
