@@ -52,6 +52,7 @@ const selectRoomIsLoading = (state: RootState) => state.room.isLoading;
 const selectEmail = (state: RootState) => state.auth.email;
 const selectPhone = (state: RootState) => state.auth.phone;
 const selectUserInfoID = (state: RootState) => state.auth.id;
+const selectAvatarUrl = (state: RootState) => state.auth.avatarUrl;
 
 export type { RootState, AppDispatch, Filters };
 export {
@@ -90,4 +91,5 @@ export {
   selectEmail,
   selectPhone,
   selectUserInfoID,
+  selectAvatarUrl,
 };

@@ -10,9 +10,15 @@ import {
   ChangePassword,
   MaskInput,
   DangerErrorMessage,
+  AvatarUpload,
 } from '@/components';
 import { changePhone, signOut } from '@/api';
-import { authActions, selectPhone, selectUserInfoID } from '@/store';
+import {
+  authActions,
+  selectAvatarUrl,
+  selectPhone,
+  selectUserInfoID,
+} from '@/store';
 
 import style from './style.module.scss';
 
@@ -20,6 +26,7 @@ const UserCard = () => {
   const dispatch = useAppDispatch();
   const phone = useAppSelector(selectPhone);
   const id = useAppSelector(selectUserInfoID);
+  const avatarUrl = useAppSelector(selectAvatarUrl);
   const [phoneValue, setPhoneValue] = useState(phone);
   const [phoneError, setPhoneError] = useState('');
 
@@ -70,6 +77,7 @@ const UserCard = () => {
 
       <Button onClick={handleSignOutClick} text="выход" type="button" />
       <ChangePassword />
+      <AvatarUpload userId={id} userAvatarUrl={avatarUrl} />
     </Card>
   );
 };

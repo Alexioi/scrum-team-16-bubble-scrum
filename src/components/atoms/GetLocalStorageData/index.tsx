@@ -32,6 +32,7 @@ const GetLocalStorageData: FC<Props> = ({ children }) => {
         email,
         phone,
         id,
+        avatarUrl,
       } = result;
 
       dispatch(authActions.changeUID(uid));
@@ -43,6 +44,9 @@ const GetLocalStorageData: FC<Props> = ({ children }) => {
       dispatch(authActions.changeEmail(email));
       dispatch(authActions.changePhone(phone === undefined ? '' : phone));
       dispatch(authActions.changeID(id));
+      dispatch(
+        authActions.changeAvatarUrl(avatarUrl === undefined ? '' : avatarUrl),
+      );
     });
   }, [dispatch]);
 
