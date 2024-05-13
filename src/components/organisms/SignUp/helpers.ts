@@ -1,6 +1,11 @@
 import z from 'zod';
 
-const validateInputs = (name: string, surname: string, password: string) => {
+const validateInputs = (
+  name: string,
+  surname: string,
+  password: string,
+  birthday: string,
+) => {
   const nameSchema = z
     .string()
     .min(2)
@@ -26,6 +31,10 @@ const validateInputs = (name: string, surname: string, password: string) => {
     throw new Error(
       'Фамилия должна начинаться с большой буквы и содержать только буквы',
     );
+  }
+
+  if (birthday.length < 10) {
+    throw new Error('Заполните дату рождения полностью');
   }
 
   const resultPassword = passwordSchema.safeParse(password);

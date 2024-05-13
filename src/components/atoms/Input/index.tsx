@@ -1,12 +1,12 @@
 'use client';
 
-import React, { FC, InputHTMLAttributes } from 'react';
+import { FC, InputHTMLAttributes } from 'react';
 import clsx from 'clsx';
 
 import style from './style.module.scss';
 
 type Props = InputHTMLAttributes<HTMLInputElement> & {
-  type: 'text' | 'email' | 'password' | 'date';
+  type: 'text' | 'email' | 'password' | 'date' | 'tel';
   squareBottom?: boolean;
   active?: boolean;
   error?: string;
@@ -40,6 +40,7 @@ const Input: FC<Props> = ({
         pattern={standardProps.pattern}
         onChange={standardProps.onChange}
         defaultValue={standardProps.defaultValue}
+        required={standardProps.required}
       />
       {error && <div className={style.error}>{error}</div>}
     </div>

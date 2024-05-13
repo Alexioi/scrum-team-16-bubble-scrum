@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 type Sex = { value: string; text: string; checked: boolean };
 
 type InitialState = {
+  id: string;
   uid: string | null;
   name: string;
   surname: string;
@@ -10,9 +11,11 @@ type InitialState = {
   birthday: string;
   isSubscribed: boolean;
   email: string;
+  phone: string;
 };
 
 const initialState: InitialState = {
+  id: '',
   uid: null,
   name: '',
   surname: '',
@@ -23,6 +26,7 @@ const initialState: InitialState = {
   birthday: '',
   isSubscribed: true,
   email: '',
+  phone: '',
 };
 
 const authSlice = createSlice({
@@ -58,6 +62,12 @@ const authSlice = createSlice({
     changeEmail: (state, { payload }: { payload: string }) => {
       state.email = payload;
     },
+    changePhone: (state, { payload }: { payload: string }) => {
+      state.phone = payload;
+    },
+    changeID: (state, { payload }: { payload: string }) => {
+      state.id = payload;
+    },
     reset: (state) => {
       state.uid = null;
       state.name = '';
@@ -69,6 +79,7 @@ const authSlice = createSlice({
       state.birthday = '';
       state.isSubscribed = true;
       state.email = '';
+      state.phone = '';
     },
   },
 });
