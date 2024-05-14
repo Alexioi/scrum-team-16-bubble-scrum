@@ -27,3 +27,4 @@ export * from './DangerErrorMessage';
 export * from './Modal';
 export * from './UserInfo';
 export * from './MaskInput';
+export * from './AvatarUpload';

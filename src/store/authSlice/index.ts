@@ -12,6 +12,7 @@ type InitialState = {
   isSubscribed: boolean;
   email: string;
   phone: string;
+  avatarUrl: string;
 };
 
 const initialState: InitialState = {
@@ -27,6 +28,7 @@ const initialState: InitialState = {
   isSubscribed: true,
   email: '',
   phone: '',
+  avatarUrl: '',
 };
 
 const authSlice = createSlice({
@@ -68,6 +70,9 @@ const authSlice = createSlice({
     changeID: (state, { payload }: { payload: string }) => {
       state.id = payload;
     },
+    changeAvatarUrl: (state, { payload }: { payload: string }) => {
+      state.avatarUrl = payload;
+    },
     reset: (state) => {
       state.uid = null;
       state.name = '';
@@ -80,6 +85,7 @@ const authSlice = createSlice({
       state.isSubscribed = true;
       state.email = '';
       state.phone = '';
+      state.avatarUrl = '';
     },
   },
 });

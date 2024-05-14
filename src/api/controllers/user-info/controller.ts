@@ -42,4 +42,12 @@ const changePhone = async (id: string, phone: string) => {
   await updateDoc(doc(db, 'users-info', id), { phone });
 };
 
-export { getUserInfo, changePhone };
+const changeAvatar = async (id: string, avatarUrl: string) => {
+  const docRef = doc(db, 'users-info', id);
+
+  await updateDoc(docRef, {
+    avatarUrl,
+  });
+};
+
+export { getUserInfo, changePhone, changeAvatar };

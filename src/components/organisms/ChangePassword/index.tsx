@@ -76,7 +76,11 @@ const ChangePassword = () => {
 
   return (
     <>
-      <Button onClick={() => setIsOpen(true)} text="Изменить пароль" />
+      <Button
+        theme="link"
+        onClick={() => setIsOpen(true)}
+        text="Изменить пароль"
+      />
       <Modal
         isOpen={isOpen}
         onClose={() => {
