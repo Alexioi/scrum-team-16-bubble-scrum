@@ -12,6 +12,26 @@ import { userInfoScheme } from '@/schemes';
 
 import { auth, db } from '../../initFirebase';
 
+const getOtherUserInfo = async (uid: string) => {
+  const usersInfoCollection = collection(db, 'users-info');
+
+  const q = query(usersInfoCollection, where('uid', '==', uid));
+
+  const querySnapshot = await getDocs(q);
+
+  const result = userInfoScheme.safeParse(
+    querySnapshot.docs.map((el) => {
+      return { id: el.id, ...el.data() };
+    })[0],
+  );
+
+  if (!result.success) {
+    throw new Error(INCORRECT_DATA_ERROR);
+  }
+
+  return { uid, ...result.data };
+};
+
 const getUserInfo = async () => {
   const user = auth.currentUser;
 
@@ -50,4 +70,4 @@ const changeAvatar = async (id: string, avatarUrl: string) => {
   });
 };
 
-export { getUserInfo, changePhone, changeAvatar };
+export { getUserInfo, changePhone, changeAvatar, getOtherUserInfo };

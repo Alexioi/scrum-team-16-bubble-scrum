@@ -3,7 +3,7 @@
 import { FC, useEffect, useState } from 'react';
 import { z } from 'zod';
 
-import { getUserInfo } from '@/api';
+import { getOtherUserInfo } from '@/api';
 import { Avatar, Typography } from '@/components/atoms';
 import { Timestamp } from '@/types';
 import { userInfoScheme } from '@/schemes';
@@ -14,19 +14,20 @@ import { UserCommentInfoSkeleton } from './UserCommentInfoSkeleton';
 
 type Props = {
   date: Timestamp;
+  uid: string;
 };
 
-const UserCommentInfo: FC<Props> = ({ date }) => {
+const UserCommentInfo: FC<Props> = ({ date, uid }) => {
   const [user, setUser] = useState<z.infer<typeof userInfoScheme> | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const userInfo = await getUserInfo();
+      const userInfo = await getOtherUserInfo(uid);
       setUser(userInfo);
     };
 
     fetchData();
-  }, []);
+  }, [uid]);
 
   if (user) {
     return (
